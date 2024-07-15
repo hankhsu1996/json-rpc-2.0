@@ -1,0 +1,37 @@
+# Compiled Object files
+*.o
+*.obj
+
+# Compiled Dynamic libraries
+*.so
+*.dylib
+*.dll
+
+# Compiled Static libraries
+*.lib
+*.a
+
+# Executables
+*.exe
+*.out
+*.app
+
+# CMake specific files
+CMakeFiles/
+CMakeCache.txt
+cmake_install.cmake
+CMakeLists.txt.user
+CTestTestfile.cmake
+Makefile
+build/
+
+# IDE specific files
+.idea/
+.vscode/
+*.swp
+
+# Logs
+*.log
+
+# Other
+*.DS_Store
