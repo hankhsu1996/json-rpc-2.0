@@ -1,6 +1,6 @@
 #pragma once
-#ifndef SERVER_H
-#define SERVER_H
+#ifndef JSON_RPC_SERVER_H
+#define JSON_RPC_SERVER_H
 
 #include <memory>
 #include <string>
@@ -33,4 +33,4 @@ private:
 
 } // namespace json_rpc
 
-#endif // SERVER_H
+#endif // JSON_RPC_SERVER_H

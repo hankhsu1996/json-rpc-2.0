@@ -1,13 +1,11 @@
 #pragma once
-#ifndef DISPATCHER_H
-#define DISPATCHER_H
+#ifndef JSON_RPC_DISPATCHER_H
+#define JSON_RPC_DISPATCHER_H
 
 #include <functional>
 #include <optional>
 #include <string>
 #include <unordered_map>
-
-#include <nlohmann/json.hpp>
 
 #include "json_rpc/core/request.h"
 #include "json_rpc/core/response.h"
@@ -42,4 +40,4 @@ private:
 
 } // namespace json_rpc
 
-#endif // DISPATCHER_H
+#endif // JSON_RPC_DISPATCHER_H

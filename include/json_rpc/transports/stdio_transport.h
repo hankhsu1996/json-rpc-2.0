@@ -1,22 +1,22 @@
 #pragma once
-#ifndef STDIO_TRANSPORT_H
-#define STDIO_TRANSPORT_H
+#ifndef JSON_RPC_STDIO_TRANSPORT_H
+#define JSON_RPC_STDIO_TRANSPORT_H
 
 #include <iostream>
 
-#include <nlohmann/json.hpp>
-
+#include "json_rpc/core/dispatcher.h"
 #include "json_rpc/core/transport.h"
+#include "json_rpc/core/types.h"
 
 namespace json_rpc {
 
 class StdioTransport : public Transport {
 public:
   void listen() override;
-  nlohmann::json sendMethodCall(const nlohmann::json &request) override;
-  void sendNotification(const nlohmann::json &notification) override;
+  json sendMethodCall(const json &request) override;
+  void sendNotification(const json &notification) override;
 };
 
 } // namespace json_rpc
 
-#endif // STDIO_TRANSPORT_H
+#endif // JSON_RPC_STDIO_TRANSPORT_H

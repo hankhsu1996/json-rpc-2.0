@@ -1,4 +1,3 @@
-#include "json_rpc/core/dispatcher.h"
 #include "json_rpc/transports/stdio_transport.h"
 
 namespace json_rpc {
@@ -13,14 +12,14 @@ void StdioTransport::listen() {
   }
 }
 
-nlohmann::json StdioTransport::sendMethodCall(const nlohmann::json &request) {
+json StdioTransport::sendMethodCall(const json &request) {
   std::cout << request.dump() << std::endl;
   std::string line;
   std::getline(std::cin, line);
-  return nlohmann::json::parse(line);
+  return json::parse(line);
 }
 
-void StdioTransport::sendNotification(const nlohmann::json &notification) {
+void StdioTransport::sendNotification(const json &notification) {
   std::cout << notification.dump() << std::endl;
 }
 

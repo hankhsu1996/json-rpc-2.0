@@ -20,6 +20,15 @@ FetchContent_Declare(
 
 FetchContent_MakeAvailable(nlohmann_json)
 
+# Fetch spdlog
+FetchContent_Declare(
+  spdlog
+  GIT_REPOSITORY https://github.com/gabime/spdlog.git
+  GIT_TAG v1.14.1
+)
+
+FetchContent_MakeAvailable(spdlog)
+
 # Source files
 file(GLOB_RECURSE SOURCES "src/*.cpp")
 

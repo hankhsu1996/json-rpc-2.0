@@ -1,11 +1,11 @@
 #pragma once
-#ifndef TRANSPORT_H
-#define TRANSPORT_H
+#ifndef JSON_RPC_TRANSPORT_H
+#define JSON_RPC_TRANSPORT_H
 
 #include <memory>
 #include <string>
 
-#include <nlohmann/json.hpp>
+#include "json_rpc/core/types.h"
 
 namespace json_rpc {
 
@@ -19,10 +19,10 @@ public:
   virtual void listen() = 0;
 
   // For client: send a request and get a response
-  virtual nlohmann::json sendMethodCall(const nlohmann::json &request) = 0;
+  virtual json sendMethodCall(const json &request) = 0;
 
   // For client: send a notification
-  virtual void sendNotification(const nlohmann::json &notification) = 0;
+  virtual void sendNotification(const json &notification) = 0;
 
   void set_dispatcher(Dispatcher *dispatcher) {
     _dispatcher = dispatcher;
@@ -34,4 +34,4 @@ protected:
 
 } // namespace json_rpc
 
-#endif // TRANSPORT_H
+#endif // JSON_RPC_TRANSPORT_H

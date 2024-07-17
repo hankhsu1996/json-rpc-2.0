@@ -1,6 +1,6 @@
 #pragma once
-#ifndef TYPES_H
-#define TYPES_H
+#ifndef JSON_RPC_TYPES_H
+#define JSON_RPC_TYPES_H
 
 #include <functional>
 #include <variant>
@@ -16,4 +16,4 @@ using Handler = std::variant<MethodCallHandler, NotificationHandler>;
 
 } // namespace json_rpc
 
-#endif // TYPES_H
+#endif // JSON_RPC_TYPES_H

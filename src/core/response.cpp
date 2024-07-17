@@ -3,7 +3,7 @@
 namespace json_rpc {
 
 // Implementation of constructor
-Response::Response(const nlohmann::json &response, std::optional<int> id)
+Response::Response(const json &response, std::optional<int> id)
     : _response(response) {
   if (id.has_value()) {
     _response["id"] = id.value();
@@ -48,15 +48,15 @@ void Response::validateResponse() {
 }
 
 // Serialization implementation
-nlohmann::json Response::to_json() const {
+json Response::to_json() const {
   return _response;
 }
 
 // Helper function to create error responses
-nlohmann::json Response::createErrorResponse(
+json Response::createErrorResponse(
     const std::string &message, int code, const std::optional<int> &id) {
-  nlohmann::json error = {{"code", code}, {"message", message}};
-  nlohmann::json response = {{"error", error}};
+  json error = {{"code", code}, {"message", message}};
+  json response = {{"error", error}};
   if (id.has_value()) {
     response["id"] = id.value();
   }

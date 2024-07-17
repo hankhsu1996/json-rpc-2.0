@@ -1,19 +1,18 @@
 #pragma once
-#ifndef RESPONSE_H
-#define RESPONSE_H
+#ifndef JSON_RPC_RESPONSE_H
+#define JSON_RPC_RESPONSE_H
 
 #include <optional>
 #include <string>
 
-#include <nlohmann/json.hpp>
+#include "json_rpc/core/types.h"
 
 namespace json_rpc {
 
 class Response {
 public:
   // Constructor that takes a JSON object and validates it
-  explicit Response(
-      const nlohmann::json &response, std::optional<int> id = std::nullopt);
+  explicit Response(const json &response, std::optional<int> id = std::nullopt);
 
   // Static methods to create common error responses
   static Response MethodNotFoundError(const std::optional<int> &id);
@@ -23,17 +22,17 @@ public:
   static Response InvalidParamsError(const std::optional<int> &id);
 
   // Serialize the Response object to a JSON object
-  nlohmann::json to_json() const;
+  json to_json() const;
 
 private:
-  nlohmann::json _response;
+  json _response;
 
   void validateResponse();
 
-  static nlohmann::json createErrorResponse(
+  static json createErrorResponse(
       const std::string &message, int code, const std::optional<int> &id);
 };
 
 } // namespace json_rpc
 
-#endif // RESPONSE_H
+#endif // JSON_RPC_RESPONSE_H
