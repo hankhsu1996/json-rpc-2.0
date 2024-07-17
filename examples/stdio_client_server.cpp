@@ -21,14 +21,15 @@ void run_server() {
   Server server(std::move(transport));
 
   Calculator calculator;
-  server.registerMethod("add", [&calculator](const Request &request) {
-    return calculator.add(request);
+  server.registerMethodCall("add", [&calculator](const nlohmann::json &params) {
+    return calculator.add(params);
   });
-  server.registerMethod("divide", [&calculator](const Request &request) {
-    return calculator.divide(request);
-  });
+  server.registerMethodCall(
+      "divide", [&calculator](const nlohmann::json &params) {
+        return calculator.divide(params);
+      });
   server.registerNotification("log",
-      [&calculator](const Request &request) { calculator.log(request); });
+      [&calculator](const nlohmann::json &params) { calculator.log(params); });
 
   server.start();
 }
@@ -41,16 +42,17 @@ void run_client() {
   Client client(std::move(transport));
 
   // Perform addition
-  Response response = client.sendRequest("add", {{"a", 10}, {"b", 5}}, 1);
-  std::cerr << "Client: Received addition result: " << response.to_json().dump()
+  nlohmann::json response =
+      client.sendMethodCall("add", {{"a", 10}, {"b", 5}}, 1);
+  std::cerr << "Client: Received addition result: " << response.dump()
             << std::endl;
 
   // Log a notification
   client.sendNotification("log", {{"message", "Performed addition"}});
 
   // Perform division with error handling
-  response = client.sendRequest("divide", {{"a", 10}, {"b", 0}}, 2);
-  std::cerr << "Client: Received division result: " << response.to_json().dump()
+  response = client.sendMethodCall("divide", {{"a", 10}, {"b", 0}}, 2);
+  std::cerr << "Client: Received division result: " << response.dump()
             << std::endl;
 
   // Log a notification

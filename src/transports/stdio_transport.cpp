@@ -6,15 +6,14 @@ namespace json_rpc {
 void StdioTransport::listen() {
   std::string line;
   while (std::getline(std::cin, line)) {
-    nlohmann::json request = nlohmann::json::parse(line);
-    std::optional<nlohmann::json> response = _dispatcher->dispatch(request);
+    std::optional<std::string> response = _dispatcher->dispatch(line);
     if (response.has_value()) {
-      std::cout << response->dump() << std::endl;
+      std::cout << response.value() << std::endl;
     }
   }
 }
 
-nlohmann::json StdioTransport::sendRequest(const nlohmann::json &request) {
+nlohmann::json StdioTransport::sendMethodCall(const nlohmann::json &request) {
   std::cout << request.dump() << std::endl;
   std::string line;
   std::getline(std::cin, line);

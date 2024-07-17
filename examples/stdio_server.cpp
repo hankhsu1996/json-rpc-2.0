@@ -5,9 +5,6 @@
 
 #include <nlohmann/json.hpp>
 
-#include "json_rpc/core/error.h"
-#include "json_rpc/core/request.h"
-#include "json_rpc/core/response.h"
 #include "json_rpc/server/server.h"
 #include "json_rpc/transports/stdio_transport.h"
 
@@ -20,14 +17,15 @@ int main() {
   Server server(std::move(transport));
 
   Calculator calculator;
-  server.registerMethod("add", [&calculator](const Request &request) {
-    return calculator.add(request);
+  server.registerMethodCall("add", [&calculator](const nlohmann::json &params) {
+    return calculator.add(params);
   });
-  server.registerMethod("divide", [&calculator](const Request &request) {
-    return calculator.divide(request);
-  });
+  server.registerMethodCall(
+      "divide", [&calculator](const nlohmann::json &params) {
+        return calculator.divide(params);
+      });
   server.registerNotification("log",
-      [&calculator](const Request &request) { calculator.log(request); });
+      [&calculator](const nlohmann::json &params) { calculator.log(params); });
 
   server.start();
 

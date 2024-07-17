@@ -19,12 +19,12 @@ public:
   void start();
 
   // Register an RPC method with the dispatcher
-  void registerMethod(
-      const std::string &method, const JsonRpcMethodHandler &handler);
+  void registerMethodCall(
+      const std::string &method, const MethodCallHandler &handler);
 
   // Register an RPC notification with the dispatcher
   void registerNotification(
-      const std::string &method, const JsonRpcNotificationHandler &handler);
+      const std::string &method, const NotificationHandler &handler);
 
 private:
   std::unique_ptr<Dispatcher> _dispatcher;

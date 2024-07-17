@@ -6,11 +6,9 @@
 #include <optional>
 #include <string>
 #include <unordered_map>
-#include <variant>
 
 #include <nlohmann/json.hpp>
 
-#include "json_rpc/core/error.h"
 #include "json_rpc/core/request.h"
 #include "json_rpc/core/response.h"
 #include "json_rpc/core/types.h"
@@ -21,15 +19,25 @@ class Dispatcher {
 public:
   virtual ~Dispatcher() = default;
 
-  std::optional<nlohmann::json> dispatch(const nlohmann::json &request);
+  // Dispatch an RPC request to the appropriate handler.
+  std::optional<std::string> dispatch(const std::string &request);
 
-  void registerMethod(
-      const std::string &method, const JsonRpcMethodHandler &handler);
+  // Register a method handler for a specific method.
+  void registerMethodCall(
+      const std::string &method, const MethodCallHandler &handler);
+
+  // Register a notification handler for a specific method.
   void registerNotification(
-      const std::string &method, const JsonRpcNotificationHandler &handler);
+      const std::string &method, const NotificationHandler &handler);
 
 private:
-  std::unordered_map<std::string, JsonRpcHandler> _handlers;
+  std::unordered_map<std::string, Handler> _handlers;
+
+  // Helper functions
+  Response handleMethodCall(
+      const Request &request, const MethodCallHandler &handler);
+  void handleNotification(
+      const Request &request, const NotificationHandler &handler);
 };
 
 } // namespace json_rpc

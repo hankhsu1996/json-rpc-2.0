@@ -19,7 +19,7 @@ public:
   Client(std::unique_ptr<Transport> transport);
   virtual ~Client();
 
-  Response sendRequest(
+  nlohmann::json sendMethodCall(
       const std::string &method, const nlohmann::json &params, int id);
 
   void sendNotification(

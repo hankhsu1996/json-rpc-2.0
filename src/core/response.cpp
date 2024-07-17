@@ -2,58 +2,65 @@
 
 namespace json_rpc {
 
-Response::Response(const nlohmann::json &result, std::optional<int> id)
-    : _result(result), _error(Error(0, "")), _id(id), _success(true) {
+// Implementation of constructor
+Response::Response(const nlohmann::json &response, std::optional<int> id)
+    : _response(response) {
+  if (id.has_value()) {
+    _response["id"] = id.value();
+  }
+  validateResponse();
 }
 
-Response::Response(const Error &error, std::optional<int> id)
-    : _result(nullptr), _error(error), _id(id), _success(false) {
+// Implementation of static methods to create error responses
+Response Response::MethodNotFoundError(const std::optional<int> &id) {
+  return Response(createErrorResponse("Method not found", -32601, id));
 }
 
-Response Response::from_json(const nlohmann::json &json_obj) {
-  if (json_obj.contains("error")) {
-    Error error = Error::from_json(json_obj["error"]);
-    return Response(error, json_obj.contains("id")
-                               ? std::optional<int>(json_obj["id"])
-                               : std::nullopt);
-  } else {
-    nlohmann::json result = json_obj["result"];
-    return Response(result, json_obj.contains("id")
-                                ? std::optional<int>(json_obj["id"])
-                                : std::nullopt);
+Response Response::ParseError() {
+  return Response(createErrorResponse("Parse error", -32700, std::nullopt));
+}
+
+Response Response::InvalidRequestError() {
+  return Response(createErrorResponse("Invalid Request", -32600, std::nullopt));
+}
+
+Response Response::InternalError(const std::optional<int> &id) {
+  return Response(createErrorResponse("Internal error", -32603, id));
+}
+
+Response Response::InvalidParamsError(const std::optional<int> &id) {
+  return Response(createErrorResponse("Invalid params", -32602, id));
+}
+
+// Validation implementation
+void Response::validateResponse() {
+  if (!_response.contains("result") && !_response.contains("error")) {
+    throw std::invalid_argument(
+        "Response must contain either 'result' or 'error' field.");
+  }
+  if (_response.contains("error")) {
+    const auto &error = _response["error"];
+    if (!error.contains("code") || !error.contains("message")) {
+      throw std::invalid_argument(
+          "Error object must contain 'code' and 'message' fields.");
+    }
   }
 }
 
+// Serialization implementation
 nlohmann::json Response::to_json() const {
-  nlohmann::json json_obj;
-  json_obj["jsonrpc"] = "2.0";
-  if (_success) {
-    json_obj["result"] = _result;
-  } else {
-    json_obj["error"] = _error.to_json();
+  return _response;
+}
+
+// Helper function to create error responses
+nlohmann::json Response::createErrorResponse(
+    const std::string &message, int code, const std::optional<int> &id) {
+  nlohmann::json error = {{"code", code}, {"message", message}};
+  nlohmann::json response = {{"error", error}};
+  if (id.has_value()) {
+    response["id"] = id.value();
   }
-  if (_id.has_value()) {
-    json_obj["id"] = _id.value();
-  } else {
-    json_obj["id"] = nullptr;
-  }
-  return json_obj;
-}
-
-nlohmann::json Response::get_result() const {
-  return _result;
-}
-
-Error Response::get_error() const {
-  return _error;
-}
-
-std::optional<int> Response::get_id() const {
-  return _id;
-}
-
-bool Response::is_success() const {
-  return _success;
+  return response;
 }
 
 } // namespace json_rpc

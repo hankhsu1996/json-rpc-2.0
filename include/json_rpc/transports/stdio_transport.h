@@ -13,7 +13,7 @@ namespace json_rpc {
 class StdioTransport : public Transport {
 public:
   void listen() override;
-  nlohmann::json sendRequest(const nlohmann::json &request) override;
+  nlohmann::json sendMethodCall(const nlohmann::json &request) override;
   void sendNotification(const nlohmann::json &notification) override;
 };
 

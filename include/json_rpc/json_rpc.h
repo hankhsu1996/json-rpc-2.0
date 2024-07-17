@@ -4,7 +4,6 @@
 
 // Core components
 #include "json_rpc/core/dispatcher.h"
-#include "json_rpc/core/error.h"
 #include "json_rpc/core/request.h"
 #include "json_rpc/core/response.h"
 #include "json_rpc/core/transport.h"
@@ -15,5 +14,9 @@
 
 // Client component
 #include "json_rpc/client/client.h"
+
+// Transport components
+#include "json_rpc/transports/http_transport.h"
+#include "json_rpc/transports/stdio_transport.h"
 
 #endif // JSON_RPC_H

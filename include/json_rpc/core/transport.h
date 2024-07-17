@@ -3,6 +3,7 @@
 #define TRANSPORT_H
 
 #include <memory>
+#include <string>
 
 #include <nlohmann/json.hpp>
 
@@ -18,7 +19,7 @@ public:
   virtual void listen() = 0;
 
   // For client: send a request and get a response
-  virtual nlohmann::json sendRequest(const nlohmann::json &request) = 0;
+  virtual nlohmann::json sendMethodCall(const nlohmann::json &request) = 0;
 
   // For client: send a notification
   virtual void sendNotification(const nlohmann::json &notification) = 0;

@@ -8,19 +8,24 @@ Client::Client(std::unique_ptr<Transport> transport)
 
 Client::~Client() = default;
 
-Response Client::sendRequest(
+nlohmann::json Client::sendMethodCall(
     const std::string &method, const nlohmann::json &params, int id) {
+  // Create the JSON-RPC request
   Request request(method, params, id);
   nlohmann::json request_json = request.to_json();
-  nlohmann::json response_json = _transport->sendRequest(request_json);
-  return Response::from_json(response_json);
+
+  // Send the request and wait for the response
+  return _transport->sendMethodCall(request_json);
 }
 
 void Client::sendNotification(
     const std::string &method, const nlohmann::json &params) {
-  Request request(method, params, std::nullopt);
-  nlohmann::json request_json = request.to_json();
-  _transport->sendNotification(request_json);
+  // Create the JSON-RPC notification (id is not set)
+  Request notification(method, params, std::nullopt);
+  nlohmann::json notification_json = notification.to_json();
+
+  // Send the notification
+  _transport->sendNotification(notification_json);
 }
 
 } // namespace json_rpc

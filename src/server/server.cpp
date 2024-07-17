@@ -12,13 +12,13 @@ void Server::start() {
   _transport->listen();
 }
 
-void Server::registerMethod(
-    const std::string &method, const JsonRpcMethodHandler &handler) {
-  _dispatcher->registerMethod(method, handler);
+void Server::registerMethodCall(
+    const std::string &method, const MethodCallHandler &handler) {
+  _dispatcher->registerMethodCall(method, handler);
 }
 
 void Server::registerNotification(
-    const std::string &method, const JsonRpcNotificationHandler &handler) {
+    const std::string &method, const NotificationHandler &handler) {
   _dispatcher->registerNotification(method, handler);
 }
 
