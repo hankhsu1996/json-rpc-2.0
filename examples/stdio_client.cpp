@@ -1,21 +1,19 @@
 #include <iostream>
 #include <memory>
-#include <string>
 
 #include <nlohmann/json.hpp>
 
-#include "json_rpc/client/client.h"
-#include "json_rpc/transports/stdio_transport.h"
+#include "json_rpc/json_rpc.h"
 
 using namespace json_rpc;
+using Json = nlohmann::json;
 
 int main() {
   auto transport = std::make_unique<StdioTransport>();
   Client client(std::move(transport));
 
   // Perform addition
-  nlohmann::json response =
-      client.SendMethodCall("add", {{"a", 10}, {"b", 5}}, 1);
+  Json response = client.SendMethodCall("add", {{"a", 10}, {"b", 5}}, 1);
   std::cout << "Addition result: " << response.dump() << std::endl;
 
   // Log a notification

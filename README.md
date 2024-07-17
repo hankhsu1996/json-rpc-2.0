@@ -15,17 +15,19 @@ This project is a lightweight, modern C++ library for implementing JSON-RPC 2.0 
 
 ```cpp
 #include <iostream>
+#include <memory>
 #include <nlohmann/json.hpp>
-#include "json_rpc/client/client.h"
-#include "json_rpc/transports/stdio_transport.h"
+#include "json_rpc/json_rpc.h"
+
+using namespace json_rpc;
+using Json = nlohmann::json;
 
 int main() {
   auto transport = std::make_unique<StdioTransport>();
   Client client(std::move(transport));
 
   // Perform addition
-  nlohmann::json response =
-      client.SendMethodCall("add", {{"a", 10}, {"b", 5}}, 1);
+  Json response = client.SendMethodCall("add", {{"a", 10}, {"b", 5}}, 1);
   std::cout << "Addition result: " << response.dump() << std::endl;
 
   // Log a notification
@@ -38,20 +40,24 @@ int main() {
 ### Server
 
 ```cpp
-#include "json_rpc/server/server.h"
-#include "json_rpc/transports/stdio_transport.h"
+#include <memory>
+#include <nlohmann/json.hpp>
+#include "json_rpc/json_rpc.h"
 #include "calculator.h"
+
+using namespace json_rpc;
+using Json = nlohmann::json;
 
 int main() {
   auto transport = std::make_unique<StdioTransport>();
   Server server(std::move(transport));
-
   Calculator calculator;
-  server.RegisterMethodCall("add", [&calculator](const nlohmann::json &params) {
-    return calculator.Add(params);
-  });
-  server.RegisterNotification("log",
-      [&calculator](const nlohmann::json &params) { calculator.Log(params); });
+
+  server.RegisterMethodCall("add",
+      [&calculator](const Json &params) { return calculator.Add(params); });
+
+  server.RegisterNotification(
+      "log", [&calculator](const Json &params) { calculator.Log(params); });
 
   server.Start();
 

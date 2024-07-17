@@ -8,28 +8,26 @@
 
 #include <nlohmann/json.hpp>
 
-#include "json_rpc/client/client.h"
-#include "json_rpc/server/server.h"
-#include "json_rpc/transports/stdio_transport.h"
+#include "json_rpc/json_rpc.h"
 
 #include "calculator.h"
 
 using namespace json_rpc;
+using Json = nlohmann::json;
 
 void RunServer() {
   auto transport = std::make_unique<StdioTransport>();
   Server server(std::move(transport));
-
   Calculator calculator;
-  server.RegisterMethodCall("add", [&calculator](const nlohmann::json &params) {
-    return calculator.Add(params);
-  });
-  server.RegisterMethodCall(
-      "divide", [&calculator](const nlohmann::json &params) {
-        return calculator.Divide(params);
-      });
-  server.RegisterNotification("log",
-      [&calculator](const nlohmann::json &params) { calculator.Log(params); });
+
+  server.RegisterMethodCall("add",
+      [&calculator](const Json &params) { return calculator.Add(params); });
+
+  server.RegisterMethodCall("divide",
+      [&calculator](const Json &params) { return calculator.Divide(params); });
+
+  server.RegisterNotification(
+      "log", [&calculator](const Json &params) { calculator.Log(params); });
 
   server.Start();
 }
@@ -42,8 +40,7 @@ void RunClient() {
   Client client(std::move(transport));
 
   // Perform addition
-  nlohmann::json response =
-      client.SendMethodCall("add", {{"a", 10}, {"b", 5}}, 1);
+  Json response = client.SendMethodCall("add", {{"a", 10}, {"b", 5}}, 1);
   std::cerr << "Client: Received addition result: " << response.dump()
             << std::endl;
 
