@@ -2,7 +2,7 @@
 
 namespace json_rpc {
 
-Client::Client(std::unique_ptr<Transport> transport)
+Client::Client(std::unique_ptr<ClientTransport> transport)
     : transport_(std::move(transport)) {
 }
 

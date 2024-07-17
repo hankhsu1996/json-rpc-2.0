@@ -16,7 +16,7 @@ using namespace json_rpc;
 using Json = nlohmann::json;
 
 void RunServer() {
-  auto transport = std::make_unique<StdioTransport>();
+  auto transport = std::make_unique<StdioServerTransport>();
   Server server(std::move(transport));
   Calculator calculator;
 
@@ -36,7 +36,7 @@ void RunClient() {
   std::this_thread::sleep_for(
       std::chrono::seconds(1)); // Ensure server starts first
 
-  auto transport = std::make_unique<StdioTransport>();
+  auto transport = std::make_unique<StdioClientTransport>();
   Client client(std::move(transport));
 
   // Perform addition

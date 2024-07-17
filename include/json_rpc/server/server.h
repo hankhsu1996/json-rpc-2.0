@@ -13,7 +13,7 @@ namespace json_rpc {
 
 class Server {
 public:
-  Server(std::unique_ptr<Transport> transport);
+  Server(std::unique_ptr<ServerTransport> transport);
 
   // Start the server to begin handling requests
   void Start();
@@ -28,7 +28,7 @@ public:
 
 private:
   std::unique_ptr<Dispatcher> dispatcher_;
-  std::unique_ptr<Transport> transport_;
+  std::unique_ptr<ServerTransport> transport_;
 };
 
 } // namespace json_rpc

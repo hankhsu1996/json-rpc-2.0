@@ -10,11 +10,15 @@
 
 namespace json_rpc {
 
-class StdioTransport : public Transport {
+class StdioClientTransport : public ClientTransport {
 public:
-  void Listen() override;
   Json SendMethodCall(const Json &request) override;
   void SendNotification(const Json &notification) override;
+};
+
+class StdioServerTransport : public ServerTransport {
+public:
+  void Listen() override;
 };
 
 } // namespace json_rpc

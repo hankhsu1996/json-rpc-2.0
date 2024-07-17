@@ -9,7 +9,7 @@ using namespace json_rpc;
 using Json = nlohmann::json;
 
 int main() {
-  auto transport = std::make_unique<StdioTransport>();
+  auto transport = std::make_unique<StdioClientTransport>();
   Client client(std::move(transport));
 
   // Perform addition

@@ -2,7 +2,7 @@
 
 namespace json_rpc {
 
-void StdioTransport::Listen() {
+void StdioServerTransport::Listen() {
   std::string line;
   while (std::getline(std::cin, line)) {
     std::optional<std::string> response = dispatcher_->Dispatch(line);
@@ -12,14 +12,14 @@ void StdioTransport::Listen() {
   }
 }
 
-Json StdioTransport::SendMethodCall(const Json &request) {
+Json StdioClientTransport::SendMethodCall(const Json &request) {
   std::cout << request.dump() << std::endl;
   std::string line;
   std::getline(std::cin, line);
   return Json::parse(line);
 }
 
-void StdioTransport::SendNotification(const Json &notification) {
+void StdioClientTransport::SendNotification(const Json &notification) {
   std::cout << notification.dump() << std::endl;
 }
 

@@ -2,7 +2,7 @@
 
 namespace json_rpc {
 
-Server::Server(std::unique_ptr<Transport> transport)
+Server::Server(std::unique_ptr<ServerTransport> transport)
     : transport_(std::move(transport)) {
   dispatcher_ = std::make_unique<Dispatcher>();
   transport_->SetDispatcher(dispatcher_.get());

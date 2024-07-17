@@ -11,18 +11,17 @@ namespace json_rpc {
 
 class Dispatcher;
 
-class Transport {
+class ClientTransport {
 public:
-  virtual ~Transport() = default;
-
-  // For server: start listening for incoming requests
-  virtual void Listen() = 0;
-
-  // For client: send a request and get a response
+  virtual ~ClientTransport() = default;
   virtual Json SendMethodCall(const Json &request) = 0;
-
-  // For client: send a notification
   virtual void SendNotification(const Json &notification) = 0;
+};
+
+class ServerTransport {
+public:
+  virtual ~ServerTransport() = default;
+  virtual void Listen() = 0;
 
   void SetDispatcher(Dispatcher *dispatcher) {
     dispatcher_ = dispatcher;

@@ -10,7 +10,7 @@ using namespace json_rpc;
 using Json = nlohmann::json;
 
 int main() {
-  auto transport = std::make_unique<StdioTransport>();
+  auto transport = std::make_unique<StdioServerTransport>();
   Server server(std::move(transport));
   Calculator calculator;
 

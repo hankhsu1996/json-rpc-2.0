@@ -15,7 +15,7 @@ namespace json_rpc {
 
 class Client {
 public:
-  Client(std::unique_ptr<Transport> transport);
+  Client(std::unique_ptr<ClientTransport> transport);
   ~Client() = default;
 
   Json SendMethodCall(const std::string &method, const Json &params, int id);
@@ -23,7 +23,7 @@ public:
   void SendNotification(const std::string &method, const Json &params);
 
 private:
-  std::unique_ptr<Transport> transport_;
+  std::unique_ptr<ClientTransport> transport_;
 };
 
 } // namespace json_rpc
