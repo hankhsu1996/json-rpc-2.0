@@ -2,76 +2,75 @@
 
 namespace json_rpc {
 
-std::optional<std::string> Dispatcher::dispatch(
-    const std::string &request_str) {
+std::optional<std::string> Dispatcher::Dispatch(const std::string &requestStr) {
   try {
-    json request_json = json::parse(request_str);
-    Request request = Request::from_json(request_json);
+    Json requestJson = Json::parse(requestStr);
+    Request request = Request::FromJson(requestJson);
 
-    auto it = _handlers.find(request.get_method());
-    if (it == _handlers.end()) {
-      Response error_response = Response::MethodNotFoundError(request.get_id());
-      return error_response.to_json().dump();
+    auto it = handlers_.find(request.GetMethod());
+    if (it == handlers_.end()) {
+      Response errorResponse = Response::MethodNotFoundError(request.GetId());
+      return errorResponse.ToJson().dump();
     }
 
     const Handler &handler = it->second;
-    if (request.get_id().has_value()) {
+    if (request.GetId().has_value()) {
       if (std::holds_alternative<MethodCallHandler>(handler)) {
         const MethodCallHandler &methodCallHandler =
             std::get<MethodCallHandler>(handler);
-        Response response = handleMethodCall(request, methodCallHandler);
-        return response.to_json().dump();
+        Response response = HandleMethodCall(request, methodCallHandler);
+        return response.ToJson().dump();
       } else {
-        Response error_response = Response::InvalidRequestError();
-        return error_response.to_json().dump();
+        Response errorResponse = Response::InvalidRequestError();
+        return errorResponse.ToJson().dump();
       }
     } else {
       if (std::holds_alternative<NotificationHandler>(handler)) {
         const NotificationHandler &notificationHandler =
             std::get<NotificationHandler>(handler);
-        handleNotification(request, notificationHandler);
+        HandleNotification(request, notificationHandler);
         return std::nullopt;
       } else {
-        Response error_response = Response::InvalidRequestError();
-        return error_response.to_json().dump();
+        Response errorResponse = Response::InvalidRequestError();
+        return errorResponse.ToJson().dump();
       }
     }
-  } catch (const json::parse_error &) {
-    Response error_response = Response::ParseError();
-    return error_response.to_json().dump();
+  } catch (const Json::parse_error &) {
+    Response errorResponse = Response::ParseError();
+    return errorResponse.ToJson().dump();
   } catch (const std::exception &e) {
-    Response error_response = Response::InternalError(std::nullopt);
-    return error_response.to_json().dump();
+    Response errorResponse = Response::InternalError(std::nullopt);
+    return errorResponse.ToJson().dump();
   }
 }
 
-Response Dispatcher::handleMethodCall(
+Response Dispatcher::HandleMethodCall(
     const Request &request, const MethodCallHandler &handler) {
   try {
-    json result = handler(request.get_params());
-    return Response(result, request.get_id());
+    Json result = handler(request.GetParams());
+    return Response(result, request.GetId());
   } catch (const std::exception &e) {
-    return Response::InternalError(request.get_id());
+    return Response::InternalError(request.GetId());
   }
 }
 
-void Dispatcher::handleNotification(
+void Dispatcher::HandleNotification(
     const Request &request, const NotificationHandler &handler) {
   try {
-    handler(request.get_params());
+    handler(request.GetParams());
   } catch (const std::exception &) {
     // Notifications do not return errors, but we could log the error if needed
   }
 }
 
-void Dispatcher::registerMethodCall(
+void Dispatcher::RegisterMethodCall(
     const std::string &method, const MethodCallHandler &handler) {
-  _handlers[method] = handler;
+  handlers_[method] = handler;
 }
 
-void Dispatcher::registerNotification(
+void Dispatcher::RegisterNotification(
     const std::string &method, const NotificationHandler &handler) {
-  _handlers[method] = handler;
+  handlers_[method] = handler;
 }
 
 } // namespace json_rpc

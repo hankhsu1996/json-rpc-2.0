@@ -16,19 +16,19 @@ public:
   Server(std::unique_ptr<Transport> transport);
 
   // Start the server to begin handling requests
-  void start();
+  void Start();
 
   // Register an RPC method with the dispatcher
-  void registerMethodCall(
+  void RegisterMethodCall(
       const std::string &method, const MethodCallHandler &handler);
 
   // Register an RPC notification with the dispatcher
-  void registerNotification(
+  void RegisterNotification(
       const std::string &method, const NotificationHandler &handler);
 
 private:
-  std::unique_ptr<Dispatcher> _dispatcher;
-  std::unique_ptr<Transport> _transport;
+  std::unique_ptr<Dispatcher> dispatcher_;
+  std::unique_ptr<Transport> transport_;
 };
 
 } // namespace json_rpc

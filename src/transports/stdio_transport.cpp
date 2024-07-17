@@ -2,24 +2,24 @@
 
 namespace json_rpc {
 
-void StdioTransport::listen() {
+void StdioTransport::Listen() {
   std::string line;
   while (std::getline(std::cin, line)) {
-    std::optional<std::string> response = _dispatcher->dispatch(line);
+    std::optional<std::string> response = dispatcher_->Dispatch(line);
     if (response.has_value()) {
       std::cout << response.value() << std::endl;
     }
   }
 }
 
-json StdioTransport::sendMethodCall(const json &request) {
+Json StdioTransport::SendMethodCall(const Json &request) {
   std::cout << request.dump() << std::endl;
   std::string line;
   std::getline(std::cin, line);
-  return json::parse(line);
+  return Json::parse(line);
 }
 
-void StdioTransport::sendNotification(const json &notification) {
+void StdioTransport::SendNotification(const Json &notification) {
   std::cout << notification.dump() << std::endl;
 }
 

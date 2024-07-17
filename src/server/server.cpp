@@ -3,23 +3,23 @@
 namespace json_rpc {
 
 Server::Server(std::unique_ptr<Transport> transport)
-    : _transport(std::move(transport)) {
-  _dispatcher = std::make_unique<Dispatcher>();
-  _transport->set_dispatcher(_dispatcher.get());
+    : transport_(std::move(transport)) {
+  dispatcher_ = std::make_unique<Dispatcher>();
+  transport_->SetDispatcher(dispatcher_.get());
 }
 
-void Server::start() {
-  _transport->listen();
+void Server::Start() {
+  transport_->Listen();
 }
 
-void Server::registerMethodCall(
+void Server::RegisterMethodCall(
     const std::string &method, const MethodCallHandler &handler) {
-  _dispatcher->registerMethodCall(method, handler);
+  dispatcher_->RegisterMethodCall(method, handler);
 }
 
-void Server::registerNotification(
+void Server::RegisterNotification(
     const std::string &method, const NotificationHandler &handler) {
-  _dispatcher->registerNotification(method, handler);
+  dispatcher_->RegisterNotification(method, handler);
 }
 
 } // namespace json_rpc

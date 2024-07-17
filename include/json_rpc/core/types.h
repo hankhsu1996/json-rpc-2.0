@@ -9,9 +9,9 @@
 
 namespace json_rpc {
 
-using json = nlohmann::json;
-using MethodCallHandler = std::function<json(const json &)>;
-using NotificationHandler = std::function<void(const json &)>;
+using Json = nlohmann::json;
+using MethodCallHandler = std::function<Json(const Json &)>;
+using NotificationHandler = std::function<void(const Json &)>;
 using Handler = std::variant<MethodCallHandler, NotificationHandler>;
 
 } // namespace json_rpc

@@ -16,20 +16,20 @@ public:
   virtual ~Transport() = default;
 
   // For server: start listening for incoming requests
-  virtual void listen() = 0;
+  virtual void Listen() = 0;
 
   // For client: send a request and get a response
-  virtual json sendMethodCall(const json &request) = 0;
+  virtual Json SendMethodCall(const Json &request) = 0;
 
   // For client: send a notification
-  virtual void sendNotification(const json &notification) = 0;
+  virtual void SendNotification(const Json &notification) = 0;
 
-  void set_dispatcher(Dispatcher *dispatcher) {
-    _dispatcher = dispatcher;
+  void SetDispatcher(Dispatcher *dispatcher) {
+    dispatcher_ = dispatcher;
   }
 
 protected:
-  Dispatcher *_dispatcher;
+  Dispatcher *dispatcher_;
 };
 
 } // namespace json_rpc

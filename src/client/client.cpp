@@ -3,26 +3,26 @@
 namespace json_rpc {
 
 Client::Client(std::unique_ptr<Transport> transport)
-    : _transport(std::move(transport)) {
+    : transport_(std::move(transport)) {
 }
 
-json Client::sendMethodCall(
-    const std::string &method, const json &params, int id) {
+Json Client::SendMethodCall(
+    const std::string &method, const Json &params, int id) {
   // Create the JSON-RPC request
   Request request(method, params, id);
-  json request_json = request.to_json();
+  Json requestJson = request.ToJson();
 
   // Send the request and wait for the response
-  return _transport->sendMethodCall(request_json);
+  return transport_->SendMethodCall(requestJson);
 }
 
-void Client::sendNotification(const std::string &method, const json &params) {
+void Client::SendNotification(const std::string &method, const Json &params) {
   // Create the JSON-RPC notification (id is not set)
   Request notification(method, params, std::nullopt);
-  json notification_json = notification.to_json();
+  Json notificationJson = notification.ToJson();
 
   // Send the notification
-  _transport->sendNotification(notification_json);
+  transport_->SendNotification(notificationJson);
 }
 
 } // namespace json_rpc

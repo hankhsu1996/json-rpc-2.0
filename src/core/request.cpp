@@ -3,37 +3,36 @@
 namespace json_rpc {
 
 Request::Request(
-    const std::string &method, const json &params, std::optional<int> id)
-    : _method(method), _params(params), _id(id) {
+    const std::string &method, const Json &params, std::optional<int> id)
+    : method_(method), params_(params), id_(id) {
 }
 
-Request Request::from_json(const json &json_obj) {
-  std::optional<int> id = json_obj.contains("id")
-                              ? std::optional<int>(json_obj["id"])
-                              : std::nullopt;
-  return Request(json_obj["method"], json_obj["params"], id);
+Request Request::FromJson(const Json &jsonObj) {
+  std::optional<int> id =
+      jsonObj.contains("id") ? std::optional<int>(jsonObj["id"]) : std::nullopt;
+  return Request(jsonObj["method"], jsonObj["params"], id);
 }
 
-json Request::to_json() const {
-  json json_obj;
-  json_obj["method"] = _method;
-  json_obj["params"] = _params;
-  if (_id.has_value()) {
-    json_obj["id"] = _id.value();
+Json Request::ToJson() const {
+  Json jsonObj;
+  jsonObj["method"] = method_;
+  jsonObj["params"] = params_;
+  if (id_.has_value()) {
+    jsonObj["id"] = id_.value();
   }
-  return json_obj;
+  return jsonObj;
 }
 
-std::string Request::get_method() const {
-  return _method;
+std::string Request::GetMethod() const {
+  return method_;
 }
 
-json Request::get_params() const {
-  return _params;
+Json Request::GetParams() const {
+  return params_;
 }
 
-std::optional<int> Request::get_id() const {
-  return _id;
+std::optional<int> Request::GetId() const {
+  return id_;
 }
 
 } // namespace json_rpc

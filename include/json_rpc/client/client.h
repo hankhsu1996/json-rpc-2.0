@@ -18,12 +18,12 @@ public:
   Client(std::unique_ptr<Transport> transport);
   ~Client() = default;
 
-  json sendMethodCall(const std::string &method, const json &params, int id);
+  Json SendMethodCall(const std::string &method, const Json &params, int id);
 
-  void sendNotification(const std::string &method, const json &params);
+  void SendNotification(const std::string &method, const Json &params);
 
 private:
-  std::unique_ptr<Transport> _transport;
+  std::unique_ptr<Transport> transport_;
 };
 
 } // namespace json_rpc

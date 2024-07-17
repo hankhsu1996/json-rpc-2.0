@@ -15,18 +15,18 @@ int main() {
 
   // Perform addition
   nlohmann::json response =
-      client.sendMethodCall("add", {{"a", 10}, {"b", 5}}, 1);
+      client.SendMethodCall("add", {{"a", 10}, {"b", 5}}, 1);
   std::cout << "Addition result: " << response.dump() << std::endl;
 
   // Log a notification
-  client.sendNotification("log", {{"message", "Performed addition"}});
+  client.SendNotification("log", {{"message", "Performed addition"}});
 
   // Perform division with error handling
-  response = client.sendMethodCall("divide", {{"a", 10}, {"b", 0}}, 2);
+  response = client.SendMethodCall("divide", {{"a", 10}, {"b", 0}}, 2);
   std::cout << "Division result: " << response.dump() << std::endl;
 
   // Log a notification
-  client.sendNotification("log", {{"message", "Attempted division"}});
+  client.SendNotification("log", {{"message", "Attempted division"}});
 
   return 0;
 }

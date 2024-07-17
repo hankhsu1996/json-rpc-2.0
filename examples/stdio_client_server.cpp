@@ -16,25 +16,25 @@
 
 using namespace json_rpc;
 
-void run_server() {
+void RunServer() {
   auto transport = std::make_unique<StdioTransport>();
   Server server(std::move(transport));
 
   Calculator calculator;
-  server.registerMethodCall("add", [&calculator](const nlohmann::json &params) {
-    return calculator.add(params);
+  server.RegisterMethodCall("add", [&calculator](const nlohmann::json &params) {
+    return calculator.Add(params);
   });
-  server.registerMethodCall(
+  server.RegisterMethodCall(
       "divide", [&calculator](const nlohmann::json &params) {
-        return calculator.divide(params);
+        return calculator.Divide(params);
       });
-  server.registerNotification("log",
-      [&calculator](const nlohmann::json &params) { calculator.log(params); });
+  server.RegisterNotification("log",
+      [&calculator](const nlohmann::json &params) { calculator.Log(params); });
 
-  server.start();
+  server.Start();
 }
 
-void run_client() {
+void RunClient() {
   std::this_thread::sleep_for(
       std::chrono::seconds(1)); // Ensure server starts first
 
@@ -43,20 +43,20 @@ void run_client() {
 
   // Perform addition
   nlohmann::json response =
-      client.sendMethodCall("add", {{"a", 10}, {"b", 5}}, 1);
+      client.SendMethodCall("add", {{"a", 10}, {"b", 5}}, 1);
   std::cerr << "Client: Received addition result: " << response.dump()
             << std::endl;
 
   // Log a notification
-  client.sendNotification("log", {{"message", "Performed addition"}});
+  client.SendNotification("log", {{"message", "Performed addition"}});
 
   // Perform division with error handling
-  response = client.sendMethodCall("divide", {{"a", 10}, {"b", 0}}, 2);
+  response = client.SendMethodCall("divide", {{"a", 10}, {"b", 0}}, 2);
   std::cerr << "Client: Received division result: " << response.dump()
             << std::endl;
 
   // Log a notification
-  client.sendNotification("log", {{"message", "Attempted division"}});
+  client.SendNotification("log", {{"message", "Attempted division"}});
 
   // Wait for a short duration before stopping the server
   std::this_thread::sleep_for(std::chrono::seconds(1));
@@ -84,14 +84,14 @@ int main() {
     dup2(pipefd2[1], STDOUT_FILENO);
     close(pipefd1[1]);
     close(pipefd2[0]);
-    run_server();
+    RunServer();
     exit(0);
   } else { // Parent process (Client)
     dup2(pipefd2[0], STDIN_FILENO);
     dup2(pipefd1[1], STDOUT_FILENO);
     close(pipefd1[0]);
     close(pipefd2[1]);
-    run_client();
+    RunClient();
     wait(NULL); // Wait for the child process to finish
   }
 

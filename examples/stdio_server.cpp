@@ -17,17 +17,17 @@ int main() {
   Server server(std::move(transport));
 
   Calculator calculator;
-  server.registerMethodCall("add", [&calculator](const nlohmann::json &params) {
-    return calculator.add(params);
+  server.RegisterMethodCall("add", [&calculator](const nlohmann::json &params) {
+    return calculator.Add(params);
   });
-  server.registerMethodCall(
+  server.RegisterMethodCall(
       "divide", [&calculator](const nlohmann::json &params) {
-        return calculator.divide(params);
+        return calculator.Divide(params);
       });
-  server.registerNotification("log",
-      [&calculator](const nlohmann::json &params) { calculator.log(params); });
+  server.RegisterNotification("log",
+      [&calculator](const nlohmann::json &params) { calculator.Log(params); });
 
-  server.start();
+  server.Start();
 
   return 0;
 }
