@@ -17,7 +17,7 @@ public:
 };
 
 class StdioServerTransport : public ServerTransport {
-public:
+protected:
   void Listen() override;
 };
 

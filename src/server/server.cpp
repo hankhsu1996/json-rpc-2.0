@@ -9,7 +9,11 @@ Server::Server(std::unique_ptr<ServerTransport> transport)
 }
 
 void Server::Start() {
-  transport_->Listen();
+  transport_->Start();
+}
+
+void Server::Stop() {
+  transport_->Stop();
 }
 
 void Server::RegisterMethodCall(

@@ -18,6 +18,9 @@ public:
   // Start the server to begin handling requests
   void Start();
 
+  // Stop the server to stop handling requests
+  void Stop();
+
   // Register an RPC method with the dispatcher
   void RegisterMethodCall(
       const std::string &method, const MethodCallHandler &handler);

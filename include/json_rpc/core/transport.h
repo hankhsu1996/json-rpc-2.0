@@ -2,6 +2,7 @@
 #ifndef JSON_RPC_TRANSPORT_H
 #define JSON_RPC_TRANSPORT_H
 
+#include <atomic>
 #include <memory>
 #include <string>
 
@@ -21,13 +22,23 @@ public:
 class ServerTransport {
 public:
   virtual ~ServerTransport() = default;
-  virtual void Listen() = 0;
+
+  void Start() {
+    running_ = true;
+    Listen();
+  }
+
+  virtual void Stop() {
+    running_ = false;
+  }
 
   void SetDispatcher(Dispatcher *dispatcher) {
     dispatcher_ = dispatcher;
   }
 
 protected:
+  virtual void Listen() = 0;
+  std::atomic<bool> running_{false};
   Dispatcher *dispatcher_;
 };
 

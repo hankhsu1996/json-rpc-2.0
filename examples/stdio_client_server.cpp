@@ -29,6 +29,12 @@ void RunServer() {
   server.RegisterNotification(
       "log", [&calculator](const Json &params) { calculator.Log(params); });
 
+  // Register a stop notification
+  server.RegisterNotification("stop", [&server](const Json &) {
+    std::cerr << "Server: Received stop notification." << std::endl;
+    server.Stop();
+  });
+
   server.Start();
 }
 
@@ -55,10 +61,12 @@ void RunClient() {
   // Log a notification
   client.SendNotification("log", {{"message", "Attempted division"}});
 
-  // Wait for a short duration before stopping the server
+  // Send stop notification
+  client.SendNotification("stop", {});
+
+  // Wait for a short duration before exiting
   std::this_thread::sleep_for(std::chrono::seconds(1));
-  std::cerr << "Client: Example finished. Press Ctrl+C to terminate the server."
-            << std::endl;
+  std::cerr << "Client: Example finished." << std::endl;
 }
 
 int main() {

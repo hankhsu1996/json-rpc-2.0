@@ -4,10 +4,14 @@ namespace json_rpc {
 
 void StdioServerTransport::Listen() {
   std::string line;
-  while (std::getline(std::cin, line)) {
-    std::optional<std::string> response = dispatcher_->Dispatch(line);
-    if (response.has_value()) {
-      std::cout << response.value() << std::endl;
+  while (running_) {
+    if (std::getline(std::cin, line)) {
+      std::optional<std::string> response = dispatcher_->Dispatch(line);
+      if (response.has_value()) {
+        std::cout << response.value() << std::endl;
+      }
+    } else {
+      break; // Exit loop if std::getline fails (e.g., EOF)
     }
   }
 }
