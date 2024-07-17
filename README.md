@@ -15,6 +15,7 @@ This project is a lightweight, modern C++ library for implementing JSON-RPC 2.0 
 
 ```cpp
 #include <iostream>
+#include <nlohmann/json.hpp>
 #include "json_rpc/client/client.h"
 #include "json_rpc/transports/stdio_transport.h"
 
@@ -23,11 +24,12 @@ int main() {
   Client client(std::move(transport));
 
   // Perform addition
-  Response response = client.sendRequest("add", {{"a", 10}, {"b", 5}}, 1);
-  std::cout << "Addition result: " << response.to_json().dump() << std::endl;
+  nlohmann::json response =
+      client.SendMethodCall("add", {{"a", 10}, {"b", 5}}, 1);
+  std::cout << "Addition result: " << response.dump() << std::endl;
 
   // Log a notification
-  client.sendNotification("log", {{"message", "Performed addition"}});
+  client.SendNotification("log", {{"message", "Performed addition"}});
 
   return 0;
 }
@@ -45,14 +47,13 @@ int main() {
   Server server(std::move(transport));
 
   Calculator calculator;
-  server.registerMethod("add", [&calculator](const Request &request) {
-    return calculator.add(request);
+  server.RegisterMethodCall("add", [&calculator](const nlohmann::json &params) {
+    return calculator.Add(params);
   });
-  server.registerNotification("log", [&calculator](const Request &request) {
-    calculator.log(request);
-  });
+  server.RegisterNotification("log",
+      [&calculator](const nlohmann::json &params) { calculator.Log(params); });
 
-  server.start();
+  server.Start();
 
   return 0;
 }
