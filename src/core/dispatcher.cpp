@@ -4,9 +4,11 @@ namespace json_rpc {
 
 std::optional<std::string> Dispatcher::Dispatch(const std::string &requestStr) {
   try {
+    // Parse the request
     Json requestJson = Json::parse(requestStr);
     Request request = Request::FromJson(requestJson);
 
+    // Find the handler for the method
     auto it = handlers_.find(request.GetMethod());
     if (it == handlers_.end()) {
       Response errorResponse = Response::MethodNotFoundError(request.GetId());
@@ -15,6 +17,7 @@ std::optional<std::string> Dispatcher::Dispatch(const std::string &requestStr) {
 
     const Handler &handler = it->second;
     if (request.GetId().has_value()) {
+      // If the request has an ID, it is a method call
       if (std::holds_alternative<MethodCallHandler>(handler)) {
         const MethodCallHandler &methodCallHandler =
             std::get<MethodCallHandler>(handler);
@@ -25,6 +28,7 @@ std::optional<std::string> Dispatcher::Dispatch(const std::string &requestStr) {
         return errorResponse.ToJson().dump();
       }
     } else {
+      // Otherwise, it is a notification
       if (std::holds_alternative<NotificationHandler>(handler)) {
         const NotificationHandler &notificationHandler =
             std::get<NotificationHandler>(handler);

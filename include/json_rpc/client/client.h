@@ -15,8 +15,10 @@ public:
   Client(std::unique_ptr<ClientTransport> transport);
   ~Client() = default;
 
+  // Send an RPC method to the server.
   Json SendMethodCall(const std::string &method, const Json &params, int id);
 
+  // Send an RPC notification to the server.
   void SendNotification(const std::string &method, const Json &params);
 
 private:
