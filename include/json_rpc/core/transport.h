@@ -24,12 +24,12 @@ public:
   virtual ~ServerTransport() = default;
 
   void Start() {
-    running_ = true;
+    running_.store(true, std::memory_order_release);
     Listen();
   }
 
   virtual void Stop() {
-    running_ = false;
+    running_.store(false, std::memory_order_release);
   }
 
   void SetDispatcher(Dispatcher *dispatcher) {

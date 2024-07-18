@@ -4,7 +4,7 @@ namespace json_rpc {
 
 void StdioServerTransport::Listen() {
   std::string line;
-  while (running_) {
+  while (running_.load(std::memory_order_acquire)) {
     if (std::getline(std::cin, line)) {
       std::optional<std::string> response = dispatcher_->Dispatch(line);
       if (response.has_value()) {
