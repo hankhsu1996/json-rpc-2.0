@@ -1,8 +1,5 @@
 #pragma once
-#ifndef JSON_RPC_DISPATCHER_H
-#define JSON_RPC_DISPATCHER_H
 
-#include <functional>
 #include <optional>
 #include <string>
 #include <unordered_map>
@@ -39,5 +36,3 @@ private:
 };
 
 } // namespace json_rpc
-
-#endif // JSON_RPC_DISPATCHER_H

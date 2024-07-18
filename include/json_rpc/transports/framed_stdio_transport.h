@@ -1,20 +1,24 @@
 #pragma once
 
-#include <iostream>
+#include <string>
 
-#include "json_rpc/core/dispatcher.h"
 #include "json_rpc/core/transport.h"
 #include "json_rpc/core/types.h"
+#include "json_rpc/transports/framed_transport.h"
 
 namespace json_rpc {
 
-class StdioClientTransport : public ClientTransport {
+class FramedStdioClientTransport :
+    public ClientTransport,
+    protected FramedTransport {
 public:
   Json SendMethodCall(const Json &request) override;
   void SendNotification(const Json &notification) override;
 };
 
-class StdioServerTransport : public ServerTransport {
+class FramedStdioServerTransport :
+    public ServerTransport,
+    protected FramedTransport {
 protected:
   void Listen() override;
 };

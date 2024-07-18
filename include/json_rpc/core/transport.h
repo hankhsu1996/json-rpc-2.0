@@ -1,16 +1,12 @@
 #pragma once
-#ifndef JSON_RPC_TRANSPORT_H
-#define JSON_RPC_TRANSPORT_H
 
 #include <atomic>
 #include <memory>
-#include <string>
 
+#include "json_rpc/core/dispatcher.h"
 #include "json_rpc/core/types.h"
 
 namespace json_rpc {
-
-class Dispatcher;
 
 class ClientTransport {
 public:
@@ -43,5 +39,3 @@ protected:
 };
 
 } // namespace json_rpc
-
-#endif // JSON_RPC_TRANSPORT_H

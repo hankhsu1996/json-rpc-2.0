@@ -1,6 +1,4 @@
 #pragma once
-#ifndef CALCULATOR_H
-#define CALCULATOR_H
 
 #include <iostream>
 
@@ -61,5 +59,3 @@ public:
     return;
   }
 };
-
-#endif // CALCULATOR_H

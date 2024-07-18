@@ -1,6 +1,4 @@
 #pragma once
-#ifndef JSON_RPC_RESPONSE_H
-#define JSON_RPC_RESPONSE_H
 
 #include <optional>
 #include <string>
@@ -34,5 +32,3 @@ private:
 };
 
 } // namespace json_rpc
-
-#endif // JSON_RPC_RESPONSE_H

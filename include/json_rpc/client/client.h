@@ -1,8 +1,5 @@
 #pragma once
-#ifndef JSON_RPC_CLIENT_H
-#define JSON_RPC_CLIENT_H
 
-#include <iostream>
 #include <memory>
 #include <string>
 
@@ -27,5 +24,3 @@ private:
 };
 
 } // namespace json_rpc
-
-#endif // JSON_RPC_CLIENT_H
