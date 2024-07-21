@@ -21,7 +21,7 @@ public:
 
 class ServerTransport {
 public:
-  ServerTransport() : dispatcher_(nullptr) {
+  ServerTransport() : dispatcher_(nullptr), running_(false) {
   }
 
   virtual ~ServerTransport() = default;
@@ -51,7 +51,7 @@ protected:
   // Listen for incoming messages.
   virtual void Listen() = 0;
 
-  std::atomic<bool> running_{false};
+  std::atomic<bool> running_;
   Dispatcher *dispatcher_;
 };
 

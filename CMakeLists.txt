@@ -17,7 +17,6 @@ FetchContent_Declare(
   GIT_REPOSITORY https://github.com/nlohmann/json.git
   GIT_TAG v3.11.3
 )
-
 FetchContent_MakeAvailable(nlohmann_json)
 
 # Fetch spdlog
@@ -26,8 +25,15 @@ FetchContent_Declare(
   GIT_REPOSITORY https://github.com/gabime/spdlog.git
   GIT_TAG v1.14.1
 )
-
 FetchContent_MakeAvailable(spdlog)
+
+# Fetch Catch2
+FetchContent_Declare(
+  catch2
+  GIT_REPOSITORY https://github.com/catchorg/Catch2.git
+  GIT_TAG v3.6.0
+)
+FetchContent_MakeAvailable(catch2)
 
 # Source files
 file(GLOB_RECURSE SOURCES "src/*.cpp")

@@ -27,6 +27,11 @@ public:
   void RegisterNotification(
       const std::string &method, const NotificationHandler &handler);
 
+  // Check if the server is running
+  bool IsRunning() const {
+    return transport_->IsRunning();
+  }
+
 private:
   std::unique_ptr<Dispatcher> dispatcher_;
   std::unique_ptr<ServerTransport> transport_;
