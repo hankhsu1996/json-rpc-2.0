@@ -27,6 +27,9 @@ int main() {
   // Perform addition
   Json response = client.SendMethodCall("add", {{"a", 10}, {"b", 5}}, 1);
 
+  // Perform division
+  response = client.SendMethodCall("divide", {{"a", 10}, {"b", 0}}, 2);
+
   // Send stop notification
   client.SendNotification("stop", {});
 
@@ -48,8 +51,13 @@ int main() {
   Server server(std::move(transport));
   Calculator calculator;
 
-  server.RegisterMethodCall("add",
-      [&calculator](const Json &params) { return calculator.Add(params); });
+  server.RegisterMethodCall("add", [&calculator](const Json &params) {
+    return calculator.Add(params);
+  });
+
+  server.RegisterMethodCall("divide", [&calculator](const Json &params) {
+    return calculator.Divide(params);
+  });
 
   server.RegisterNotification("stop", [&server](const Json &) {
     server.Stop();

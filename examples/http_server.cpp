@@ -21,7 +21,6 @@ void InitializeServerLogger() {
 
 void RunServer() {
   InitializeServerLogger();
-  spdlog::info("Starting HTTP server");
 
   auto transport = std::make_unique<HttpServerTransport>("127.0.0.1", 8080);
   Server server(std::move(transport));
@@ -33,10 +32,8 @@ void RunServer() {
   server.RegisterMethodCall("divide",
       [&calculator](const Json &params) { return calculator.Divide(params); });
 
-  server.RegisterNotification("stop", [&server](const Json &) {
-    spdlog::info("Server Received stop notification");
-    server.Stop();
-  });
+  server.RegisterNotification(
+      "stop", [&server](const Json &) { server.Stop(); });
 
   server.Start();
 }
