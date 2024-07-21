@@ -24,7 +24,13 @@ void FramedStdioClientTransport::SendNotification(const Json &notification) {
 
 void FramedStdioServerTransport::Listen() {
   spdlog::info("FramedStdioServerTransport listening");
-  while (running_.load(std::memory_order_acquire)) {
+
+  if (!dispatcher_) {
+    spdlog::error("Dispatcher is not set.");
+    return;
+  }
+
+  while (IsRunning()) {
     try {
       std::string content = ReceiveMessage();
       std::optional<std::string> response = dispatcher_->Dispatch(content);

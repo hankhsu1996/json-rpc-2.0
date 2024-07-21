@@ -21,10 +21,13 @@ public:
 
 class ServerTransport {
 public:
+  ServerTransport() : dispatcher_(nullptr) {
+  }
+
   virtual ~ServerTransport() = default;
 
   // Start the transport.
-  void Start() {
+  virtual void Start() {
     running_.store(true, std::memory_order_release);
     Listen();
   }
@@ -37,6 +40,11 @@ public:
   // Set the dispatcher.
   void SetDispatcher(Dispatcher *dispatcher) {
     dispatcher_ = dispatcher;
+  }
+
+  // Check if the transport is running.
+  bool IsRunning() const {
+    return running_.load(std::memory_order_acquire);
   }
 
 protected:
