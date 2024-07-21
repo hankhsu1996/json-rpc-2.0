@@ -2,11 +2,14 @@
 #include <sstream>
 #include <unordered_map>
 
+#include <spdlog/spdlog.h>
+
 #include "json_rpc/transports/framed_stdio_transport.h"
 
 namespace json_rpc {
 
 void FramedTransport::SendMessage(const std::string &message) {
+  spdlog::debug("FramedTransport sending message: {}", message);
   std::ostringstream oss;
   oss << "Content-Length: " << message.size() << "\r\n"
       << "Content-Type: application/vscode-jsonrpc; charset=utf-8\r\n"
@@ -16,6 +19,7 @@ void FramedTransport::SendMessage(const std::string &message) {
 }
 
 std::string FramedTransport::ReceiveMessage() {
+  spdlog::debug("FramedTransport receiving message");
   std::string line;
   std::unordered_map<std::string, std::string> headers;
   int content_length = 0;
@@ -39,10 +43,11 @@ std::string FramedTransport::ReceiveMessage() {
     // Read content
     std::string content(content_length, '\0');
     std::cin.read(&content[0], content_length);
+    spdlog::debug("FramedTransport message received: {}", content);
     return content;
   }
 
-  throw std::runtime_error("Failed to receive message");
+  throw std::runtime_error("Failed to receive message in FramedTransport");
 }
 
 } // namespace json_rpc

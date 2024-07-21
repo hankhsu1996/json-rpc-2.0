@@ -1,3 +1,5 @@
+#include <spdlog/spdlog.h>
+
 #include "json_rpc/server/server.h"
 
 namespace json_rpc {
@@ -6,13 +8,16 @@ Server::Server(std::unique_ptr<ServerTransport> transport)
     : transport_(std::move(transport)) {
   dispatcher_ = std::make_unique<Dispatcher>();
   transport_->SetDispatcher(dispatcher_.get());
+  spdlog::info("Server initialized with transport");
 }
 
 void Server::Start() {
+  spdlog::info("Server starting");
   transport_->Start();
 }
 
 void Server::Stop() {
+  spdlog::info("Server stopping");
   transport_->Stop();
 }
 

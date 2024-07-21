@@ -36,7 +36,7 @@ file(GLOB_RECURSE SOURCES "src/*.cpp")
 add_library(json_rpc_2_0 ${SOURCES})
 
 # Link nlohmann_json
-target_link_libraries(json_rpc_2_0 PUBLIC nlohmann_json::nlohmann_json)
+target_link_libraries(json_rpc_2_0 PUBLIC nlohmann_json::nlohmann_json spdlog::spdlog)
 
 # Unit tests
 enable_testing()

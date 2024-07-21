@@ -7,6 +7,8 @@
 #include <unistd.h>
 
 #include <nlohmann/json.hpp>
+#include <spdlog/sinks/basic_file_sink.h>
+#include <spdlog/spdlog.h>
 
 #include "json_rpc/json_rpc.h"
 
@@ -15,7 +17,23 @@
 using namespace json_rpc;
 using Json = nlohmann::json;
 
+void InitializeServerLogger() {
+  auto server_logger =
+      spdlog::basic_logger_mt("server_logger", "logs/server_logfile.log", true);
+  spdlog::set_default_logger(server_logger);
+  spdlog::set_level(spdlog::level::debug);
+}
+
+void InitializeClientLogger() {
+  auto client_logger =
+      spdlog::basic_logger_mt("client_logger", "logs/client_logfile.log", true);
+  spdlog::set_default_logger(client_logger);
+  spdlog::set_level(spdlog::level::debug);
+}
+
 void RunServer() {
+  InitializeServerLogger();
+
   auto transport = std::make_unique<StdioServerTransport>();
   Server server(std::move(transport));
   Calculator calculator;
@@ -31,7 +49,7 @@ void RunServer() {
 
   // Register a stop notification
   server.RegisterNotification("stop", [&server](const Json &) {
-    std::cerr << "Server: Received stop notification." << std::endl;
+    spdlog::info("Server Received stop notification");
     server.Stop();
   });
 
@@ -39,6 +57,8 @@ void RunServer() {
 }
 
 void RunClient() {
+  InitializeClientLogger();
+
   std::this_thread::sleep_for(
       std::chrono::seconds(1)); // Ensure server starts first
 
@@ -47,16 +67,22 @@ void RunClient() {
 
   // Perform addition
   Json response = client.SendMethodCall("add", {{"a", 10}, {"b", 5}}, 1);
-  std::cerr << "Client: Received addition result: " << response.dump()
-            << std::endl;
+  spdlog::info(
+      "Client: Received addition result: {}", response["result"].dump());
 
   // Log a notification
   client.SendNotification("log", {{"message", "Performed addition"}});
 
   // Perform division with error handling
+
   response = client.SendMethodCall("divide", {{"a", 10}, {"b", 0}}, 2);
-  std::cerr << "Client: Received division result: " << response.dump()
-            << std::endl;
+  if (response.contains("error")) {
+    spdlog::info("Client: Received division error: {}",
+        response["error"]["message"].dump());
+  } else {
+    spdlog::info(
+        "Client: Received division result: {}", response["result"].dump());
+  }
 
   // Log a notification
   client.SendNotification("log", {{"message", "Attempted division"}});
@@ -66,7 +92,7 @@ void RunClient() {
 
   // Wait for a short duration before exiting
   std::this_thread::sleep_for(std::chrono::seconds(1));
-  std::cerr << "Client: Example finished." << std::endl;
+  spdlog::info("Example finished");
 }
 
 int main() {

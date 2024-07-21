@@ -1,3 +1,5 @@
+#include <spdlog/spdlog.h>
+
 #include "json_rpc/core/response.h"
 
 namespace json_rpc {
@@ -13,34 +15,47 @@ Response::Response(const Json &response, std::optional<int> id)
 
 // Implementation of static methods to create error responses
 Response Response::MethodNotFoundError(const std::optional<int> &id) {
-  return Response(CreateErrorResponse("Method not found", -32601, id));
+  Response response =
+      Response(CreateErrorResponse("Method not found", -32601, id));
+  return response;
 }
 
 Response Response::ParseError() {
-  return Response(CreateErrorResponse("Parse error", -32700, std::nullopt));
+  Response response =
+      Response(CreateErrorResponse("Parse error", -32700, std::nullopt));
+  return response;
 }
 
 Response Response::InvalidRequestError() {
-  return Response(CreateErrorResponse("Invalid Request", -32600, std::nullopt));
+  Response response =
+      Response(CreateErrorResponse("Invalid Request", -32600, std::nullopt));
+  return response;
 }
 
 Response Response::InternalError(const std::optional<int> &id) {
-  return Response(CreateErrorResponse("Internal error", -32603, id));
+  Response response =
+      Response(CreateErrorResponse("Internal error", -32603, id));
+  return response;
 }
 
 Response Response::InvalidParamsError(const std::optional<int> &id) {
-  return Response(CreateErrorResponse("Invalid params", -32602, id));
+  Response response =
+      Response(CreateErrorResponse("Invalid params", -32602, id));
+  return response;
 }
 
 // Validation implementation
 void Response::ValidateResponse() {
   if (!response_.contains("result") && !response_.contains("error")) {
+    spdlog::error("Response validation failed: missing 'result' or 'error'");
     throw std::invalid_argument(
         "Response must contain either 'result' or 'error' field.");
   }
   if (response_.contains("error")) {
     const auto &error = response_["error"];
     if (!error.contains("code") || !error.contains("message")) {
+      spdlog::error("Response validation failed: missing 'code' or 'message' "
+                    "in error object");
       throw std::invalid_argument(
           "Error object must contain 'code' and 'message' fields.");
     }
