@@ -8,6 +8,10 @@ Request::Request(
 }
 
 Request Request::FromJson(const Json &jsonObj) {
+  if (!jsonObj.contains("jsonrpc") || jsonObj["jsonrpc"] != "2.0") {
+    throw std::invalid_argument("Invalid JSON-RPC version");
+  }
+
   std::optional<int> id =
       jsonObj.contains("id") ? std::optional<int>(jsonObj["id"]) : std::nullopt;
   return Request(jsonObj["method"], jsonObj["params"], id);
@@ -15,6 +19,7 @@ Request Request::FromJson(const Json &jsonObj) {
 
 Json Request::ToJson() const {
   Json jsonObj;
+  jsonObj["jsonrpc"] = "2.0";
   jsonObj["method"] = method_;
   jsonObj["params"] = params_;
   if (id_.has_value()) {
