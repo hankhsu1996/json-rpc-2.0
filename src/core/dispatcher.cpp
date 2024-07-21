@@ -61,22 +61,16 @@ std::optional<std::string> Dispatcher::Dispatch(const std::string &requestStr) {
 Response Dispatcher::HandleMethodCall(
     const Request &request, const MethodCallHandler &handler) {
   try {
-    Json response = handler(request.GetParams());
+    Json responseJson = handler(request.GetParams());
 
-    spdlog::debug(
-        "Method call {} returned: {}", request.GetMethod(), response.dump());
+    spdlog::debug("Method call {} returned: {}", request.GetMethod(),
+        responseJson.dump());
 
-    if (response.contains("result")) {
-      return Response::SuccessResponse(response["result"], request.GetId());
-    } else if (response.contains("error")) {
-      return Response::UserErrorResponse(response["error"], request.GetId());
-    } else {
-      throw std::invalid_argument(
-          "User returned result does not contain 'result' or 'error' field");
-    }
+    return Response::FromJson(responseJson, request.GetId());
   } catch (const std::exception &e) {
     spdlog::error("Exception during method call handling: {}", e.what());
-    return Response::LibraryErrorResponse("Internal error", -32603);
+    return Response::LibraryErrorResponse(
+        "Internal error", -32603, request.GetId());
   }
 }
 

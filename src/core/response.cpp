@@ -13,6 +13,17 @@ Response::Response(const Json &response, std::optional<int> id)
   ValidateResponse();
 }
 
+Response Response::FromJson(const Json &responseJson, std::optional<int> id) {
+  if (responseJson.contains("result")) {
+    return SuccessResponse(responseJson["result"], id);
+  } else if (responseJson.contains("error")) {
+    return UserErrorResponse(responseJson["error"], id);
+  } else {
+    throw std::invalid_argument(
+        "Response JSON must contain either 'result' or 'error' field");
+  }
+}
+
 Response Response::SuccessResponse(
     const Json &result, const std::optional<int> &id) {
   Json response = {{"result", result}};

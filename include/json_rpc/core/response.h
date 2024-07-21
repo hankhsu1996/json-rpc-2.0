@@ -10,6 +10,8 @@ namespace json_rpc {
 class Response {
 public:
   // Factory methods to create responses
+  static Response FromJson(const Json &responseJson, std::optional<int> id);
+
   static Response SuccessResponse(
       const Json &result, const std::optional<int> &id);
 
