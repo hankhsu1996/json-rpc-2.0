@@ -1,9 +1,11 @@
+#include <iostream>
 #include <memory>
 
 #include <spdlog/sinks/basic_file_sink.h>
 #include <spdlog/spdlog.h>
 
 #include "json_rpc/json_rpc.h"
+#include "json_rpc/transports/http_transport.h"
 
 #include "calculator.h"
 
@@ -18,7 +20,10 @@ void InitializeServerLogger() {
 }
 
 void RunServer() {
-  auto transport = std::make_unique<StdioServerTransport>();
+  InitializeServerLogger();
+  spdlog::info("Starting HTTP server");
+
+  auto transport = std::make_unique<HttpServerTransport>("127.0.0.1", 8080);
   Server server(std::move(transport));
   Calculator calculator;
 

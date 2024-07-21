@@ -27,6 +27,14 @@ FetchContent_Declare(
 )
 FetchContent_MakeAvailable(spdlog)
 
+# Fetch httplib
+FetchContent_Declare(
+  httplib
+  GIT_REPOSITORY https://github.com/yhirose/cpp-httplib.git
+  GIT_TAG v0.16.0
+)
+FetchContent_MakeAvailable(httplib)
+
 # Fetch Catch2
 FetchContent_Declare(
   catch2
@@ -42,7 +50,7 @@ file(GLOB_RECURSE SOURCES "src/*.cpp")
 add_library(json_rpc_2_0 ${SOURCES})
 
 # Link nlohmann_json
-target_link_libraries(json_rpc_2_0 PUBLIC nlohmann_json::nlohmann_json spdlog::spdlog)
+target_link_libraries(json_rpc_2_0 PUBLIC nlohmann_json::nlohmann_json spdlog::spdlog httplib::httplib)
 
 # Unit tests
 enable_testing()
@@ -55,7 +63,8 @@ target_link_libraries(stdio_client PRIVATE json_rpc_2_0 nlohmann_json::nlohmann_
 add_executable(stdio_server examples/stdio_server.cpp)
 target_link_libraries(stdio_server PRIVATE json_rpc_2_0 nlohmann_json::nlohmann_json)
 
-add_executable(stdio_client_server examples/stdio_client_server.cpp)
-target_link_libraries(stdio_client_server PRIVATE json_rpc_2_0 nlohmann_json::nlohmann_json)
-find_package(Threads REQUIRED)
-target_link_libraries(stdio_client_server PRIVATE Threads::Threads)
+add_executable(http_client examples/http_client.cpp)
+target_link_libraries(http_client PRIVATE json_rpc_2_0 nlohmann_json::nlohmann_json)
+
+add_executable(http_server examples/http_server.cpp)
+target_link_libraries(http_server PRIVATE json_rpc_2_0 nlohmann_json::nlohmann_json)

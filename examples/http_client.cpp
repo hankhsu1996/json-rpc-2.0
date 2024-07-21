@@ -5,6 +5,7 @@
 #include <spdlog/spdlog.h>
 
 #include "json_rpc/json_rpc.h"
+#include "json_rpc/transports/http_transport.h"
 
 using namespace json_rpc;
 
@@ -17,7 +18,10 @@ void InitializeClientLogger() {
 }
 
 void RunClient() {
-  auto transport = std::make_unique<StdioClientTransport>();
+  InitializeClientLogger();
+
+  std::string url = "http://127.0.0.1:8080";
+  auto transport = std::make_unique<HttpClientTransport>(url);
   Client client(std::move(transport));
 
   // Perform addition
