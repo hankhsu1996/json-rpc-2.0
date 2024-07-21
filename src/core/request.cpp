@@ -11,6 +11,12 @@ Request Request::FromJson(const Json &jsonObj) {
   if (!jsonObj.contains("jsonrpc") || jsonObj["jsonrpc"] != "2.0") {
     throw std::invalid_argument("Invalid JSON-RPC version");
   }
+  if (!jsonObj.contains("method")) {
+    throw std::invalid_argument("Missing 'method' field");
+  }
+  if (!jsonObj.contains("params")) {
+    throw std::invalid_argument("Missing 'params' field");
+  }
 
   std::optional<int> id =
       jsonObj.contains("id") ? std::optional<int>(jsonObj["id"]) : std::nullopt;
