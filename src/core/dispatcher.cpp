@@ -15,7 +15,8 @@ std::optional<std::string> Dispatcher::Dispatch(const std::string &requestStr) {
     // Find the handler for the method
     auto it = handlers_.find(request.GetMethod());
     if (it == handlers_.end()) {
-      Response errorResponse = Response::MethodNotFoundError(request.GetId());
+      Response errorResponse = Response::LibraryErrorResponse(
+          "Method not found", -32601, request.GetId());
       return errorResponse.ToJson().dump();
     }
 
@@ -28,7 +29,8 @@ std::optional<std::string> Dispatcher::Dispatch(const std::string &requestStr) {
         Response response = HandleMethodCall(request, methodCallHandler);
         return response.ToJson().dump();
       } else {
-        Response errorResponse = Response::InvalidRequestError();
+        Response errorResponse =
+            Response::LibraryErrorResponse("Invalid Request", -32600);
         return errorResponse.ToJson().dump();
       }
     } else {
@@ -39,16 +41,19 @@ std::optional<std::string> Dispatcher::Dispatch(const std::string &requestStr) {
         HandleNotification(request, notificationHandler);
         return std::nullopt;
       } else {
-        Response errorResponse = Response::InvalidRequestError();
+        Response errorResponse =
+            Response::LibraryErrorResponse("Invalid Request", -32600);
         return errorResponse.ToJson().dump();
       }
     }
   } catch (const Json::parse_error &) {
-    Response errorResponse = Response::ParseError();
+    Response errorResponse =
+        Response::LibraryErrorResponse("Parse error", -32700);
     return errorResponse.ToJson().dump();
   } catch (const std::exception &e) {
     spdlog::error("Exception caught during dispatch: {}", e.what());
-    Response errorResponse = Response::InternalError(std::nullopt);
+    Response errorResponse =
+        Response::LibraryErrorResponse("Internal error", -32603);
     return errorResponse.ToJson().dump();
   }
 }
@@ -56,22 +61,22 @@ std::optional<std::string> Dispatcher::Dispatch(const std::string &requestStr) {
 Response Dispatcher::HandleMethodCall(
     const Request &request, const MethodCallHandler &handler) {
   try {
-    Json result = handler(request.GetParams());
+    Json response = handler(request.GetParams());
 
-    if (spdlog::should_log(spdlog::level::info)) {
-      if (result.contains("result")) {
-        spdlog::info("Method call {} handled successfully with result: {}",
-            request.GetMethod(), result["result"].dump());
-      } else if (result.contains("error")) {
-        spdlog::info("Method call {} returned error: {}", request.GetMethod(),
-            result["error"].dump());
-      }
+    spdlog::debug(
+        "Method call {} returned: {}", request.GetMethod(), response.dump());
+
+    if (response.contains("result")) {
+      return Response::SuccessResponse(response["result"], request.GetId());
+    } else if (response.contains("error")) {
+      return Response::UserErrorResponse(response["error"], request.GetId());
+    } else {
+      throw std::invalid_argument(
+          "User returned result does not contain 'result' or 'error' field");
     }
-
-    return Response(result, request.GetId());
   } catch (const std::exception &e) {
     spdlog::error("Exception during method call handling: {}", e.what());
-    return Response::InternalError(request.GetId());
+    return Response::LibraryErrorResponse("Internal error", -32603);
   }
 }
 

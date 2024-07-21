@@ -9,15 +9,15 @@ namespace json_rpc {
 
 class Response {
 public:
-  // Constructor that takes a JSON object and validates it
-  explicit Response(const Json &response, std::optional<int> id = std::nullopt);
+  // Factory methods to create responses
+  static Response SuccessResponse(
+      const Json &result, const std::optional<int> &id);
 
-  // Static methods to create common error responses
-  static Response MethodNotFoundError(const std::optional<int> &id);
-  static Response ParseError();
-  static Response InvalidRequestError();
-  static Response InternalError(const std::optional<int> &id);
-  static Response InvalidParamsError(const std::optional<int> &id);
+  static Response LibraryErrorResponse(const std::string &message, int code,
+      const std::optional<int> &id = std::nullopt);
+
+  static Response UserErrorResponse(
+      const Json &error, const std::optional<int> &id);
 
   // Serialize the Response object to a JSON object
   Json ToJson() const;
@@ -25,7 +25,10 @@ public:
 private:
   Json response_;
 
-  void ValidateResponse();
+  // Private constructor to enforce factory method usage
+  Response(const Json &response, std::optional<int> id = std::nullopt);
+
+  void ValidateResponse() const;
 
   static Json CreateErrorResponse(
       const std::string &message, int code, const std::optional<int> &id);

@@ -4,7 +4,7 @@
 
 namespace json_rpc {
 
-// Implementation of constructor
+// Private constructor
 Response::Response(const Json &response, std::optional<int> id)
     : response_(response) {
   if (id.has_value()) {
@@ -13,39 +13,28 @@ Response::Response(const Json &response, std::optional<int> id)
   ValidateResponse();
 }
 
-// Implementation of static methods to create error responses
-Response Response::MethodNotFoundError(const std::optional<int> &id) {
-  Response response =
-      Response(CreateErrorResponse("Method not found", -32601, id));
+Response Response::SuccessResponse(
+    const Json &result, const std::optional<int> &id) {
+  Json response = {{"result", result}};
+  if (id.has_value()) {
+    response["id"] = id.value();
+  }
+  return Response(response);
+}
+
+Response Response::LibraryErrorResponse(
+    const std::string &message, int code, const std::optional<int> &id) {
+  return Response(CreateErrorResponse(message, code, id));
+}
+
+Response Response::UserErrorResponse(
+    const Json &error, const std::optional<int> &id) {
+  Response response({{"error", error}}, id);
+  response.ValidateResponse();
   return response;
 }
 
-Response Response::ParseError() {
-  Response response =
-      Response(CreateErrorResponse("Parse error", -32700, std::nullopt));
-  return response;
-}
-
-Response Response::InvalidRequestError() {
-  Response response =
-      Response(CreateErrorResponse("Invalid Request", -32600, std::nullopt));
-  return response;
-}
-
-Response Response::InternalError(const std::optional<int> &id) {
-  Response response =
-      Response(CreateErrorResponse("Internal error", -32603, id));
-  return response;
-}
-
-Response Response::InvalidParamsError(const std::optional<int> &id) {
-  Response response =
-      Response(CreateErrorResponse("Invalid params", -32602, id));
-  return response;
-}
-
-// Validation implementation
-void Response::ValidateResponse() {
+void Response::ValidateResponse() const {
   if (!response_.contains("result") && !response_.contains("error")) {
     spdlog::error("Response validation failed: missing 'result' or 'error'");
     throw std::invalid_argument(
@@ -62,12 +51,10 @@ void Response::ValidateResponse() {
   }
 }
 
-// Serialization implementation
 Json Response::ToJson() const {
   return response_;
 }
 
-// Helper function to create error responses
 Json Response::CreateErrorResponse(
     const std::string &message, int code, const std::optional<int> &id) {
   Json error = {{"code", code}, {"message", message}};
