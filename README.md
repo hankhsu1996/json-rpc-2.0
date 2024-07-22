@@ -9,6 +9,38 @@ This project is a lightweight, modern C++ library for implementing JSON-RPC 2.0 
 - Abstract transport layer support, making it transport-agnostic.
 - Simple registration of methods and notifications using lambda functions.
 
+## Dependencies
+
+- **CMake**: Version 3.19 or higher (for using CMake presets)
+- **Ninja**: Recommended build system
+- **C++ Compiler**: Must support C++17
+- **Conan**: For dependency management
+
+## Build and Test
+
+To build and test the project, follow these steps:
+
+1. Install dependencies using Conan:
+
+```bash
+conan install . --output-folder=build --build=missing
+```
+
+2. Configure and build the project:
+
+```bash
+cmake --preset default
+cmake --build --preset default
+```
+
+3. Run the tests:
+
+```bash
+ctest --preset default
+```
+
+These commands will install the necessary dependencies, configure the project, build it, and run the tests.
+
 ## Examples
 
 ### Client

@@ -1,8 +1,8 @@
 # Add Catch2
-include(CTest)
+find_package(Catch2 3.6.0 REQUIRED)
 
 # Update CMAKE_MODULE_PATH to include Catch2 extras
-list(APPEND CMAKE_MODULE_PATH ${catch2_SOURCE_DIR}/extras)
+list(APPEND CMAKE_MODULE_PATH ${Catch2_SOURCE_DIR}/extras)
 include(Catch)
 
 # Add test files

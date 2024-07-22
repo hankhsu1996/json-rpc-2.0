@@ -16,7 +16,15 @@
 *.out
 *.app
 
-# CMake specific files
+# Conan generated files
+build/
+conan.lock
+*.cmake
+conanfile.txt
+conanfile.py
+CMakeUserPresets.json
+
+# CMake generated files
 CMakeFiles/
 CMakeCache.txt
 cmake_install.cmake
