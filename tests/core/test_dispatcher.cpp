@@ -21,7 +21,7 @@ TEST_CASE("Dispatch method call", "[Dispatcher]") {
 
   // Dispatch the request
   std::optional<std::string> responseStr =
-      dispatcher.Dispatch(requestJson.dump());
+      dispatcher.DispatchRequest(requestJson.dump());
   REQUIRE(responseStr.has_value());
 
   // Parse and verify the response
@@ -43,7 +43,7 @@ TEST_CASE("Dispatch notification", "[Dispatcher]") {
 
   // Dispatch the notification
   std::optional<std::string> responseStr =
-      dispatcher.Dispatch(requestJson.dump());
+      dispatcher.DispatchRequest(requestJson.dump());
   REQUIRE(!responseStr.has_value());
 }
 
@@ -56,7 +56,7 @@ TEST_CASE("Method not found", "[Dispatcher]") {
 
   // Dispatch the request
   std::optional<std::string> responseStr =
-      dispatcher.Dispatch(requestJson.dump());
+      dispatcher.DispatchRequest(requestJson.dump());
   REQUIRE(responseStr.has_value());
 
   // Parse and verify the response
@@ -73,7 +73,8 @@ TEST_CASE("Parse error", "[Dispatcher]") {
   std::string invalidRequest = "{invalid json}";
 
   // Dispatch the request
-  std::optional<std::string> responseStr = dispatcher.Dispatch(invalidRequest);
+  std::optional<std::string> responseStr =
+      dispatcher.DispatchRequest(invalidRequest);
   REQUIRE(responseStr.has_value());
 
   // Parse and verify the response

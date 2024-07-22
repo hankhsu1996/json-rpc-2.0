@@ -14,7 +14,7 @@ HttpServerTransport::HttpServerTransport(const std::string &host, int port)
     }
 
     spdlog::debug("HttpServerTransport received request: {}", req.body);
-    auto response = dispatcher_->Dispatch(req.body);
+    auto response = dispatcher_->DispatchRequest(req.body);
     if (response.has_value()) {
       spdlog::debug(
           "HttpServerTransport sending response: {}", response.value());

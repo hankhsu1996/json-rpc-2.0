@@ -4,12 +4,33 @@
 
 namespace json_rpc {
 
-std::optional<std::string> Dispatcher::Dispatch(const std::string &requestStr) {
+std::optional<std::string> Dispatcher::DispatchRequest(
+    const std::string &requestStr) {
   try {
-    // Parse the request
     Json requestJson = Json::parse(requestStr);
-    Request request = Request::FromJson(requestJson);
+    if (requestJson.is_array()) {
+      throw std::runtime_error("Batch request is not supported yet");
+    } else if (requestJson.is_object()) {
+      std::optional<Json> responseJson = DispatchSingleRequest(requestJson);
+      if (responseJson.has_value()) {
+        return responseJson->dump();
+      }
+      return std::nullopt;
+    } else {
+      Response errorResponse =
+          Response::LibraryErrorResponse("Parse error", -32700);
+      return errorResponse.ToJson().dump();
+    }
+  } catch (const Json::parse_error &) {
+    Response errorResponse =
+        Response::LibraryErrorResponse("Parse error", -32700);
+    return errorResponse.ToJson().dump();
+  }
+}
 
+std::optional<Json> Dispatcher::DispatchSingleRequest(const Json &requestJson) {
+  try {
+    Request request = Request::FromJson(requestJson);
     spdlog::info("Dispatching request: method={}", request.GetMethod());
 
     // Find the handler for the method
@@ -17,7 +38,7 @@ std::optional<std::string> Dispatcher::Dispatch(const std::string &requestStr) {
     if (it == handlers_.end()) {
       Response errorResponse = Response::LibraryErrorResponse(
           "Method not found", -32601, request.GetId());
-      return errorResponse.ToJson().dump();
+      return errorResponse.ToJson();
     }
 
     const Handler &handler = it->second;
@@ -27,11 +48,11 @@ std::optional<std::string> Dispatcher::Dispatch(const std::string &requestStr) {
         const MethodCallHandler &methodCallHandler =
             std::get<MethodCallHandler>(handler);
         Response response = HandleMethodCall(request, methodCallHandler);
-        return response.ToJson().dump();
+        return response.ToJson();
       } else {
         Response errorResponse =
             Response::LibraryErrorResponse("Invalid Request", -32600);
-        return errorResponse.ToJson().dump();
+        return errorResponse.ToJson();
       }
     } else {
       // Otherwise, it is a notification
@@ -43,18 +64,18 @@ std::optional<std::string> Dispatcher::Dispatch(const std::string &requestStr) {
       } else {
         Response errorResponse =
             Response::LibraryErrorResponse("Invalid Request", -32600);
-        return errorResponse.ToJson().dump();
+        return errorResponse.ToJson();
       }
     }
   } catch (const Json::parse_error &) {
     Response errorResponse =
         Response::LibraryErrorResponse("Parse error", -32700);
-    return errorResponse.ToJson().dump();
+    return errorResponse.ToJson();
   } catch (const std::exception &e) {
     spdlog::error("Exception caught during dispatch: {}", e.what());
     Response errorResponse =
         Response::LibraryErrorResponse("Internal error", -32603);
-    return errorResponse.ToJson().dump();
+    return errorResponse.ToJson();
   }
 }
 
