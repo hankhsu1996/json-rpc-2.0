@@ -4,10 +4,10 @@ This project is a lightweight, modern C++ library for implementing JSON-RPC 2.0 
 
 ## Features
 
-- JSON-RPC 2.0 server and client.
-- Implemented in modern C++ (C++17).
-- Abstract transport layer support, making it transport-agnostic.
-- Simple registration of methods and notifications using lambda functions.
+- **JSON-RPC 2.0**: Fully compliant server and client implementation.
+- **Modern C++**: Written in C++17, ensuring a modern and efficient codebase.
+- **Transport-Agnostic**: Abstract transport layer support.
+- **Simple API**: Easy method and notification registration using lambda functions.
 
 ## Dependencies
 

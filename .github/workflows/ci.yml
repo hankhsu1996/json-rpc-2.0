@@ -21,15 +21,17 @@ jobs:
         with:
           python-version: "3.12.4"
 
-      - name: Install Conan
+      - name: Install dependencies
         run: |
+          sudo apt-get update
+          sudo apt-get install -y ninja-build
           python -m pip install --upgrade pip
           pip install conan
 
       - name: Detect Conan profile
         run: conan profile detect --force
 
-      - name: Install dependencies
+      - name: Install Conan dependencies
         run: conan install . --output-folder=build --build=missing
 
       - name: Configure
