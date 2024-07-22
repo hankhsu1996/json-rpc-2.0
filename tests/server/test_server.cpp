@@ -6,7 +6,7 @@
 
 #include "json_rpc/core/dispatcher.h"
 #include "json_rpc/server/server.h"
-#include "json_rpc/transports/stdio_transport.h"
+#include "json_rpc/transports/stdio_server_transport.h"
 
 using namespace json_rpc;
 

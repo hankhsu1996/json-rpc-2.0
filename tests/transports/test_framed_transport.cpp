@@ -3,7 +3,7 @@
 
 #include <catch2/catch_test_macros.hpp>
 
-#include "json_rpc/transports/framed_stdio_transport.h"
+#include "json_rpc/transports/framed_transport.h"
 
 #include "../common/test_utilities.h"
 

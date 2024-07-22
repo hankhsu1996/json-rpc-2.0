@@ -3,7 +3,7 @@
 
 #include <spdlog/spdlog.h>
 
-#include "json_rpc/transports/framed_stdio_transport.h"
+#include "json_rpc/transports/framed_transport.h"
 
 namespace json_rpc {
 

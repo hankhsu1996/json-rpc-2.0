@@ -2,7 +2,7 @@
 
 #include <string>
 
-#include "json_rpc/core/transport.h"
+#include "json_rpc/core/client_transport.h"
 #include "json_rpc/core/types.h"
 #include "json_rpc/transports/framed_transport.h"
 
@@ -14,13 +14,6 @@ class FramedStdioClientTransport :
 public:
   Json SendMethodCall(const Json &request) override;
   void SendNotification(const Json &notification) override;
-};
-
-class FramedStdioServerTransport :
-    public ServerTransport,
-    protected FramedTransport {
-protected:
-  void Listen() override;
 };
 
 } // namespace json_rpc

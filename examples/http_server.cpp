@@ -5,7 +5,7 @@
 #include <spdlog/spdlog.h>
 
 #include "json_rpc/json_rpc.h"
-#include "json_rpc/transports/http_transport.h"
+#include "json_rpc/transports/http_server_transport.h"
 
 #include "calculator.h"
 

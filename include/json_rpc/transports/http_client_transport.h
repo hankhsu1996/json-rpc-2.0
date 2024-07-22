@@ -3,8 +3,7 @@
 #include <httplib.h>
 #include <string>
 
-#include "json_rpc/core/dispatcher.h"
-#include "json_rpc/core/transport.h"
+#include "json_rpc/core/client_transport.h"
 #include "json_rpc/core/types.h"
 
 namespace json_rpc {
@@ -18,18 +17,6 @@ public:
 private:
   std::string server_url_;
   httplib::Client cli_;
-};
-
-class HttpServerTransport : public ServerTransport {
-public:
-  HttpServerTransport(const std::string &host, int port);
-  void Listen() override;
-  void Stop();
-
-private:
-  std::string host_;
-  int port_;
-  httplib::Server svr_;
 };
 
 } // namespace json_rpc

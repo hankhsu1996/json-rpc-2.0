@@ -4,7 +4,7 @@
 #include <string>
 
 #include "json_rpc/core/dispatcher.h"
-#include "json_rpc/core/transport.h"
+#include "json_rpc/core/server_transport.h"
 #include "json_rpc/core/types.h"
 
 namespace json_rpc {
