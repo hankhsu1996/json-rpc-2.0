@@ -9,7 +9,8 @@ namespace json_rpc {
 
 class Request {
 public:
-  Request(const std::string &method, const Json &params, std::optional<int> id);
+  Request(const std::string &method, const std::optional<Json> &params,
+      std::optional<Json> id);
 
   // Parses a JSON object to create a Request object
   static Request FromJson(const Json &jsonObj);
@@ -19,13 +20,13 @@ public:
 
   // Accessors
   std::string GetMethod() const;
-  Json GetParams() const;
-  std::optional<int> GetId() const;
+  std::optional<Json> GetParams() const;
+  std::optional<Json> GetId() const;
 
 private:
   std::string method_;
-  Json params_;
-  std::optional<int> id_;
+  std::optional<Json> params_;
+  std::optional<Json> id_;
 };
 
 } // namespace json_rpc

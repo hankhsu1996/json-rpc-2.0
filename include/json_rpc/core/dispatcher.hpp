@@ -9,6 +9,8 @@
 #include "json_rpc/core/response.hpp"
 #include "json_rpc/core/types.hpp"
 
+#include "BS_thread_pool.hpp"
+
 namespace json_rpc {
 
 class Dispatcher {
@@ -28,12 +30,26 @@ public:
 
 private:
   std::unordered_map<std::string, Handler> handlers_;
+  BS::thread_pool thread_pool_{std::thread::hardware_concurrency()};
 
   // Dispatch a single request to the appropriate handler.
   std::optional<Json> DispatchSingleRequest(const Json &requestJson);
 
   // Dispatch a batch request to the appropriate handlers.
   std::vector<Json> DispatchBatchRequest(const Json &requestJson);
+
+  // Validate the request JSON object.
+  std::optional<Response> ValidateRequest(const Json &requestJson);
+
+  // Find the handler for the specified method.
+  std::optional<Handler> FindHandler(
+      const std::unordered_map<std::string, Handler> &handlers,
+      const std::string &method);
+
+  // Handle the request (method call or notification) using the appropriate
+  // handler.
+  std::optional<Json> HandleRequest(
+      const Request &request, const Handler &handler);
 
   // Handle a method call request.
   Response HandleMethodCall(

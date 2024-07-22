@@ -57,11 +57,13 @@ TEST_CASE("Server method registration", "[server]") {
   auto transport = std::make_unique<MockServerTransport>();
   Server server(std::move(transport));
 
-  MethodCallHandler methodHandler = [](const Json params) -> Json {
+  MethodCallHandler methodHandler =
+      [](const std::optional<Json> &params) -> Json {
     return {{"result", "testMethod"}};
   };
 
-  NotificationHandler notificationHandler = [](const Json params) {};
+  NotificationHandler notificationHandler =
+      [](const std::optional<Json> &params) {};
 
   REQUIRE_NOTHROW(server.RegisterMethodCall("testMethod", methodHandler));
   REQUIRE_NOTHROW(

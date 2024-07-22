@@ -5,7 +5,7 @@
 namespace json_rpc {
 
 // Private constructor
-Response::Response(const Json &response, std::optional<int> id)
+Response::Response(const Json &response, std::optional<Json> id)
     : response_(response) {
   if (id.has_value()) {
     response_["id"] = id.value();
@@ -13,7 +13,7 @@ Response::Response(const Json &response, std::optional<int> id)
   ValidateResponse();
 }
 
-Response Response::FromJson(const Json &responseJson, std::optional<int> id) {
+Response Response::FromJson(const Json &responseJson, std::optional<Json> id) {
   if (responseJson.contains("result")) {
     return SuccessResponse(responseJson["result"], id);
   } else if (responseJson.contains("error")) {
@@ -25,7 +25,7 @@ Response Response::FromJson(const Json &responseJson, std::optional<int> id) {
 }
 
 Response Response::SuccessResponse(
-    const Json &result, const std::optional<int> &id) {
+    const Json &result, const std::optional<Json> &id) {
   Json response = {{"result", result}};
   if (id.has_value()) {
     response["id"] = id.value();
@@ -34,12 +34,12 @@ Response Response::SuccessResponse(
 }
 
 Response Response::LibraryErrorResponse(
-    const std::string &message, int code, const std::optional<int> &id) {
+    const std::string &message, int code, const std::optional<Json> &id) {
   return Response(CreateErrorResponse(message, code, id));
 }
 
 Response Response::UserErrorResponse(
-    const Json &error, const std::optional<int> &id) {
+    const Json &error, const std::optional<Json> &id) {
   Response response({{"error", error}}, id);
   response.ValidateResponse();
   return response;
@@ -67,7 +67,7 @@ Json Response::ToJson() const {
 }
 
 Json Response::CreateErrorResponse(
-    const std::string &message, int code, const std::optional<int> &id) {
+    const std::string &message, int code, const std::optional<Json> &id) {
   Json error = {{"code", code}, {"message", message}};
   Json response = {{"error", error}};
   if (id.has_value()) {

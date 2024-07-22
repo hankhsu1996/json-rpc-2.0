@@ -64,31 +64,17 @@ TEST_CASE("Request deserialization from JSON without id", "[Request]") {
   REQUIRE(!request.GetId().has_value());
 }
 
-// Test deserialization with invalid JSON-RPC version
-TEST_CASE(
-    "Request deserialization with invalid JSON-RPC version", "[Request]") {
+// Test deserialization from JSON without params
+TEST_CASE("Request deserialization from JSON without params", "[Request]") {
   std::string method = "testMethod";
-  Json params = {{"param1", 1}, {"param2", 2}};
   int id = 1;
 
-  Json jsonObj = {{"jsonrpc", "1.0"}, // Invalid version
-      {"method", method}, {"params", params}, {"id", id}};
+  Json jsonObj = {{"jsonrpc", "2.0"}, {"method", method}, {"id", id}};
 
-  REQUIRE_THROWS_AS(Request::FromJson(jsonObj), std::invalid_argument);
-}
+  Request request = Request::FromJson(jsonObj);
 
-// Test deserialization with missing fields
-TEST_CASE("Request deserialization with missing fields", "[Request]") {
-  // Missing 'params' field
-  Json jsonObj1 = {{"jsonrpc", "2.0"}, {"method", "testMethod"}};
-  REQUIRE_THROWS_AS(Request::FromJson(jsonObj1), std::invalid_argument);
-
-  // Missing 'method' field
-  Json jsonObj2 = {
-      {"jsonrpc", "2.0"}, {"params", {{"param1", 1}, {"param2", 2}}}};
-  REQUIRE_THROWS_AS(Request::FromJson(jsonObj2), std::invalid_argument);
-
-  // Missing both 'method' and 'params' fields
-  Json jsonObj3 = {{"jsonrpc", "2.0"}};
-  REQUIRE_THROWS_AS(Request::FromJson(jsonObj3), std::invalid_argument);
+  REQUIRE(request.GetMethod() == method);
+  REQUIRE(!request.GetParams().has_value());
+  REQUIRE(request.GetId().has_value());
+  REQUIRE(request.GetId().value() == id);
 }
