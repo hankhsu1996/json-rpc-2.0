@@ -4,7 +4,14 @@
 
 namespace json_rpc {
 
-// Private constructor
+const ErrorInfoMap Response::errorInfoMap = {
+    {LibErrorKind::ParseError, {-32700, "Parse error"}},
+    {LibErrorKind::InvalidRequest, {-32600, "Invalid Request"}},
+    {LibErrorKind::MethodNotFound, {-32601, "Method not found"}},
+    {LibErrorKind::InvalidParams, {-32602, "Invalid params"}},
+    {LibErrorKind::InternalError, {-32603, "Internal error"}},
+    {LibErrorKind::ServerError, {-32000, "Server error"}}};
+
 Response::Response(const Json &response, std::optional<Json> id)
     : response_(response) {
   if (id.has_value()) {
@@ -33,11 +40,6 @@ Response Response::SuccessResponse(
   return Response(response);
 }
 
-Response Response::LibraryErrorResponse(
-    const std::string &message, int code, const std::optional<Json> &id) {
-  return Response(CreateErrorResponse(message, code, id));
-}
-
 Response Response::UserErrorResponse(
     const Json &error, const std::optional<Json> &id) {
   Response response({{"error", error}}, id);
@@ -60,22 +62,6 @@ void Response::ValidateResponse() const {
           "Error object must contain 'code' and 'message' fields.");
     }
   }
-}
-
-Json Response::ToJson() const {
-  return response_;
-}
-
-Json Response::CreateErrorResponse(
-    const std::string &message, int code, const std::optional<Json> &id) {
-  Json error = {{"code", code}, {"message", message}};
-  Json response = {{"error", error}};
-  if (id.has_value()) {
-    response["id"] = id.value();
-  } else {
-    response["id"] = nullptr;
-  }
-  return response;
 }
 
 } // namespace json_rpc

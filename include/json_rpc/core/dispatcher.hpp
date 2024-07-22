@@ -39,11 +39,16 @@ private:
   bool enableMultithreading_;
   BS::thread_pool thread_pool_;
 
+  // Parse and validate the JSON request string.
+  std::optional<Json> ParseAndValidateJson(const std::string &requestStr);
+
   // Dispatch a single request to the appropriate handler.
-  std::optional<Json> DispatchSingleRequest(const Json &requestJson);
+  std::optional<std::string> DispatchSingleRequest(const Json &requestJson);
+  std::optional<Json> DispatchSingleRequestInner(const Json &requestJson);
 
   // Dispatch a batch request to the appropriate handlers.
-  std::vector<Json> DispatchBatchRequest(const Json &requestJson);
+  std::optional<std::string> DispatchBatchRequest(const Json &requestJson);
+  std::vector<Json> DispatchBatchRequestInner(const Json &requestJson);
 
   // Validate the request JSON object.
   std::optional<Response> ValidateRequest(const Json &requestJson);

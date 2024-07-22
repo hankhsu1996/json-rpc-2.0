@@ -19,48 +19,47 @@ std::unique_ptr<json_rpc::Dispatcher> CreateDispatcher(
 
 // Helper function to register common method handlers
 void RegisterCommonHandlers(Dispatcher &dispatcher) {
-  dispatcher.RegisterMethodCall(
-      "subtract", [](const std::optional<Json> &params) -> Json {
-        int result;
-        if (params.has_value() && params->is_array()) {
-          result = params.value()[0].get<int>() - params.value()[1].get<int>();
-        } else {
-          result = params.value()["minuend"].get<int>() -
-                   params.value()["subtrahend"].get<int>();
-        }
-        return Json{{"result", result}};
-      });
+  auto subtract = [](const std::optional<Json> &params) -> Json {
+    int result;
+    if (params && params->is_array()) {
+      result = params.value()[0].get<int>() - params.value()[1].get<int>();
+    } else {
+      result = params.value()["minuend"].get<int>() -
+               params.value()["subtrahend"].get<int>();
+    }
+    return Json{{"result", result}};
+  };
 
-  dispatcher.RegisterMethodCall(
-      "sum", [](const std::optional<Json> &params) -> Json {
-        int result = 0;
-        if (params) {
-          result = std::accumulate(params->begin(), params->end(), 0,
-              [](int sum, const Json &param) {
-                return sum + param.get<int>();
-              });
-        }
-        return Json{{"result", result}};
-      });
+  auto sum = [](const std::optional<Json> &params) -> Json {
+    int result = 0;
+    if (params) {
+      result = std::accumulate(params->begin(), params->end(), 0,
+          [](int sum, const Json &param) { return sum + param.get<int>(); });
+    }
+    return Json{{"result", result}};
+  };
 
-  dispatcher.RegisterMethodCall(
-      "get_data", [](const std::optional<Json> &) -> Json {
-        return Json{{"result", Json::array({"hello", 5})}};
-      });
+  auto get_data = [](const std::optional<Json> &) -> Json {
+    return Json{{"result", Json::array({"hello", 5})}};
+  };
 
-  dispatcher.RegisterNotification(
-      "notify_hello", [](const std::optional<Json> &params) {
-        if (params) {
-          REQUIRE(params.value()[0] == 7);
-        }
-      });
+  auto notify_hello = [](const std::optional<Json> &params) {
+    if (params) {
+      REQUIRE(params.value()[0] == 7);
+    }
+  };
 
-  dispatcher.RegisterNotification(
-      "notify_sum", [](const std::optional<Json> &params) {
-        if (params) {
-          REQUIRE(params.value().size() == 3);
-        }
-      });
+  auto notify_sum = [](const std::optional<Json> &params) {
+    if (params) {
+      REQUIRE(params.value().size() == 3);
+    }
+  };
+
+  dispatcher.RegisterMethodCall("subtract", subtract);
+  dispatcher.RegisterMethodCall("sum", sum);
+  dispatcher.RegisterMethodCall("get_data", get_data);
+  dispatcher.RegisterNotification("notify_hello", notify_hello);
+  dispatcher.RegisterNotification("notify_sum", notify_sum);
 }
 
 TEST_CASE("RPC call with positional parameters", "[Dispatcher]") {
