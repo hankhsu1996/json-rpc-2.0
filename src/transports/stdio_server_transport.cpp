@@ -15,7 +15,7 @@ void StdioServerTransport::Listen() {
 
   while (IsRunning()) {
     if (std::getline(std::cin, line)) {
-      std::optional<std::string> response = dispatcher_->Dispatch(line);
+      std::optional<std::string> response = dispatcher_->DispatchRequest(line);
       if (response.has_value()) {
         spdlog::debug(
             "StdioServerTransport dispatching response: {}", response.value());

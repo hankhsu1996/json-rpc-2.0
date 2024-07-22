@@ -20,8 +20,8 @@ TEST_CASE("Response library error creation and serialization", "[Response]") {
   int code = -32601;
   std::optional<int> id = 1;
 
-  Response response = Response::LibraryErrorResponse(message, code, id);
-  Json responseJson = response.ToJson();
+  Json responseJson =
+      Response::CreateLibError(LibErrorKind::MethodNotFound, id).ToJson();
 
   REQUIRE(responseJson["error"]["message"] == message);
   REQUIRE(responseJson["error"]["code"] == code);
@@ -64,13 +64,12 @@ TEST_CASE("Library error response creation without id", "[Response]") {
   std::string message = "Parse error";
   int code = -32700;
 
-  Response response =
-      Response::LibraryErrorResponse(message, code, std::nullopt);
-  Json responseJson = response.ToJson();
+  Json responseJson =
+      Response::CreateLibError(LibErrorKind::ParseError).ToJson();
 
   REQUIRE(responseJson["error"]["message"] == message);
   REQUIRE(responseJson["error"]["code"] == code);
-  REQUIRE(responseJson.find("id") == responseJson.end());
+  REQUIRE(responseJson["id"] == nullptr);
 }
 
 TEST_CASE("User error response creation without id", "[Response]") {

@@ -12,6 +12,7 @@ file(GLOB_RECURSE SOURCES "src/*.cpp")
 find_package(nlohmann_json REQUIRED)
 find_package(spdlog REQUIRED)
 find_package(httplib REQUIRED)
+find_package(bshoshany-thread-pool REQUIRED)
 
 # Add the library target
 add_library(json_rpc_2_0 ${SOURCES})
@@ -24,6 +25,7 @@ target_link_libraries(json_rpc_2_0 PUBLIC
     nlohmann_json::nlohmann_json
     spdlog::spdlog
     httplib::httplib
+    bshoshany-thread-pool::bshoshany-thread-pool
 )
 
 # Add example executables

@@ -22,13 +22,17 @@ void RunServer() {
   Server server(std::move(transport));
   Calculator calculator;
 
-  server.RegisterMethodCall("add",
-      [&calculator](const Json &params) { return calculator.Add(params); });
+  server.RegisterMethodCall(
+      "add", [&calculator](const std::optional<Json> &params) {
+        return calculator.Add(params.value());
+      });
 
-  server.RegisterMethodCall("divide",
-      [&calculator](const Json &params) { return calculator.Divide(params); });
+  server.RegisterMethodCall(
+      "divide", [&calculator](const std::optional<Json> &params) {
+        return calculator.Divide(params.value());
+      });
 
-  server.RegisterNotification("stop", [&server](const Json &) {
+  server.RegisterNotification("stop", [&server](const std::optional<Json> &) {
     spdlog::info("Server Received stop notification");
     server.Stop();
   });

@@ -20,7 +20,8 @@ void FramedStdioServerTransport::Listen() {
   while (IsRunning()) {
     try {
       std::string content = ReceiveMessage();
-      std::optional<std::string> response = dispatcher_->Dispatch(content);
+      std::optional<std::string> response =
+          dispatcher_->DispatchRequest(content);
       if (response.has_value()) {
         spdlog::debug("FramedStdioServerTransport dispatching response: {}",
             response.value());
