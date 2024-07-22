@@ -70,7 +70,7 @@ TEST_CASE("Library error response creation without id", "[Response]") {
 
   REQUIRE(responseJson["error"]["message"] == message);
   REQUIRE(responseJson["error"]["code"] == code);
-  REQUIRE(responseJson.find("id") == responseJson.end());
+  REQUIRE(responseJson["id"] == nullptr);
 }
 
 TEST_CASE("User error response creation without id", "[Response]") {

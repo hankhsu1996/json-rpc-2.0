@@ -72,6 +72,8 @@ Json Response::CreateErrorResponse(
   Json response = {{"error", error}};
   if (id.has_value()) {
     response["id"] = id.value();
+  } else {
+    response["id"] = nullptr;
   }
   return response;
 }

@@ -55,7 +55,8 @@ TEST_CASE(
   std::string output = out.str();
   Json outputJson = Json::parse(output);
   Json expectedJson = {
-      {"error", {{"code", -32700}, {"message", "Parse error"}}}};
+      {"error", {{"code", -32700}, {"message", "Parse error"}}},
+      {"id", nullptr}};
 
   REQUIRE(outputJson == expectedJson);
 }

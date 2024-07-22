@@ -15,6 +15,12 @@ namespace json_rpc {
 
 class Dispatcher {
 public:
+  Dispatcher(bool enableMultithreading = true,
+      size_t numThreads = std::thread::hardware_concurrency())
+      : enableMultithreading_(enableMultithreading),
+        thread_pool_(enableMultithreading ? numThreads : 0) {
+  }
+
   virtual ~Dispatcher() = default;
 
   // Dispatch an RPC request to the appropriate handler.
@@ -30,7 +36,8 @@ public:
 
 private:
   std::unordered_map<std::string, Handler> handlers_;
-  BS::thread_pool thread_pool_{std::thread::hardware_concurrency()};
+  bool enableMultithreading_;
+  BS::thread_pool thread_pool_;
 
   // Dispatch a single request to the appropriate handler.
   std::optional<Json> DispatchSingleRequest(const Json &requestJson);

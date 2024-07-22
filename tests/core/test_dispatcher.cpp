@@ -9,6 +9,14 @@
 
 using namespace json_rpc;
 
+// Helper function to create a Dispatcher object
+std::unique_ptr<json_rpc::Dispatcher> CreateDispatcher(
+    bool enableMultithreading,
+    size_t numThreads = std::thread::hardware_concurrency()) {
+  return std::make_unique<json_rpc::Dispatcher>(
+      enableMultithreading, numThreads);
+}
+
 // Helper function to register common method handlers
 void RegisterCommonHandlers(Dispatcher &dispatcher) {
   dispatcher.RegisterMethodCall(
@@ -62,13 +70,13 @@ TEST_CASE("RPC call with positional parameters", "[Dispatcher]") {
   SECTION("subtract 42, 23") {
     Json requestJson = {{"jsonrpc", "2.0"}, {"method", "subtract"},
         {"params", {42, 23}}, {"id", 1}};
-  std::optional<std::string> responseStr =
-      dispatcher.DispatchRequest(requestJson.dump());
-  REQUIRE(responseStr.has_value());
-  Json responseJson = Json::parse(responseStr.value());
+    std::optional<std::string> responseStr =
+        dispatcher.DispatchRequest(requestJson.dump());
+    REQUIRE(responseStr.has_value());
+    Json responseJson = Json::parse(responseStr.value());
     REQUIRE(responseJson["result"] == 19);
-  REQUIRE(responseJson["id"] == 1);
-}
+    REQUIRE(responseJson["id"] == 1);
+  }
 
   SECTION("subtract 23, 42") {
     Json requestJson = {{"jsonrpc", "2.0"}, {"method", "subtract"},
@@ -116,10 +124,10 @@ TEST_CASE("Notification", "[Dispatcher]") {
   SECTION("update notification") {
     Json requestJson = {
         {"jsonrpc", "2.0"}, {"method", "update"}, {"params", {1, 2, 3, 4, 5}}};
-  std::optional<std::string> responseStr =
-      dispatcher.DispatchRequest(requestJson.dump());
-  REQUIRE(!responseStr.has_value());
-}
+    std::optional<std::string> responseStr =
+        dispatcher.DispatchRequest(requestJson.dump());
+    REQUIRE(!responseStr.has_value());
+  }
 
   SECTION("foobar notification") {
     Json requestJson = {{"jsonrpc", "2.0"}, {"method", "foobar"}};
@@ -183,4 +191,127 @@ TEST_CASE("RPC call Batch, invalid JSON", "[Dispatcher]") {
   REQUIRE(responseJson["error"]["code"] == -32700); // Parse error
   REQUIRE(responseJson["error"]["message"] == "Parse error");
   REQUIRE(responseJson["id"] == nullptr);
+}
+
+TEST_CASE("RPC call with an empty Array", "[Dispatcher]") {
+  Dispatcher dispatcher;
+
+  Json requestJson = Json::array();
+  std::optional<std::string> responseStr =
+      dispatcher.DispatchRequest(requestJson.dump());
+  REQUIRE(responseStr.has_value());
+  Json responseJson = Json::parse(responseStr.value());
+  REQUIRE(responseJson["error"]["code"] == -32600); // Invalid Request
+  REQUIRE(responseJson["error"]["message"] == "Invalid Request");
+  REQUIRE(responseJson["id"] == nullptr);
+}
+
+TEST_CASE("RPC call with an invalid Batch (but not empty)", "[Dispatcher]") {
+  Dispatcher dispatcher;
+
+  Json requestJson = Json::array({1});
+  std::optional<std::string> responseStr =
+      dispatcher.DispatchRequest(requestJson.dump());
+  REQUIRE(responseStr.has_value());
+  Json responseJson = Json::parse(responseStr.value());
+  REQUIRE(responseJson.is_array());
+  REQUIRE(responseJson.size() == 1);
+  REQUIRE(responseJson[0]["error"]["code"] == -32600); // Invalid Request
+  REQUIRE(responseJson[0]["error"]["message"] == "Invalid Request");
+  REQUIRE(responseJson[0]["id"] == nullptr);
+}
+
+TEST_CASE("RPC call with invalid Batch", "[Dispatcher]") {
+  Dispatcher dispatcher;
+
+  Json requestJson = Json::array({1, 2, 3});
+  std::optional<std::string> responseStr =
+      dispatcher.DispatchRequest(requestJson.dump());
+  REQUIRE(responseStr.has_value());
+  Json responseJson = Json::parse(responseStr.value());
+  REQUIRE(responseJson.is_array());
+  REQUIRE(responseJson.size() == 3);
+  for (const auto &response : responseJson) {
+    REQUIRE(response["error"]["code"] == -32600); // Invalid Request
+    REQUIRE(response["error"]["message"] == "Invalid Request");
+    REQUIRE(response["id"] == nullptr);
+  }
+}
+
+TEST_CASE("RPC call Batch", "[Dispatcher]") {
+  auto dispatcher = CreateDispatcher(true);
+  RegisterCommonHandlers(*dispatcher);
+
+  // clang-format off
+  Json requestJson = Json::array({
+    {{"jsonrpc", "2.0"}, {"method", "sum"}, {"params", {1, 2, 4}}, {"id", "1"}},
+    {{"jsonrpc", "2.0"}, {"method", "notify_hello"}, {"params", {7}}},
+    {{"jsonrpc", "2.0"}, {"method", "subtract"}, {"params", {42, 23}}, {"id", "2"}},
+    {{"foo", "boo"}},
+    {{"jsonrpc", "2.0"}, {"method", "foo.get"}, {"params", {{"name", "myself"}}}, {"id", "5"}},
+    {{"jsonrpc", "2.0"}, {"method", "get_data"}, {"id", "9"}}
+  });
+  // clang-format on
+
+  std::optional<std::string> responseStr =
+      dispatcher->DispatchRequest(requestJson.dump());
+  REQUIRE(responseStr.has_value());
+  Json responseJson = Json::parse(responseStr.value());
+
+  REQUIRE(responseJson.is_array());
+  REQUIRE(responseJson.size() == 5); // 6 requests but one is a notification
+
+  REQUIRE(responseJson[0]["result"] == 7);
+  REQUIRE(responseJson[0]["id"] == "1");
+
+  REQUIRE(responseJson[1]["result"] == 19);
+  REQUIRE(responseJson[1]["id"] == "2");
+
+  REQUIRE(responseJson[2]["error"]["code"] == -32600); // Invalid Request
+  REQUIRE(responseJson[2]["error"]["message"] == "Invalid Request");
+  REQUIRE(responseJson[2]["id"] == nullptr);
+
+  REQUIRE(responseJson[3]["error"]["code"] == -32601); // Method not found
+  REQUIRE(responseJson[3]["error"]["message"] == "Method not found");
+  REQUIRE(responseJson[3]["id"] == "5");
+
+  REQUIRE(responseJson[4]["result"] == Json::array({"hello", 5}));
+  REQUIRE(responseJson[4]["id"] == "9");
+
+  dispatcher = CreateDispatcher(false);
+  RegisterCommonHandlers(*dispatcher);
+  responseStr = dispatcher->DispatchRequest(requestJson.dump());
+  REQUIRE(responseStr.has_value());
+  responseJson = Json::parse(responseStr.value());
+  REQUIRE(responseJson.is_array());
+  REQUIRE(responseJson.size() == 5); // 6 requests but one is a notification
+
+  REQUIRE(responseJson[0]["result"] == 7);
+  REQUIRE(responseJson[0]["id"] == "1");
+
+  REQUIRE(responseJson[1]["result"] == 19);
+  REQUIRE(responseJson[1]["id"] == "2");
+
+  REQUIRE(responseJson[2]["error"]["code"] == -32600); // Invalid Request
+  REQUIRE(responseJson[2]["error"]["message"] == "Invalid Request");
+  REQUIRE(responseJson[2]["id"] == nullptr);
+
+  REQUIRE(responseJson[3]["error"]["code"] == -32601); // Method not found
+  REQUIRE(responseJson[3]["error"]["message"] == "Method not found");
+  REQUIRE(responseJson[3]["id"] == "5");
+
+  REQUIRE(responseJson[4]["result"] == Json::array({"hello", 5}));
+  REQUIRE(responseJson[4]["id"] == "9");
+}
+
+TEST_CASE("RPC call Batch (all notifications)", "[Dispatcher]") {
+  Dispatcher dispatcher;
+  RegisterCommonHandlers(dispatcher);
+
+  Json requestJson = Json::array(
+      {{{"jsonrpc", "2.0"}, {"method", "notify_sum"}, {"params", {1, 2, 4}}},
+          {{"jsonrpc", "2.0"}, {"method", "notify_hello"}, {"params", {7}}}});
+  std::optional<std::string> responseStr =
+      dispatcher.DispatchRequest(requestJson.dump());
+  REQUIRE(!responseStr.has_value());
 }

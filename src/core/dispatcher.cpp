@@ -9,7 +9,15 @@ std::optional<std::string> Dispatcher::DispatchRequest(
   try {
     Json requestJson = Json::parse(requestStr);
     if (requestJson.is_array()) {
+      if (requestJson.empty()) {
+        Response errorResponse =
+            Response::LibraryErrorResponse("Invalid Request", -32600);
+        return errorResponse.ToJson().dump();
+      }
       std::vector<Json> responseJsons = DispatchBatchRequest(requestJson);
+      if (responseJsons.empty()) {
+        return std::nullopt;
+      }
       Json responseJson = responseJsons;
       return responseJson.dump();
     } else if (requestJson.is_object()) {
@@ -53,8 +61,8 @@ std::optional<Json> Dispatcher::DispatchSingleRequest(const Json &requestJson) {
             .ToJson();
       } else {
         // Method not found for a notification, return std::nullopt
-        spdlog::warn("Method not found for notification: method={}",
-            request.GetMethod());
+        spdlog::warn(
+            "Method {} not found for notification", request.GetMethod());
         return std::nullopt;
       }
     }
@@ -64,6 +72,7 @@ std::optional<Json> Dispatcher::DispatchSingleRequest(const Json &requestJson) {
 
   } catch (const Json::parse_error &) {
     return Response::LibraryErrorResponse("Parse error", -32700).ToJson();
+
   } catch (const std::exception &e) {
     spdlog::error("Exception caught during dispatch: {}", e.what());
     return Response::LibraryErrorResponse("Internal error", -32603).ToJson();
@@ -73,21 +82,27 @@ std::optional<Json> Dispatcher::DispatchSingleRequest(const Json &requestJson) {
 std::vector<Json> Dispatcher::DispatchBatchRequest(const Json &requestJson) {
   std::vector<std::future<std::optional<Json>>> futures;
   for (const auto &element : requestJson) {
-    futures.emplace_back(
-        thread_pool_.submit_task([this, element]() -> std::optional<Json> {
-          try {
-            if (!element.is_object()) {
-              Response errorResponse =
-                  Response::LibraryErrorResponse("Invalid Request", -32600);
-              return errorResponse.ToJson();
-            }
-            return DispatchSingleRequest(element);
-          } catch (const Json::parse_error &) {
-            Response errorResponse =
-                Response::LibraryErrorResponse("Parse error", -32700);
+    if (!element.is_object()) {
+      Response errorResponse =
+          Response::LibraryErrorResponse("Invalid Request", -32600);
+      futures.emplace_back(std::async(
+          std::launch::deferred, [errorResponse]() -> std::optional<Json> {
             return errorResponse.ToJson();
-          }
-        }));
+          }));
+      continue;
+    }
+
+    if (enableMultithreading_) {
+      futures.emplace_back(
+          thread_pool_.submit_task([this, element]() -> std::optional<Json> {
+            return DispatchSingleRequest(element);
+          }));
+    } else {
+      futures.emplace_back(std::async(
+          std::launch::deferred, [this, element]() -> std::optional<Json> {
+            return DispatchSingleRequest(element);
+          }));
+    }
   }
 
   std::vector<Json> responses;
