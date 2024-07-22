@@ -1,8 +1,8 @@
 #include <catch2/catch_test_macros.hpp>
 
-#include "json_rpc/core/dispatcher.h"
-#include "json_rpc/core/request.h"
-#include "json_rpc/core/response.h"
+#include "json_rpc/core/dispatcher.hpp"
+#include "json_rpc/core/request.hpp"
+#include "json_rpc/core/response.hpp"
 
 using namespace json_rpc;
 

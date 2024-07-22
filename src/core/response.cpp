@@ -1,6 +1,6 @@
 #include <spdlog/spdlog.h>
 
-#include "json_rpc/core/response.h"
+#include "json_rpc/core/response.hpp"
 
 namespace json_rpc {
 

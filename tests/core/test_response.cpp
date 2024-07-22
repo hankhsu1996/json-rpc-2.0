@@ -1,6 +1,6 @@
 #include <catch2/catch_test_macros.hpp>
 
-#include "json_rpc/core/response.h"
+#include "json_rpc/core/response.hpp"
 
 using namespace json_rpc;
 

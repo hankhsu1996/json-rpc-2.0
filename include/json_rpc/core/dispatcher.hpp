@@ -4,9 +4,9 @@
 #include <string>
 #include <unordered_map>
 
-#include "json_rpc/core/request.h"
-#include "json_rpc/core/response.h"
-#include "json_rpc/core/types.h"
+#include "json_rpc/core/request.hpp"
+#include "json_rpc/core/response.hpp"
+#include "json_rpc/core/types.hpp"
 
 namespace json_rpc {
 

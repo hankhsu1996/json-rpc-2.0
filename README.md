@@ -48,7 +48,7 @@ These commands will install the necessary dependencies, configure the project, b
 ```cpp
 #include <iostream>
 #include <memory>
-#include "json_rpc/json_rpc.h"
+#include "json_rpc/json_rpc.hpp"
 
 using namespace json_rpc;
 
@@ -73,8 +73,8 @@ int main() {
 
 ```cpp
 #include <memory>
-#include "json_rpc/json_rpc.h"
-#include "calculator.h"
+#include "json_rpc/json_rpc.hpp"
+#include "calculator.hpp"
 
 using namespace json_rpc;
 

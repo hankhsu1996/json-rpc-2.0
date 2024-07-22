@@ -3,9 +3,9 @@
 #include <memory>
 #include <string>
 
-#include "json_rpc/core/dispatcher.h"
-#include "json_rpc/core/server_transport.h"
-#include "json_rpc/core/types.h"
+#include "json_rpc/core/dispatcher.hpp"
+#include "json_rpc/core/server_transport.hpp"
+#include "json_rpc/core/types.hpp"
 
 namespace json_rpc {
 

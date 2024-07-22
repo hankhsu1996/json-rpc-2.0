@@ -1,4 +1,4 @@
-#include "json_rpc/core/request.h"
+#include "json_rpc/core/request.hpp"
 
 namespace json_rpc {
 

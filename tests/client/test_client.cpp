@@ -1,7 +1,7 @@
 #include <catch2/catch_test_macros.hpp>
 
-#include "json_rpc/client/client.h"
-#include "json_rpc/core/client_transport.h"
+#include "json_rpc/client/client.hpp"
+#include "json_rpc/core/client_transport.hpp"
 
 using namespace json_rpc;
 

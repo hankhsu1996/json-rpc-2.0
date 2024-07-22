@@ -2,7 +2,7 @@
 
 #include <string>
 
-#include "json_rpc/core/types.h"
+#include "json_rpc/core/types.hpp"
 
 namespace json_rpc {
 

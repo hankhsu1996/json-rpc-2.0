@@ -4,9 +4,9 @@
 #include <catch2/catch_test_macros.hpp>
 #include <spdlog/spdlog.h>
 
-#include "json_rpc/core/dispatcher.h"
-#include "json_rpc/server/server.h"
-#include "json_rpc/transports/stdio_server_transport.h"
+#include "json_rpc/core/dispatcher.hpp"
+#include "json_rpc/server/server.hpp"
+#include "json_rpc/transports/stdio_server_transport.hpp"
 
 using namespace json_rpc;
 

@@ -1,6 +1,6 @@
 #include <spdlog/spdlog.h>
 
-#include "json_rpc/core/dispatcher.h"
+#include "json_rpc/core/dispatcher.hpp"
 
 namespace json_rpc {
 

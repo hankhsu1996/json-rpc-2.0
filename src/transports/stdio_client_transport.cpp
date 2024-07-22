@@ -1,6 +1,6 @@
 #include <spdlog/spdlog.h>
 
-#include "json_rpc/transports/stdio_client_transport.h"
+#include "json_rpc/transports/stdio_client_transport.hpp"
 
 namespace json_rpc {
 

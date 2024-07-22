@@ -3,8 +3,8 @@
 #include <atomic>
 #include <memory>
 
-#include "json_rpc/core/dispatcher.h"
-#include "json_rpc/core/types.h"
+#include "json_rpc/core/dispatcher.hpp"
+#include "json_rpc/core/types.hpp"
 
 namespace json_rpc {
 

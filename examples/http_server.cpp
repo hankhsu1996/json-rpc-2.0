@@ -4,10 +4,10 @@
 #include <spdlog/sinks/basic_file_sink.h>
 #include <spdlog/spdlog.h>
 
-#include "json_rpc/json_rpc.h"
-#include "json_rpc/transports/http_server_transport.h"
+#include "json_rpc/json_rpc.hpp"
+#include "json_rpc/transports/http_server_transport.hpp"
 
-#include "calculator.h"
+#include "calculator.hpp"
 
 using namespace json_rpc;
 

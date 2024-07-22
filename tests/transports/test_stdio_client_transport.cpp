@@ -3,10 +3,10 @@
 
 #include <catch2/catch_test_macros.hpp>
 
-#include "json_rpc/core/dispatcher.h"
-#include "json_rpc/transports/stdio_client_transport.h"
+#include "json_rpc/core/dispatcher.hpp"
+#include "json_rpc/transports/stdio_client_transport.hpp"
 
-#include "../common/test_utilities.h"
+#include "../common/test_utilities.hpp"
 
 using namespace json_rpc;
 

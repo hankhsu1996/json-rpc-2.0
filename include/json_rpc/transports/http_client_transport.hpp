@@ -3,8 +3,8 @@
 #include <httplib.h>
 #include <string>
 
-#include "json_rpc/core/client_transport.h"
-#include "json_rpc/core/types.h"
+#include "json_rpc/core/client_transport.hpp"
+#include "json_rpc/core/types.hpp"
 
 namespace json_rpc {
 

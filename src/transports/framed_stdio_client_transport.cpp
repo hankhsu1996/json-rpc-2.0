@@ -5,7 +5,7 @@
 
 #include <spdlog/spdlog.h>
 
-#include "json_rpc/transports/framed_stdio_client_transport.h"
+#include "json_rpc/transports/framed_stdio_client_transport.hpp"
 
 namespace json_rpc {
 
