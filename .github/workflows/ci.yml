@@ -9,7 +9,7 @@ on:
       - main
 
 jobs:
-  build-and-test:
+  build:
     runs-on: ubuntu-latest
 
     steps:
@@ -17,16 +17,34 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Setup Python
-        uses: actions/setup-python@v4
+        uses: actions/setup-python@v5
         with:
-          python-version: "3.12.4"
+          python-version: "3.12"
+
+      - name: Setup Ninja
+        uses: ashutoshvarma/setup-ninja@v1.1
+
+      - name: Cache pip
+        uses: actions/cache@v3
+        with:
+          path: ~/.cache/pip
+          key: ${{ runner.os }}-pip-${{ hashFiles('**/requirements.txt') }}
+          restore-keys: |
+            ${{ runner.os }}-pip-
+
+      - name: Cache Conan
+        uses: actions/cache@v3
+        with:
+          path: ~/.conan2
+          key: ${{ runner.os }}-conan-${{ hashFiles('conanfile.txt') }}
+          restore-keys: |
+            ${{ runner.os }}-conan-
 
       - name: Install dependencies
         run: |
-          sudo apt-get update
-          sudo apt-get install -y ninja-build
           python -m pip install --upgrade pip
           pip install conan
+          pip install colorama
 
       - name: Detect Conan profile
         run: conan profile detect --force
@@ -40,5 +58,80 @@ jobs:
       - name: Build
         run: cmake --build --preset default
 
-      - name: Test
-        run: ctest --preset default
+      - name: Upload necessary build files
+        uses: actions/upload-artifact@v4
+        with:
+          name: build-files
+          path: |
+            build/CMakeCache.txt
+            build/CTestTestfile.cmake
+            build/tests/tests
+          retention-days: 7
+
+  test:
+    needs: build
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Download necessary build files
+        uses: actions/download-artifact@v4
+        with:
+          name: build-files
+          path: build
+
+      - name: Add execute permissions to test binary
+        run: chmod +x build/tests/tests
+
+      - name: Run tests
+        run: ctest --preset default --test-dir build
+
+  docs:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Install Doxygen
+        run: |
+          DOXYGEN_VERSION=1.10.0
+          wget https://github.com/doxygen/doxygen/releases/download/Release_1_10_0/doxygen-${DOXYGEN_VERSION}.linux.bin.tar.gz
+          tar -xzf doxygen-${DOXYGEN_VERSION}.linux.bin.tar.gz
+          sudo cp -r doxygen-${DOXYGEN_VERSION}/bin/* /usr/local/bin/
+
+      - name: Generate Doxygen documentation
+        run: doxygen Doxyfile
+
+      - name: Upload Doxygen documentation artifacts
+        if: github.event_name == 'pull_request'
+        uses: actions/upload-artifact@v4
+        with:
+          name: doxygen-docs
+          path: docs/html
+
+  deploy:
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    needs: docs
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Download Doxygen documentation artifacts
+        uses: actions/download-artifact@v4
+        with:
+          name: doxygen-docs
+          path: docs/html
+
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./docs/html
+          publish_branch: gh-pages
