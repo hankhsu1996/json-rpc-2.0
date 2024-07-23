@@ -43,3 +43,9 @@ build/
 
 # Other
 *.DS_Store
+
+# Ignore generated documentation
+docs/
+
+# Ignore binaries/tools
+bin/

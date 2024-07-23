@@ -1,0 +1,63 @@
+# Doxyfile 1.10.0
+
+# Project-related settings
+PROJECT_NAME           = "JSON-RPC 2.0"
+PROJECT_BRIEF          = "JSON-RPC 2.0 for Modern C++"
+OUTPUT_DIRECTORY       = docs
+OUTPUT_LANGUAGE        = English
+EXTRACT_ALL            = YES
+
+# Input settings
+INPUT                  = include src README.md
+FILE_PATTERNS          = *.hpp *.cpp *.md
+RECURSIVE              = YES
+
+# Main page settings
+USE_MDFILE_AS_MAINPAGE = README.md
+
+# HTML output settings
+GENERATE_HTML          = YES
+HTML_OUTPUT            = html
+GENERATE_TREEVIEW      = YES
+DISABLE_INDEX          = NO
+FULL_SIDEBAR           = YES
+HTML_EXTRA_STYLESHEET  = doxygen-awesome-css/doxygen-awesome.css \
+                         doxygen-awesome-css/doxygen-awesome-sidebar-only.css \
+                         doxygen-awesome-css/doxygen-awesome-sidebar-only-darkmode-toggle.css
+HTML_COLORSTYLE        = LIGHT
+HTML_HEADER            = doxygen_assets/header.html
+HTML_EXTRA_FILES       = doxygen-awesome-css/doxygen-awesome-darkmode-toggle.js \
+                         doxygen-awesome-css/doxygen-awesome-fragment-copy-button.js \
+                         doxygen-awesome-css/doxygen-awesome-paragraph-link.js \
+                         doxygen-awesome-css/doxygen-awesome-interactive-toc.js
+
+# Source Browser settings
+SOURCE_BROWSER         = YES
+INLINE_SOURCES         = YES
+REFERENCED_BY_RELATION = YES
+REFERENCES_RELATION    = YES
+
+# Preprocessor settings
+ENABLE_PREPROCESSING   = YES
+MACRO_EXPANSION        = YES
+SEARCH_INCLUDES        = YES
+INCLUDE_PATH           =
+
+# Graph settings
+HAVE_DOT               = YES
+DOT_IMAGE_FORMAT       = svg
+DOT_NUM_THREADS        = 2
+CLASS_GRAPH            = YES
+COLLABORATION_GRAPH    = YES
+GROUP_GRAPHS           = YES
+UML_LOOK               = YES
+TEMPLATE_RELATIONS     = YES
+INCLUDE_GRAPH          = YES
+INCLUDED_BY_GRAPH      = YES
+CALL_GRAPH             = YES
+CALLER_GRAPH           = YES
+GRAPHICAL_HIERARCHY    = YES
+DIRECTORY_GRAPH        = YES
+
+# Search engine optimization
+SEARCHENGINE           = YES
