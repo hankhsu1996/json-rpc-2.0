@@ -2,38 +2,38 @@
 
 This project is a lightweight, modern C++ library for implementing JSON-RPC 2.0 servers and clients. It is designed to be flexible, allowing integration with various transport layers. This library makes it easy to register methods and notifications, binding them to client logic efficiently.
 
-## Features
+## 🚀 Features
 
 - **JSON-RPC 2.0**: Fully compliant server and client implementation.
 - **Modern C++**: Written in C++17, ensuring a modern and efficient codebase.
 - **Transport-Agnostic**: Abstract transport layer support.
 - **Simple API**: Easy method and notification registration using lambda functions.
 
-## Dependencies
+## 📦 Dependencies
 
 - **CMake**: Version 3.19 or higher (for using CMake presets)
 - **Ninja**: Recommended build system
 - **C++ Compiler**: Must support C++17
 - **Conan**: For dependency management
 
-## Build and Test
+## 🛠 Build and Test
 
 To build and test the project, follow these steps:
 
-1. Install dependencies using Conan:
+### Step 1: Install dependencies using Conan:
 
 ```bash
 conan install . --output-folder=build --build=missing
 ```
 
-2. Configure and build the project:
+### Step 2: Configure and build the project:
 
 ```bash
 cmake --preset default
 cmake --build --preset default
 ```
 
-3. Run the tests:
+### Step 3: Run the tests:
 
 ```bash
 ctest --preset default
@@ -41,7 +41,7 @@ ctest --preset default
 
 These commands will install the necessary dependencies, configure the project, build it, and run the tests.
 
-## Examples
+## 📋 Examples
 
 ### Client
 
@@ -103,10 +103,10 @@ int main() {
 
 These examples demonstrate a simple stdio JSON-RPC client and server. For examples using other transports, such as HTTP, please visit the [examples folder](https://github.com/hankhsu1996/json-rpc-2.0/tree/main/examples).
 
-## Contributing
+## 🤝 Contributing
 
 We welcome contributions! If you have suggestions or find any issues, feel free to open an issue or pull request.
 
-## License
+## 📄 License
 
 This project is licensed under the MIT License. See the LICENSE file for more details.

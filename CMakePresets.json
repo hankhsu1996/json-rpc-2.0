@@ -22,7 +22,8 @@
     {
       "name": "default",
       "configurePreset": "default",
-      "hidden": false
+      "hidden": false,
+      "jobs": 0
     }
   ],
   "testPresets": [
