@@ -8,6 +8,9 @@
 
 namespace json_rpc {
 
+/**
+ * @brief Enumeration for library error kinds.
+ */
 enum class LibErrorKind {
   ParseError,
   InvalidRequest,
@@ -20,29 +23,65 @@ enum class LibErrorKind {
 using ErrorInfoMap =
     std::unordered_map<LibErrorKind, std::pair<int, const char *>>;
 
+/**
+ * @brief Represents a JSON-RPC response.
+ */
 class Response {
 public:
-  // Factory method to create a Response object from a JSON object
+  /**
+   * @brief Creates a Response object from a JSON object.
+   *
+   * @param responseJson The JSON object representing the response.
+   * @param id The ID of the request. It can be a JSON object or null.
+   * @return A Response object.
+   */
   static Response FromJson(const Json &responseJson, std::optional<Json> id);
 
-  // Factory method to create a successful Response object
+  /**
+   * @brief Creates a successful Response object.
+   *
+   * @param result The result of the method call.
+   * @param id The ID of the request. It can be a JSON object or null.
+   * @return A Response object indicating success.
+   */
   static Response SuccessResponse(
       const Json &result, const std::optional<Json> &id);
 
-  // Factory method to create a Response object for a library error
+  /**
+   * @brief Creates a Response object for a library error.
+   *
+   * @param errorKind The kind of library error.
+   * @param id The ID of the request. It can be a JSON object or null. If not
+   * provided, it defaults to null.
+   * @return A Response object indicating a library error.
+   */
   static Response CreateLibError(
       LibErrorKind errorKind, const std::optional<Json> &id = std::nullopt);
 
-  // Factory method to create a Response object for a user error
+  /**
+   * @brief Creates a Response object for a user error.
+   *
+   * @param error The JSON object representing the error.
+   * @param id The ID of the request. It can be a JSON object or null.
+   * @return A Response object indicating a user error.
+   */
   static Response UserErrorResponse(
       const Json &error, const std::optional<Json> &id);
 
-  // Serialize the Response object to a JSON object
+  /**
+   * @brief Serializes the Response object to a JSON object.
+   *
+   * @return The JSON representation of the response.
+   */
   inline Json ToJson() const {
     return response_;
   }
 
-  // Serialize the Response object to a string
+  /**
+   * @brief Serializes the Response object to a string.
+   *
+   * @return The string representation of the response.
+   */
   inline std::string ToStr() const {
     return response_.dump();
   }
@@ -50,12 +89,19 @@ public:
 private:
   Json response_;
 
-  // Private constructor to enforce factory method usage
+  /**
+   * @brief Constructs a Response object.
+   *
+   * @param response The JSON object representing the response.
+   * @param id The ID of the request. It can be a JSON object or null.
+   */
   explicit Response(
       const Json &response, std::optional<Json> id = std::nullopt);
 
+  /// @brief Validates the Response object.
   void ValidateResponse() const;
 
+  /// @brief Creates a JSON object representing an error response.
   static Json CreateErrorResponse(
       const std::string &message, int code, const std::optional<Json> &id);
   static const ErrorInfoMap errorInfoMap;
@@ -78,4 +124,5 @@ inline Json Response::CreateErrorResponse(
   }
   return response;
 }
+
 } // namespace json_rpc
