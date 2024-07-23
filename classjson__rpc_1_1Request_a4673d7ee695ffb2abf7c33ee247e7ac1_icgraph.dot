@@ -1,0 +1,13 @@
+digraph "json_rpc::Request::ToJson"
+{
+ // LATEX_PDF_SIZE
+  bgcolor="transparent";
+  edge [fontname=Helvetica,fontsize=10,labelfontname=Helvetica,labelfontsize=10];
+  node [fontname=Helvetica,fontsize=10,shape=box,height=0.2,width=0.4];
+  rankdir="RL";
+  Node1 [id="Node000001",label="json_rpc::Request::\lToJson",height=0.2,width=0.4,color="gray40", fillcolor="grey60", style="filled", fontcolor="black",tooltip="Serializes the Request object to a JSON object."];
+  Node1 -> Node2 [id="edge1_Node000001_Node000002",dir="back",color="steelblue1",style="solid",tooltip=" "];
+  Node2 [id="Node000002",label="json_rpc::Client::SendMethodCall",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$classjson__rpc_1_1Client.html#a13184e0d3d03b0c2c1d3578bb1467e4d",tooltip="Sends an RPC method call to the server."];
+  Node1 -> Node3 [id="edge2_Node000001_Node000003",dir="back",color="steelblue1",style="solid",tooltip=" "];
+  Node3 [id="Node000003",label="json_rpc::Client::SendNotification",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$classjson__rpc_1_1Client.html#aabf3cba313e0c2d180d9cd67b2133519",tooltip="Sends an RPC notification to the server."];
+}

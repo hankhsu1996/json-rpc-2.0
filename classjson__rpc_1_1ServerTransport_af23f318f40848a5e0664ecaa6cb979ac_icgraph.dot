@@ -1,0 +1,11 @@
+digraph "json_rpc::ServerTransport::Listen"
+{
+ // LATEX_PDF_SIZE
+  bgcolor="transparent";
+  edge [fontname=Helvetica,fontsize=10,labelfontname=Helvetica,labelfontsize=10];
+  node [fontname=Helvetica,fontsize=10,shape=box,height=0.2,width=0.4];
+  rankdir="RL";
+  Node1 [id="Node000001",label="json_rpc::ServerTransport\l::Listen",height=0.2,width=0.4,color="gray40", fillcolor="grey60", style="filled", fontcolor="black",tooltip="Listens for incoming messages."];
+  Node1 -> Node2 [id="edge1_Node000001_Node000002",dir="back",color="steelblue1",style="solid",tooltip=" "];
+  Node2 [id="Node000002",label="json_rpc::ServerTransport\l::Start",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$classjson__rpc_1_1ServerTransport.html#aea9608f02d90cb2288f0e9625a0cd579",tooltip="Starts the transport."];
+}

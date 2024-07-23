@@ -1,0 +1,15 @@
+digraph "json_rpc::FramedTransport::SendMessage"
+{
+ // LATEX_PDF_SIZE
+  bgcolor="transparent";
+  edge [fontname=Helvetica,fontsize=10,labelfontname=Helvetica,labelfontsize=10];
+  node [fontname=Helvetica,fontsize=10,shape=box,height=0.2,width=0.4];
+  rankdir="RL";
+  Node1 [id="Node000001",label="json_rpc::FramedTransport\l::SendMessage",height=0.2,width=0.4,color="gray40", fillcolor="grey60", style="filled", fontcolor="black",tooltip="Sends a framed message."];
+  Node1 -> Node2 [id="edge1_Node000001_Node000002",dir="back",color="steelblue1",style="solid",tooltip=" "];
+  Node2 [id="Node000002",label="json_rpc::FramedStdioServer\lTransport::Listen",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$classjson__rpc_1_1FramedStdioServerTransport.html#a9defce0b2696eb94d03cf5f0e2d057f9",tooltip="Listens for incoming messages and dispatches them to the appropriate handlers."];
+  Node1 -> Node3 [id="edge2_Node000001_Node000003",dir="back",color="steelblue1",style="solid",tooltip=" "];
+  Node3 [id="Node000003",label="json_rpc::FramedStdioClient\lTransport::SendMethodCall",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$classjson__rpc_1_1FramedStdioClientTransport.html#a2a877b1bf92d96ff9c20dca13c4eed51",tooltip="Sends an RPC method call to the server."];
+  Node1 -> Node4 [id="edge3_Node000001_Node000004",dir="back",color="steelblue1",style="solid",tooltip=" "];
+  Node4 [id="Node000004",label="json_rpc::FramedStdioClient\lTransport::SendNotification",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$classjson__rpc_1_1FramedStdioClientTransport.html#a899a697c084de4bf4db275db9bfa1da1",tooltip="Sends an RPC notification to the server."];
+}
