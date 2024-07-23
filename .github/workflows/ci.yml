@@ -25,7 +25,7 @@ jobs:
         uses: seanmiddleditch/gha-setup-ninja@v5
 
       - name: Cache pip
-        uses: actions/cache@v3
+        uses: actions/cache@v4
         with:
           path: |
             ~/.cache/pip
@@ -35,7 +35,7 @@ jobs:
             ${{ runner.os }}-pip-
 
       - name: Cache Conan
-        uses: actions/cache@v3
+        uses: actions/cache@v4
         with:
           path: ~/.conan2
           key: ${{ runner.os }}-conan-${{ hashFiles('conanfile.txt') }}
@@ -96,16 +96,34 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
+        with:
+          submodules: recursive
 
-      - name: Install Doxygen
+      - name: Cache Doxygen binary
+        id: cache-doxygen
+        uses: actions/cache@v4
+        with:
+          path: ~/doxygen-1.10.0
+          key: ${{ runner.os }}-doxygen-1.10.0
+          restore-keys: |
+            ${{ runner.os }}-doxygen-
+
+      - name: Install Doxygen if not cached
+        if: steps.cache-doxygen.outputs.cache-hit != 'true'
         run: |
           DOXYGEN_VERSION=1.10.0
+          mkdir -p ~/doxygen-1.10.0
           wget https://github.com/doxygen/doxygen/releases/download/Release_1_10_0/doxygen-${DOXYGEN_VERSION}.linux.bin.tar.gz
-          tar -xzf doxygen-${DOXYGEN_VERSION}.linux.bin.tar.gz
-          sudo cp -r doxygen-${DOXYGEN_VERSION}/bin/* /usr/local/bin/
+          tar -xzf doxygen-${DOXYGEN_VERSION}.linux.bin.tar.gz -C ~/doxygen-1.10.0 --strip-components=1
+
+      - name: Install Graphviz
+        uses: awalsh128/cache-apt-pkgs-action@v1
+        with:
+          packages: graphviz
+          version: 1.0
 
       - name: Generate Doxygen documentation
-        run: doxygen Doxyfile
+        run: ~/doxygen-1.10.0/bin/doxygen Doxyfile
 
       - name: Upload Doxygen documentation artifacts
         if: github.event_name == 'pull_request'

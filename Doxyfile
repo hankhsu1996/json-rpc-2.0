@@ -61,3 +61,6 @@ DIRECTORY_GRAPH        = YES
 
 # Search engine optimization
 SEARCHENGINE           = YES
+
+# General options
+QUIET                  = YES
