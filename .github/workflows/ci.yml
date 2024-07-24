@@ -92,6 +92,7 @@ jobs:
 
   docs:
     runs-on: ubuntu-latest
+    container: debian:latest
 
     steps:
       - name: Checkout repository
@@ -103,33 +104,31 @@ jobs:
         id: cache-doxygen
         uses: actions/cache@v4
         with:
-          path: ~/doxygen-1.10.0
-          key: ${{ runner.os }}-doxygen-1.10.0
+          path: ~/doxygen-1.11.0
+          key: ${{ runner.os }}-doxygen-1.11.0
           restore-keys: |
             ${{ runner.os }}-doxygen-
 
       - name: Install Doxygen if not cached
         if: steps.cache-doxygen.outputs.cache-hit != 'true'
         run: |
-          DOXYGEN_VERSION=1.10.0
-          mkdir -p ~/doxygen-1.10.0
-          wget https://github.com/doxygen/doxygen/releases/download/Release_1_10_0/doxygen-${DOXYGEN_VERSION}.linux.bin.tar.gz
-          tar -xzf doxygen-${DOXYGEN_VERSION}.linux.bin.tar.gz -C ~/doxygen-1.10.0 --strip-components=1
+          mkdir -p ~/doxygen-1.11.0
+          wget https://github.com/doxygen/doxygen/releases/download/Release_1_11_0/doxygen-1.11.0.linux.bin.tar.gz
+          tar -xzf doxygen-1.11.0.linux.bin.tar.gz -C ~/doxygen-1.11.0 --strip-components=1
 
       - name: Install Graphviz
-        uses: awalsh128/cache-apt-pkgs-action@v1
-        with:
-          packages: graphviz
-          version: 1.0
+        run: |
+          apt-get update
+          apt-get install -y graphviz
 
       - name: Generate Doxygen documentation
-        run: ~/doxygen-1.10.0/bin/doxygen Doxyfile
+        run: ~/doxygen-1.11.0/bin/doxygen Doxyfile
 
       - name: Upload Doxygen documentation artifacts
         uses: actions/upload-artifact@v4
         with:
           name: doxygen-docs
-          path: docs/html
+          path: docs/generated/html
 
   deploy:
     if: github.event_name == 'push' && github.ref == 'refs/heads/main'
@@ -146,11 +145,11 @@ jobs:
         uses: actions/download-artifact@v4
         with:
           name: doxygen-docs
-          path: docs/html
+          path: docs/generated/html
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./docs/html
+          publish_dir: ./docs/generated/html
           publish_branch: gh-pages

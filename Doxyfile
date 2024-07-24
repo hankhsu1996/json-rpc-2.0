@@ -3,7 +3,7 @@
 # Project-related settings
 PROJECT_NAME           = "JSON-RPC 2.0"
 PROJECT_BRIEF          = "JSON-RPC 2.0 for Modern C++"
-OUTPUT_DIRECTORY       = docs
+OUTPUT_DIRECTORY       = docs/generated
 OUTPUT_LANGUAGE        = English
 EXTRACT_ALL            = YES
 
@@ -64,3 +64,6 @@ SEARCHENGINE           = YES
 
 # General options
 QUIET                  = YES
+
+# LaTeX output settings
+GENERATE_LATEX         = NO
