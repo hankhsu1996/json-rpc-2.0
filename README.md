@@ -5,12 +5,10 @@ Welcome to the **JSON-RPC 2.0 Modern C++ Library**! This library provides a ligh
 ## ✨ Features
 
 - **Fully Compliant with JSON-RPC 2.0**: Supports method calls, notifications, comprehensive error handling, and batch requests.
-- **Modern C++**: Leverages C++17 features for clean, efficient, and maintainable code.
-- **Lightweight**: Focuses solely on the JSON-RPC protocol with minimal dependencies.
-- **Transport-Agnostic**: The transport layer is abstracted, allowing you to use the provided implementations or define your own.
-- **Server and Client Support**: Complete support for both server and client functionalities in JSON-RPC 2.0.
-- **Simple JSON Integration**: Uses [nlohmann/json](https://github.com/nlohmann/json) for JSON object interaction. Clients send and receive JSON, and servers register functions that handle JSON, ensuring ease of use.
-- **Flexible Handler Registration**: Register handlers using `std::function`, allowing the use of lambdas, function pointers, and other callable objects.
+- **Modern and Lightweight**: Leverages C++17 features with minimal dependencies, focusing solely on the JSON-RPC protocol.
+- **Transport-Agnostic**: Abstract transport layer allows use of provided implementations or custom ones.
+- **Simple JSON Integration**: Uses [nlohmann/json](https://github.com/nlohmann/json) for easy JSON object interaction, requiring no learning curve.
+- **Flexible Handler Registration**: Register handlers using `std::function`, supporting lambdas, function pointers, and other callable objects.
 
 ## 🚀 Getting Started
 
