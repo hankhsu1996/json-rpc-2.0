@@ -70,6 +70,9 @@ jobs:
     container: hankhsu1996/doxygen:1.11.0
 
     steps:
+      - name: Check git version
+        run: git --version
+
       - name: Checkout repository
         uses: actions/checkout@v4
         with:
