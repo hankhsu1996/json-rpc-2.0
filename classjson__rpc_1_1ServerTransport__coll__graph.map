@@ -1,0 +1,5 @@
+<map id="json_rpc::ServerTransport" name="json_rpc::ServerTransport">
+<area shape="rect" id="Node000001" title="Abstract base class for server transport mechanisms." alt="" coords="5,213,184,399"/>
+<area shape="rect" id="Node000002" href="$classjson__rpc_1_1Dispatcher.html" title="A class responsible for dispatching JSON&#45;RPC requests to the appropriate handlers." alt="" coords="11,5,179,151"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="97,151,97,197,92,197,92,151"/>
+</map>

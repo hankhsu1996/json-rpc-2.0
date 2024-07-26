@@ -1,0 +1,19 @@
+<map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
+<area shape="rect" id="Node000000" href="$classjson__rpc_1_1ClientTransport.html" title="An abstract class representing the transport mechanism for JSON&#45;RPC client." alt="" coords="11,55,193,80"/>
+<area shape="rect" id="Node000001" href="$classjson__rpc_1_1FramedStdioClientTransport.html" title="Client transport using framed stdio for communication." alt="" coords="254,105,458,145"/>
+<area shape="poly" id="edge1_Node000000_Node000001" title=" " alt="" coords="173,80,268,102,266,107,172,86"/>
+<area shape="rect" id="Node000007" href="$classjson__rpc_1_1HttpClientTransport.html" title="Client transport using HTTP for communication." alt="" coords="251,5,461,31"/>
+<area shape="poly" id="edge2_Node000000_Node000007" title=" " alt="" coords="181,49,289,28,290,33,182,55"/>
+<area shape="rect" id="Node000008" href="$classjson__rpc_1_1StdioClientTransport.html" title="Client transport using stdio for communication." alt="" coords="249,55,463,80"/>
+<area shape="poly" id="edge3_Node000000_Node000008" title=" " alt="" coords="207,65,249,65,249,70,207,70"/>
+<area shape="rect" id="Node000002" href="$classjson__rpc_1_1FramedTransport.html" title="Base class for framed transport mechanisms." alt="" coords="5,144,199,169"/>
+<area shape="poly" id="edge4_Node000002_Node000001" title=" " alt="" coords="212,140,254,135,254,140,212,145"/>
+<area shape="rect" id="Node000003" href="$classjson__rpc_1_1FramedStdioServerTransport.html" title="Server transport using framed stdio for communication." alt="" coords="252,169,460,209"/>
+<area shape="poly" id="edge5_Node000002_Node000003" title=" " alt="" coords="213,168,252,173,251,178,212,173"/>
+<area shape="rect" id="Node000004" href="$classjson__rpc_1_1ServerTransport.html" title="Abstract base class for server transport mechanisms." alt="" coords="9,233,195,259"/>
+<area shape="poly" id="edge6_Node000004_Node000003" title=" " alt="" coords="172,228,266,206,268,211,173,233"/>
+<area shape="rect" id="Node000005" href="$classjson__rpc_1_1HttpServerTransport.html" title="Server transport using HTTP for communication." alt="" coords="249,233,463,259"/>
+<area shape="poly" id="edge7_Node000004_Node000005" title=" " alt="" coords="209,243,248,243,248,249,209,249"/>
+<area shape="rect" id="Node000006" href="$classjson__rpc_1_1StdioServerTransport.html" title="Server transport using stdio for communication." alt="" coords="247,283,465,308"/>
+<area shape="poly" id="edge8_Node000004_Node000006" title=" " alt="" coords="182,259,290,280,289,285,181,264"/>
+</map>

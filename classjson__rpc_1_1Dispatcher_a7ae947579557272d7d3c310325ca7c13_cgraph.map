@@ -1,0 +1,7 @@
+<map id="json_rpc::Dispatcher::DispatchRequest" name="json_rpc::Dispatcher::DispatchRequest">
+<area shape="rect" id="Node000001" title="Dispatches an RPC request to the appropriate handler." alt="" coords="5,37,160,77"/>
+<area shape="rect" id="Node000002" href="$classjson__rpc_1_1Response.html#a103427d492c8a81ad1d169e2516695a2" title="Creates a Response object for a library error." alt="" coords="208,5,355,45"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="160,42,193,37,194,42,161,48"/>
+<area shape="rect" id="Node000003" href="$classjson__rpc_1_1Response.html#abe6908720f1e791dc06af7a7efba49c5" title="Serializes the Response object to a string." alt="" coords="208,69,355,109"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="161,67,194,73,193,78,160,72"/>
+</map>

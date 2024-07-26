@@ -1,0 +1,15 @@
+<map id="include/json_rpc/transports/framed_transport.hpp" name="include/json_rpc/transports/framed_transport.hpp">
+<area shape="rect" id="Node000001" title=" " alt="" coords="33,5,230,45"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="31,93,90,119"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="116,47,82,85,78,81,112,44"/>
+<area shape="rect" id="Node000003" href="$types_8hpp.html" title=" " alt="" coords="114,93,290,119"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="150,44,184,81,180,85,146,47"/>
+<area shape="rect" id="Node000004" title=" " alt="" coords="5,167,92,192"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="178,121,87,163,85,158,176,116"/>
+<area shape="rect" id="Node000005" title=" " alt="" coords="117,167,191,192"/>
+<area shape="poly" id="edge4_Node000003_Node000005" title=" " alt="" coords="196,121,172,157,167,154,192,118"/>
+<area shape="rect" id="Node000006" title=" " alt="" coords="216,167,284,192"/>
+<area shape="poly" id="edge5_Node000003_Node000006" title=" " alt="" coords="212,118,237,154,232,157,208,121"/>
+<area shape="rect" id="Node000007" title=" " alt="" coords="309,167,455,192"/>
+<area shape="poly" id="edge6_Node000003_Node000007" title=" " alt="" coords="232,116,341,159,339,164,230,121"/>
+</map>

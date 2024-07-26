@@ -1,0 +1,5 @@
+<map id="json_rpc::Request::Request" name="json_rpc::Request::Request">
+<area shape="rect" id="Node000001" title="Constructs a Request object." alt="" coords="199,5,344,45"/>
+<area shape="rect" id="Node000002" href="$classjson__rpc_1_1Request.html#a6f6524d3752224deabf85f804e4b4d1f" title="Creates a Request object from a JSON object." alt="" coords="5,5,151,45"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="185,28,151,28,151,23,185,23"/>
+</map>

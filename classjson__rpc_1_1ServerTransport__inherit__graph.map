@@ -1,0 +1,9 @@
+<map id="json_rpc::ServerTransport" name="json_rpc::ServerTransport">
+<area shape="rect" id="Node000001" title="Abstract base class for server transport mechanisms." alt="" coords="244,5,423,211"/>
+<area shape="rect" id="Node000002" href="$classjson__rpc_1_1FramedStdioServerTransport.html" title="Server transport using framed stdio for communication." alt="" coords="5,271,205,351"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="235,199,151,273,148,269,232,195"/>
+<area shape="rect" id="Node000003" href="$classjson__rpc_1_1HttpServerTransport.html" title="Server transport using HTTP for communication." alt="" coords="230,259,437,364"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="336,224,336,258,331,258,331,224"/>
+<area shape="rect" id="Node000004" href="$classjson__rpc_1_1StdioServerTransport.html" title="Server transport using stdio for communication." alt="" coords="461,279,672,344"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="435,193,532,276,528,281,431,197"/>
+</map>

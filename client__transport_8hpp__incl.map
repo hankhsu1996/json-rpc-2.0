@@ -1,0 +1,13 @@
+<map id="include/json_rpc/core/client_transport.hpp" name="include/json_rpc/core/client_transport.hpp">
+<area shape="rect" id="Node000001" title=" " alt="" coords="123,5,281,45"/>
+<area shape="rect" id="Node000002" href="$types_8hpp.html" title=" " alt="" coords="114,93,290,119"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="205,46,205,79,199,79,199,46"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="5,167,92,192"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="178,121,87,163,85,158,176,116"/>
+<area shape="rect" id="Node000004" title=" " alt="" coords="117,167,191,192"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="196,121,172,157,167,154,192,118"/>
+<area shape="rect" id="Node000005" title=" " alt="" coords="216,167,284,192"/>
+<area shape="poly" id="edge4_Node000002_Node000005" title=" " alt="" coords="212,118,237,154,232,157,208,121"/>
+<area shape="rect" id="Node000006" title=" " alt="" coords="309,167,455,192"/>
+<area shape="poly" id="edge5_Node000002_Node000006" title=" " alt="" coords="232,116,341,159,339,164,230,121"/>
+</map>

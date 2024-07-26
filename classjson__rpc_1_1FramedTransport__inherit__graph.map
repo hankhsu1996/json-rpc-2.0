@@ -1,0 +1,7 @@
+<map id="json_rpc::FramedTransport" name="json_rpc::FramedTransport">
+<area shape="rect" id="Node000001" title="Base class for framed transport mechanisms." alt="" coords="121,5,307,91"/>
+<area shape="rect" id="Node000002" href="$classjson__rpc_1_1FramedStdioClientTransport.html" title="Client transport using framed stdio for communication." alt="" coords="5,139,201,239"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="175,103,145,140,141,137,170,99"/>
+<area shape="rect" id="Node000003" href="$classjson__rpc_1_1FramedStdioServerTransport.html" title="Server transport using framed stdio for communication." alt="" coords="226,149,426,229"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="258,100,296,147,292,150,254,103"/>
+</map>
