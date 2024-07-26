@@ -1,0 +1,5 @@
+<map id="jsonrpc::StdioServerTransport" name="jsonrpc::StdioServerTransport">
+<area shape="rect" id="Node000001" title="Server transport using stdio for communication." alt="" coords="5,259,209,324"/>
+<area shape="rect" id="Node000002" href="$classjsonrpc_1_1ServerTransport.html" title="Abstract base class for server transport mechanisms." alt="" coords="22,5,193,211"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="110,224,110,259,105,259,105,224"/>
+</map>

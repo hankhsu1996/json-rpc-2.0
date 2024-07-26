@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['json_0',['Json',['../namespacejson__rpc.html#a222f0beea3cbdbf35d76ba7a7f0e544b',1,'json_rpc']]]
+  ['json_0',['Json',['../namespacejsonrpc.html#a268131906d306aae6d599fd490c524b5',1,'jsonrpc']]]
 ];

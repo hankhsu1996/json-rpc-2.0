@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['errorinfomap_0',['ErrorInfoMap',['../namespacejson__rpc.html#ad7a2f83a54ea1a226f56ce7e49e955a4',1,'json_rpc']]],
-  ['examples_1',['📋 Examples',['../index.html#autotoc_md7',1,'']]]
+  ['errorinfomap_0',['ErrorInfoMap',['../namespacejsonrpc.html#a4220671946ba615cedb811716df00067',1,'jsonrpc']]],
+  ['examples_1',['📖 Usage and Examples',['../index.html#autotoc_md5',1,'']]]
 ];

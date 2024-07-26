@@ -1,7 +1,7 @@
 var searchData=
 [
-  ['receivemessage_0',['ReceiveMessage',['../classjson__rpc_1_1FramedTransport.html#a856a511e9ddc74f451645d3801007c17',1,'json_rpc::FramedTransport']]],
-  ['registermethodcall_1',['RegisterMethodCall',['../classjson__rpc_1_1Dispatcher.html#abe0707afaf85e4a87a111c5c030600cd',1,'json_rpc::Dispatcher::RegisterMethodCall()'],['../classjson__rpc_1_1Server.html#af7efc52020e9ade71f02de37780ecaa2',1,'json_rpc::Server::RegisterMethodCall()']]],
-  ['registernotification_2',['RegisterNotification',['../classjson__rpc_1_1Dispatcher.html#ac74ce983ec0034cf49b2e67b8acef349',1,'json_rpc::Dispatcher::RegisterNotification()'],['../classjson__rpc_1_1Server.html#a4ddd68215a4f741100ebb7c8bd05c33b',1,'json_rpc::Server::RegisterNotification()']]],
-  ['request_3',['Request',['../classjson__rpc_1_1Request.html#a8b7e634bbd80d6fd18c01f956bc5fd87',1,'json_rpc::Request']]]
+  ['receivemessage_0',['ReceiveMessage',['../classjsonrpc_1_1FramedTransport.html#a53c16990457a80e2e9a7113cdb3034a5',1,'jsonrpc::FramedTransport']]],
+  ['registermethodcall_1',['RegisterMethodCall',['../classjsonrpc_1_1Dispatcher.html#a5cf30f7a8a32097cf751c784dea88b6c',1,'jsonrpc::Dispatcher::RegisterMethodCall()'],['../classjsonrpc_1_1Server.html#a0e73d2390765b2eb30d972c4e05e3f53',1,'jsonrpc::Server::RegisterMethodCall()']]],
+  ['registernotification_2',['RegisterNotification',['../classjsonrpc_1_1Dispatcher.html#aa4c2d913b9abf30570d180da5482358f',1,'jsonrpc::Dispatcher::RegisterNotification()'],['../classjsonrpc_1_1Server.html#a14b406973bfa147d72a0125a2328b3a3',1,'jsonrpc::Server::RegisterNotification()']]],
+  ['request_3',['Request',['../classjsonrpc_1_1Request.html#adcf52e722152e181a25e72b233b72d8c',1,'jsonrpc::Request']]]
 ];

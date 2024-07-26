@@ -1,5 +1,0 @@
-<map id="json_rpc::Client::SendNotification" name="json_rpc::Client::SendNotification">
-<area shape="rect" id="Node000001" title="Sends an RPC notification to the server." alt="" coords="5,13,243,38"/>
-<area shape="rect" id="Node000002" href="$classjson__rpc_1_1Request.html#a4673d7ee695ffb2abf7c33ee247e7ac1" title="Serializes the Request object to a JSON object." alt="" coords="291,5,436,45"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="243,23,277,23,277,28,243,28"/>
-</map>

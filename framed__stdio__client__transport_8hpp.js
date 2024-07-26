@@ -1,4 +1,4 @@
 var framed__stdio__client__transport_8hpp =
 [
-    [ "json_rpc::FramedStdioClientTransport", "classjson__rpc_1_1FramedStdioClientTransport.html", "classjson__rpc_1_1FramedStdioClientTransport" ]
+    [ "jsonrpc::FramedStdioClientTransport", "classjsonrpc_1_1FramedStdioClientTransport.html", "classjsonrpc_1_1FramedStdioClientTransport" ]
 ];

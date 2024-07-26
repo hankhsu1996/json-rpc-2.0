@@ -1,5 +1,0 @@
-<map id="json_rpc::StdioClientTransport" name="json_rpc::StdioClientTransport">
-<area shape="rect" id="Node000001" title="Client transport using stdio for communication." alt="" coords="5,159,212,244"/>
-<area shape="rect" id="Node000002" href="$classjson__rpc_1_1ClientTransport.html" title="An abstract class representing the transport mechanism for JSON&#45;RPC client." alt="" coords="21,5,196,111"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="111,124,111,159,106,159,106,124"/>
-</map>

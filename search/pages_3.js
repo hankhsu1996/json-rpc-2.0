@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['implementation_0',['JSON-RPC 2.0 C++ Implementation',['../index.html',1,'']]]
+  ['json_20rpc_202_200_20modern_20c_20library_0',['JSON-RPC 2.0 Modern C++ Library',['../index.html',1,'']]]
 ];

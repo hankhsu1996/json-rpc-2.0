@@ -1,0 +1,7 @@
+<map id="jsonrpc::FramedStdioServerTransport" name="jsonrpc::FramedStdioServerTransport">
+<area shape="rect" id="Node000001" title="Server transport using framed stdio for communication." alt="" coords="93,259,286,339"/>
+<area shape="rect" id="Node000002" href="$classjsonrpc_1_1ServerTransport.html" title="Abstract base class for server transport mechanisms." alt="" coords="5,5,176,211"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="153,222,171,257,166,259,148,224"/>
+<area shape="rect" id="Node000003" href="$classjsonrpc_1_1FramedTransport.html" title="Base class for framed transport mechanisms." alt="" coords="200,65,379,151"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="263,164,212,260,208,257,258,162"/>
+</map>

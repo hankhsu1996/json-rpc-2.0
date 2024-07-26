@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.11.0"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>JSON-RPC 2.0: include/json_rpc/core/request.hpp Source File</title>
+<title>JSON-RPC 2.0: include/jsonrpc/core/request.hpp Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -118,39 +118,39 @@ $(function(){initNavTree('request_8hpp_source.html',''); initResizable(true); })
 <div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span><span class="preprocessor">#include &lt;optional&gt;</span></div>
 <div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="preprocessor">#include &lt;string&gt;</span></div>
 <div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span> </div>
-<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span><span class="preprocessor">#include &quot;<a class="code" href="types_8hpp.html">json_rpc/core/types.hpp</a>&quot;</span></div>
+<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span><span class="preprocessor">#include &quot;<a class="code" href="types_8hpp.html">jsonrpc/core/types.hpp</a>&quot;</span></div>
 <div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span> </div>
-<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="keyword">namespace </span><a class="code hl_namespace" href="namespacejson__rpc.html">json_rpc</a> {</div>
+<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="keyword">namespace </span><a class="code hl_namespace" href="namespacejsonrpc.html">jsonrpc</a> {</div>
 <div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span> </div>
 <div class="foldopen" id="foldopen00013" data-start="{" data-end="};">
-<div class="line"><a id="l00013" name="l00013"></a><span class="lineno"><a class="line" href="classjson__rpc_1_1Request.html">   13</a></span><span class="keyword">class </span><a class="code hl_class" href="classjson__rpc_1_1Request.html">Request</a> {</div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno"><a class="line" href="classjsonrpc_1_1Request.html">   13</a></span><span class="keyword">class </span><a class="code hl_class" href="classjsonrpc_1_1Request.html">Request</a> {</div>
 <div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span><span class="keyword">public</span>:</div>
 <div class="foldopen" id="foldopen00022" data-start="{" data-end="}">
-<div class="line"><a id="l00022" name="l00022"></a><span class="lineno"><a class="line" href="classjson__rpc_1_1Request.html#a8b7e634bbd80d6fd18c01f956bc5fd87">   22</a></span>  <span class="keyword">explicit</span> <a class="code hl_function" href="classjson__rpc_1_1Request.html#a8b7e634bbd80d6fd18c01f956bc5fd87">Request</a>(<span class="keyword">const</span> std::string &amp;method,</div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno"><a class="line" href="classjsonrpc_1_1Request.html#adcf52e722152e181a25e72b233b72d8c">   22</a></span>  <span class="keyword">explicit</span> <a class="code hl_function" href="classjsonrpc_1_1Request.html#adcf52e722152e181a25e72b233b72d8c">Request</a>(<span class="keyword">const</span> std::string &amp;method,</div>
 <div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span>      <span class="keyword">const</span> std::optional&lt;Json&gt; &amp;params = std::nullopt,</div>
 <div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span>      std::optional&lt;Json&gt; <span class="keywordtype">id</span> = std::nullopt)</div>
 <div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span>      : method_(method), params_(params), id_(id) {</div>
 <div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span>  }</div>
 </div>
 <div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span> </div>
-<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>  <span class="keyword">static</span> <a class="code hl_class" href="classjson__rpc_1_1Request.html">Request</a> <a class="code hl_function" href="classjson__rpc_1_1Request.html#a6f6524d3752224deabf85f804e4b4d1f">FromJson</a>(<span class="keyword">const</span> <a class="code hl_typedef" href="namespacejson__rpc.html#a222f0beea3cbdbf35d76ba7a7f0e544b">Json</a> &amp;jsonObj);</div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>  <span class="keyword">static</span> <a class="code hl_class" href="classjsonrpc_1_1Request.html">Request</a> <a class="code hl_function" href="classjsonrpc_1_1Request.html#aeef9a399fe1c52b7affd95d836b813b6">FromJson</a>(<span class="keyword">const</span> <a class="code hl_typedef" href="namespacejsonrpc.html#a268131906d306aae6d599fd490c524b5">Json</a> &amp;jsonObj);</div>
 <div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span> </div>
-<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>  <a class="code hl_typedef" href="namespacejson__rpc.html#a222f0beea3cbdbf35d76ba7a7f0e544b">Json</a> <a class="code hl_function" href="classjson__rpc_1_1Request.html#a4673d7ee695ffb2abf7c33ee247e7ac1">ToJson</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>  <a class="code hl_typedef" href="namespacejsonrpc.html#a268131906d306aae6d599fd490c524b5">Json</a> <a class="code hl_function" href="classjsonrpc_1_1Request.html#ae3a4906479b44b119b2a093433af1a87">ToJson</a>() <span class="keyword">const</span>;</div>
 <div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span> </div>
 <div class="foldopen" id="foldopen00044" data-start="{" data-end="}">
-<div class="line"><a id="l00044" name="l00044"></a><span class="lineno"><a class="line" href="classjson__rpc_1_1Request.html#a681d914b8d25200d356f1f00fffb81f7">   44</a></span>  std::string <a class="code hl_function" href="classjson__rpc_1_1Request.html#a681d914b8d25200d356f1f00fffb81f7">GetMethod</a>()<span class="keyword"> const </span>{</div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno"><a class="line" href="classjsonrpc_1_1Request.html#aee1f58a699a0151444738a2c75455e90">   44</a></span>  std::string <a class="code hl_function" href="classjsonrpc_1_1Request.html#aee1f58a699a0151444738a2c75455e90">GetMethod</a>()<span class="keyword"> const </span>{</div>
 <div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>    <span class="keywordflow">return</span> method_;</div>
 <div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>  }</div>
 </div>
 <div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span> </div>
 <div class="foldopen" id="foldopen00049" data-start="{" data-end="}">
-<div class="line"><a id="l00049" name="l00049"></a><span class="lineno"><a class="line" href="classjson__rpc_1_1Request.html#ac0a0b26eb383e0cd55c01063bfd795a5">   49</a></span>  std::optional&lt;Json&gt; <a class="code hl_function" href="classjson__rpc_1_1Request.html#ac0a0b26eb383e0cd55c01063bfd795a5">GetParams</a>()<span class="keyword"> const </span>{</div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno"><a class="line" href="classjsonrpc_1_1Request.html#a1d52faada58d61610d8c3c01c55f1e96">   49</a></span>  std::optional&lt;Json&gt; <a class="code hl_function" href="classjsonrpc_1_1Request.html#a1d52faada58d61610d8c3c01c55f1e96">GetParams</a>()<span class="keyword"> const </span>{</div>
 <div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>    <span class="keywordflow">return</span> params_;</div>
 <div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>  }</div>
 </div>
 <div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span> </div>
 <div class="foldopen" id="foldopen00054" data-start="{" data-end="}">
-<div class="line"><a id="l00054" name="l00054"></a><span class="lineno"><a class="line" href="classjson__rpc_1_1Request.html#a24f22ce35565f58e288eb4baffcb9d4f">   54</a></span>  std::optional&lt;Json&gt; <a class="code hl_function" href="classjson__rpc_1_1Request.html#a24f22ce35565f58e288eb4baffcb9d4f">GetId</a>()<span class="keyword"> const </span>{</div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno"><a class="line" href="classjsonrpc_1_1Request.html#a83315d283dbb6854e42b1a00e5e3c50b">   54</a></span>  std::optional&lt;Json&gt; <a class="code hl_function" href="classjsonrpc_1_1Request.html#a83315d283dbb6854e42b1a00e5e3c50b">GetId</a>()<span class="keyword"> const </span>{</div>
 <div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>    <span class="keywordflow">return</span> id_;</div>
 <div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>  }</div>
 </div>
@@ -164,23 +164,23 @@ $(function(){initNavTree('request_8hpp_source.html',''); initResizable(true); })
 <div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span>};</div>
 </div>
 <div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span> </div>
-<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span>} <span class="comment">// namespace json_rpc</span></div>
-<div class="ttc" id="aclassjson__rpc_1_1Request_html"><div class="ttname"><a href="classjson__rpc_1_1Request.html">json_rpc::Request</a></div><div class="ttdoc">Represents a JSON-RPC request.</div><div class="ttdef"><b>Definition</b> <a href="#l00013">request.hpp:13</a></div></div>
-<div class="ttc" id="aclassjson__rpc_1_1Request_html_a24f22ce35565f58e288eb4baffcb9d4f"><div class="ttname"><a href="classjson__rpc_1_1Request.html#a24f22ce35565f58e288eb4baffcb9d4f">json_rpc::Request::GetId</a></div><div class="ttdeci">std::optional&lt; Json &gt; GetId() const</div><div class="ttdoc">Gets the request ID.</div><div class="ttdef"><b>Definition</b> <a href="#l00054">request.hpp:54</a></div></div>
-<div class="ttc" id="aclassjson__rpc_1_1Request_html_a4673d7ee695ffb2abf7c33ee247e7ac1"><div class="ttname"><a href="classjson__rpc_1_1Request.html#a4673d7ee695ffb2abf7c33ee247e7ac1">json_rpc::Request::ToJson</a></div><div class="ttdeci">Json ToJson() const</div><div class="ttdoc">Serializes the Request object to a JSON object.</div><div class="ttdef"><b>Definition</b> <a href="request_8cpp_source.html#l00014">request.cpp:14</a></div></div>
-<div class="ttc" id="aclassjson__rpc_1_1Request_html_a681d914b8d25200d356f1f00fffb81f7"><div class="ttname"><a href="classjson__rpc_1_1Request.html#a681d914b8d25200d356f1f00fffb81f7">json_rpc::Request::GetMethod</a></div><div class="ttdeci">std::string GetMethod() const</div><div class="ttdoc">Gets the method name.</div><div class="ttdef"><b>Definition</b> <a href="#l00044">request.hpp:44</a></div></div>
-<div class="ttc" id="aclassjson__rpc_1_1Request_html_a6f6524d3752224deabf85f804e4b4d1f"><div class="ttname"><a href="classjson__rpc_1_1Request.html#a6f6524d3752224deabf85f804e4b4d1f">json_rpc::Request::FromJson</a></div><div class="ttdeci">static Request FromJson(const Json &amp;jsonObj)</div><div class="ttdoc">Creates a Request object from a JSON object.</div><div class="ttdef"><b>Definition</b> <a href="request_8cpp_source.html#l00005">request.cpp:5</a></div></div>
-<div class="ttc" id="aclassjson__rpc_1_1Request_html_a8b7e634bbd80d6fd18c01f956bc5fd87"><div class="ttname"><a href="classjson__rpc_1_1Request.html#a8b7e634bbd80d6fd18c01f956bc5fd87">json_rpc::Request::Request</a></div><div class="ttdeci">Request(const std::string &amp;method, const std::optional&lt; Json &gt; &amp;params=std::nullopt, std::optional&lt; Json &gt; id=std::nullopt)</div><div class="ttdoc">Constructs a Request object.</div><div class="ttdef"><b>Definition</b> <a href="#l00022">request.hpp:22</a></div></div>
-<div class="ttc" id="aclassjson__rpc_1_1Request_html_ac0a0b26eb383e0cd55c01063bfd795a5"><div class="ttname"><a href="classjson__rpc_1_1Request.html#ac0a0b26eb383e0cd55c01063bfd795a5">json_rpc::Request::GetParams</a></div><div class="ttdeci">std::optional&lt; Json &gt; GetParams() const</div><div class="ttdoc">Gets the parameters.</div><div class="ttdef"><b>Definition</b> <a href="#l00049">request.hpp:49</a></div></div>
-<div class="ttc" id="anamespacejson__rpc_html"><div class="ttname"><a href="namespacejson__rpc.html">json_rpc</a></div><div class="ttdef"><b>Definition</b> <a href="client_8hpp_source.html#l00011">client.hpp:11</a></div></div>
-<div class="ttc" id="anamespacejson__rpc_html_a222f0beea3cbdbf35d76ba7a7f0e544b"><div class="ttname"><a href="namespacejson__rpc.html#a222f0beea3cbdbf35d76ba7a7f0e544b">json_rpc::Json</a></div><div class="ttdeci">nlohmann::json Json</div><div class="ttdoc">Alias for the JSON type used in the library.</div><div class="ttdef"><b>Definition</b> <a href="types_8hpp_source.html#l00014">types.hpp:14</a></div></div>
+<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span>} <span class="comment">// namespace jsonrpc</span></div>
+<div class="ttc" id="aclassjsonrpc_1_1Request_html"><div class="ttname"><a href="classjsonrpc_1_1Request.html">jsonrpc::Request</a></div><div class="ttdoc">Represents a JSON-RPC request.</div><div class="ttdef"><b>Definition</b> <a href="#l00013">request.hpp:13</a></div></div>
+<div class="ttc" id="aclassjsonrpc_1_1Request_html_a1d52faada58d61610d8c3c01c55f1e96"><div class="ttname"><a href="classjsonrpc_1_1Request.html#a1d52faada58d61610d8c3c01c55f1e96">jsonrpc::Request::GetParams</a></div><div class="ttdeci">std::optional&lt; Json &gt; GetParams() const</div><div class="ttdoc">Gets the parameters.</div><div class="ttdef"><b>Definition</b> <a href="#l00049">request.hpp:49</a></div></div>
+<div class="ttc" id="aclassjsonrpc_1_1Request_html_a83315d283dbb6854e42b1a00e5e3c50b"><div class="ttname"><a href="classjsonrpc_1_1Request.html#a83315d283dbb6854e42b1a00e5e3c50b">jsonrpc::Request::GetId</a></div><div class="ttdeci">std::optional&lt; Json &gt; GetId() const</div><div class="ttdoc">Gets the request ID.</div><div class="ttdef"><b>Definition</b> <a href="#l00054">request.hpp:54</a></div></div>
+<div class="ttc" id="aclassjsonrpc_1_1Request_html_adcf52e722152e181a25e72b233b72d8c"><div class="ttname"><a href="classjsonrpc_1_1Request.html#adcf52e722152e181a25e72b233b72d8c">jsonrpc::Request::Request</a></div><div class="ttdeci">Request(const std::string &amp;method, const std::optional&lt; Json &gt; &amp;params=std::nullopt, std::optional&lt; Json &gt; id=std::nullopt)</div><div class="ttdoc">Constructs a Request object.</div><div class="ttdef"><b>Definition</b> <a href="#l00022">request.hpp:22</a></div></div>
+<div class="ttc" id="aclassjsonrpc_1_1Request_html_ae3a4906479b44b119b2a093433af1a87"><div class="ttname"><a href="classjsonrpc_1_1Request.html#ae3a4906479b44b119b2a093433af1a87">jsonrpc::Request::ToJson</a></div><div class="ttdeci">Json ToJson() const</div><div class="ttdoc">Serializes the Request object to a JSON object.</div><div class="ttdef"><b>Definition</b> <a href="request_8cpp_source.html#l00014">request.cpp:14</a></div></div>
+<div class="ttc" id="aclassjsonrpc_1_1Request_html_aee1f58a699a0151444738a2c75455e90"><div class="ttname"><a href="classjsonrpc_1_1Request.html#aee1f58a699a0151444738a2c75455e90">jsonrpc::Request::GetMethod</a></div><div class="ttdeci">std::string GetMethod() const</div><div class="ttdoc">Gets the method name.</div><div class="ttdef"><b>Definition</b> <a href="#l00044">request.hpp:44</a></div></div>
+<div class="ttc" id="aclassjsonrpc_1_1Request_html_aeef9a399fe1c52b7affd95d836b813b6"><div class="ttname"><a href="classjsonrpc_1_1Request.html#aeef9a399fe1c52b7affd95d836b813b6">jsonrpc::Request::FromJson</a></div><div class="ttdeci">static Request FromJson(const Json &amp;jsonObj)</div><div class="ttdoc">Creates a Request object from a JSON object.</div><div class="ttdef"><b>Definition</b> <a href="request_8cpp_source.html#l00005">request.cpp:5</a></div></div>
+<div class="ttc" id="anamespacejsonrpc_html"><div class="ttname"><a href="namespacejsonrpc.html">jsonrpc</a></div><div class="ttdef"><b>Definition</b> <a href="client_8hpp_source.html#l00011">client.hpp:11</a></div></div>
+<div class="ttc" id="anamespacejsonrpc_html_a268131906d306aae6d599fd490c524b5"><div class="ttname"><a href="namespacejsonrpc.html#a268131906d306aae6d599fd490c524b5">jsonrpc::Json</a></div><div class="ttdeci">nlohmann::json Json</div><div class="ttdoc">Alias for the JSON type used in the library.</div><div class="ttdef"><b>Definition</b> <a href="types_8hpp_source.html#l00014">types.hpp:14</a></div></div>
 <div class="ttc" id="atypes_8hpp_html"><div class="ttname"><a href="types_8hpp.html">types.hpp</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a class="el" href="dir_d44c64559bbebec7f509842c48db8b23.html">include</a></li><li class="navelem"><a class="el" href="dir_7ac802cac74470c8ac558a06c59b034f.html">json_rpc</a></li><li class="navelem"><a class="el" href="dir_3f1475b8057c1254a12701e152ba2e42.html">core</a></li><li class="navelem"><a class="el" href="request_8hpp.html">request.hpp</a></li>
+    <li class="navelem"><a class="el" href="dir_d44c64559bbebec7f509842c48db8b23.html">include</a></li><li class="navelem"><a class="el" href="dir_91acd94fd8e19b606395a4f5e16e64f3.html">jsonrpc</a></li><li class="navelem"><a class="el" href="dir_87d75186b0afe857c0e692c841eb80f3.html">core</a></li><li class="navelem"><a class="el" href="request_8hpp.html">request.hpp</a></li>
     <li class="footer">Generated by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.11.0 </li>
   </ul>
 </div>

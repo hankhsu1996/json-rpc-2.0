@@ -1,9 +1,0 @@
-<map id="json_rpc::FramedTransport::SendMessage" name="json_rpc::FramedTransport::SendMessage">
-<area shape="rect" id="Node000001" title="Sends a framed message." alt="" coords="261,69,455,109"/>
-<area shape="rect" id="Node000002" href="$classjson__rpc_1_1FramedStdioServerTransport.html#a9defce0b2696eb94d03cf5f0e2d057f9" title="Listens for incoming messages and dispatches them to the appropriate handlers." alt="" coords="5,5,213,45"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="266,68,187,48,188,43,267,63"/>
-<area shape="rect" id="Node000003" href="$classjson__rpc_1_1FramedStdioClientTransport.html#a2a877b1bf92d96ff9c20dca13c4eed51" title="Sends an RPC method call to the server." alt="" coords="7,69,211,109"/>
-<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="248,92,211,92,211,87,248,87"/>
-<area shape="rect" id="Node000004" href="$classjson__rpc_1_1FramedStdioClientTransport.html#a899a697c084de4bf4db275db9bfa1da1" title="Sends an RPC notification to the server." alt="" coords="7,133,211,173"/>
-<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="267,115,188,136,187,131,266,110"/>
-</map>

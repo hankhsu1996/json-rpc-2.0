@@ -1,0 +1,5 @@
+<map id="jsonrpc::HttpClientTransport" name="jsonrpc::HttpClientTransport">
+<area shape="rect" id="Node000001" title="Client transport using HTTP for communication." alt="" coords="5,159,200,264"/>
+<area shape="rect" id="Node000002" href="$classjsonrpc_1_1ClientTransport.html" title="An abstract class representing the transport mechanism for JSON&#45;RPC client." alt="" coords="19,5,186,111"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="105,124,105,158,100,158,100,124"/>
+</map>

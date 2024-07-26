@@ -1,5 +1,7 @@
 var searchData=
 [
-  ['usererrorresponse_0',['UserErrorResponse',['../classjson__rpc_1_1Response.html#a60286c113afc0bf064a3fa501dfaf665',1,'json_rpc::Response']]],
-  ['using_20conan_3a_1',['Step 1: Install dependencies using Conan:',['../index.html#autotoc_md4',1,'']]]
+  ['usage_20and_20examples_0',['📖 Usage and Examples',['../index.html#autotoc_md5',1,'']]],
+  ['usererrorresponse_1',['UserErrorResponse',['../classjsonrpc_1_1Response.html#a8826854a59e5e4154265cecbb6b628d6',1,'jsonrpc::Response']]],
+  ['using_20cmake_20fetchcontent_2',['Using CMake FetchContent',['../index.html#autotoc_md3',1,'']]],
+  ['using_20conan_202_3',['Using Conan 2',['../index.html#autotoc_md4',1,'']]]
 ];

@@ -1,7 +1,0 @@
-<map id="json_rpc::ServerTransport::IsRunning" name="json_rpc::ServerTransport::IsRunning">
-<area shape="rect" id="Node000001" title="Checks if the transport is running." alt="" coords="272,37,459,77"/>
-<area shape="rect" id="Node000002" href="$classjson__rpc_1_1FramedStdioServerTransport.html#a9defce0b2696eb94d03cf5f0e2d057f9" title="Listens for incoming messages and dispatches them to the appropriate handlers." alt="" coords="11,5,219,45"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="258,46,219,41,219,36,259,41"/>
-<area shape="rect" id="Node000003" href="$classjson__rpc_1_1StdioServerTransport.html#af0140236cf0e829636f50beab3306852" title="Listens for incoming messages and dispatches them to the appropriate handlers." alt="" coords="5,69,224,109"/>
-<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="258,74,225,78,224,73,258,68"/>
-</map>

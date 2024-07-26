@@ -1,4 +1,4 @@
 var client_8hpp =
 [
-    [ "json_rpc::Client", "classjson__rpc_1_1Client.html", "classjson__rpc_1_1Client" ]
+    [ "jsonrpc::Client", "classjsonrpc_1_1Client.html", "classjsonrpc_1_1Client" ]
 ];

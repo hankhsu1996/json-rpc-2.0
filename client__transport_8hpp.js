@@ -1,4 +1,4 @@
 var client__transport_8hpp =
 [
-    [ "json_rpc::ClientTransport", "classjson__rpc_1_1ClientTransport.html", "classjson__rpc_1_1ClientTransport" ]
+    [ "jsonrpc::ClientTransport", "classjsonrpc_1_1ClientTransport.html", "classjsonrpc_1_1ClientTransport" ]
 ];

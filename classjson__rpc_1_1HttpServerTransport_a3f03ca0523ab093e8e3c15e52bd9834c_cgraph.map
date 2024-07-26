@@ -1,9 +1,0 @@
-<map id="json_rpc::HttpServerTransport::HttpServerTransport" name="json_rpc::HttpServerTransport::HttpServerTransport">
-<area shape="rect" id="Node000001" title="Constructs an HttpServerTransport object." alt="" coords="5,37,220,77"/>
-<area shape="rect" id="Node000002" href="$classjson__rpc_1_1Dispatcher.html#a7ae947579557272d7d3c310325ca7c13" title="Dispatches an RPC request to the appropriate handler." alt="" coords="268,37,423,77"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="220,55,254,55,254,60,220,60"/>
-<area shape="rect" id="Node000003" href="$classjson__rpc_1_1Response.html#a103427d492c8a81ad1d169e2516695a2" title="Creates a Response object for a library error." alt="" coords="471,5,617,45"/>
-<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="423,42,456,37,457,42,423,48"/>
-<area shape="rect" id="Node000004" href="$classjson__rpc_1_1Response.html#abe6908720f1e791dc06af7a7efba49c5" title="Serializes the Response object to a string." alt="" coords="471,69,617,109"/>
-<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="423,67,457,73,456,78,423,72"/>
-</map>

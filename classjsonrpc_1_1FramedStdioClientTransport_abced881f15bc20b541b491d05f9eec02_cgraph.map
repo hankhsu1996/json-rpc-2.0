@@ -1,0 +1,7 @@
+<map id="jsonrpc::FramedStdioClientTransport::SendMethodCall" name="jsonrpc::FramedStdioClientTransport::SendMethodCall">
+<area shape="rect" id="Node000001" title="Sends an RPC method call to the server." alt="" coords="5,37,203,77"/>
+<area shape="rect" id="Node000002" href="$classjsonrpc_1_1FramedTransport.html#a53c16990457a80e2e9a7113cdb3034a5" title="Receives a framed message." alt="" coords="251,5,437,45"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="203,42,237,37,238,42,203,47"/>
+<area shape="rect" id="Node000003" href="$classjsonrpc_1_1FramedTransport.html#a2dca4a68bd149386116403f61cc2e62f" title="Sends a framed message." alt="" coords="251,69,437,109"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="203,68,238,72,237,78,203,73"/>
+</map>

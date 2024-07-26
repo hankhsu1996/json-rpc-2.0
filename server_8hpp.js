@@ -1,4 +1,4 @@
 var server_8hpp =
 [
-    [ "json_rpc::Server", "classjson__rpc_1_1Server.html", "classjson__rpc_1_1Server" ]
+    [ "jsonrpc::Server", "classjsonrpc_1_1Server.html", "classjsonrpc_1_1Server" ]
 ];

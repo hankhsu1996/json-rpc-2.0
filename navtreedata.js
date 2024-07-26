@@ -25,7 +25,7 @@
 var NAVTREE =
 [
   [ "JSON-RPC 2.0", "index.html", [
-    [ "JSON-RPC 2.0 C++ Implementation", "index.html", "index" ],
+    [ "JSON-RPC 2.0 Modern C++ Library", "index.html", "index" ],
     [ "Namespaces", "namespaces.html", [
       [ "Namespace List", "namespaces.html", "namespaces_dup" ],
       [ "Namespace Members", "namespacemembers.html", [

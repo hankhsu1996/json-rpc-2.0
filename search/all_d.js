@@ -1,7 +1,9 @@
 var searchData=
 [
-  ['json_0',['Json',['../namespacejson__rpc.html#a222f0beea3cbdbf35d76ba7a7f0e544b',1,'json_rpc']]],
-  ['json_20rpc_202_200_20c_20implementation_1',['JSON-RPC 2.0 C++ Implementation',['../index.html',1,'']]],
-  ['json_5frpc_2',['json_rpc',['../namespacejson__rpc.html',1,'']]],
-  ['json_5frpc_2ehpp_3',['json_rpc.hpp',['../json__rpc_8hpp.html',1,'']]]
+  ['json_0',['Json',['../namespacejsonrpc.html#a268131906d306aae6d599fd490c524b5',1,'jsonrpc']]],
+  ['json_20rpc_202_200_20modern_20c_20library_1',['JSON-RPC 2.0 Modern C++ Library',['../index.html',1,'']]],
+  ['json_20rpc_20client_2',['Creating a JSON-RPC Client',['../index.html#autotoc_md7',1,'']]],
+  ['json_20rpc_20server_3',['Creating a JSON-RPC Server',['../index.html#autotoc_md6',1,'']]],
+  ['jsonrpc_4',['jsonrpc',['../namespacejsonrpc.html',1,'']]],
+  ['jsonrpc_2ehpp_5',['jsonrpc.hpp',['../jsonrpc_8hpp.html',1,'']]]
 ];

@@ -1,0 +1,5 @@
+<map id="jsonrpc::Client::SendMethodCall" name="jsonrpc::Client::SendMethodCall">
+<area shape="rect" id="Node000001" title="Sends an RPC method call to the server." alt="" coords="5,5,235,31"/>
+<area shape="rect" id="Node000002" href="$classjsonrpc_1_1Request.html#ae3a4906479b44b119b2a093433af1a87" title="Serializes the Request object to a JSON object." alt="" coords="283,5,461,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="235,15,269,15,269,21,235,21"/>
+</map>

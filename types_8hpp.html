@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.11.0"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>JSON-RPC 2.0: include/json_rpc/core/types.hpp File Reference</title>
+<title>JSON-RPC 2.0: include/jsonrpc/core/types.hpp File Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -128,37 +128,37 @@ Include dependency graph for types.hpp:</div>
 </div><div class="textblock"><div class="dynheader">
 This graph shows which files directly or indirectly include this file:</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="types_8hpp__dep__incl.svg" width="2215" height="491"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="types_8hpp__dep__incl.svg" width="2204" height="491"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 </div>
 <p><a href="types_8hpp_source.html">Go to the source code of this file.</a></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="namespaces" name="namespaces"></a>
 Namespaces</h2></td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">namespace &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacejson__rpc.html">json_rpc</a></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">namespace &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacejsonrpc.html">jsonrpc</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="typedef-members" name="typedef-members"></a>
 Typedefs</h2></td></tr>
-<tr class="memitem:a222f0beea3cbdbf35d76ba7a7f0e544b" id="r_a222f0beea3cbdbf35d76ba7a7f0e544b"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacejson__rpc.html#a222f0beea3cbdbf35d76ba7a7f0e544b">json_rpc::Json</a> = nlohmann::json</td></tr>
-<tr class="memdesc:a222f0beea3cbdbf35d76ba7a7f0e544b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Alias for the JSON type used in the library.  <br /></td></tr>
-<tr class="separator:a222f0beea3cbdbf35d76ba7a7f0e544b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a007edd10d425e7379a2423807ef7c890" id="r_a007edd10d425e7379a2423807ef7c890"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacejson__rpc.html#a007edd10d425e7379a2423807ef7c890">json_rpc::MethodCallHandler</a> = std::function&lt;<a class="el" href="namespacejson__rpc.html#a222f0beea3cbdbf35d76ba7a7f0e544b">Json</a>(const std::optional&lt;<a class="el" href="namespacejson__rpc.html#a222f0beea3cbdbf35d76ba7a7f0e544b">Json</a>&gt; &amp;)&gt;</td></tr>
-<tr class="memdesc:a007edd10d425e7379a2423807ef7c890"><td class="mdescLeft">&#160;</td><td class="mdescRight">Type alias for method call handler functions.  <br /></td></tr>
-<tr class="separator:a007edd10d425e7379a2423807ef7c890"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a08d0ad43c29356d073118903c845a51e" id="r_a08d0ad43c29356d073118903c845a51e"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacejson__rpc.html#a08d0ad43c29356d073118903c845a51e">json_rpc::NotificationHandler</a> = std::function&lt;void(const std::optional&lt;<a class="el" href="namespacejson__rpc.html#a222f0beea3cbdbf35d76ba7a7f0e544b">Json</a>&gt; &amp;)&gt;</td></tr>
-<tr class="memdesc:a08d0ad43c29356d073118903c845a51e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Type alias for notification handler functions.  <br /></td></tr>
-<tr class="separator:a08d0ad43c29356d073118903c845a51e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac8d3cc0f1331ef7c3cf00e695c9329c8" id="r_ac8d3cc0f1331ef7c3cf00e695c9329c8"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacejson__rpc.html#ac8d3cc0f1331ef7c3cf00e695c9329c8">json_rpc::Handler</a> = std::variant&lt;<a class="el" href="namespacejson__rpc.html#a007edd10d425e7379a2423807ef7c890">MethodCallHandler</a>, <a class="el" href="namespacejson__rpc.html#a08d0ad43c29356d073118903c845a51e">NotificationHandler</a>&gt;</td></tr>
-<tr class="memdesc:ac8d3cc0f1331ef7c3cf00e695c9329c8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Type alias for a handler which can be either a method call handler or a notification handler.  <br /></td></tr>
-<tr class="separator:ac8d3cc0f1331ef7c3cf00e695c9329c8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a268131906d306aae6d599fd490c524b5" id="r_a268131906d306aae6d599fd490c524b5"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacejsonrpc.html#a268131906d306aae6d599fd490c524b5">jsonrpc::Json</a> = nlohmann::json</td></tr>
+<tr class="memdesc:a268131906d306aae6d599fd490c524b5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Alias for the JSON type used in the library.  <br /></td></tr>
+<tr class="separator:a268131906d306aae6d599fd490c524b5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a28e7c81dcd19fdb379ec453f3b607bd0" id="r_a28e7c81dcd19fdb379ec453f3b607bd0"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacejsonrpc.html#a28e7c81dcd19fdb379ec453f3b607bd0">jsonrpc::MethodCallHandler</a> = std::function&lt;<a class="el" href="namespacejsonrpc.html#a268131906d306aae6d599fd490c524b5">Json</a>(const std::optional&lt;<a class="el" href="namespacejsonrpc.html#a268131906d306aae6d599fd490c524b5">Json</a>&gt; &amp;)&gt;</td></tr>
+<tr class="memdesc:a28e7c81dcd19fdb379ec453f3b607bd0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Type alias for method call handler functions.  <br /></td></tr>
+<tr class="separator:a28e7c81dcd19fdb379ec453f3b607bd0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6ed8cf4f67f491408089bb37db739456" id="r_a6ed8cf4f67f491408089bb37db739456"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacejsonrpc.html#a6ed8cf4f67f491408089bb37db739456">jsonrpc::NotificationHandler</a> = std::function&lt;void(const std::optional&lt;<a class="el" href="namespacejsonrpc.html#a268131906d306aae6d599fd490c524b5">Json</a>&gt; &amp;)&gt;</td></tr>
+<tr class="memdesc:a6ed8cf4f67f491408089bb37db739456"><td class="mdescLeft">&#160;</td><td class="mdescRight">Type alias for notification handler functions.  <br /></td></tr>
+<tr class="separator:a6ed8cf4f67f491408089bb37db739456"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3d364c7c97ed2b36f84b5d92c0b69500" id="r_a3d364c7c97ed2b36f84b5d92c0b69500"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacejsonrpc.html#a3d364c7c97ed2b36f84b5d92c0b69500">jsonrpc::Handler</a> = std::variant&lt;<a class="el" href="namespacejsonrpc.html#a28e7c81dcd19fdb379ec453f3b607bd0">MethodCallHandler</a>, <a class="el" href="namespacejsonrpc.html#a6ed8cf4f67f491408089bb37db739456">NotificationHandler</a>&gt;</td></tr>
+<tr class="memdesc:a3d364c7c97ed2b36f84b5d92c0b69500"><td class="mdescLeft">&#160;</td><td class="mdescRight">Type alias for a handler which can be either a method call handler or a notification handler.  <br /></td></tr>
+<tr class="separator:a3d364c7c97ed2b36f84b5d92c0b69500"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 </div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a class="el" href="dir_d44c64559bbebec7f509842c48db8b23.html">include</a></li><li class="navelem"><a class="el" href="dir_7ac802cac74470c8ac558a06c59b034f.html">json_rpc</a></li><li class="navelem"><a class="el" href="dir_3f1475b8057c1254a12701e152ba2e42.html">core</a></li><li class="navelem"><a class="el" href="types_8hpp.html">types.hpp</a></li>
+    <li class="navelem"><a class="el" href="dir_d44c64559bbebec7f509842c48db8b23.html">include</a></li><li class="navelem"><a class="el" href="dir_91acd94fd8e19b606395a4f5e16e64f3.html">jsonrpc</a></li><li class="navelem"><a class="el" href="dir_87d75186b0afe857c0e692c841eb80f3.html">core</a></li><li class="navelem"><a class="el" href="types_8hpp.html">types.hpp</a></li>
     <li class="footer">Generated by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.11.0 </li>
   </ul>
 </div>

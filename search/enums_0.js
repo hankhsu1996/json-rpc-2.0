@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['liberrorkind_0',['LibErrorKind',['../namespacejson__rpc.html#a66100cad017733af9b138863ae6e795a',1,'json_rpc']]]
+  ['liberrorkind_0',['LibErrorKind',['../namespacejsonrpc.html#adde4101b40f8b5fd7d36801808e3ec9c',1,'jsonrpc']]]
 ];

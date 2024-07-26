@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['notificationhandler_0',['NotificationHandler',['../namespacejson__rpc.html#a08d0ad43c29356d073118903c845a51e',1,'json_rpc']]]
+  ['notificationhandler_0',['NotificationHandler',['../namespacejsonrpc.html#a6ed8cf4f67f491408089bb37db739456',1,'jsonrpc']]]
 ];

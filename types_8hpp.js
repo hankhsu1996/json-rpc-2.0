@@ -1,7 +1,7 @@
 var types_8hpp =
 [
-    [ "Handler", "types_8hpp.html#ac8d3cc0f1331ef7c3cf00e695c9329c8", null ],
-    [ "Json", "types_8hpp.html#a222f0beea3cbdbf35d76ba7a7f0e544b", null ],
-    [ "MethodCallHandler", "types_8hpp.html#a007edd10d425e7379a2423807ef7c890", null ],
-    [ "NotificationHandler", "types_8hpp.html#a08d0ad43c29356d073118903c845a51e", null ]
+    [ "Handler", "types_8hpp.html#a3d364c7c97ed2b36f84b5d92c0b69500", null ],
+    [ "Json", "types_8hpp.html#a268131906d306aae6d599fd490c524b5", null ],
+    [ "MethodCallHandler", "types_8hpp.html#a28e7c81dcd19fdb379ec453f3b607bd0", null ],
+    [ "NotificationHandler", "types_8hpp.html#a6ed8cf4f67f491408089bb37db739456", null ]
 ];
