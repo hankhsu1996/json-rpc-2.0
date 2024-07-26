@@ -33,6 +33,9 @@ CTestTestfile.cmake
 Makefile
 build/
 
+# Doxygen generated files
+docs/generated/
+
 # IDE specific files
 .idea/
 .vscode/

@@ -76,7 +76,7 @@ jobs:
           submodules: recursive
 
       - name: Generate Doxygen documentation
-        run: doxygen Doxyfile
+        run: doxygen docs/Doxyfile
 
       - name: Upload Doxygen documentation artifacts
         uses: actions/upload-artifact@v4

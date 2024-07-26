@@ -2,7 +2,7 @@
 
 # Project-related settings
 PROJECT_NAME           = "JSON-RPC 2.0"
-PROJECT_BRIEF          = "JSON-RPC 2.0 for Modern C++"
+PROJECT_BRIEF          = "JSON-RPC 2.0 Modern C++ Library"
 OUTPUT_DIRECTORY       = docs/generated
 OUTPUT_LANGUAGE        = English
 EXTRACT_ALL            = YES
@@ -21,15 +21,17 @@ HTML_OUTPUT            = html
 GENERATE_TREEVIEW      = YES
 DISABLE_INDEX          = NO
 FULL_SIDEBAR           = YES
-HTML_EXTRA_STYLESHEET  = doxygen-awesome-css/doxygen-awesome.css \
-                         doxygen-awesome-css/doxygen-awesome-sidebar-only.css \
-                         doxygen-awesome-css/doxygen-awesome-sidebar-only-darkmode-toggle.css
+HTML_EXTRA_STYLESHEET  = docs/doxygen-awesome-css/doxygen-awesome.css \
+                         docs/doxygen-awesome-css/doxygen-awesome-sidebar-only.css \
+                         docs/doxygen-awesome-css/doxygen-awesome-sidebar-only-darkmode-toggle.css
 HTML_COLORSTYLE        = LIGHT
 HTML_HEADER            = docs/assets/header.html
-HTML_EXTRA_FILES       = doxygen-awesome-css/doxygen-awesome-darkmode-toggle.js \
-                         doxygen-awesome-css/doxygen-awesome-fragment-copy-button.js \
-                         doxygen-awesome-css/doxygen-awesome-paragraph-link.js \
-                         doxygen-awesome-css/doxygen-awesome-interactive-toc.js
+HTML_EXTRA_FILES       = docs/assets/favicon-16x16.png \
+                         docs/assets/favicon-32x32.png \
+                         docs/doxygen-awesome-css/doxygen-awesome-darkmode-toggle.js \
+                         docs/doxygen-awesome-css/doxygen-awesome-fragment-copy-button.js \
+                         docs/doxygen-awesome-css/doxygen-awesome-paragraph-link.js \
+                         docs/doxygen-awesome-css/doxygen-awesome-interactive-toc.js
 
 # Source Browser settings
 SOURCE_BROWSER         = YES
