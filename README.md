@@ -2,27 +2,15 @@
 
 Welcome to the **JSON-RPC 2.0 Modern C++ Library**! This library provides a lightweight, modern C++ implementation of [JSON-RPC 2.0](https://www.jsonrpc.org/specification) servers and clients. It is designed to be flexible, allowing integration with various transport layers. This library makes it easy to register methods and notifications, binding them to client logic efficiently.
 
-## Table of Contents
-
-- [✨ Features](#-features)
-- [🚀 Getting Started](#-getting-started)
-  - [Using CMake FetchContent](#using-cmake-fetchcontent)
-  - [Using Conan 2](#using-conan-2)
-- [📖 Usage and Examples](#-usage-and-examples)
-  - [Creating a JSON-RPC Server](#creating-a-json-rpc-server)
-  - [Creating a JSON-RPC Client](#creating-a-json-rpc-client)
-- [🛠️ Developer Guide](#-developer-guide)
-- [🤝 Contributing](#-contributing)
-- [📄 License](#-license)
-
 ## ✨ Features
 
 - **Fully Compliant with JSON-RPC 2.0**: Supports method calls, notifications, comprehensive error handling, and batch requests.
 - **Modern C++**: Leverages C++17 features for clean, efficient, and maintainable code.
-- **Lightweight**: Designed to focus solely on the JSON-RPC protocol with minimal dependencies.
+- **Lightweight**: Focuses solely on the JSON-RPC protocol with minimal dependencies.
 - **Transport-Agnostic**: The transport layer is abstracted, allowing you to use the provided implementations or define your own.
 - **Server and Client Support**: Complete support for both server and client functionalities in JSON-RPC 2.0.
-- **Easy Handler Registration**: Handlers can be registered effortlessly using C++ standard functions, lambdas, and more, providing flexibility and ease of use.
+- **Simple JSON Integration**: Uses [nlohmann/json](https://github.com/nlohmann/json) for JSON object interaction. Clients send and receive JSON, and servers register functions that handle JSON, ensuring ease of use.
+- **Flexible Handler Registration**: Register handlers using `std::function`, allowing the use of lambdas, function pointers, and other callable objects.
 
 ## 🚀 Getting Started
 
@@ -69,19 +57,22 @@ Here’s how to create a simple JSON-RPC server:
 jsonrpc::Server server(std::make_unique<jsonrpc::HttpServerTransport>());
 
 // Register a method named "add" that adds two numbers
-server.RegisterMethodCall("add", [](const jsonrpc::Json &params) {
-  int result = params[0].get<int>() + params[1].get<int>();
-  return {{"result", result}};
+server.RegisterMethodCall("add", [](const std::optional<jsonrpc::Json> &params) {
+  int a = params.value()["a"];
+  int b = params.value()["b"];
+  return Json{{"result", a + b}};
 });
 
 // Register a notification named "stop" to stop the server
-server.RegisterNotification("stop", [&server](const jsonrpc::Json &) {
+server.RegisterNotification("stop", [&server](const std::optional<jsonrpc::Json> &) {
   server.Stop();
 });
 
 // Start the server
 server.Start();
 ```
+
+To register a method, you need to provide a function that takes optional `Json` parameters and returns a `Json` object containing either a `result` or `error` field. The `error` field must follow the JSON-RPC spec, including code and message. For simplicity, this library does not provide a more structured way to create error responses.
 
 ### Creating a JSON-RPC Client
 
@@ -94,7 +85,7 @@ jsonrpc::Client client(std::move(transport));
 
 // Perform addition
 auto response = client.SendMethodCall("add", {{"a", 10}, {"b", 5}});
-std::cout << "Add result: " << response << std::endl;
+std::cout << "Add result: " << response.dump() << std::endl;
 
 // Send stop notification
 client.SendNotification("stop", {});
