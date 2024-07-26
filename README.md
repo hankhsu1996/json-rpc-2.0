@@ -95,24 +95,32 @@ These examples demonstrate the basic usage of setting up a JSON-RPC server and c
 
 To build and test the project, follow these steps:
 
-Step 1: Install dependencies using Conan:
+### Step 1: Install Dependencies
+
+Run Conan to install the dependencies specified in the `conanfile.txt`:
 
 ```bash
 conan install . --output-folder=build --build=missing
 ```
 
-Step 2: Configure and build the project:
+### Step 2: Configure and Build the Project
+
+Use CMake presets for configuration and building. Ensure you have CMake 3.19 or above to utilize the modern preset feature. The configuration and build commands use `CMakePresets.json`:
 
 ```bash
 cmake --preset default
 cmake --build --preset default
 ```
 
-Step 3: Run the tests:
+### Step 3: Run Tests
+
+Run the tests using CMake presets, as defined in `CMakePresets.json`:
 
 ```bash
 ctest --preset default
 ```
+
+All commands should be executed from the top-level project directory. There is no need to navigate to the build directory.
 
 ## 🤝 Contributing
 
