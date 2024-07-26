@@ -3,11 +3,11 @@
 #include <memory>
 #include <string>
 
-#include "json_rpc/core/dispatcher.hpp"
-#include "json_rpc/core/server_transport.hpp"
-#include "json_rpc/core/types.hpp"
+#include "jsonrpc/core/dispatcher.hpp"
+#include "jsonrpc/core/server_transport.hpp"
+#include "jsonrpc/core/types.hpp"
 
-namespace json_rpc {
+namespace jsonrpc {
 
 /**
  * @brief A JSON-RPC server that handles requests and notifications.
@@ -72,4 +72,4 @@ private:
   std::unique_ptr<ServerTransport> transport_;
 };
 
-} // namespace json_rpc
+} // namespace jsonrpc

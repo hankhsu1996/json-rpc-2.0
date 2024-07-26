@@ -1,8 +1,8 @@
+#include "jsonrpc/client/client.hpp"
+
 #include <spdlog/spdlog.h>
 
-#include "json_rpc/client/client.hpp"
-
-namespace json_rpc {
+namespace jsonrpc {
 
 Client::Client(std::unique_ptr<ClientTransport> transport)
     : transport_(std::move(transport)) {
@@ -32,4 +32,4 @@ void Client::SendNotification(const std::string &method, const Json &params) {
   transport_->SendNotification(notificationJson);
 }
 
-} // namespace json_rpc
+} // namespace jsonrpc

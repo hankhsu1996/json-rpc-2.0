@@ -3,10 +3,10 @@
 #include <httplib.h>
 #include <string>
 
-#include "json_rpc/core/client_transport.hpp"
-#include "json_rpc/core/types.hpp"
+#include "jsonrpc/core/client_transport.hpp"
+#include "jsonrpc/core/types.hpp"
 
-namespace json_rpc {
+namespace jsonrpc {
 
 /**
  * @brief Client transport using HTTP for communication.
@@ -46,4 +46,4 @@ private:
   httplib::Client cli_;
 };
 
-} // namespace json_rpc
+} // namespace jsonrpc

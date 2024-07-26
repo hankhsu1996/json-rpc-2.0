@@ -2,9 +2,9 @@
 
 #include <string>
 
-#include "json_rpc/core/types.hpp"
+#include "jsonrpc/core/types.hpp"
 
-namespace json_rpc {
+namespace jsonrpc {
 
 /**
  * @brief Base class for framed transport mechanisms.
@@ -52,4 +52,4 @@ private:
   void readHeaders(int &content_length);
 };
 
-} // namespace json_rpc
+} // namespace jsonrpc

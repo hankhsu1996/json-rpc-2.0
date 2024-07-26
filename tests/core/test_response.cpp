@@ -1,8 +1,8 @@
 #include <catch2/catch_test_macros.hpp>
 
-#include "json_rpc/core/response.hpp"
+#include "jsonrpc/core/response.hpp"
 
-using namespace json_rpc;
+using namespace jsonrpc;
 
 TEST_CASE("Response success creation and serialization", "[Response]") {
   Json result = {{"data", "value"}};

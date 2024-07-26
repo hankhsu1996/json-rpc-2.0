@@ -1,6 +1,6 @@
-#include "json_rpc/core/request.hpp"
+#include "jsonrpc/core/request.hpp"
 
-namespace json_rpc {
+namespace jsonrpc {
 
 Request Request::FromJson(const Json &jsonObj) {
   auto params = jsonObj.contains("params")
@@ -24,4 +24,4 @@ Json Request::ToJson() const {
   return jsonObj;
 }
 
-} // namespace json_rpc
+} // namespace jsonrpc

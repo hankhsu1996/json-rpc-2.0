@@ -3,12 +3,12 @@
 #include <memory>
 #include <string>
 
-#include "json_rpc/core/client_transport.hpp"
-#include "json_rpc/core/request.hpp"
-#include "json_rpc/core/response.hpp"
-#include "json_rpc/core/types.hpp"
+#include "jsonrpc/core/client_transport.hpp"
+#include "jsonrpc/core/request.hpp"
+#include "jsonrpc/core/response.hpp"
+#include "jsonrpc/core/types.hpp"
 
-namespace json_rpc {
+namespace jsonrpc {
 
 /**
  * @brief A class representing a JSON-RPC client.
@@ -59,4 +59,4 @@ private:
   std::unique_ptr<ClientTransport> transport_;
 };
 
-} // namespace json_rpc
+} // namespace jsonrpc

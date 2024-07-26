@@ -1,3 +1,5 @@
+#include "jsonrpc/transports/framed_stdio_server_transport.hpp"
+
 #include <iostream>
 #include <optional>
 #include <sstream>
@@ -5,9 +7,7 @@
 
 #include <spdlog/spdlog.h>
 
-#include "json_rpc/transports/framed_stdio_server_transport.hpp"
-
-namespace json_rpc {
+namespace jsonrpc {
 
 void FramedStdioServerTransport::Listen() {
   spdlog::info("FramedStdioServerTransport listening");
@@ -35,4 +35,4 @@ void FramedStdioServerTransport::Listen() {
   }
 }
 
-} // namespace json_rpc
+} // namespace jsonrpc

@@ -1,8 +1,8 @@
 #pragma once
 
-#include "json_rpc/core/types.hpp"
+#include "jsonrpc/core/types.hpp"
 
-namespace json_rpc {
+namespace jsonrpc {
 
 /**
  * @brief An abstract class representing the transport mechanism for JSON-RPC
@@ -35,4 +35,4 @@ public:
   virtual void SendNotification(const Json &notification) = 0;
 };
 
-} // namespace json_rpc
+} // namespace jsonrpc

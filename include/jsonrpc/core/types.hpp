@@ -6,7 +6,7 @@
 
 #include <nlohmann/json.hpp>
 
-namespace json_rpc {
+namespace jsonrpc {
 
 /**
  * @brief Alias for the JSON type used in the library.
@@ -35,4 +35,4 @@ using NotificationHandler = std::function<void(const std::optional<Json> &)>;
  */
 using Handler = std::variant<MethodCallHandler, NotificationHandler>;
 
-} // namespace json_rpc
+} // namespace jsonrpc

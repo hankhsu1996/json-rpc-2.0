@@ -1,8 +1,8 @@
+#include "jsonrpc/transports/http_server_transport.hpp"
+
 #include <spdlog/spdlog.h>
 
-#include "json_rpc/transports/http_server_transport.hpp"
-
-namespace json_rpc {
+namespace jsonrpc {
 
 HttpServerTransport::HttpServerTransport(const std::string &host, int port)
     : host_(host), port_(port) {
@@ -35,4 +35,4 @@ void HttpServerTransport::Stop() {
   svr_.stop();
 }
 
-} // namespace json_rpc
+} // namespace jsonrpc

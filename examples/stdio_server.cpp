@@ -3,11 +3,11 @@
 #include <spdlog/sinks/basic_file_sink.h>
 #include <spdlog/spdlog.h>
 
-#include "json_rpc/json_rpc.hpp"
+#include "jsonrpc/jsonrpc.hpp"
 
 #include "calculator.hpp"
 
-using namespace json_rpc;
+using namespace jsonrpc;
 
 void InitializeServerLogger() {
   auto server_logger =

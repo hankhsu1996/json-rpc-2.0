@@ -3,12 +3,12 @@
 
 #include <catch2/catch_test_macros.hpp>
 
-#include "json_rpc/core/dispatcher.hpp"
-#include "json_rpc/transports/stdio_client_transport.hpp"
+#include "jsonrpc/core/dispatcher.hpp"
+#include "jsonrpc/transports/stdio_client_transport.hpp"
 
 #include "../common/test_utilities.hpp"
 
-using namespace json_rpc;
+using namespace jsonrpc;
 
 TEST_CASE("StdioClientTransport sends method call and receives response",
     "[StdioClientTransport]") {

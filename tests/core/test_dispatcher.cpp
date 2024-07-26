@@ -3,17 +3,16 @@
 
 #include <catch2/catch_test_macros.hpp>
 
-#include "json_rpc/core/dispatcher.hpp"
-#include "json_rpc/core/request.hpp"
-#include "json_rpc/core/response.hpp"
+#include "jsonrpc/core/dispatcher.hpp"
+#include "jsonrpc/core/request.hpp"
+#include "jsonrpc/core/response.hpp"
 
-using namespace json_rpc;
+using namespace jsonrpc;
 
 // Helper function to create a Dispatcher object
-std::unique_ptr<json_rpc::Dispatcher> CreateDispatcher(
-    bool enableMultithreading,
+std::unique_ptr<jsonrpc::Dispatcher> CreateDispatcher(bool enableMultithreading,
     size_t numThreads = std::thread::hardware_concurrency()) {
-  return std::make_unique<json_rpc::Dispatcher>(
+  return std::make_unique<jsonrpc::Dispatcher>(
       enableMultithreading, numThreads);
 }
 

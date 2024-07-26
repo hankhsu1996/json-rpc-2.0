@@ -4,12 +4,12 @@
 #include <spdlog/sinks/basic_file_sink.h>
 #include <spdlog/spdlog.h>
 
-#include "json_rpc/json_rpc.hpp"
-#include "json_rpc/transports/http_server_transport.hpp"
+#include "jsonrpc/jsonrpc.hpp"
+#include "jsonrpc/transports/http_server_transport.hpp"
 
 #include "calculator.hpp"
 
-using namespace json_rpc;
+using namespace jsonrpc;
 
 void InitializeServerLogger() {
   auto server_logger =

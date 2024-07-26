@@ -2,11 +2,11 @@
 
 #include <string>
 
-#include "json_rpc/core/client_transport.hpp"
-#include "json_rpc/core/types.hpp"
-#include "json_rpc/transports/framed_transport.hpp"
+#include "jsonrpc/core/client_transport.hpp"
+#include "jsonrpc/core/types.hpp"
+#include "jsonrpc/transports/framed_transport.hpp"
 
-namespace json_rpc {
+namespace jsonrpc {
 
 /**
  * @brief Client transport using framed stdio for communication.
@@ -34,4 +34,4 @@ public:
   void SendNotification(const Json &notification) override;
 };
 
-} // namespace json_rpc
+} // namespace jsonrpc

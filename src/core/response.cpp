@@ -1,8 +1,8 @@
+#include "jsonrpc/core/response.hpp"
+
 #include <spdlog/spdlog.h>
 
-#include "json_rpc/core/response.hpp"
-
-namespace json_rpc {
+namespace jsonrpc {
 
 const ErrorInfoMap Response::errorInfoMap = {
     {LibErrorKind::ParseError, {-32700, "Parse error"}},
@@ -64,4 +64,4 @@ void Response::ValidateResponse() const {
   }
 }
 
-} // namespace json_rpc
+} // namespace jsonrpc

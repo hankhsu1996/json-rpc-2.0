@@ -2,11 +2,11 @@
 
 #include <iostream>
 
-#include "json_rpc/core/dispatcher.hpp"
-#include "json_rpc/core/server_transport.hpp"
-#include "json_rpc/core/types.hpp"
+#include "jsonrpc/core/dispatcher.hpp"
+#include "jsonrpc/core/server_transport.hpp"
+#include "jsonrpc/core/types.hpp"
 
-namespace json_rpc {
+namespace jsonrpc {
 
 /**
  * @brief Server transport using stdio for communication.
@@ -23,4 +23,4 @@ protected:
   void Listen() override;
 };
 
-} // namespace json_rpc
+} // namespace jsonrpc

@@ -1,11 +1,11 @@
+#include "jsonrpc/transports/framed_transport.hpp"
+
 #include <iostream>
 #include <sstream>
 
 #include <spdlog/spdlog.h>
 
-#include "json_rpc/transports/framed_transport.hpp"
-
-namespace json_rpc {
+namespace jsonrpc {
 
 void FramedTransport::SendMessage(const std::string &message) {
   spdlog::debug("FramedTransport sending message: {}", message);
@@ -81,4 +81,4 @@ std::string FramedTransport::ReceiveMessage() {
   throw std::runtime_error("Failed to receive message in FramedTransport");
 }
 
-} // namespace json_rpc
+} // namespace jsonrpc

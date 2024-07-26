@@ -3,11 +3,11 @@
 
 #include <catch2/catch_test_macros.hpp>
 
-#include "json_rpc/transports/framed_transport.hpp"
+#include "jsonrpc/transports/framed_transport.hpp"
 
 #include "../common/test_utilities.hpp"
 
-using namespace json_rpc;
+using namespace jsonrpc;
 
 // Derived test class to expose protected methods
 class TestFramedTransport : public FramedTransport {

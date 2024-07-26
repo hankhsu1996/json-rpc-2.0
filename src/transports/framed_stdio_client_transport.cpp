@@ -1,3 +1,5 @@
+#include "jsonrpc/transports/framed_stdio_client_transport.hpp"
+
 #include <iostream>
 #include <optional>
 #include <sstream>
@@ -5,9 +7,7 @@
 
 #include <spdlog/spdlog.h>
 
-#include "json_rpc/transports/framed_stdio_client_transport.hpp"
-
-namespace json_rpc {
+namespace jsonrpc {
 
 Json FramedStdioClientTransport::SendMethodCall(const Json &request) {
   spdlog::debug(
@@ -22,4 +22,4 @@ void FramedStdioClientTransport::SendNotification(const Json &notification) {
   SendMessage(notification.dump());
 }
 
-} // namespace json_rpc
+} // namespace jsonrpc
