@@ -1,8 +1,8 @@
+#include "jsonrpc/transports/http_client_transport.hpp"
+
 #include <spdlog/spdlog.h>
 
-#include "json_rpc/transports/http_client_transport.hpp"
-
-namespace json_rpc {
+namespace jsonrpc {
 
 HttpClientTransport::HttpClientTransport(const std::string &server_url)
     : server_url_(server_url), cli_(server_url.c_str()) {
@@ -36,4 +36,4 @@ void HttpClientTransport::SendNotification(const Json &notification) {
   }
 }
 
-} // namespace json_rpc
+} // namespace jsonrpc

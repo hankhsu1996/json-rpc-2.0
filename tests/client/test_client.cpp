@@ -1,9 +1,9 @@
 #include <catch2/catch_test_macros.hpp>
 
-#include "json_rpc/client/client.hpp"
-#include "json_rpc/core/client_transport.hpp"
+#include "jsonrpc/client/client.hpp"
+#include "jsonrpc/core/client_transport.hpp"
 
-using namespace json_rpc;
+using namespace jsonrpc;
 
 class MockClientTransport : public ClientTransport {
 public:
@@ -28,7 +28,7 @@ public:
 };
 
 TEST_CASE("Client sends method call", "[Client]") {
-  using namespace json_rpc;
+  using namespace jsonrpc;
 
   // Create a mock transport
   auto mockTransport = std::make_unique<MockClientTransport>();
@@ -51,7 +51,7 @@ TEST_CASE("Client sends method call", "[Client]") {
 }
 
 TEST_CASE("Client sends notification", "[Client]") {
-  using namespace json_rpc;
+  using namespace jsonrpc;
 
   // Create a mock transport
   auto mockTransport = std::make_unique<MockClientTransport>();

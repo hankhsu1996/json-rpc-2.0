@@ -1,8 +1,8 @@
 #include <catch2/catch_test_macros.hpp>
 
-#include "json_rpc/core/request.hpp"
+#include "jsonrpc/core/request.hpp"
 
-using namespace json_rpc;
+using namespace jsonrpc;
 
 // Test the Request constructor and accessors
 TEST_CASE("Request constructor and accessors", "[Request]") {

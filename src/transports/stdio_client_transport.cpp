@@ -1,8 +1,8 @@
+#include "jsonrpc/transports/stdio_client_transport.hpp"
+
 #include <spdlog/spdlog.h>
 
-#include "json_rpc/transports/stdio_client_transport.hpp"
-
-namespace json_rpc {
+namespace jsonrpc {
 
 Json StdioClientTransport::SendMethodCall(const Json &request) {
   spdlog::debug("StdioClientTransport sending method call: {}", request.dump());
@@ -19,4 +19,4 @@ void StdioClientTransport::SendNotification(const Json &notification) {
   std::cout << notification.dump() << std::endl;
 }
 
-} // namespace json_rpc
+} // namespace jsonrpc

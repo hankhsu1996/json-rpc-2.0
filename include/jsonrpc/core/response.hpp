@@ -4,9 +4,9 @@
 #include <string>
 #include <unordered_map>
 
-#include "json_rpc/core/types.hpp"
+#include "jsonrpc/core/types.hpp"
 
-namespace json_rpc {
+namespace jsonrpc {
 
 /**
  * @brief Enumeration for library error kinds.
@@ -125,4 +125,4 @@ inline Json Response::CreateErrorResponse(
   return response;
 }
 
-} // namespace json_rpc
+} // namespace jsonrpc

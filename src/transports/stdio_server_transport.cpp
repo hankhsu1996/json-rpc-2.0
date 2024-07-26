@@ -1,8 +1,8 @@
+#include "jsonrpc/transports/stdio_server_transport.hpp"
+
 #include <spdlog/spdlog.h>
 
-#include "json_rpc/transports/stdio_server_transport.hpp"
-
-namespace json_rpc {
+namespace jsonrpc {
 
 void StdioServerTransport::Listen() {
   spdlog::info("StdioServerTransport listening");
@@ -27,4 +27,4 @@ void StdioServerTransport::Listen() {
   }
 }
 
-} // namespace json_rpc
+} // namespace jsonrpc

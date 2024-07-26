@@ -1,13 +1,14 @@
 #pragma once
 
-#include <httplib.h>
 #include <string>
 
-#include "json_rpc/core/dispatcher.hpp"
-#include "json_rpc/core/server_transport.hpp"
-#include "json_rpc/core/types.hpp"
+#include <httplib/httplib.h>
 
-namespace json_rpc {
+#include "jsonrpc/core/dispatcher.hpp"
+#include "jsonrpc/core/server_transport.hpp"
+#include "jsonrpc/core/types.hpp"
+
+namespace jsonrpc {
 
 /**
  * @brief Server transport using HTTP for communication.
@@ -47,4 +48,4 @@ private:
   httplib::Server svr_;
 };
 
-} // namespace json_rpc
+} // namespace jsonrpc

@@ -1,8 +1,8 @@
+#include "jsonrpc/server/server.hpp"
+
 #include <spdlog/spdlog.h>
 
-#include "json_rpc/server/server.hpp"
-
-namespace json_rpc {
+namespace jsonrpc {
 
 Server::Server(std::unique_ptr<ServerTransport> transport)
     : transport_(std::move(transport)) {
@@ -31,4 +31,4 @@ void Server::RegisterNotification(
   dispatcher_->RegisterNotification(method, handler);
 }
 
-} // namespace json_rpc
+} // namespace jsonrpc

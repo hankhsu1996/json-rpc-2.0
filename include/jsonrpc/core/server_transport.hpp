@@ -3,10 +3,10 @@
 #include <atomic>
 #include <memory>
 
-#include "json_rpc/core/dispatcher.hpp"
-#include "json_rpc/core/types.hpp"
+#include "jsonrpc/core/dispatcher.hpp"
+#include "jsonrpc/core/types.hpp"
 
-namespace json_rpc {
+namespace jsonrpc {
 
 /**
  * @brief Abstract base class for server transport mechanisms.
@@ -81,4 +81,4 @@ protected:
   Dispatcher *dispatcher_;
 };
 
-} // namespace json_rpc
+} // namespace jsonrpc

@@ -3,9 +3,9 @@
 #include <optional>
 #include <string>
 
-#include "json_rpc/core/types.hpp"
+#include "jsonrpc/core/types.hpp"
 
-namespace json_rpc {
+namespace jsonrpc {
 
 /**
  * @brief Represents a JSON-RPC request.
@@ -66,4 +66,4 @@ private:
   std::optional<Json> id_;
 };
 
-} // namespace json_rpc
+} // namespace jsonrpc

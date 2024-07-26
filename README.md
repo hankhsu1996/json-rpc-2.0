@@ -48,9 +48,9 @@ These commands will install the necessary dependencies, configure the project, b
 ```cpp
 #include <iostream>
 #include <memory>
-#include "json_rpc/json_rpc.hpp"
+#include "jsonrpc/jsonrpc.hpp"
 
-using namespace json_rpc;
+using namespace jsonrpc;
 
 int main() {
   auto transport = std::make_unique<StdioTransport>();
@@ -73,10 +73,10 @@ int main() {
 
 ```cpp
 #include <memory>
-#include "json_rpc/json_rpc.hpp"
+#include "jsonrpc/jsonrpc.hpp"
 #include "calculator.hpp"
 
-using namespace json_rpc;
+using namespace jsonrpc;
 
 int main() {
   auto transport = std::make_unique<StdioTransport>();

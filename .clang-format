@@ -2,13 +2,14 @@ Language: Cpp
 BasedOnStyle: llvm
 IncludeBlocks: Regroup
 IncludeCategories:
-  - Regex: '^"json_rpc/.*"'
+  - Regex: '^"jsonrpc/.*"'
+    Priority: 4
+  - Regex: "^<(nlohmann|spdlog|httplib|catch2)/.*>"
     Priority: 3
-  - Regex: "^<(nlohmann|spdlog|catch2)/.*>"
+  - Regex: "^<BS_thread_pool.hpp>"
     Priority: 2
   - Regex: "^<.*>"
     Priority: 1
-IncludeIsMainRegex: '^slangd/[A-Za-z0-9_]+\\.h'
 AlignAfterOpenBracket: DontAlign
 AllowShortFunctionsOnASingleLine: false
 BreakInheritanceList: AfterColon

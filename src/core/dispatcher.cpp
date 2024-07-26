@@ -1,8 +1,8 @@
+#include "jsonrpc/core/dispatcher.hpp"
+
 #include <spdlog/spdlog.h>
 
-#include "json_rpc/core/dispatcher.hpp"
-
-namespace json_rpc {
+namespace jsonrpc {
 
 std::optional<std::string> Dispatcher::DispatchRequest(
     const std::string &requestStr) {
@@ -208,4 +208,4 @@ void Dispatcher::RegisterNotification(
   spdlog::info("Dispatcher registered notification: {}", method);
 }
 
-} // namespace json_rpc
+} // namespace jsonrpc
