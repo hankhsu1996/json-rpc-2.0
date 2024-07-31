@@ -1,38 +1,32 @@
 #pragma once
 
+#include <string>
+
 #include "jsonrpc/core/types.hpp"
 
 namespace jsonrpc {
 
 /**
- * @brief An abstract class representing the transport mechanism for JSON-RPC
- * client.
+ * @brief Base class for JSON-RPC client transport.
  *
- * This class defines the interface for sending JSON-RPC method calls and
- * notifications. Concrete implementations can use various transport mechanisms
- * such as stdio, HTTP, sockets, etc.
+ * This class defines the interface for communication transport layers.
  */
 class ClientTransport {
 public:
-  /**
-   * @brief Virtual destructor for ClientTransport.
-   */
+  /// Virtual destructor.
   virtual ~ClientTransport() = default;
 
   /**
-   * @brief Send an RPC method call to the server.
-   *
-   * @param request The JSON-RPC method call request as a JSON object.
-   * @return The response from the server as a JSON object.
+   * @brief Sends a JSON-RPC request.
+   * @param request The JSON-RPC request as a string.
    */
-  virtual Json SendMethodCall(const Json &request) = 0;
+  virtual void SendRequest(const std::string &request) = 0;
 
   /**
-   * @brief Send an RPC notification to the server.
-   *
-   * @param notification The JSON-RPC notification as a JSON object.
+   * @brief Reads a JSON-RPC response.
+   * @return The JSON-RPC response as a string.
    */
-  virtual void SendNotification(const Json &notification) = 0;
+  virtual std::string ReadResponse() = 0;
 };
 
 } // namespace jsonrpc

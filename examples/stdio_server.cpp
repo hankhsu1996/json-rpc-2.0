@@ -9,15 +9,12 @@
 
 using namespace jsonrpc;
 
-void InitializeServerLogger() {
-  auto server_logger =
-      spdlog::basic_logger_mt("server_logger", "logs/server_logfile.log", true);
-  spdlog::set_default_logger(server_logger);
+int main() {
+  auto logger = spdlog::basic_logger_mt("server_logger", "logs/server.log");
+  spdlog::set_default_logger(logger);
   spdlog::set_level(spdlog::level::debug);
   spdlog::flush_on(spdlog::level::debug);
-}
 
-void RunServer() {
   auto transport = std::make_unique<StdioServerTransport>();
   Server server(std::move(transport));
   Calculator calculator;
@@ -38,9 +35,5 @@ void RunServer() {
   });
 
   server.Start();
-}
-
-int main() {
-  RunServer();
   return 0;
 }

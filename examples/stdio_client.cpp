@@ -8,31 +8,27 @@
 
 using namespace jsonrpc;
 
-void InitializeClientLogger() {
-  auto client_logger =
-      spdlog::basic_logger_mt("client_logger", "logs/client_logfile.log", true);
-  spdlog::set_default_logger(client_logger);
+int main() {
+  auto logger = spdlog::basic_logger_mt("client_logger", "logs/client.log");
+  spdlog::set_default_logger(logger);
   spdlog::set_level(spdlog::level::debug);
   spdlog::flush_on(spdlog::level::debug);
-}
 
-void RunClient() {
   auto transport = std::make_unique<StdioClientTransport>();
   Client client(std::move(transport));
+  client.Start();
 
-  // Perform addition
-  Json response = client.SendMethodCall("add", {{"a", 10}, {"b", 5}}, 1);
-  spdlog::info("Client received add result: {}", response.dump());
+  auto addReq = std::make_tuple("add", Json({{"a", 10}, {"b", 5}}), false);
+  auto addRes = client.SendRequest(addReq);
+  spdlog::info("Add result: {}", addRes->dump());
 
-  // Perform division
-  response = client.SendMethodCall("divide", {{"a", 10}, {"b", 0}}, 2);
-  spdlog::info("Client received divide result: {}", response.dump());
+  auto divReq = std::make_tuple("divide", Json({{"a", 10}, {"b", 0}}), false);
+  auto divRes = client.SendRequest(divReq);
+  spdlog::info("Divide result: {}", divRes->dump());
 
-  // Send stop notification
-  client.SendNotification("stop", {});
-}
+  auto stopReq = std::make_tuple("stop", std::nullopt, true);
+  client.SendRequest(stopReq);
 
-int main() {
-  RunClient();
+  client.Stop();
   return 0;
 }
