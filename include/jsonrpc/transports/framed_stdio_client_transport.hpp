@@ -9,10 +9,9 @@
 namespace jsonrpc {
 
 /**
- * @brief Transport layer using framed standard I/O for JSON-RPC communication.
+ * @brief Transport layer using framed messaging over standard I/O for JSON-RPC communication.
  *
- * This class combines standard I/O transport with framing for JSON-RPC
- * messages.
+ * This class uses framed transport to send and receive JSON-RPC messages over standard I/O.
  */
 class FramedStdioClientTransport :
     public ClientTransport,
