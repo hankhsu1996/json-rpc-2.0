@@ -18,7 +18,5 @@
 #include "jsonrpc/transports/framed_stdio_client_transport.hpp"
 #include "jsonrpc/transports/framed_stdio_server_transport.hpp"
 #include "jsonrpc/transports/framed_transport.hpp"
-#include "jsonrpc/transports/http_client_transport.hpp"
-#include "jsonrpc/transports/http_server_transport.hpp"
 #include "jsonrpc/transports/stdio_client_transport.hpp"
 #include "jsonrpc/transports/stdio_server_transport.hpp"
