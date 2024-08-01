@@ -72,6 +72,7 @@ TEST_CASE("RPC call with positional parameters", "[Dispatcher]") {
         dispatcher.DispatchRequest(requestJson.dump());
     REQUIRE(responseStr.has_value());
     Json responseJson = Json::parse(responseStr.value());
+    REQUIRE(responseJson["jsonrpc"] == "2.0");
     REQUIRE(responseJson["result"] == 19);
     REQUIRE(responseJson["id"] == 1);
   }
@@ -83,6 +84,7 @@ TEST_CASE("RPC call with positional parameters", "[Dispatcher]") {
         dispatcher.DispatchRequest(requestJson.dump());
     REQUIRE(responseStr.has_value());
     Json responseJson = Json::parse(responseStr.value());
+    REQUIRE(responseJson["jsonrpc"] == "2.0");
     REQUIRE(responseJson["result"] == -19);
     REQUIRE(responseJson["id"] == 2);
   }
@@ -99,6 +101,7 @@ TEST_CASE("RPC call with named parameters", "[Dispatcher]") {
         dispatcher.DispatchRequest(requestJson.dump());
     REQUIRE(responseStr.has_value());
     Json responseJson = Json::parse(responseStr.value());
+    REQUIRE(responseJson["jsonrpc"] == "2.0");
     REQUIRE(responseJson["result"] == 19);
     REQUIRE(responseJson["id"] == 3);
   }
@@ -110,6 +113,7 @@ TEST_CASE("RPC call with named parameters", "[Dispatcher]") {
         dispatcher.DispatchRequest(requestJson.dump());
     REQUIRE(responseStr.has_value());
     Json responseJson = Json::parse(responseStr.value());
+    REQUIRE(responseJson["jsonrpc"] == "2.0");
     REQUIRE(responseJson["result"] == 19);
     REQUIRE(responseJson["id"] == 4);
   }
@@ -144,6 +148,7 @@ TEST_CASE("RPC call of non-existent method", "[Dispatcher]") {
       dispatcher.DispatchRequest(requestJson.dump());
   REQUIRE(responseStr.has_value());
   Json responseJson = Json::parse(responseStr.value());
+  REQUIRE(responseJson["jsonrpc"] == "2.0");
   REQUIRE(responseJson["error"]["code"] == -32601); // Method not found
   REQUIRE(responseJson["error"]["message"] == "Method not found");
   REQUIRE(responseJson["id"] == "1");
@@ -158,12 +163,13 @@ TEST_CASE("RPC call with invalid JSON", "[Dispatcher]") {
       dispatcher.DispatchRequest(invalidRequest);
   REQUIRE(responseStr.has_value());
   Json responseJson = Json::parse(responseStr.value());
+  REQUIRE(responseJson["jsonrpc"] == "2.0");
   REQUIRE(responseJson["error"]["code"] == -32700); // Parse error
   REQUIRE(responseJson["error"]["message"] == "Parse error");
   REQUIRE(responseJson["id"] == nullptr);
 }
 
-TEST_CASE("RPC call with invalid Request object", "[Dispatcher]") {
+TEST_CASE("RPC call with invalid ServerRequest object", "[Dispatcher]") {
   Dispatcher dispatcher;
 
   Json requestJson = {{"jsonrpc", "2.0"}, {"method", 1}, {"params", "bar"}};
@@ -171,6 +177,7 @@ TEST_CASE("RPC call with invalid Request object", "[Dispatcher]") {
       dispatcher.DispatchRequest(requestJson.dump());
   REQUIRE(responseStr.has_value());
   Json responseJson = Json::parse(responseStr.value());
+  REQUIRE(responseJson["jsonrpc"] == "2.0");
   REQUIRE(responseJson["error"]["code"] == -32600); // Invalid Request
   REQUIRE(responseJson["error"]["message"] == "Invalid Request");
   REQUIRE(responseJson["id"] == nullptr);
@@ -186,6 +193,7 @@ TEST_CASE("RPC call Batch, invalid JSON", "[Dispatcher]") {
       dispatcher.DispatchRequest(invalidBatchRequest);
   REQUIRE(responseStr.has_value());
   Json responseJson = Json::parse(responseStr.value());
+  REQUIRE(responseJson["jsonrpc"] == "2.0");
   REQUIRE(responseJson["error"]["code"] == -32700); // Parse error
   REQUIRE(responseJson["error"]["message"] == "Parse error");
   REQUIRE(responseJson["id"] == nullptr);
@@ -199,6 +207,7 @@ TEST_CASE("RPC call with an empty Array", "[Dispatcher]") {
       dispatcher.DispatchRequest(requestJson.dump());
   REQUIRE(responseStr.has_value());
   Json responseJson = Json::parse(responseStr.value());
+  REQUIRE(responseJson["jsonrpc"] == "2.0");
   REQUIRE(responseJson["error"]["code"] == -32600); // Invalid Request
   REQUIRE(responseJson["error"]["message"] == "Invalid Request");
   REQUIRE(responseJson["id"] == nullptr);
@@ -214,6 +223,7 @@ TEST_CASE("RPC call with an invalid Batch (but not empty)", "[Dispatcher]") {
   Json responseJson = Json::parse(responseStr.value());
   REQUIRE(responseJson.is_array());
   REQUIRE(responseJson.size() == 1);
+  REQUIRE(responseJson[0]["jsonrpc"] == "2.0");
   REQUIRE(responseJson[0]["error"]["code"] == -32600); // Invalid Request
   REQUIRE(responseJson[0]["error"]["message"] == "Invalid Request");
   REQUIRE(responseJson[0]["id"] == nullptr);
@@ -230,6 +240,7 @@ TEST_CASE("RPC call with invalid Batch", "[Dispatcher]") {
   REQUIRE(responseJson.is_array());
   REQUIRE(responseJson.size() == 3);
   for (const auto &response : responseJson) {
+    REQUIRE(response["jsonrpc"] == "2.0");
     REQUIRE(response["error"]["code"] == -32600); // Invalid Request
     REQUIRE(response["error"]["message"] == "Invalid Request");
     REQUIRE(response["id"] == nullptr);
@@ -242,11 +253,14 @@ TEST_CASE("RPC call Batch", "[Dispatcher]") {
 
   // clang-format off
   Json requestJson = Json::array({
-    {{"jsonrpc", "2.0"}, {"method", "sum"}, {"params", {1, 2, 4}}, {"id", "1"}},
+    {{"jsonrpc", "2.0"}, {"method", "sum"}, {"params", {1, 2, 4}}, {"id",
+    "1"}},
     {{"jsonrpc", "2.0"}, {"method", "notify_hello"}, {"params", {7}}},
-    {{"jsonrpc", "2.0"}, {"method", "subtract"}, {"params", {42, 23}}, {"id", "2"}},
+    {{"jsonrpc", "2.0"}, {"method", "subtract"}, {"params", {42, 23}}, {"id",
+    "2"}},
     {{"foo", "boo"}},
-    {{"jsonrpc", "2.0"}, {"method", "foo.get"}, {"params", {{"name", "myself"}}}, {"id", "5"}},
+    {{"jsonrpc", "2.0"}, {"method", "foo.get"}, {"params", {{"name",
+    "myself"}}}, {"id", "5"}},
     {{"jsonrpc", "2.0"}, {"method", "get_data"}, {"id", "9"}}
   });
   // clang-format on
@@ -259,20 +273,25 @@ TEST_CASE("RPC call Batch", "[Dispatcher]") {
   REQUIRE(responseJson.is_array());
   REQUIRE(responseJson.size() == 5); // 6 requests but one is a notification
 
+  REQUIRE(responseJson[0]["jsonrpc"] == "2.0");
   REQUIRE(responseJson[0]["result"] == 7);
   REQUIRE(responseJson[0]["id"] == "1");
 
+  REQUIRE(responseJson[1]["jsonrpc"] == "2.0");
   REQUIRE(responseJson[1]["result"] == 19);
   REQUIRE(responseJson[1]["id"] == "2");
 
+  REQUIRE(responseJson[2]["jsonrpc"] == "2.0");
   REQUIRE(responseJson[2]["error"]["code"] == -32600); // Invalid Request
   REQUIRE(responseJson[2]["error"]["message"] == "Invalid Request");
   REQUIRE(responseJson[2]["id"] == nullptr);
 
+  REQUIRE(responseJson[3]["jsonrpc"] == "2.0");
   REQUIRE(responseJson[3]["error"]["code"] == -32601); // Method not found
   REQUIRE(responseJson[3]["error"]["message"] == "Method not found");
   REQUIRE(responseJson[3]["id"] == "5");
 
+  REQUIRE(responseJson[4]["jsonrpc"] == "2.0");
   REQUIRE(responseJson[4]["result"] == Json::array({"hello", 5}));
   REQUIRE(responseJson[4]["id"] == "9");
 
@@ -284,20 +303,25 @@ TEST_CASE("RPC call Batch", "[Dispatcher]") {
   REQUIRE(responseJson.is_array());
   REQUIRE(responseJson.size() == 5); // 6 requests but one is a notification
 
+  REQUIRE(responseJson[0]["jsonrpc"] == "2.0");
   REQUIRE(responseJson[0]["result"] == 7);
   REQUIRE(responseJson[0]["id"] == "1");
 
+  REQUIRE(responseJson[1]["jsonrpc"] == "2.0");
   REQUIRE(responseJson[1]["result"] == 19);
   REQUIRE(responseJson[1]["id"] == "2");
 
+  REQUIRE(responseJson[2]["jsonrpc"] == "2.0");
   REQUIRE(responseJson[2]["error"]["code"] == -32600); // Invalid Request
   REQUIRE(responseJson[2]["error"]["message"] == "Invalid Request");
   REQUIRE(responseJson[2]["id"] == nullptr);
 
+  REQUIRE(responseJson[3]["jsonrpc"] == "2.0");
   REQUIRE(responseJson[3]["error"]["code"] == -32601); // Method not found
   REQUIRE(responseJson[3]["error"]["message"] == "Method not found");
   REQUIRE(responseJson[3]["id"] == "5");
 
+  REQUIRE(responseJson[4]["jsonrpc"] == "2.0");
   REQUIRE(responseJson[4]["result"] == Json::array({"hello", 5}));
   REQUIRE(responseJson[4]["id"] == "9");
 }
