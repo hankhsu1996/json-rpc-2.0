@@ -3,7 +3,7 @@
 namespace jsonrpc {
 
 ClientRequest::ClientRequest(const std::string &method,
-    std::optional<nlohmann::json> params, bool isNotification,
+    std::optional<Json> params, bool isNotification,
     const std::function<int()> &idGenerator)
     : method_(method), params_(std::move(params)),
       isNotification_(isNotification), id_(0) {
@@ -21,7 +21,7 @@ int ClientRequest::GetKey() const {
 }
 
 std::string ClientRequest::Dump() const {
-  nlohmann::json jsonRequest;
+  Json jsonRequest;
   jsonRequest["jsonrpc"] = "2.0";
   jsonRequest["method"] = method_;
   if (params_) {

@@ -6,6 +6,7 @@
 #include <mutex>
 #include <optional>
 #include <string>
+#include <thread>
 #include <unordered_map>
 #include <vector>
 
@@ -13,64 +14,80 @@
 #include "jsonrpc/core/client_transport.hpp"
 
 namespace jsonrpc {
-/**
- * @brief A JSON-RPC client for sending requests and receiving responses.
- */
+
+/// A JSON-RPC client for sending requests and receiving responses.
 class Client {
 public:
   /**
    * @brief Constructs a JSON-RPC client with a specified transport layer.
-   * @param transport A unique pointer to a transport layer.
+   * @param transport A unique pointer to a transport layer used for
+   * communication.
    */
   Client(std::unique_ptr<ClientTransport> transport);
   ~Client() = default;
 
   /**
    * @brief Starts the JSON-RPC client listener thread.
+   *
+   * This function initializes and starts a background thread that listens
+   * for responses from the server. It must be called before sending any
+   * requests.
    */
   void Start();
 
   /**
    * @brief Stops the JSON-RPC client listener thread.
+   *
+   * This function stops the background listener thread and waits for it to
+   * join. It should be called before the client is destroyed or when the client
+   * no longer needs to listen for responses.
    */
   void Stop();
 
-  // Sends a method call and returns the response
-  nlohmann::json SendMethodCall(const std::string &method,
-      std::optional<nlohmann::json> params = std::nullopt);
+  /**
+   * @brief Checks if the client listener is running.
+   * @return True if the listener thread is running, false otherwise.
+   */
+  bool isRunning() const;
 
-  // Sends a notification (no response expected)
-  void SendNotification(const std::string &method,
-      std::optional<nlohmann::json> params = std::nullopt);
+  /**
+   * @brief Sends a JSON-RPC method call and waits for the response.
+   * @param method The name of the method to call.
+   * @param params Optional parameters to pass to the method.
+   * @return The JSON response received from the server.
+   *
+   * This function sends a JSON-RPC method call to the server and waits
+   * for the corresponding response. The response is returned as a JSON object.
+   */
+  Json SendMethodCall(
+      const std::string &method, std::optional<Json> params = std::nullopt);
+
+  /**
+   * @brief Sends a JSON-RPC notification.
+   * @param method The name of the method to notify.
+   * @param params Optional parameters to pass to the method.
+   *
+   * This function sends a JSON-RPC notification to the server. Unlike method
+   * calls, notifications do not expect a response from the server.
+   */
+  void SendNotification(
+      const std::string &method, std::optional<Json> params = std::nullopt);
 
 private:
-  /**
-   * @brief Listener thread function for receiving responses from the transport
-   * layer.
-   */
+  /// Listener thread function for receiving responses from the transport layer.
   void Listener();
 
-  // Helper function to send a request and optionally wait for a response
-  nlohmann::json SendRequest(const ClientRequest &request);
+  /// Helper function to send a request and optionally wait for a response.
+  Json SendRequest(const ClientRequest &request);
 
-  /**
-   * @brief Generates the next unique request ID.
-   * @return The next unique request ID.
-   */
+  /// Generates the next unique request ID.
   int GetNextRequestId();
 
-  /**
-   * @brief Handles a JSON-RPC response received from the transport layer.
-   * @param response The JSON-RPC response as a string.
-   */
+  /// Handles a JSON-RPC response received from the transport layer.
   void HandleResponse(const std::string &response);
 
-  /**
-   * @brief Validates a JSON-RPC response.
-   * @param response The JSON-RPC response to validate.
-   * @return True if the response is valid, false otherwise.
-   */
-  bool ValidateResponse(const nlohmann::json &response);
+  /// Validates a JSON-RPC response.
+  bool ValidateResponse(const Json &response);
 
   /// Transport layer for communication.
   std::unique_ptr<ClientTransport> transport_;
@@ -82,7 +99,7 @@ private:
   std::atomic<int> expectedResponses_{0};
 
   /// Map of pending requests and their associated promises.
-  std::unordered_map<int, std::promise<nlohmann::json>> pendingRequests_;
+  std::unordered_map<int, std::promise<Json>> pendingRequests_;
 
   /// Mutex to protect access to the pending requests map.
   std::mutex pendingRequestsMutex_;

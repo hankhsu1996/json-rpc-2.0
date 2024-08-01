@@ -23,6 +23,10 @@ void Client::Stop() {
   }
 }
 
+bool Client::isRunning() const {
+  return running_;
+}
+
 void Client::Listener() {
   while (running_) {
     spdlog::debug("JSON-RPC client listener running and expecting {} responses",
@@ -35,24 +39,24 @@ void Client::Listener() {
   }
 }
 
-nlohmann::json Client::SendMethodCall(
-    const std::string &method, std::optional<nlohmann::json> params) {
+Json Client::SendMethodCall(
+    const std::string &method, std::optional<Json> params) {
   ClientRequest request(method, std::move(params), false,
       [this]() { return GetNextRequestId(); });
   return SendRequest(request);
 }
 
 void Client::SendNotification(
-    const std::string &method, std::optional<nlohmann::json> params) {
+    const std::string &method, std::optional<Json> params) {
   ClientRequest request(
       method, std::move(params), true, [this]() { return GetNextRequestId(); });
   // Notifications do not expect a response
   transport_->SendRequest(request.Dump());
 }
 
-nlohmann::json Client::SendRequest(const ClientRequest &request) {
+Json Client::SendRequest(const ClientRequest &request) {
   if (request.RequiresResponse()) {
-    std::promise<nlohmann::json> responsePromise;
+    std::promise<Json> responsePromise;
     auto futureResponse = responsePromise.get_future();
 
     {
@@ -76,8 +80,8 @@ nlohmann::json Client::SendRequest(const ClientRequest &request) {
   } else {
     // No response expected, just send the request
     transport_->SendRequest(request.Dump());
-    return nlohmann::json(); // Return an empty JSON object since no response is
-                             // expected
+    return Json(); // Return an empty JSON object since no response is
+                   // expected
   }
 }
 
