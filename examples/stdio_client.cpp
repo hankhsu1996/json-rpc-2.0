@@ -18,16 +18,13 @@ int main() {
   Client client(std::move(transport));
   client.Start();
 
-  auto addReq = std::make_tuple("add", Json({{"a", 10}, {"b", 5}}), false);
-  auto addRes = client.SendRequest(addReq);
-  spdlog::info("Add result: {}", addRes->dump());
+  Json addRes = client.SendMethodCall("add", Json({{"a", 10}, {"b", 5}}));
+  spdlog::info("Add result: {}", addRes.dump());
 
-  auto divReq = std::make_tuple("divide", Json({{"a", 10}, {"b", 0}}), false);
-  auto divRes = client.SendRequest(divReq);
-  spdlog::info("Divide result: {}", divRes->dump());
+  Json divRes = client.SendMethodCall("divide", Json({{"a", 10}, {"b", 0}}));
+  spdlog::info("Divide result: {}", divRes.dump());
 
-  auto stopReq = std::make_tuple("stop", std::nullopt, true);
-  client.SendRequest(stopReq);
+  client.SendNotification("stop");
 
   client.Stop();
   return 0;

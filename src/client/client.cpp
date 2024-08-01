@@ -23,109 +23,6 @@ void Client::Stop() {
   }
 }
 
-Client::Response Client::SendRequest(const Request &request) {
-  const std::string &method = std::get<0>(request);
-  const std::optional<Json> &params = std::get<1>(request);
-  bool isNotification = std::get<2>(request);
-
-  Json jsonRequest;
-  jsonRequest["jsonrpc"] = "2.0";
-  jsonRequest["method"] = method;
-  if (params) {
-    jsonRequest["params"] = *params;
-  }
-
-  if (!isNotification) {
-    // Handling method call
-    int requestId = GetNextRequestId();
-    jsonRequest["id"] = requestId;
-
-    std::promise<Json> responsePromise;
-    auto futureResponse = responsePromise.get_future();
-
-    {
-      std::lock_guard<std::mutex> lock(pendingRequestsMutex_);
-      pendingRequests_[requestId] = std::move(responsePromise);
-    }
-    expectedResponses_++;
-
-    transport_->SendRequest(jsonRequest.dump());
-
-    // Block until the promise is fulfilled and return the response
-    futureResponse.wait();
-    auto response = futureResponse.get();
-
-    {
-      std::lock_guard<std::mutex> lock(pendingRequestsMutex_);
-      pendingRequests_.erase(requestId);
-    }
-
-    return response;
-  } else {
-    // Handling notification
-    transport_->SendRequest(jsonRequest.dump());
-    return std::nullopt;
-  }
-}
-
-std::vector<Client::Response> Client::SendBatchRequest(
-    const std::vector<Request> &requests) {
-  Json jsonBatchRequest = Json::array();
-  std::vector<int> ids;
-  bool hasMethodCall = false;
-
-  for (const auto &request : requests) {
-    const std::string &method = std::get<0>(request);
-    const std::optional<Json> &params = std::get<1>(request);
-    bool isNotification = std::get<2>(request);
-
-    Json jsonRequest;
-    jsonRequest["jsonrpc"] = "2.0";
-    jsonRequest["method"] = method;
-    if (params) {
-      jsonRequest["params"] = *params;
-    }
-
-    if (!isNotification) {
-      int requestId = GetNextRequestId();
-      jsonRequest["id"] = requestId;
-      ids.push_back(requestId);
-
-      std::promise<Json> responsePromise;
-      {
-        std::lock_guard<std::mutex> lock(pendingRequestsMutex_);
-        pendingRequests_[requestId] = std::move(responsePromise);
-      }
-
-      hasMethodCall = true;
-    }
-
-    jsonBatchRequest.push_back(jsonRequest);
-  }
-
-  if (hasMethodCall) {
-    expectedResponses_++;
-  }
-
-  transport_->SendRequest(jsonBatchRequest.dump());
-
-  std::vector<Response> responses;
-  for (int id : ids) {
-    auto future = pendingRequests_[id].get_future();
-    future.wait();
-    auto response = future.get();
-
-    {
-      std::lock_guard<std::mutex> lock(pendingRequestsMutex_);
-      pendingRequests_.erase(id);
-    }
-
-    responses.push_back(response);
-  }
-
-  return responses;
-}
-
 void Client::Listener() {
   while (running_) {
     spdlog::debug("JSON-RPC client listener running and expecting {} responses",
@@ -135,6 +32,52 @@ void Client::Listener() {
       HandleResponse(response);
       expectedResponses_--;
     }
+  }
+}
+
+nlohmann::json Client::SendMethodCall(
+    const std::string &method, std::optional<nlohmann::json> params) {
+  ClientRequest request(method, std::move(params), false,
+      [this]() { return GetNextRequestId(); });
+  return SendRequest(request);
+}
+
+void Client::SendNotification(
+    const std::string &method, std::optional<nlohmann::json> params) {
+  ClientRequest request(
+      method, std::move(params), true, [this]() { return GetNextRequestId(); });
+  // Notifications do not expect a response
+  transport_->SendRequest(request.Dump());
+}
+
+nlohmann::json Client::SendRequest(const ClientRequest &request) {
+  if (request.RequiresResponse()) {
+    std::promise<nlohmann::json> responsePromise;
+    auto futureResponse = responsePromise.get_future();
+
+    {
+      std::lock_guard<std::mutex> lock(pendingRequestsMutex_);
+      pendingRequests_[request.GetKey()] = std::move(responsePromise);
+    }
+    expectedResponses_++;
+
+    transport_->SendRequest(request.Dump());
+
+    // Block until the promise is fulfilled and return the response
+    futureResponse.wait();
+    auto response = futureResponse.get();
+
+    {
+      std::lock_guard<std::mutex> lock(pendingRequestsMutex_);
+      pendingRequests_.erase(request.GetKey());
+    }
+
+    return response;
+  } else {
+    // No response expected, just send the request
+    transport_->SendRequest(request.Dump());
+    return nlohmann::json(); // Return an empty JSON object since no response is
+                             // expected
   }
 }
 
@@ -151,49 +94,23 @@ void Client::HandleResponse(const std::string &response) {
     throw std::runtime_error(
         "Failed to parse JSON response: " + std::string(e.what()));
   }
+  if (ValidateResponse(jsonResponse)) {
+    int requestId = jsonResponse["id"].get<int>();
 
-  if (jsonResponse.is_array()) {
-    for (const auto &resp : jsonResponse) {
-      if (ValidateResponse(resp)) {
-        int requestId = resp["id"].get<int>();
-
-        std::lock_guard<std::mutex> lock(pendingRequestsMutex_);
-        auto it = pendingRequests_.find(requestId);
-        if (it != pendingRequests_.end()) {
-          it->second.set_value(resp);
-          pendingRequests_.erase(it);
-        } else {
-          spdlog::error(
-              "Received response for unknown request ID: {}", requestId);
-          throw std::runtime_error(
-              "Received response for unknown request ID: " +
-              std::to_string(requestId));
-        }
-      } else {
-        spdlog::error("Invalid JSON-RPC response: {}", resp.dump());
-        throw std::runtime_error("Invalid JSON-RPC response: " + resp.dump());
-      }
+    std::lock_guard<std::mutex> lock(pendingRequestsMutex_);
+    auto it = pendingRequests_.find(requestId);
+    if (it != pendingRequests_.end()) {
+      it->second.set_value(jsonResponse);
+      pendingRequests_.erase(it);
+    } else {
+      spdlog::error("Received response for unknown request ID: {}", requestId);
+      throw std::runtime_error("Received response for unknown request ID: " +
+                               std::to_string(requestId));
     }
   } else {
-    if (ValidateResponse(jsonResponse)) {
-      int requestId = jsonResponse["id"].get<int>();
-
-      std::lock_guard<std::mutex> lock(pendingRequestsMutex_);
-      auto it = pendingRequests_.find(requestId);
-      if (it != pendingRequests_.end()) {
-        it->second.set_value(jsonResponse);
-        pendingRequests_.erase(it);
-      } else {
-        spdlog::error(
-            "Received response for unknown request ID: {}", requestId);
-        throw std::runtime_error("Received response for unknown request ID: " +
-                                 std::to_string(requestId));
-      }
-    } else {
-      spdlog::error("Invalid JSON-RPC response: {}", jsonResponse.dump());
-      throw std::runtime_error(
-          "Invalid JSON-RPC response: " + jsonResponse.dump());
-    }
+    spdlog::error("Invalid JSON-RPC response: {}", jsonResponse.dump());
+    throw std::runtime_error(
+        "Invalid JSON-RPC response: " + jsonResponse.dump());
   }
 }
 
