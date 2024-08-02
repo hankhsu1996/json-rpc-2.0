@@ -53,8 +53,8 @@ You can then install the dependencies using Conan 2 and configure your project w
 Here’s how to create a simple JSON-RPC server:
 
 ```cpp
-// Create a server with an HTTP transport
-jsonrpc::Server server(std::make_unique<jsonrpc::HttpServerTransport>());
+// Create a server with an stdio transport
+jsonrpc::Server server(std::make_unique<jsonrpc::StdioServerTransport>());
 
 // Register a method named "add" that adds two numbers
 server.RegisterMethodCall("add", [](const std::optional<jsonrpc::Json> &params) {
@@ -78,7 +78,7 @@ To register a method, you need to provide a function that takes optional `Json` 
 Here’s how to create a JSON-RPC client:
 
 ```cpp
-// Create a client with an HTTP transport
+// Create a client with an stdio transport
 auto transport = std::make_unique<jsonrpc::StdioClientTransport>();
 jsonrpc::Client client(std::move(transport));
 client.Start();
