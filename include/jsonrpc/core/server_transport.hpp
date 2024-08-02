@@ -50,10 +50,10 @@ public:
   /**
    * @brief Sets the dispatcher for the transport.
    *
-   * @param dispatcher A pointer to the Dispatcher object.
+   * @param dispatcher A shared pointer to the Dispatcher object.
    */
-  void SetDispatcher(Dispatcher *dispatcher) {
-    dispatcher_ = dispatcher;
+  void SetDispatcher(std::shared_ptr<IDispatcher> dispatcher) {
+    dispatcher_ = std::move(dispatcher);
   }
 
   /**
@@ -78,7 +78,7 @@ protected:
   std::atomic<bool> running_;
 
   /// @brief Pointer to the Dispatcher object.
-  Dispatcher *dispatcher_;
+  std::shared_ptr<IDispatcher> dispatcher_;
 };
 
 } // namespace jsonrpc

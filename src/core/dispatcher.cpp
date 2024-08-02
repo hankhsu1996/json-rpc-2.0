@@ -4,6 +4,19 @@
 
 namespace jsonrpc {
 
+Dispatcher::Dispatcher(bool enableMultithreading, size_t numThreads)
+    : enableMultithreading_(enableMultithreading),
+      thread_pool_(enableMultithreading ? numThreads : 0) {
+  // Optionally log or perform additional setup if needed
+  if (enableMultithreading_) {
+    spdlog::info(
+        "Dispatcher initialized with multithreading support using {} threads",
+        numThreads);
+  } else {
+    spdlog::info("Dispatcher initialized without multithreading support");
+  }
+}
+
 std::optional<std::string> Dispatcher::DispatchRequest(
     const std::string &requestStr) {
 

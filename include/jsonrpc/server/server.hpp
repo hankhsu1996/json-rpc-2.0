@@ -65,8 +65,8 @@ public:
   }
 
 private:
-  /// @brief Unique pointer to the Dispatcher.
-  std::unique_ptr<Dispatcher> dispatcher_;
+  /// @brief Shared pointer to the Dispatcher.
+  std::shared_ptr<Dispatcher> dispatcher_;
 
   /// @brief Unique pointer to the ServerTransport.
   std::unique_ptr<ServerTransport> transport_;
