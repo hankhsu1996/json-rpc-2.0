@@ -21,6 +21,10 @@ void Server::Stop() {
   transport_->Stop();
 }
 
+bool Server::IsRunning() const {
+  return transport_->IsRunning();
+}
+
 void Server::RegisterMethodCall(
     const std::string &method, const MethodCallHandler &handler) {
   dispatcher_->RegisterMethodCall(method, handler);
