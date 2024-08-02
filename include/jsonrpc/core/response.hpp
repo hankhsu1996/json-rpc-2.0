@@ -116,7 +116,7 @@ inline Response Response::CreateLibError(
 inline Json Response::CreateErrorResponse(
     const std::string &message, int code, const std::optional<Json> &id) {
   Json error = {{"code", code}, {"message", message}};
-  Json response = {{"error", error}};
+  Json response = {{"jsonrpc", "2.0"}, {"error", error}};
   if (id.has_value()) {
     response["id"] = id.value();
   } else {

@@ -35,11 +35,5 @@ target_link_libraries(stdio_client PRIVATE jsonrpc)
 add_executable(stdio_server examples/stdio_server.cpp)
 target_link_libraries(stdio_server PRIVATE jsonrpc)
 
-add_executable(http_client examples/http_client.cpp)
-target_link_libraries(http_client PRIVATE jsonrpc)
-
-add_executable(http_server examples/http_server.cpp)
-target_link_libraries(http_server PRIVATE jsonrpc)
-
 enable_testing()
 add_subdirectory(tests)

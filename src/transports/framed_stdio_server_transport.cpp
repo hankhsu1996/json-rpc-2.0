@@ -19,13 +19,14 @@ void FramedStdioServerTransport::Listen() {
 
   while (IsRunning()) {
     try {
-      std::string content = ReceiveMessage();
+      std::string content = DeframeMessage(std::cin);
       std::optional<std::string> response =
           dispatcher_->DispatchRequest(content);
       if (response.has_value()) {
         spdlog::debug("FramedStdioServerTransport dispatching response: {}",
             response.value());
-        SendMessage(response.value());
+        FrameMessage(std::cout, response.value());
+        std::cout << std::flush;
       }
     } catch (const std::runtime_error &e) {
       spdlog::error(

@@ -58,9 +58,8 @@ jsonrpc::Server server(std::make_unique<jsonrpc::HttpServerTransport>());
 
 // Register a method named "add" that adds two numbers
 server.RegisterMethodCall("add", [](const std::optional<jsonrpc::Json> &params) {
-  int a = params.value()["a"];
-  int b = params.value()["b"];
-  return Json{{"result", a + b}};
+  int result = params.value()["a"] + params.value()["b"];
+  return Json{{"result", result}};
 });
 
 // Register a notification named "stop" to stop the server
@@ -80,15 +79,16 @@ Here’s how to create a JSON-RPC client:
 
 ```cpp
 // Create a client with an HTTP transport
-auto transport = std::make_unique<jsonrpc::HttpClientTransport>();
+auto transport = std::make_unique<jsonrpc::StdioClientTransport>();
 jsonrpc::Client client(std::move(transport));
+client.Start();
 
 // Perform addition
-auto response = client.SendMethodCall("add", {{"a", 10}, {"b", 5}});
+auto response = client.SendMethodCall("add", Json({{"a", 10}, {"b", 5}}));
 std::cout << "Add result: " << response.dump() << std::endl;
 
 // Send stop notification
-client.SendNotification("stop", {});
+client.SendNotification("stop");
 ```
 
 These examples demonstrate the basic usage of setting up a JSON-RPC server and client. For more examples and detailed usage, please refer to the [examples folder](./examples/).

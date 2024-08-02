@@ -2,8 +2,6 @@
 
 #include <string>
 
-#include "jsonrpc/core/types.hpp"
-
 namespace jsonrpc {
 
 /**
@@ -14,14 +12,15 @@ namespace jsonrpc {
 class FramedTransport {
 protected:
   /**
-   * @brief Sends a framed message.
+   * @brief Constructs a framed message.
    *
-   * Sends a JSON message as a string with additional headers for Content-Length
-   * and Content-Type, similar to HTTP.
+   * Constructs a JSON message as a string with additional headers for
+   * Content-Length and Content-Type, similar to HTTP.
    *
-   * @param message The message to be sent.
+   * @param output The output stream to write the framed message.
+   * @param message The message to be framed.
    */
-  void SendMessage(const std::string &message);
+  void FrameMessage(std::ostream &output, const std::string &message);
 
   /**
    * @brief Receives a framed message.
@@ -29,9 +28,10 @@ protected:
    * Reads headers to determine the content length, then reads the message
    * content based on that length.
    *
+   * @param input The input stream to read the framed message.
    * @return The received message.
    */
-  std::string ReceiveMessage();
+  std::string DeframeMessage(std::istream &input);
 
 private:
   /**
@@ -41,15 +41,6 @@ private:
    * @return The parsed content length.
    */
   int parseContentLength(const std::string &header_value);
-
-  /**
-   * @brief Reads headers to determine the content length.
-   *
-   * Internally calls `parseContentLength` to extract the content length.
-   *
-   * @param content_length A reference to store the parsed content length.
-   */
-  void readHeaders(int &content_length);
 };
 
 } // namespace jsonrpc

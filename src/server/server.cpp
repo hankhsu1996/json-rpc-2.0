@@ -6,8 +6,8 @@ namespace jsonrpc {
 
 Server::Server(std::unique_ptr<ServerTransport> transport)
     : transport_(std::move(transport)) {
-  dispatcher_ = std::make_unique<Dispatcher>();
-  transport_->SetDispatcher(dispatcher_.get());
+  dispatcher_ = std::make_shared<Dispatcher>();
+  transport_->SetDispatcher(dispatcher_);
   spdlog::info("Server initialized with transport");
 }
 
@@ -19,6 +19,10 @@ void Server::Start() {
 void Server::Stop() {
   spdlog::info("Server stopping");
   transport_->Stop();
+}
+
+bool Server::IsRunning() const {
+  return transport_->IsRunning();
 }
 
 void Server::RegisterMethodCall(

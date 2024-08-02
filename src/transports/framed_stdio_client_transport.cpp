@@ -9,17 +9,16 @@
 
 namespace jsonrpc {
 
-Json FramedStdioClientTransport::SendMethodCall(const Json &request) {
-  spdlog::debug(
-      "FramedStdioClientTransport sending method call: {}", request.dump());
-  SendMessage(request.dump());
-  return ReceiveMessage();
+void FramedStdioClientTransport::SendRequest(const std::string &message) {
+  spdlog::debug("FramedStdioClientTransport sending message: {}", message);
+  FrameMessage(std::cout, message);
+  std::cout << std::flush;
 }
 
-void FramedStdioClientTransport::SendNotification(const Json &notification) {
-  spdlog::debug("FramedStdioClientTransport sending notification: {}",
-      notification.dump());
-  SendMessage(notification.dump());
+std::string FramedStdioClientTransport::ReadResponse() {
+  std::string response = DeframeMessage(std::cin);
+  spdlog::debug("FramedStdioClientTransport received message: {}", response);
+  return response;
 }
 
 } // namespace jsonrpc

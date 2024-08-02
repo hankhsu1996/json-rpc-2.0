@@ -9,29 +9,16 @@
 namespace jsonrpc {
 
 /**
- * @brief Client transport using framed stdio for communication.
+ * @brief Transport layer using framed messaging over standard I/O for JSON-RPC communication.
  *
- * This class implements the ClientTransport interface using framed stdio
- * as the underlying transport mechanism.
+ * This class uses framed transport to send and receive JSON-RPC messages over standard I/O.
  */
 class FramedStdioClientTransport :
     public ClientTransport,
     protected FramedTransport {
 public:
-  /**
-   * @brief Sends an RPC method call to the server.
-   *
-   * @param request The JSON-RPC request as a JSON object.
-   * @return The response from the server as a JSON object.
-   */
-  Json SendMethodCall(const Json &request) override;
-
-  /**
-   * @brief Sends an RPC notification to the server.
-   *
-   * @param notification The JSON-RPC notification as a JSON object.
-   */
-  void SendNotification(const Json &notification) override;
+  void SendRequest(const std::string &request) override;
+  std::string ReadResponse() override;
 };
 
 } // namespace jsonrpc

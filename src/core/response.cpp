@@ -33,7 +33,7 @@ Response Response::FromJson(const Json &responseJson, std::optional<Json> id) {
 
 Response Response::SuccessResponse(
     const Json &result, const std::optional<Json> &id) {
-  Json response = {{"result", result}};
+  Json response = {{"jsonrpc", "2.0"}, {"result", result}};
   if (id.has_value()) {
     response["id"] = id.value();
   }
@@ -42,7 +42,7 @@ Response Response::SuccessResponse(
 
 Response Response::UserErrorResponse(
     const Json &error, const std::optional<Json> &id) {
-  Response response({{"error", error}}, id);
+  Response response({{"jsonrpc", "2.0"}, {"error", error}}, id);
   response.ValidateResponse();
   return response;
 }

@@ -10,53 +10,58 @@
 
 using namespace jsonrpc;
 
-TEST_CASE(
-    "StdioServerTransport dispatches requests", "[StdioServerTransport]") {
-  Dispatcher dispatcher;
-  dispatcher.RegisterMethodCall(
-      "testMethod", [](const std::optional<Json> &params) -> Json {
-        if (params.has_value()) {
-          REQUIRE(params.value()["param1"] == 1);
-        }
-        return Json{{"result", "success"}};
-      });
+class MockDispatcher : public IDispatcher {
+public:
+  std::optional<std::string> DispatchRequest(
+      const std::string &request) override {
+    return R"({"jsonrpc": "2.0", "result": "success", "id": 1})";
+  }
+};
 
-  StdioServerTransport serverTransport;
-  serverTransport.SetDispatcher(&dispatcher);
+TEST_CASE("StdioServerTransport listens and dispatches requests correctly",
+    "[StdioServerTransport]") {
+  // Simulate input for the server
+  std::string simulated_input =
+      R"({"jsonrpc": "2.0", "method": "testMethod", "id": 1})" +
+      std::string("\n");
+  std::istringstream input_stream(simulated_input);
 
-  std::string input =
-      R"({"jsonrpc":"2.0","method":"testMethod","params":{"param1":1},"id":1})";
-  std::istringstream in(input);
-  std::ostringstream out;
-  RedirectIO redirect(in, out);
+  // Capture output from the server
+  std::ostringstream output_stream;
+  RedirectIO redirect(input_stream, output_stream);
 
-  serverTransport.Start();
+  // Set up the StdioServerTransport with a mock dispatcher
+  auto mock_dispatcher = std::make_shared<MockDispatcher>();
+  StdioServerTransport transport;
+  transport.SetDispatcher(mock_dispatcher);
 
-  std::string output = out.str();
-  Json outputJson = Json::parse(output);
-  Json expectedJson = {{"result", "success"}, {"id", 1}};
+  // Start the server (runs Listen in the main thread for testing)
+  transport.Start();
 
-  REQUIRE(outputJson == expectedJson);
+  // Verify the response
+  std::string expected_output =
+      R"({"jsonrpc": "2.0", "result": "success", "id": 1})" + std::string("\n");
+  REQUIRE(output_stream.str() == expected_output);
 }
 
 TEST_CASE(
-    "StdioServerTransport handles invalid input", "[StdioServerTransport]") {
-  Dispatcher dispatcher;
-  StdioServerTransport serverTransport;
-  serverTransport.SetDispatcher(&dispatcher);
+    "StdioServerTransport stops listening on EOF", "[StdioServerTransport]") {
+  // Simulate EOF by providing no input (or an empty string with an EOF
+  // condition)
+  std::istringstream input_stream("");
 
-  std::string input = "invalid Json";
-  std::istringstream in(input);
-  std::ostringstream out;
-  RedirectIO redirect(in, out);
+  // Capture output from the server
+  std::ostringstream output_stream;
+  RedirectIO redirect(input_stream, output_stream);
 
-  serverTransport.Start();
+  // Set up the StdioServerTransport with a mock dispatcher
+  auto mock_dispatcher = std::make_shared<MockDispatcher>();
+  StdioServerTransport transport;
+  transport.SetDispatcher(mock_dispatcher);
 
-  std::string output = out.str();
-  Json outputJson = Json::parse(output);
-  Json expectedJson = {
-      {"error", {{"code", -32700}, {"message", "Parse error"}}},
-      {"id", nullptr}};
+  // Start the server (runs Listen in the main thread for testing)
+  transport.Start();
 
-  REQUIRE(outputJson == expectedJson);
+  // Expect no output as there's no valid input to process
+  REQUIRE(output_stream.str().empty());
 }
