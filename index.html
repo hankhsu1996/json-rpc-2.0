@@ -154,8 +154,8 @@ Using Conan 2</h2>
 <h2><a class="anchor" id="autotoc_md6"></a>
 Creating a JSON-RPC Server</h2>
 <p>Here’s how to create a simple JSON-RPC server:</p>
-<div class="fragment"><div class="line"><span class="comment">// Create a server with an HTTP transport</span></div>
-<div class="line"><a class="code hl_class" href="classjsonrpc_1_1Server.html">jsonrpc::Server</a> server(std::make_unique&lt;jsonrpc::HttpServerTransport&gt;());</div>
+<div class="fragment"><div class="line"><span class="comment">// Create a server with an stdio transport</span></div>
+<div class="line"><a class="code hl_class" href="classjsonrpc_1_1Server.html">jsonrpc::Server</a> server(std::make_unique&lt;jsonrpc::StdioServerTransport&gt;());</div>
 <div class="line"> </div>
 <div class="line"><span class="comment">// Register a method named &quot;add&quot; that adds two numbers</span></div>
 <div class="line">server.RegisterMethodCall(<span class="stringliteral">&quot;add&quot;</span>, [](<span class="keyword">const</span> std::optional&lt;jsonrpc::Json&gt; &amp;params) {</div>
@@ -175,7 +175,7 @@ Creating a JSON-RPC Server</h2>
 <h2><a class="anchor" id="autotoc_md7"></a>
 Creating a JSON-RPC Client</h2>
 <p>Here’s how to create a JSON-RPC client:</p>
-<div class="fragment"><div class="line"><span class="comment">// Create a client with an HTTP transport</span></div>
+<div class="fragment"><div class="line"><span class="comment">// Create a client with an stdio transport</span></div>
 <div class="line"><span class="keyword">auto</span> transport = std::make_unique&lt;jsonrpc::StdioClientTransport&gt;();</div>
 <div class="line"><a class="code hl_class" href="classjsonrpc_1_1Client.html">jsonrpc::Client</a> client(std::move(transport));</div>
 <div class="line">client.Start();</div>
