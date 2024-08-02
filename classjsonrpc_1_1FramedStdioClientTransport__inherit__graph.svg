@@ -11,15 +11,15 @@
 <!-- Node1 -->
 <g id="Node000001" class="node">
 <title>Node1</title>
-<g id="a_Node000001"><a xlink:title="Client transport using framed stdio for communication.">
+<g id="a_Node000001"><a xlink:title="Transport layer using framed messaging over standard I/O for JSON&#45;RPC communication.">
 <polygon fill="#999999" stroke="transparent" points="207.5,-75 65.5,-75 65.5,0 207.5,0 207.5,-75"/>
 <text text-anchor="start" x="70.5" y="-62.5" font-family="Helvetica,sans-Serif" font-size="10.00">jsonrpc::FramedStdioClient</text>
 <text text-anchor="start" x="113.5" y="-51.5" font-family="Helvetica,sans-Serif" font-size="10.00">Transport</text>
 <text text-anchor="start" x="134.5" y="-36.5" font-family="Helvetica,sans-Serif" font-size="10.00"> </text>
-<text text-anchor="start" x="77.5" y="-21.5" font-family="Helvetica,sans-Serif" font-size="10.00">+</text>
-<text text-anchor="start" x="98.5" y="-21.5" font-family="Helvetica,sans-Serif" font-size="10.00">SendMethodCall()</text>
-<text text-anchor="start" x="77.5" y="-6.5" font-family="Helvetica,sans-Serif" font-size="10.00">+</text>
-<text text-anchor="start" x="98.5" y="-6.5" font-family="Helvetica,sans-Serif" font-size="10.00">SendNotification()</text>
+<text text-anchor="start" x="79.5" y="-21.5" font-family="Helvetica,sans-Serif" font-size="10.00">+</text>
+<text text-anchor="start" x="102.5" y="-21.5" font-family="Helvetica,sans-Serif" font-size="10.00">SendRequest()</text>
+<text text-anchor="start" x="79.5" y="-6.5" font-family="Helvetica,sans-Serif" font-size="10.00">+</text>
+<text text-anchor="start" x="102.5" y="-6.5" font-family="Helvetica,sans-Serif" font-size="10.00">ReadResponse()</text>
 <polygon fill="#666666" stroke="#666666" points="65.5,-46.5 65.5,-46.5 207.5,-46.5 207.5,-46.5 65.5,-46.5"/>
 <polygon fill="#666666" stroke="#666666" points="65.5,-31.5 65.5,-31.5 207.5,-31.5 207.5,-31.5 65.5,-31.5"/>
 <polygon fill="none" stroke="#666666" points="65.5,0 65.5,-75 207.5,-75 207.5,0 65.5,0"/>
@@ -29,16 +29,16 @@
 <!-- Node2 -->
 <g id="Node000002" class="node">
 <title>Node2</title>
-<g id="a_Node000002"><a xlink:href="classjsonrpc_1_1ClientTransport.html" target="_top" xlink:title="An abstract class representing the transport mechanism for JSON&#45;RPC client.">
+<g id="a_Node000002"><a xlink:href="classjsonrpc_1_1ClientTransport.html" target="_top" xlink:title="Base class for JSON&#45;RPC client transport.">
 <polygon fill="white" stroke="transparent" points="125,-190 0,-190 0,-111 125,-111 125,-190"/>
 <text text-anchor="start" x="5.5" y="-177.5" font-family="Helvetica,sans-Serif" font-size="10.00">jsonrpc::ClientTransport</text>
 <text text-anchor="start" x="61" y="-162.5" font-family="Helvetica,sans-Serif" font-size="10.00"> </text>
 <text text-anchor="start" x="8" y="-147.5" font-family="Helvetica,sans-Serif" font-size="10.00">+</text>
 <text text-anchor="start" x="24.5" y="-147.5" font-family="Helvetica,sans-Serif" font-size="10.00">~ClientTransport()</text>
 <text text-anchor="start" x="8" y="-132.5" font-family="Helvetica,sans-Serif" font-size="10.00">+</text>
-<text text-anchor="start" x="24.5" y="-132.5" font-family="Helvetica,sans-Serif" font-size="10.00">SendMethodCall()</text>
+<text text-anchor="start" x="24.5" y="-132.5" font-family="Helvetica,sans-Serif" font-size="10.00">SendRequest()</text>
 <text text-anchor="start" x="8" y="-117.5" font-family="Helvetica,sans-Serif" font-size="10.00">+</text>
-<text text-anchor="start" x="24.5" y="-117.5" font-family="Helvetica,sans-Serif" font-size="10.00">SendNotification()</text>
+<text text-anchor="start" x="24.5" y="-117.5" font-family="Helvetica,sans-Serif" font-size="10.00">ReadResponse()</text>
 <polygon fill="#666666" stroke="#666666" points="0.5,-172.5 0.5,-172.5 125.5,-172.5 125.5,-172.5 0.5,-172.5"/>
 <polygon fill="#666666" stroke="#666666" points="0.5,-157.5 0.5,-157.5 125.5,-157.5 125.5,-157.5 0.5,-157.5"/>
 <polygon fill="none" stroke="#666666" points="0,-111 0,-190 125,-190 125,-111 0,-111"/>
@@ -61,10 +61,10 @@
 <polygon fill="white" stroke="transparent" points="277.5,-182.5 143.5,-182.5 143.5,-118.5 277.5,-118.5 277.5,-182.5"/>
 <text text-anchor="start" x="148.5" y="-170.5" font-family="Helvetica,sans-Serif" font-size="10.00">jsonrpc::FramedTransport</text>
 <text text-anchor="start" x="208.5" y="-155.5" font-family="Helvetica,sans-Serif" font-size="10.00"> </text>
-<text text-anchor="start" x="153" y="-140.5" font-family="Helvetica,sans-Serif" font-size="10.00">#</text>
-<text text-anchor="start" x="171.5" y="-140.5" font-family="Helvetica,sans-Serif" font-size="10.00">SendMessage()</text>
-<text text-anchor="start" x="153" y="-125.5" font-family="Helvetica,sans-Serif" font-size="10.00">#</text>
-<text text-anchor="start" x="171.5" y="-125.5" font-family="Helvetica,sans-Serif" font-size="10.00">ReceiveMessage()</text>
+<text text-anchor="start" x="152" y="-140.5" font-family="Helvetica,sans-Serif" font-size="10.00">#</text>
+<text text-anchor="start" x="169.5" y="-140.5" font-family="Helvetica,sans-Serif" font-size="10.00">FrameMessage()</text>
+<text text-anchor="start" x="152" y="-125.5" font-family="Helvetica,sans-Serif" font-size="10.00">#</text>
+<text text-anchor="start" x="169.5" y="-125.5" font-family="Helvetica,sans-Serif" font-size="10.00">DeframeMessage()</text>
 <polygon fill="#666666" stroke="#666666" points="143.5,-165.5 143.5,-165.5 277.5,-165.5 277.5,-165.5 143.5,-165.5"/>
 <polygon fill="#666666" stroke="#666666" points="143.5,-150.5 143.5,-150.5 277.5,-150.5 277.5,-150.5 143.5,-150.5"/>
 <polygon fill="none" stroke="#666666" points="143.5,-118.5 143.5,-182.5 277.5,-182.5 277.5,-118.5 143.5,-118.5"/>

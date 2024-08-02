@@ -71,10 +71,10 @@
 <polygon fill="white" stroke="transparent" points="280,-205 146,-205 146,-141 280,-141 280,-205"/>
 <text text-anchor="start" x="151" y="-193" font-family="Helvetica,sans-Serif" font-size="10.00">jsonrpc::FramedTransport</text>
 <text text-anchor="start" x="211" y="-178" font-family="Helvetica,sans-Serif" font-size="10.00"> </text>
-<text text-anchor="start" x="155.5" y="-163" font-family="Helvetica,sans-Serif" font-size="10.00">#</text>
-<text text-anchor="start" x="174" y="-163" font-family="Helvetica,sans-Serif" font-size="10.00">SendMessage()</text>
-<text text-anchor="start" x="155.5" y="-148" font-family="Helvetica,sans-Serif" font-size="10.00">#</text>
-<text text-anchor="start" x="174" y="-148" font-family="Helvetica,sans-Serif" font-size="10.00">ReceiveMessage()</text>
+<text text-anchor="start" x="154.5" y="-163" font-family="Helvetica,sans-Serif" font-size="10.00">#</text>
+<text text-anchor="start" x="172" y="-163" font-family="Helvetica,sans-Serif" font-size="10.00">FrameMessage()</text>
+<text text-anchor="start" x="154.5" y="-148" font-family="Helvetica,sans-Serif" font-size="10.00">#</text>
+<text text-anchor="start" x="172" y="-148" font-family="Helvetica,sans-Serif" font-size="10.00">DeframeMessage()</text>
 <polygon fill="#666666" stroke="#666666" points="146,-188 146,-188 280,-188 280,-188 146,-188"/>
 <polygon fill="#666666" stroke="#666666" points="146,-173 146,-173 280,-173 280,-173 146,-173"/>
 <polygon fill="none" stroke="#666666" points="146,-141 146,-205 280,-205 280,-141 146,-141"/>

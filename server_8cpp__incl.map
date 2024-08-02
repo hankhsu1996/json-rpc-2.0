@@ -23,7 +23,7 @@
 <area shape="poly" id="edge8_Node000005_Node000008" title=" " alt="" coords="270,268,110,314,109,309,269,263"/>
 <area shape="rect" id="Node000009" title=" " alt="" coords="120,313,271,339"/>
 <area shape="poly" id="edge9_Node000005_Node000009" title=" " alt="" coords="292,268,227,308,224,304,289,263"/>
-<area shape="rect" id="Node000010" href="$request_8hpp.html" title=" " alt="" coords="563,313,745,339"/>
+<area shape="rect" id="Node000010" href="$core_2request_8hpp.html" title=" " alt="" coords="563,313,745,339"/>
 <area shape="poly" id="edge10_Node000005_Node000010" title=" " alt="" coords="365,263,585,308,584,313,364,268"/>
 <area shape="poly" id="edge23_Node000005_Node000011" title=" " alt="" coords="407,263,630,290,720,303,760,311,767,328,764,346,743,378,738,375,759,344,762,329,756,315,719,308,629,295,407,268"/>
 <area shape="rect" id="Node000015" href="$response_8hpp.html" title=" " alt="" coords="346,313,538,339"/>

@@ -119,14 +119,14 @@ $(function(){initNavTree('classjsonrpc_1_1ClientTransport.html',''); initResizab
 </div><!--header-->
 <div class="contents">
 
-<p>An abstract class representing the transport mechanism for JSON-RPC client.  
+<p>Base class for JSON-RPC client transport.  
  <a href="#details">More...</a></p>
 
 <p><code>#include &lt;<a class="el" href="client__transport_8hpp_source.html">client_transport.hpp</a>&gt;</code></p>
 <div class="dynheader">
 Inheritance diagram for jsonrpc::ClientTransport:</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="classjsonrpc_1_1ClientTransport__inherit__graph.svg" width="643" height="270"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="classjsonrpc_1_1ClientTransport__inherit__graph.svg" width="424" height="264"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 <div class="dynheader">
 Collaboration diagram for jsonrpc::ClientTransport:</div>
@@ -137,20 +137,20 @@ Collaboration diagram for jsonrpc::ClientTransport:</div>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:a457cc3c42ecfacf3ce62623be1108b9d" id="r_a457cc3c42ecfacf3ce62623be1108b9d"><td class="memItemLeft" align="right" valign="top">virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a457cc3c42ecfacf3ce62623be1108b9d">~ClientTransport</a> ()=default</td></tr>
-<tr class="memdesc:a457cc3c42ecfacf3ce62623be1108b9d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Virtual destructor for <a class="el" href="classjsonrpc_1_1ClientTransport.html" title="An abstract class representing the transport mechanism for JSON-RPC client.">ClientTransport</a>.  <br /></td></tr>
+<tr class="memdesc:a457cc3c42ecfacf3ce62623be1108b9d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Virtual destructor.  <br /></td></tr>
 <tr class="separator:a457cc3c42ecfacf3ce62623be1108b9d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae376fa9c89da1a60bc0b5760127500cb" id="r_ae376fa9c89da1a60bc0b5760127500cb"><td class="memItemLeft" align="right" valign="top">virtual <a class="el" href="namespacejsonrpc.html#a268131906d306aae6d599fd490c524b5">Json</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae376fa9c89da1a60bc0b5760127500cb">SendMethodCall</a> (const <a class="el" href="namespacejsonrpc.html#a268131906d306aae6d599fd490c524b5">Json</a> &amp;request)=0</td></tr>
-<tr class="memdesc:ae376fa9c89da1a60bc0b5760127500cb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Send an RPC method call to the server.  <br /></td></tr>
-<tr class="separator:ae376fa9c89da1a60bc0b5760127500cb"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:adf33e5488b2663c9310cea74f84362c7" id="r_adf33e5488b2663c9310cea74f84362c7"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#adf33e5488b2663c9310cea74f84362c7">SendNotification</a> (const <a class="el" href="namespacejsonrpc.html#a268131906d306aae6d599fd490c524b5">Json</a> &amp;notification)=0</td></tr>
-<tr class="memdesc:adf33e5488b2663c9310cea74f84362c7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Send an RPC notification to the server.  <br /></td></tr>
-<tr class="separator:adf33e5488b2663c9310cea74f84362c7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0ceb5197fee405a2713d0575316b0161" id="r_a0ceb5197fee405a2713d0575316b0161"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a0ceb5197fee405a2713d0575316b0161">SendRequest</a> (const std::string &amp;request)=0</td></tr>
+<tr class="memdesc:a0ceb5197fee405a2713d0575316b0161"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sends a JSON-RPC request.  <br /></td></tr>
+<tr class="separator:a0ceb5197fee405a2713d0575316b0161"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5f7632532593745b2919296d89606e97" id="r_a5f7632532593745b2919296d89606e97"><td class="memItemLeft" align="right" valign="top">virtual std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a5f7632532593745b2919296d89606e97">ReadResponse</a> ()=0</td></tr>
+<tr class="memdesc:a5f7632532593745b2919296d89606e97"><td class="mdescLeft">&#160;</td><td class="mdescRight">Reads a JSON-RPC response.  <br /></td></tr>
+<tr class="separator:a5f7632532593745b2919296d89606e97"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>An abstract class representing the transport mechanism for JSON-RPC client. </p>
-<p>This class defines the interface for sending JSON-RPC method calls and notifications. Concrete implementations can use various transport mechanisms such as stdio, HTTP, sockets, etc. </p>
+<div class="textblock"><p>Base class for JSON-RPC client transport. </p>
+<p>This class defines the interface for communication transport layers. </p>
 
-<p class="definition">Definition at line <a class="el" href="client__transport_8hpp_source.html#l00015">15</a> of file <a class="el" href="client__transport_8hpp_source.html">client_transport.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="client__transport_8hpp_source.html#l00014">14</a> of file <a class="el" href="client__transport_8hpp_source.html">client_transport.hpp</a>.</p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a457cc3c42ecfacf3ce62623be1108b9d" name="a457cc3c42ecfacf3ce62623be1108b9d"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a457cc3c42ecfacf3ce62623be1108b9d">&#9670;&#160;</a></span>~ClientTransport()</h2>
@@ -175,13 +175,13 @@ Public Member Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Virtual destructor for <a class="el" href="classjsonrpc_1_1ClientTransport.html" title="An abstract class representing the transport mechanism for JSON-RPC client.">ClientTransport</a>. </p>
+<p>Virtual destructor. </p>
 
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
-<a id="ae376fa9c89da1a60bc0b5760127500cb" name="ae376fa9c89da1a60bc0b5760127500cb"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ae376fa9c89da1a60bc0b5760127500cb">&#9670;&#160;</a></span>SendMethodCall()</h2>
+<a id="a5f7632532593745b2919296d89606e97" name="a5f7632532593745b2919296d89606e97"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5f7632532593745b2919296d89606e97">&#9670;&#160;</a></span>ReadResponse()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -190,9 +190,9 @@ Public Member Functions</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">virtual <a class="el" href="namespacejsonrpc.html#a268131906d306aae6d599fd490c524b5">Json</a> jsonrpc::ClientTransport::SendMethodCall </td>
+          <td class="memname">virtual std::string jsonrpc::ClientTransport::ReadResponse </td>
           <td>(</td>
-          <td class="paramtype">const <a class="el" href="namespacejsonrpc.html#a268131906d306aae6d599fd490c524b5">Json</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>request</em></span></td><td>)</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -203,21 +203,15 @@ Public Member Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Send an RPC method call to the server. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">request</td><td>The JSON-RPC method call request as a JSON object. </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>The response from the server as a JSON object. </dd></dl>
+<p>Reads a JSON-RPC response. </p>
+<dl class="section return"><dt>Returns</dt><dd>The JSON-RPC response as a string. </dd></dl>
 
-<p>Implemented in <a class="el" href="classjsonrpc_1_1FramedStdioClientTransport.html#abced881f15bc20b541b491d05f9eec02">jsonrpc::FramedStdioClientTransport</a>, <a class="el" href="classjsonrpc_1_1HttpClientTransport.html#a8121b60f4a79f95d40c7abe3190181f6">jsonrpc::HttpClientTransport</a>, and <a class="el" href="classjsonrpc_1_1StdioClientTransport.html#a9c151fceefe3011ba7d91b61c8a097ee">jsonrpc::StdioClientTransport</a>.</p>
+<p>Implemented in <a class="el" href="classjsonrpc_1_1FramedStdioClientTransport.html#a06a47c1a679a32aee73f536f9c7d1153">jsonrpc::FramedStdioClientTransport</a>, and <a class="el" href="classjsonrpc_1_1StdioClientTransport.html#a5b1e38adea7b92812d7784ddffbb0a70">jsonrpc::StdioClientTransport</a>.</p>
 
 </div>
 </div>
-<a id="adf33e5488b2663c9310cea74f84362c7" name="adf33e5488b2663c9310cea74f84362c7"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#adf33e5488b2663c9310cea74f84362c7">&#9670;&#160;</a></span>SendNotification()</h2>
+<a id="a0ceb5197fee405a2713d0575316b0161" name="a0ceb5197fee405a2713d0575316b0161"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0ceb5197fee405a2713d0575316b0161">&#9670;&#160;</a></span>SendRequest()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -226,9 +220,9 @@ Public Member Functions</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">virtual void jsonrpc::ClientTransport::SendNotification </td>
+          <td class="memname">virtual void jsonrpc::ClientTransport::SendRequest </td>
           <td>(</td>
-          <td class="paramtype">const <a class="el" href="namespacejsonrpc.html#a268131906d306aae6d599fd490c524b5">Json</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>notification</em></span></td><td>)</td>
+          <td class="paramtype">const std::string &amp;</td>          <td class="paramname"><span class="paramname"><em>request</em></span></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -239,15 +233,15 @@ Public Member Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Send an RPC notification to the server. </p>
+<p>Sends a JSON-RPC request. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">notification</td><td>The JSON-RPC notification as a JSON object. </td></tr>
+    <tr><td class="paramname">request</td><td>The JSON-RPC request as a string. </td></tr>
   </table>
   </dd>
 </dl>
 
-<p>Implemented in <a class="el" href="classjsonrpc_1_1FramedStdioClientTransport.html#ac9c9bc61c4d7dc1510224667570d8a0a">jsonrpc::FramedStdioClientTransport</a>, <a class="el" href="classjsonrpc_1_1HttpClientTransport.html#acb713b9a77f8240d97e261594ea2c3bc">jsonrpc::HttpClientTransport</a>, and <a class="el" href="classjsonrpc_1_1StdioClientTransport.html#a7bb6a6a523a92d5c5551c982b0d4d109">jsonrpc::StdioClientTransport</a>.</p>
+<p>Implemented in <a class="el" href="classjsonrpc_1_1FramedStdioClientTransport.html#ac0ff246678c5f611ce34e368871456c2">jsonrpc::FramedStdioClientTransport</a>, and <a class="el" href="classjsonrpc_1_1StdioClientTransport.html#ac66c500da4ef1d97fea578685981657c">jsonrpc::StdioClientTransport</a>.</p>
 
 </div>
 </div>

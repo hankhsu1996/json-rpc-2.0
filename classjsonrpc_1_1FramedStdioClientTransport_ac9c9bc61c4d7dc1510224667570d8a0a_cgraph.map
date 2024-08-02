@@ -1,5 +1,0 @@
-<map id="jsonrpc::FramedStdioClientTransport::SendNotification" name="jsonrpc::FramedStdioClientTransport::SendNotification">
-<area shape="rect" id="Node000001" title="Sends an RPC notification to the server." alt="" coords="5,5,203,45"/>
-<area shape="rect" id="Node000002" href="$classjsonrpc_1_1FramedTransport.html#a2dca4a68bd149386116403f61cc2e62f" title="Sends a framed message." alt="" coords="251,5,437,45"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="203,23,237,23,237,28,203,28"/>
-</map>

@@ -119,7 +119,7 @@ $(function(){initNavTree('classjsonrpc_1_1Server.html',''); initResizable(true);
 </div><!--header-->
 <div class="contents">
 
-<p>A JSON-RPC server that handles requests and notifications.  
+<p>A JSON-RPC server for handling requests and notifications.  
  <a href="#details">More...</a></p>
 
 <p><code>#include &lt;<a class="el" href="server_8hpp_source.html">server.hpp</a>&gt;</code></p>
@@ -132,29 +132,29 @@ Collaboration diagram for jsonrpc::Server:</div>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:aa8fe1b7a8df300ee3541546302f7832b" id="r_aa8fe1b7a8df300ee3541546302f7832b"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa8fe1b7a8df300ee3541546302f7832b">Server</a> (std::unique_ptr&lt; <a class="el" href="classjsonrpc_1_1ServerTransport.html">ServerTransport</a> &gt; transport)</td></tr>
-<tr class="memdesc:aa8fe1b7a8df300ee3541546302f7832b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructs a <a class="el" href="classjsonrpc_1_1Server.html" title="A JSON-RPC server that handles requests and notifications.">Server</a> object with the specified transport.  <br /></td></tr>
+<tr class="memdesc:aa8fe1b7a8df300ee3541546302f7832b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructs a <a class="el" href="classjsonrpc_1_1Server.html" title="A JSON-RPC server for handling requests and notifications.">Server</a> with the specified transport.  <br /></td></tr>
 <tr class="separator:aa8fe1b7a8df300ee3541546302f7832b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae9cba0a98f1b2edce9fa566ac9dac2c0" id="r_ae9cba0a98f1b2edce9fa566ac9dac2c0"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae9cba0a98f1b2edce9fa566ac9dac2c0">Start</a> ()</td></tr>
-<tr class="memdesc:ae9cba0a98f1b2edce9fa566ac9dac2c0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Starts the server to begin handling requests.  <br /></td></tr>
+<tr class="memdesc:ae9cba0a98f1b2edce9fa566ac9dac2c0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Starts the server to handle incoming JSON-RPC requests.  <br /></td></tr>
 <tr class="separator:ae9cba0a98f1b2edce9fa566ac9dac2c0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4369d975490da19252d6018e22e72128" id="r_a4369d975490da19252d6018e22e72128"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a4369d975490da19252d6018e22e72128">Stop</a> ()</td></tr>
-<tr class="memdesc:a4369d975490da19252d6018e22e72128"><td class="mdescLeft">&#160;</td><td class="mdescRight">Stops the server to stop handling requests.  <br /></td></tr>
+<tr class="memdesc:a4369d975490da19252d6018e22e72128"><td class="mdescLeft">&#160;</td><td class="mdescRight">Stops the server from handling requests.  <br /></td></tr>
 <tr class="separator:a4369d975490da19252d6018e22e72128"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0e73d2390765b2eb30d972c4e05e3f53" id="r_a0e73d2390765b2eb30d972c4e05e3f53"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a0e73d2390765b2eb30d972c4e05e3f53">RegisterMethodCall</a> (const std::string &amp;method, const <a class="el" href="namespacejsonrpc.html#a28e7c81dcd19fdb379ec453f3b607bd0">MethodCallHandler</a> &amp;handler)</td></tr>
-<tr class="memdesc:a0e73d2390765b2eb30d972c4e05e3f53"><td class="mdescLeft">&#160;</td><td class="mdescRight">Registers an RPC method with the dispatcher.  <br /></td></tr>
+<tr class="memdesc:a0e73d2390765b2eb30d972c4e05e3f53"><td class="mdescLeft">&#160;</td><td class="mdescRight">Registers an RPC method handler with the dispatcher.  <br /></td></tr>
 <tr class="separator:a0e73d2390765b2eb30d972c4e05e3f53"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a14b406973bfa147d72a0125a2328b3a3" id="r_a14b406973bfa147d72a0125a2328b3a3"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a14b406973bfa147d72a0125a2328b3a3">RegisterNotification</a> (const std::string &amp;method, const <a class="el" href="namespacejsonrpc.html#a6ed8cf4f67f491408089bb37db739456">NotificationHandler</a> &amp;handler)</td></tr>
-<tr class="memdesc:a14b406973bfa147d72a0125a2328b3a3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Registers an RPC notification with the dispatcher.  <br /></td></tr>
+<tr class="memdesc:a14b406973bfa147d72a0125a2328b3a3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Registers an RPC notification handler with the dispatcher.  <br /></td></tr>
 <tr class="separator:a14b406973bfa147d72a0125a2328b3a3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a04386b794fd19ad361e60417d8c813b5" id="r_a04386b794fd19ad361e60417d8c813b5"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a04386b794fd19ad361e60417d8c813b5">IsRunning</a> () const</td></tr>
-<tr class="memdesc:a04386b794fd19ad361e60417d8c813b5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Checks if the server is running.  <br /></td></tr>
+<tr class="memdesc:a04386b794fd19ad361e60417d8c813b5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Checks if the server is currently running.  <br /></td></tr>
 <tr class="separator:a04386b794fd19ad361e60417d8c813b5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>A JSON-RPC server that handles requests and notifications. </p>
-<p>The <a class="el" href="classjsonrpc_1_1Server.html" title="A JSON-RPC server that handles requests and notifications.">Server</a> class manages the lifecycle of the JSON-RPC server, including starting and stopping the server, and registering RPC methods and notifications. It uses a <a class="el" href="classjsonrpc_1_1Dispatcher.html" title="A class responsible for dispatching JSON-RPC requests to the appropriate handlers.">Dispatcher</a> to route incoming requests to the appropriate handlers and a <a class="el" href="classjsonrpc_1_1ServerTransport.html" title="Abstract base class for server transport mechanisms.">ServerTransport</a> for communication. </p>
+<div class="textblock"><p>A JSON-RPC server for handling requests and notifications. </p>
+<p>Manages the lifecycle of a JSON-RPC server, including starting and stopping, and registering RPC methods and notifications. </p>
 
-<p class="definition">Definition at line <a class="el" href="server_8hpp_source.html#l00020">20</a> of file <a class="el" href="server_8hpp_source.html">server.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="server_8hpp_source.html#l00018">18</a> of file <a class="el" href="server_8hpp_source.html">server.hpp</a>.</p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="aa8fe1b7a8df300ee3541546302f7832b" name="aa8fe1b7a8df300ee3541546302f7832b"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#aa8fe1b7a8df300ee3541546302f7832b">&#9670;&#160;</a></span>Server()</h2>
@@ -171,18 +171,18 @@ Public Member Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Constructs a <a class="el" href="classjsonrpc_1_1Server.html" title="A JSON-RPC server that handles requests and notifications.">Server</a> object with the specified transport. </p>
+<p>Constructs a <a class="el" href="classjsonrpc_1_1Server.html" title="A JSON-RPC server for handling requests and notifications.">Server</a> with the specified transport. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">transport</td><td>A unique pointer to the <a class="el" href="classjsonrpc_1_1ServerTransport.html" title="Abstract base class for server transport mechanisms.">ServerTransport</a> to be used for communication. </td></tr>
+    <tr><td class="paramname">transport</td><td>A unique pointer to the <a class="el" href="classjsonrpc_1_1ServerTransport.html" title="Abstract base class for server transport mechanisms.">ServerTransport</a> for communication. </td></tr>
   </table>
   </dd>
 </dl>
 
 <p class="definition">Definition at line <a class="el" href="server_8cpp_source.html#l00007">7</a> of file <a class="el" href="server_8cpp_source.html">server.cpp</a>.</p>
 <div class="fragment"><div class="line"><span class="lineno">    8</span>    : transport_(std::move(transport)) {</div>
-<div class="line"><span class="lineno">    9</span>  dispatcher_ = std::make_unique&lt;Dispatcher&gt;();</div>
-<div class="line"><span class="lineno">   10</span>  transport_-&gt;SetDispatcher(dispatcher_.get());</div>
+<div class="line"><span class="lineno">    9</span>  dispatcher_ = std::make_shared&lt;Dispatcher&gt;();</div>
+<div class="line"><span class="lineno">   10</span>  transport_-&gt;SetDispatcher(dispatcher_);</div>
 <div class="line"><span class="lineno">   11</span>  spdlog::info(<span class="stringliteral">&quot;Server initialized with transport&quot;</span>);</div>
 <div class="line"><span class="lineno">   12</span>}</div>
 </div><!-- fragment -->
@@ -194,9 +194,6 @@ Public Member Functions</h2></td></tr>
 
 <div class="memitem">
 <div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
       <table class="memname">
         <tr>
           <td class="memname">bool jsonrpc::Server::IsRunning </td>
@@ -205,20 +202,14 @@ Public Member Functions</h2></td></tr>
           <td> const</td>
         </tr>
       </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
-  </tr>
-</table>
 </div><div class="memdoc">
 
-<p>Checks if the server is running. </p>
-<dl class="section return"><dt>Returns</dt><dd>True if the server is running, false otherwise. </dd></dl>
+<p>Checks if the server is currently running. </p>
 
-<p class="definition">Definition at line <a class="el" href="server_8hpp_source.html#l00063">63</a> of file <a class="el" href="server_8hpp_source.html">server.hpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   63</span>                         {</div>
-<div class="line"><span class="lineno">   64</span>    <span class="keywordflow">return</span> transport_-&gt;IsRunning();</div>
-<div class="line"><span class="lineno">   65</span>  }</div>
+<p class="definition">Definition at line <a class="el" href="server_8cpp_source.html#l00024">24</a> of file <a class="el" href="server_8cpp_source.html">server.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   24</span>                             {</div>
+<div class="line"><span class="lineno">   25</span>  <span class="keywordflow">return</span> transport_-&gt;IsRunning();</div>
+<div class="line"><span class="lineno">   26</span>}</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -241,19 +232,20 @@ Public Member Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Registers an RPC method with the dispatcher. </p>
+<p>Registers an RPC method handler with the dispatcher. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">method</td><td>The name of the RPC method. </td></tr>
-    <tr><td class="paramname">handler</td><td>The handler function to be called for this method. </td></tr>
+    <tr><td class="paramname">method</td><td>The name of the RPC method to handle. </td></tr>
+    <tr><td class="paramname">handler</td><td>The function to handle the RPC method call.</td></tr>
   </table>
   </dd>
 </dl>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="namespacejsonrpc.html#a28e7c81dcd19fdb379ec453f3b607bd0" title="Type alias for method call handler functions.">MethodCallHandler</a> for the signature of the handler function. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="server_8cpp_source.html#l00024">24</a> of file <a class="el" href="server_8cpp_source.html">server.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   25</span>                                                               {</div>
-<div class="line"><span class="lineno">   26</span>  dispatcher_-&gt;RegisterMethodCall(method, handler);</div>
-<div class="line"><span class="lineno">   27</span>}</div>
+<p class="definition">Definition at line <a class="el" href="server_8cpp_source.html#l00028">28</a> of file <a class="el" href="server_8cpp_source.html">server.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   29</span>                                                               {</div>
+<div class="line"><span class="lineno">   30</span>  dispatcher_-&gt;RegisterMethodCall(method, handler);</div>
+<div class="line"><span class="lineno">   31</span>}</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -276,19 +268,20 @@ Public Member Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Registers an RPC notification with the dispatcher. </p>
+<p>Registers an RPC notification handler with the dispatcher. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">method</td><td>The name of the RPC notification. </td></tr>
-    <tr><td class="paramname">handler</td><td>The handler function to be called for this notification. </td></tr>
+    <tr><td class="paramname">method</td><td>The name of the RPC notification to handle. </td></tr>
+    <tr><td class="paramname">handler</td><td>The function to handle the RPC notification.</td></tr>
   </table>
   </dd>
 </dl>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="namespacejsonrpc.html#a6ed8cf4f67f491408089bb37db739456" title="Type alias for notification handler functions.">NotificationHandler</a> for the signature of the handler function. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="server_8cpp_source.html#l00029">29</a> of file <a class="el" href="server_8cpp_source.html">server.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   30</span>                                                                 {</div>
-<div class="line"><span class="lineno">   31</span>  dispatcher_-&gt;RegisterNotification(method, handler);</div>
-<div class="line"><span class="lineno">   32</span>}</div>
+<p class="definition">Definition at line <a class="el" href="server_8cpp_source.html#l00033">33</a> of file <a class="el" href="server_8cpp_source.html">server.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   34</span>                                                                 {</div>
+<div class="line"><span class="lineno">   35</span>  dispatcher_-&gt;RegisterNotification(method, handler);</div>
+<div class="line"><span class="lineno">   36</span>}</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -307,7 +300,7 @@ Public Member Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Starts the server to begin handling requests. </p>
+<p>Starts the server to handle incoming JSON-RPC requests. </p>
 
 <p class="definition">Definition at line <a class="el" href="server_8cpp_source.html#l00014">14</a> of file <a class="el" href="server_8cpp_source.html">server.cpp</a>.</p>
 <div class="fragment"><div class="line"><span class="lineno">   14</span>                   {</div>
@@ -332,7 +325,7 @@ Public Member Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Stops the server to stop handling requests. </p>
+<p>Stops the server from handling requests. </p>
 
 <p class="definition">Definition at line <a class="el" href="server_8cpp_source.html#l00019">19</a> of file <a class="el" href="server_8cpp_source.html">server.cpp</a>.</p>
 <div class="fragment"><div class="line"><span class="lineno">   19</span>                  {</div>

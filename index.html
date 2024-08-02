@@ -159,9 +159,8 @@ Creating a JSON-RPC Server</h2>
 <div class="line"> </div>
 <div class="line"><span class="comment">// Register a method named &quot;add&quot; that adds two numbers</span></div>
 <div class="line">server.RegisterMethodCall(<span class="stringliteral">&quot;add&quot;</span>, [](<span class="keyword">const</span> std::optional&lt;jsonrpc::Json&gt; &amp;params) {</div>
-<div class="line">  <span class="keywordtype">int</span> a = params.value()[<span class="stringliteral">&quot;a&quot;</span>];</div>
-<div class="line">  <span class="keywordtype">int</span> b = params.value()[<span class="stringliteral">&quot;b&quot;</span>];</div>
-<div class="line">  <span class="keywordflow">return</span> Json{{<span class="stringliteral">&quot;result&quot;</span>, a + b}};</div>
+<div class="line">  <span class="keywordtype">int</span> result = params.value()[<span class="stringliteral">&quot;a&quot;</span>] + params.value()[<span class="stringliteral">&quot;b&quot;</span>];</div>
+<div class="line">  <span class="keywordflow">return</span> Json{{<span class="stringliteral">&quot;result&quot;</span>, result}};</div>
 <div class="line">});</div>
 <div class="line"> </div>
 <div class="line"><span class="comment">// Register a notification named &quot;stop&quot; to stop the server</span></div>
@@ -171,22 +170,23 @@ Creating a JSON-RPC Server</h2>
 <div class="line"> </div>
 <div class="line"><span class="comment">// Start the server</span></div>
 <div class="line">server.Start();</div>
-<div class="ttc" id="aclassjsonrpc_1_1Server_html"><div class="ttname"><a href="classjsonrpc_1_1Server.html">jsonrpc::Server</a></div><div class="ttdoc">A JSON-RPC server that handles requests and notifications.</div><div class="ttdef"><b>Definition</b> <a href="server_8hpp_source.html#l00020">server.hpp:20</a></div></div>
+<div class="ttc" id="aclassjsonrpc_1_1Server_html"><div class="ttname"><a href="classjsonrpc_1_1Server.html">jsonrpc::Server</a></div><div class="ttdoc">A JSON-RPC server for handling requests and notifications.</div><div class="ttdef"><b>Definition</b> <a href="server_8hpp_source.html#l00018">server.hpp:18</a></div></div>
 </div><!-- fragment --><p>To register a method, you need to provide a function that takes optional <code>Json</code> parameters and returns a <code>Json</code> object containing either a <code>result</code> or <code>error</code> field. The <code>error</code> field must follow the JSON-RPC spec, including code and message. For simplicity, this library does not provide a more structured way to create error responses.</p>
 <h2><a class="anchor" id="autotoc_md7"></a>
 Creating a JSON-RPC Client</h2>
 <p>Here’s how to create a JSON-RPC client:</p>
 <div class="fragment"><div class="line"><span class="comment">// Create a client with an HTTP transport</span></div>
-<div class="line"><span class="keyword">auto</span> transport = std::make_unique&lt;jsonrpc::HttpClientTransport&gt;();</div>
+<div class="line"><span class="keyword">auto</span> transport = std::make_unique&lt;jsonrpc::StdioClientTransport&gt;();</div>
 <div class="line"><a class="code hl_class" href="classjsonrpc_1_1Client.html">jsonrpc::Client</a> client(std::move(transport));</div>
+<div class="line">client.Start();</div>
 <div class="line"> </div>
 <div class="line"><span class="comment">// Perform addition</span></div>
-<div class="line"><span class="keyword">auto</span> response = client.SendMethodCall(<span class="stringliteral">&quot;add&quot;</span>, {{<span class="stringliteral">&quot;a&quot;</span>, 10}, {<span class="stringliteral">&quot;b&quot;</span>, 5}});</div>
+<div class="line"><span class="keyword">auto</span> response = client.SendMethodCall(<span class="stringliteral">&quot;add&quot;</span>, Json({{<span class="stringliteral">&quot;a&quot;</span>, 10}, {<span class="stringliteral">&quot;b&quot;</span>, 5}}));</div>
 <div class="line">std::cout &lt;&lt; <span class="stringliteral">&quot;Add result: &quot;</span> &lt;&lt; response.dump() &lt;&lt; std::endl;</div>
 <div class="line"> </div>
 <div class="line"><span class="comment">// Send stop notification</span></div>
-<div class="line">client.SendNotification(<span class="stringliteral">&quot;stop&quot;</span>, {});</div>
-<div class="ttc" id="aclassjsonrpc_1_1Client_html"><div class="ttname"><a href="classjsonrpc_1_1Client.html">jsonrpc::Client</a></div><div class="ttdoc">A class representing a JSON-RPC client.</div><div class="ttdef"><b>Definition</b> <a href="client_8hpp_source.html#l00020">client.hpp:20</a></div></div>
+<div class="line">client.SendNotification(<span class="stringliteral">&quot;stop&quot;</span>);</div>
+<div class="ttc" id="aclassjsonrpc_1_1Client_html"><div class="ttname"><a href="classjsonrpc_1_1Client.html">jsonrpc::Client</a></div><div class="ttdoc">A JSON-RPC client for sending requests and receiving responses.</div><div class="ttdef"><b>Definition</b> <a href="client_8hpp_source.html#l00019">client.hpp:19</a></div></div>
 </div><!-- fragment --><p>These examples demonstrate the basic usage of setting up a JSON-RPC server and client. For more examples and detailed usage, please refer to the <a href="./examples/">examples folder</a>.</p>
 <h1><a class="anchor" id="autotoc_md8"></a>
 🛠️ Developer Guide</h1>

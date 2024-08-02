@@ -1,9 +1,7 @@
 <map id="jsonrpc::ServerTransport" name="jsonrpc::ServerTransport">
-<area shape="rect" id="Node000001" title="Abstract base class for server transport mechanisms." alt="" coords="237,5,407,211"/>
-<area shape="rect" id="Node000002" href="$classjsonrpc_1_1FramedStdioServerTransport.html" title="Server transport using framed stdio for communication." alt="" coords="5,271,199,351"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="228,199,147,273,143,269,225,195"/>
-<area shape="rect" id="Node000003" href="$classjsonrpc_1_1HttpServerTransport.html" title="Server transport using HTTP for communication." alt="" coords="223,259,421,364"/>
-<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="325,224,325,258,319,258,319,224"/>
-<area shape="rect" id="Node000004" href="$classjsonrpc_1_1StdioServerTransport.html" title="Server transport using stdio for communication." alt="" coords="445,279,649,344"/>
-<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="420,193,514,276,510,280,416,197"/>
+<area shape="rect" id="Node000001" title="Abstract base class for server transport mechanisms." alt="" coords="127,5,298,211"/>
+<area shape="rect" id="Node000002" href="$classjsonrpc_1_1FramedStdioServerTransport.html" title="Server transport using framed stdio for communication." alt="" coords="5,259,199,339"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="148,224,127,260,123,257,144,221"/>
+<area shape="rect" id="Node000003" href="$classjsonrpc_1_1StdioServerTransport.html" title="Server transport using stdio for communication." alt="" coords="223,266,427,331"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="282,221,308,264,304,267,278,224"/>
 </map>

@@ -119,36 +119,44 @@ $(function(){initNavTree('classjsonrpc_1_1Client.html',''); initResizable(true);
 </div><!--header-->
 <div class="contents">
 
-<p>A class representing a JSON-RPC client.  
+<p>A JSON-RPC client for sending requests and receiving responses.  
  <a href="#details">More...</a></p>
 
 <p><code>#include &lt;<a class="el" href="client_8hpp_source.html">client.hpp</a>&gt;</code></p>
 <div class="dynheader">
 Collaboration diagram for jsonrpc::Client:</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="classjsonrpc_1_1Client__coll__graph.svg" width="156" height="136"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="classjsonrpc_1_1Client__coll__graph.svg" width="156" height="196"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:a340136549296e8eb664baf63c7a6aae1" id="r_a340136549296e8eb664baf63c7a6aae1"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a340136549296e8eb664baf63c7a6aae1">Client</a> (std::unique_ptr&lt; <a class="el" href="classjsonrpc_1_1ClientTransport.html">ClientTransport</a> &gt; transport)</td></tr>
-<tr class="memdesc:a340136549296e8eb664baf63c7a6aae1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructs a new <a class="el" href="classjsonrpc_1_1Client.html" title="A class representing a JSON-RPC client.">Client</a> object.  <br /></td></tr>
+<tr class="memdesc:a340136549296e8eb664baf63c7a6aae1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructs a JSON-RPC client with a specified transport layer.  <br /></td></tr>
 <tr class="separator:a340136549296e8eb664baf63c7a6aae1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af5413abb9721efd50059ef727ad8e3df" id="r_af5413abb9721efd50059ef727ad8e3df"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af5413abb9721efd50059ef727ad8e3df">~Client</a> ()=default</td></tr>
-<tr class="memdesc:af5413abb9721efd50059ef727ad8e3df"><td class="mdescLeft">&#160;</td><td class="mdescRight">Destructor for <a class="el" href="classjsonrpc_1_1Client.html" title="A class representing a JSON-RPC client.">Client</a>.  <br /></td></tr>
+<tr class="memdesc:af5413abb9721efd50059ef727ad8e3df"><td class="mdescLeft">&#160;</td><td class="mdescRight">Destructor.  <br /></td></tr>
 <tr class="separator:af5413abb9721efd50059ef727ad8e3df"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1d2fbf10d2ab1419ae772439d3fc988c" id="r_a1d2fbf10d2ab1419ae772439d3fc988c"><td class="memItemLeft" align="right" valign="top"><a class="el" href="namespacejsonrpc.html#a268131906d306aae6d599fd490c524b5">Json</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a1d2fbf10d2ab1419ae772439d3fc988c">SendMethodCall</a> (const std::string &amp;method, const <a class="el" href="namespacejsonrpc.html#a268131906d306aae6d599fd490c524b5">Json</a> &amp;params, int id)</td></tr>
-<tr class="memdesc:a1d2fbf10d2ab1419ae772439d3fc988c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sends an RPC method call to the server.  <br /></td></tr>
-<tr class="separator:a1d2fbf10d2ab1419ae772439d3fc988c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a21464683d733a7e6064443f262767fa6" id="r_a21464683d733a7e6064443f262767fa6"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a21464683d733a7e6064443f262767fa6">SendNotification</a> (const std::string &amp;method, const <a class="el" href="namespacejsonrpc.html#a268131906d306aae6d599fd490c524b5">Json</a> &amp;params)</td></tr>
-<tr class="memdesc:a21464683d733a7e6064443f262767fa6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sends an RPC notification to the server.  <br /></td></tr>
-<tr class="separator:a21464683d733a7e6064443f262767fa6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad68863bdbbcac76b611cab4859ac35e9" id="r_ad68863bdbbcac76b611cab4859ac35e9"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad68863bdbbcac76b611cab4859ac35e9">Start</a> ()</td></tr>
+<tr class="memdesc:ad68863bdbbcac76b611cab4859ac35e9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Starts the JSON-RPC client listener thread.  <br /></td></tr>
+<tr class="separator:ad68863bdbbcac76b611cab4859ac35e9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4964a3d774e746cc77900714fe80799b" id="r_a4964a3d774e746cc77900714fe80799b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a4964a3d774e746cc77900714fe80799b">Stop</a> ()</td></tr>
+<tr class="memdesc:a4964a3d774e746cc77900714fe80799b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Stops the JSON-RPC client listener thread.  <br /></td></tr>
+<tr class="separator:a4964a3d774e746cc77900714fe80799b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5706eed2820919869a0026626fbaf94b" id="r_a5706eed2820919869a0026626fbaf94b"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a5706eed2820919869a0026626fbaf94b">isRunning</a> () const</td></tr>
+<tr class="memdesc:a5706eed2820919869a0026626fbaf94b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Checks if the client listener is running.  <br /></td></tr>
+<tr class="separator:a5706eed2820919869a0026626fbaf94b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a469665bf7c7a23657060422440bc387d" id="r_a469665bf7c7a23657060422440bc387d"><td class="memItemLeft" align="right" valign="top"><a class="el" href="namespacejsonrpc.html#a268131906d306aae6d599fd490c524b5">Json</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a469665bf7c7a23657060422440bc387d">SendMethodCall</a> (const std::string &amp;method, std::optional&lt; <a class="el" href="namespacejsonrpc.html#a268131906d306aae6d599fd490c524b5">Json</a> &gt; params=std::nullopt)</td></tr>
+<tr class="memdesc:a469665bf7c7a23657060422440bc387d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sends a JSON-RPC method call and waits for the response.  <br /></td></tr>
+<tr class="separator:a469665bf7c7a23657060422440bc387d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afba5b802b6802739c2fa407fe887fe75" id="r_afba5b802b6802739c2fa407fe887fe75"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#afba5b802b6802739c2fa407fe887fe75">SendNotification</a> (const std::string &amp;method, std::optional&lt; <a class="el" href="namespacejsonrpc.html#a268131906d306aae6d599fd490c524b5">Json</a> &gt; params=std::nullopt)</td></tr>
+<tr class="memdesc:afba5b802b6802739c2fa407fe887fe75"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sends a JSON-RPC notification.  <br /></td></tr>
+<tr class="separator:afba5b802b6802739c2fa407fe887fe75"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>A class representing a JSON-RPC client. </p>
-<p>This class is used to send JSON-RPC method calls and notifications to a server. The JSON-RPC library is transport agnostic, supporting transport layers such as stdio, sockets, and pipes. </p>
+<div class="textblock"><p>A JSON-RPC client for sending requests and receiving responses. </p>
 
-<p class="definition">Definition at line <a class="el" href="client_8hpp_source.html#l00020">20</a> of file <a class="el" href="client_8hpp_source.html">client.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="client_8hpp_source.html#l00019">19</a> of file <a class="el" href="client_8hpp_source.html">client.hpp</a>.</p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a340136549296e8eb664baf63c7a6aae1" name="a340136549296e8eb664baf63c7a6aae1"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a340136549296e8eb664baf63c7a6aae1">&#9670;&#160;</a></span>Client()</h2>
@@ -165,17 +173,18 @@ Public Member Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Constructs a new <a class="el" href="classjsonrpc_1_1Client.html" title="A class representing a JSON-RPC client.">Client</a> object. </p>
+<p>Constructs a JSON-RPC client with a specified transport layer. </p>
+<p>Initializes the client with the provided transport layer, which handles the communication between the client and the server.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">transport</td><td>A unique pointer to a <a class="el" href="classjsonrpc_1_1ClientTransport.html" title="An abstract class representing the transport mechanism for JSON-RPC client.">ClientTransport</a> object used for communication. </td></tr>
+    <tr><td class="paramname">transport</td><td>A unique pointer to a transport layer used for communication. </td></tr>
   </table>
   </dd>
 </dl>
 
 <p class="definition">Definition at line <a class="el" href="client_8cpp_source.html#l00007">7</a> of file <a class="el" href="client_8cpp_source.html">client.cpp</a>.</p>
 <div class="fragment"><div class="line"><span class="lineno">    8</span>    : transport_(std::move(transport)) {</div>
-<div class="line"><span class="lineno">    9</span>  spdlog::info(<span class="stringliteral">&quot;Client initialized with transport&quot;</span>);</div>
+<div class="line"><span class="lineno">    9</span>  spdlog::info(<span class="stringliteral">&quot;Initializing JSON-RPC client&quot;</span>);</div>
 <div class="line"><span class="lineno">   10</span>}</div>
 </div><!-- fragment -->
 </div>
@@ -203,13 +212,38 @@ Public Member Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Destructor for <a class="el" href="classjsonrpc_1_1Client.html" title="A class representing a JSON-RPC client.">Client</a>. </p>
+<p>Destructor. </p>
 
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
-<a id="a1d2fbf10d2ab1419ae772439d3fc988c" name="a1d2fbf10d2ab1419ae772439d3fc988c"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a1d2fbf10d2ab1419ae772439d3fc988c">&#9670;&#160;</a></span>SendMethodCall()</h2>
+<a id="a5706eed2820919869a0026626fbaf94b" name="a5706eed2820919869a0026626fbaf94b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5706eed2820919869a0026626fbaf94b">&#9670;&#160;</a></span>isRunning()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool jsonrpc::Client::isRunning </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Checks if the client listener is running. </p>
+<dl class="section return"><dt>Returns</dt><dd>True if the listener thread is running, false otherwise. </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="client_8cpp_source.html#l00026">26</a> of file <a class="el" href="client_8cpp_source.html">client.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   26</span>                             {</div>
+<div class="line"><span class="lineno">   27</span>  <span class="keywordflow">return</span> running_;</div>
+<div class="line"><span class="lineno">   28</span>}</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="a469665bf7c7a23657060422440bc387d" name="a469665bf7c7a23657060422440bc387d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a469665bf7c7a23657060422440bc387d">&#9670;&#160;</a></span>SendMethodCall()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -222,51 +256,34 @@ Public Member Functions</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">const <a class="el" href="namespacejsonrpc.html#a268131906d306aae6d599fd490c524b5">Json</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>params</em></span>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>id</em></span>&#160;)</td>
+          <td class="paramtype">std::optional&lt; <a class="el" href="namespacejsonrpc.html#a268131906d306aae6d599fd490c524b5">Json</a> &gt;</td>          <td class="paramname"><span class="paramname"><em>params</em></span><span class="paramdefsep"> = </span><span class="paramdefval">std::nullopt</span>&#160;)</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p>Sends an RPC method call to the server. </p>
+<p>Sends a JSON-RPC method call and waits for the response. </p>
+<p>Sends a JSON-RPC method call to the server and waits for the corresponding response. The response is returned as a JSON object.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">method</td><td>The name of the method to be called. </td></tr>
-    <tr><td class="paramname">params</td><td>The parameters for the method call as a JSON object. </td></tr>
-    <tr><td class="paramname">id</td><td>The ID of the method call. </td></tr>
+    <tr><td class="paramname">method</td><td>The name of the method to call. </td></tr>
+    <tr><td class="paramname">params</td><td>Optional parameters to pass to the method. </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>The response from the server as a JSON object. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>The JSON response received from the server.</dd></dl>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="namespacejsonrpc.html#a268131906d306aae6d599fd490c524b5" title="Alias for the JSON type used in the library.">Json</a> for details about the JSON type used in the library. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="client_8cpp_source.html#l00012">12</a> of file <a class="el" href="client_8cpp_source.html">client.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   13</span>                                                         {</div>
-<div class="line"><span class="lineno">   14</span>  spdlog::info(<span class="stringliteral">&quot;Client sending method call: {}&quot;</span>, method);</div>
-<div class="line"><span class="lineno">   15</span> </div>
-<div class="line"><span class="lineno">   16</span>  <span class="comment">// Create the JSON-RPC request</span></div>
-<div class="line"><span class="lineno">   17</span>  Request request(method, params, <span class="keywordtype">id</span>);</div>
-<div class="line"><span class="lineno">   18</span>  <a class="code hl_typedef" href="namespacejsonrpc.html#a268131906d306aae6d599fd490c524b5">Json</a> requestJson = request.ToJson();</div>
-<div class="line"><span class="lineno">   19</span> </div>
-<div class="line"><span class="lineno">   20</span>  <span class="comment">// Send the request and wait for the response</span></div>
-<div class="line"><span class="lineno">   21</span>  <span class="keywordflow">return</span> transport_-&gt;SendMethodCall(requestJson);</div>
-<div class="line"><span class="lineno">   22</span>}</div>
-<div class="ttc" id="anamespacejsonrpc_html_a268131906d306aae6d599fd490c524b5"><div class="ttname"><a href="namespacejsonrpc.html#a268131906d306aae6d599fd490c524b5">jsonrpc::Json</a></div><div class="ttdeci">nlohmann::json Json</div><div class="ttdoc">Alias for the JSON type used in the library.</div><div class="ttdef"><b>Definition</b> <a href="types_8hpp_source.html#l00014">types.hpp:14</a></div></div>
+<p class="definition">Definition at line <a class="el" href="client_8cpp_source.html#l00042">42</a> of file <a class="el" href="client_8cpp_source.html">client.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   43</span>                                                       {</div>
+<div class="line"><span class="lineno">   44</span>  ClientRequest request(method, std::move(params), <span class="keyword">false</span>,</div>
+<div class="line"><span class="lineno">   45</span>      [<span class="keyword">this</span>]() { <span class="keywordflow">return</span> GetNextRequestId(); });</div>
+<div class="line"><span class="lineno">   46</span>  <span class="keywordflow">return</span> SendRequest(request);</div>
+<div class="line"><span class="lineno">   47</span>}</div>
 </div><!-- fragment -->
-<p class="reference">References <a class="el" href="request_8cpp_source.html#l00014">jsonrpc::Request::ToJson()</a>.</p>
-<div class="dynheader">
-Here is the call graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="classjsonrpc_1_1Client_a1d2fbf10d2ab1419ae772439d3fc988c_cgraph.svg" width="467" height="36"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
-</div>
-
 </div>
 </div>
-<a id="a21464683d733a7e6064443f262767fa6" name="a21464683d733a7e6064443f262767fa6"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a21464683d733a7e6064443f262767fa6">&#9670;&#160;</a></span>SendNotification()</h2>
+<a id="afba5b802b6802739c2fa407fe887fe75" name="afba5b802b6802739c2fa407fe887fe75"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afba5b802b6802739c2fa407fe887fe75">&#9670;&#160;</a></span>SendNotification()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -279,40 +296,92 @@ Here is the call graph for this function:</div>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">const <a class="el" href="namespacejsonrpc.html#a268131906d306aae6d599fd490c524b5">Json</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>params</em></span>&#160;)</td>
+          <td class="paramtype">std::optional&lt; <a class="el" href="namespacejsonrpc.html#a268131906d306aae6d599fd490c524b5">Json</a> &gt;</td>          <td class="paramname"><span class="paramname"><em>params</em></span><span class="paramdefsep"> = </span><span class="paramdefval">std::nullopt</span>&#160;)</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p>Sends an RPC notification to the server. </p>
-<p>Notifications do not expect a response from the server.</p>
+<p>Sends a JSON-RPC notification. </p>
+<p>Sends a JSON-RPC notification to the server. Unlike method calls, notifications do not expect a response from the server.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">method</td><td>The name of the method to be notified. </td></tr>
-    <tr><td class="paramname">params</td><td>The parameters for the notification as a JSON object. </td></tr>
+    <tr><td class="paramname">method</td><td>The name of the method to notify. </td></tr>
+    <tr><td class="paramname">params</td><td>Optional parameters to pass to the method.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="namespacejsonrpc.html#a268131906d306aae6d599fd490c524b5" title="Alias for the JSON type used in the library.">Json</a> for details about the JSON type used in the library. </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="client_8cpp_source.html#l00049">49</a> of file <a class="el" href="client_8cpp_source.html">client.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   50</span>                                                       {</div>
+<div class="line"><span class="lineno">   51</span>  ClientRequest request(</div>
+<div class="line"><span class="lineno">   52</span>      method, std::move(params), <span class="keyword">true</span>, [<span class="keyword">this</span>]() { <span class="keywordflow">return</span> GetNextRequestId(); });</div>
+<div class="line"><span class="lineno">   53</span>  <span class="comment">// Notifications do not expect a response</span></div>
+<div class="line"><span class="lineno">   54</span>  transport_-&gt;SendRequest(request.Dump());</div>
+<div class="line"><span class="lineno">   55</span>}</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="ad68863bdbbcac76b611cab4859ac35e9" name="ad68863bdbbcac76b611cab4859ac35e9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad68863bdbbcac76b611cab4859ac35e9">&#9670;&#160;</a></span>Start()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void jsonrpc::Client::Start </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Starts the JSON-RPC client listener thread. </p>
+<p>Initializes and starts a background thread that listens for responses from the server. This must be called before sending any requests.</p>
+<dl class="exception"><dt>Exceptions</dt><dd>
+  <table class="exception">
+    <tr><td class="paramname">std::runtime_error</td><td>If the listener thread fails to start. </td></tr>
   </table>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="client_8cpp_source.html#l00024">24</a> of file <a class="el" href="client_8cpp_source.html">client.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   24</span>                                                                         {</div>
-<div class="line"><span class="lineno">   25</span>  spdlog::info(<span class="stringliteral">&quot;Client sending notification: {}&quot;</span>, method);</div>
-<div class="line"><span class="lineno">   26</span> </div>
-<div class="line"><span class="lineno">   27</span>  <span class="comment">// Create the JSON-RPC notification (id is not set)</span></div>
-<div class="line"><span class="lineno">   28</span>  Request notification(method, params, std::nullopt);</div>
-<div class="line"><span class="lineno">   29</span>  <a class="code hl_typedef" href="namespacejsonrpc.html#a268131906d306aae6d599fd490c524b5">Json</a> notificationJson = notification.ToJson();</div>
-<div class="line"><span class="lineno">   30</span> </div>
-<div class="line"><span class="lineno">   31</span>  <span class="comment">// Send the notification</span></div>
-<div class="line"><span class="lineno">   32</span>  transport_-&gt;SendNotification(notificationJson);</div>
-<div class="line"><span class="lineno">   33</span>}</div>
+<p class="definition">Definition at line <a class="el" href="client_8cpp_source.html#l00012">12</a> of file <a class="el" href="client_8cpp_source.html">client.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   12</span>                   {</div>
+<div class="line"><span class="lineno">   13</span>  spdlog::info(<span class="stringliteral">&quot;Starting JSON-RPC client&quot;</span>);</div>
+<div class="line"><span class="lineno">   14</span>  running_ = <span class="keyword">true</span>;</div>
+<div class="line"><span class="lineno">   15</span>  listenerThread_ = std::thread(&amp;Client::Listener, <span class="keyword">this</span>);</div>
+<div class="line"><span class="lineno">   16</span>}</div>
 </div><!-- fragment -->
-<p class="reference">References <a class="el" href="request_8cpp_source.html#l00014">jsonrpc::Request::ToJson()</a>.</p>
-<div class="dynheader">
-Here is the call graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="classjsonrpc_1_1Client_a21464683d733a7e6064443f262767fa6_cgraph.svg" width="468" height="36"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
+</div>
+<a id="a4964a3d774e746cc77900714fe80799b" name="a4964a3d774e746cc77900714fe80799b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4964a3d774e746cc77900714fe80799b">&#9670;&#160;</a></span>Stop()</h2>
 
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void jsonrpc::Client::Stop </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Stops the JSON-RPC client listener thread. </p>
+<p>Stops the background listener thread and waits for it to join. This should be called before the client is destroyed or when the client no longer needs to listen for responses. </p>
+
+<p class="definition">Definition at line <a class="el" href="client_8cpp_source.html#l00018">18</a> of file <a class="el" href="client_8cpp_source.html">client.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   18</span>                  {</div>
+<div class="line"><span class="lineno">   19</span>  spdlog::info(<span class="stringliteral">&quot;Stopping JSON-RPC client&quot;</span>);</div>
+<div class="line"><span class="lineno">   20</span>  running_ = <span class="keyword">false</span>;</div>
+<div class="line"><span class="lineno">   21</span>  <span class="keywordflow">if</span> (listenerThread_.joinable()) {</div>
+<div class="line"><span class="lineno">   22</span>    listenerThread_.join();</div>
+<div class="line"><span class="lineno">   23</span>  }</div>
+<div class="line"><span class="lineno">   24</span>}</div>
+</div><!-- fragment -->
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following files:<ul>

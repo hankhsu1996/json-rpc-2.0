@@ -1,11 +1,5 @@
 <map id="jsonrpc::Response::ToStr" name="jsonrpc::Response::ToStr">
-<area shape="rect" id="Node000001" title="Serializes the Response object to a string." alt="" coords="460,69,608,109"/>
-<area shape="rect" id="Node000002" href="$classjsonrpc_1_1Dispatcher.html#ad60b6c352fa4ff44d7676772dac6374e" title="Dispatches an RPC request to the appropriate handler." alt="" coords="265,69,412,109"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="446,92,412,92,412,87,446,87"/>
-<area shape="rect" id="Node000003" href="$classjsonrpc_1_1HttpServerTransport.html#a6ae49f8ece4f8dff0bc302b09a5df11a" title="Constructs an HttpServerTransport object." alt="" coords="8,5,215,45"/>
-<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="253,68,182,48,184,43,254,63"/>
-<area shape="rect" id="Node000004" href="$classjsonrpc_1_1FramedStdioServerTransport.html#a5cd63df458df0cfd7d0d2c645e08b5fb" title="Listens for incoming messages and dispatches them to the appropriate handlers." alt="" coords="11,69,212,109"/>
-<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="251,92,212,92,212,87,251,87"/>
-<area shape="rect" id="Node000005" href="$classjsonrpc_1_1StdioServerTransport.html#a0a4dd8a152ff40cd9d00bf1461f483c7" title="Listens for incoming messages and dispatches them to the appropriate handlers." alt="" coords="5,133,217,173"/>
-<area shape="poly" id="edge4_Node000002_Node000005" title=" " alt="" coords="254,116,184,136,182,131,253,111"/>
+<area shape="rect" id="Node000001" title="Serializes the Response object to a string." alt="" coords="200,5,348,45"/>
+<area shape="rect" id="Node000002" href="$classjsonrpc_1_1Dispatcher.html#a6df2ab42eb9360563cb68be763f66fd9" title="Processes a JSON&#45;RPC request." alt="" coords="5,5,152,45"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="186,28,152,28,152,23,186,23"/>
 </map>

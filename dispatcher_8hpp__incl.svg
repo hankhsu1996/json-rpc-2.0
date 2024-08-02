@@ -111,7 +111,7 @@
 <!-- Node7 -->
 <g id="Node000007" class="node">
 <title>Node7</title>
-<g id="a_Node000007"><a xlink:href="request_8hpp.html" target="_top" xlink:title=" ">
+<g id="a_Node000007"><a xlink:href="core_2request_8hpp.html" target="_top" xlink:title=" ">
 <polygon fill="white" stroke="#666666" points="564.34,-129 427.34,-129 427.34,-110 564.34,-110 564.34,-129"/>
 <text text-anchor="middle" x="495.84" y="-117" font-family="Helvetica,sans-Serif" font-size="10.00">jsonrpc/core/request.hpp</text>
 </a>

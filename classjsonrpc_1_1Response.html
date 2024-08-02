@@ -202,11 +202,11 @@ Static Public Member Functions</h2></td></tr>
 <div class="line"><span class="lineno">  113</span>  <span class="keywordflow">return</span> Response(CreateErrorResponse(message, code, <span class="keywordtype">id</span>));</div>
 <div class="line"><span class="lineno">  114</span>}</div>
 </div><!-- fragment -->
-<p class="reference">Referenced by <a class="el" href="dispatcher_8cpp_source.html#l00007">jsonrpc::Dispatcher::DispatchRequest()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="dispatcher_8cpp_source.html#l00020">jsonrpc::Dispatcher::DispatchRequest()</a>.</p>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="classjsonrpc_1_1Response_a0dce112a462bfbedf722cd9dc96b837a_icgraph.svg" width="614" height="179"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="classjsonrpc_1_1Response_a0dce112a462bfbedf722cd9dc96b837a_icgraph.svg" width="354" height="51"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 
 </div>
@@ -303,7 +303,7 @@ Here is the caller graph for this function:</div>
 
 <p class="definition">Definition at line <a class="el" href="response_8cpp_source.html#l00034">34</a> of file <a class="el" href="response_8cpp_source.html">response.cpp</a>.</p>
 <div class="fragment"><div class="line"><span class="lineno">   35</span>                                                     {</div>
-<div class="line"><span class="lineno">   36</span>  <a class="code hl_typedef" href="namespacejsonrpc.html#a268131906d306aae6d599fd490c524b5">Json</a> response = {{<span class="stringliteral">&quot;result&quot;</span>, result}};</div>
+<div class="line"><span class="lineno">   36</span>  <a class="code hl_typedef" href="namespacejsonrpc.html#a268131906d306aae6d599fd490c524b5">Json</a> response = {{<span class="stringliteral">&quot;jsonrpc&quot;</span>, <span class="stringliteral">&quot;2.0&quot;</span>}, {<span class="stringliteral">&quot;result&quot;</span>, result}};</div>
 <div class="line"><span class="lineno">   37</span>  <span class="keywordflow">if</span> (<span class="keywordtype">id</span>.has_value()) {</div>
 <div class="line"><span class="lineno">   38</span>    response[<span class="stringliteral">&quot;id&quot;</span>] = <span class="keywordtype">id</span>.value();</div>
 <div class="line"><span class="lineno">   39</span>  }</div>
@@ -377,11 +377,11 @@ Here is the caller graph for this function:</div>
 <div class="line"><span class="lineno">   86</span>    <span class="keywordflow">return</span> response_.dump();</div>
 <div class="line"><span class="lineno">   87</span>  }</div>
 </div><!-- fragment -->
-<p class="reference">Referenced by <a class="el" href="dispatcher_8cpp_source.html#l00007">jsonrpc::Dispatcher::DispatchRequest()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="dispatcher_8cpp_source.html#l00020">jsonrpc::Dispatcher::DispatchRequest()</a>.</p>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="classjsonrpc_1_1Response_a0ca1e37b725b5f4c81e32a13f928c1d9_icgraph.svg" width="614" height="179"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="classjsonrpc_1_1Response_a0ca1e37b725b5f4c81e32a13f928c1d9_icgraph.svg" width="354" height="51"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 
 </div>
@@ -425,7 +425,7 @@ Here is the caller graph for this function:</div>
 
 <p class="definition">Definition at line <a class="el" href="response_8cpp_source.html#l00043">43</a> of file <a class="el" href="response_8cpp_source.html">response.cpp</a>.</p>
 <div class="fragment"><div class="line"><span class="lineno">   44</span>                                                    {</div>
-<div class="line"><span class="lineno">   45</span>  Response response({{<span class="stringliteral">&quot;error&quot;</span>, error}}, id);</div>
+<div class="line"><span class="lineno">   45</span>  Response response({{<span class="stringliteral">&quot;jsonrpc&quot;</span>, <span class="stringliteral">&quot;2.0&quot;</span>}, {<span class="stringliteral">&quot;error&quot;</span>, error}}, id);</div>
 <div class="line"><span class="lineno">   46</span>  response.ValidateResponse();</div>
 <div class="line"><span class="lineno">   47</span>  <span class="keywordflow">return</span> response;</div>
 <div class="line"><span class="lineno">   48</span>}</div>

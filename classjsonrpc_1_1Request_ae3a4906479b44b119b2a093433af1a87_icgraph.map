@@ -1,7 +1,0 @@
-<map id="jsonrpc::Request::ToJson" name="jsonrpc::Request::ToJson">
-<area shape="rect" id="Node000001" title="Serializes the Request object to a JSON object." alt="" coords="284,31,463,56"/>
-<area shape="rect" id="Node000002" href="$classjsonrpc_1_1Client.html#a1d2fbf10d2ab1419ae772439d3fc988c" title="Sends an RPC method call to the server." alt="" coords="6,5,235,31"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="270,36,235,32,236,27,271,30"/>
-<area shape="rect" id="Node000003" href="$classjsonrpc_1_1Client.html#a21464683d733a7e6064443f262767fa6" title="Sends an RPC notification to the server." alt="" coords="5,55,236,80"/>
-<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="271,56,236,59,236,54,270,50"/>
-</map>

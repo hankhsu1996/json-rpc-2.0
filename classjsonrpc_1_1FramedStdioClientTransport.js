@@ -1,5 +1,5 @@
 var classjsonrpc_1_1FramedStdioClientTransport =
 [
-    [ "SendMethodCall", "classjsonrpc_1_1FramedStdioClientTransport.html#abced881f15bc20b541b491d05f9eec02", null ],
-    [ "SendNotification", "classjsonrpc_1_1FramedStdioClientTransport.html#ac9c9bc61c4d7dc1510224667570d8a0a", null ]
+    [ "ReadResponse", "classjsonrpc_1_1FramedStdioClientTransport.html#a06a47c1a679a32aee73f536f9c7d1153", null ],
+    [ "SendRequest", "classjsonrpc_1_1FramedStdioClientTransport.html#ac0ff246678c5f611ce34e368871456c2", null ]
 ];

@@ -128,12 +128,12 @@ $(function(){initNavTree('classjsonrpc_1_1ServerTransport.html',''); initResizab
 <div class="dynheader">
 Inheritance diagram for jsonrpc::ServerTransport:</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="classjsonrpc_1_1ServerTransport__inherit__graph.svg" width="655" height="370"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="classjsonrpc_1_1ServerTransport__inherit__graph.svg" width="432" height="344"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 <div class="dynheader">
 Collaboration diagram for jsonrpc::ServerTransport:</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="classjsonrpc_1_1ServerTransport__coll__graph.svg" width="187" height="404"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="classjsonrpc_1_1ServerTransport__coll__graph.svg" width="182" height="216"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
@@ -150,9 +150,9 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a2c225806f1a0c31c5ec88be618fedc98" id="r_a2c225806f1a0c31c5ec88be618fedc98"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a2c225806f1a0c31c5ec88be618fedc98">Stop</a> ()</td></tr>
 <tr class="memdesc:a2c225806f1a0c31c5ec88be618fedc98"><td class="mdescLeft">&#160;</td><td class="mdescRight">Stops the transport.  <br /></td></tr>
 <tr class="separator:a2c225806f1a0c31c5ec88be618fedc98"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a615bed718f7a0bb7bedf4923393c6742" id="r_a615bed718f7a0bb7bedf4923393c6742"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a615bed718f7a0bb7bedf4923393c6742">SetDispatcher</a> (<a class="el" href="classjsonrpc_1_1Dispatcher.html">Dispatcher</a> *dispatcher)</td></tr>
-<tr class="memdesc:a615bed718f7a0bb7bedf4923393c6742"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the dispatcher for the transport.  <br /></td></tr>
-<tr class="separator:a615bed718f7a0bb7bedf4923393c6742"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae6515e7188c90ea31c3d6f27e96018e4" id="r_ae6515e7188c90ea31c3d6f27e96018e4"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae6515e7188c90ea31c3d6f27e96018e4">SetDispatcher</a> (std::shared_ptr&lt; <a class="el" href="classjsonrpc_1_1IDispatcher.html">IDispatcher</a> &gt; dispatcher)</td></tr>
+<tr class="memdesc:ae6515e7188c90ea31c3d6f27e96018e4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the dispatcher for the transport.  <br /></td></tr>
+<tr class="separator:ae6515e7188c90ea31c3d6f27e96018e4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2e544f968400464c8b1c3f5dbf154bd8" id="r_a2e544f968400464c8b1c3f5dbf154bd8"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a2e544f968400464c8b1c3f5dbf154bd8">IsRunning</a> () const</td></tr>
 <tr class="memdesc:a2e544f968400464c8b1c3f5dbf154bd8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Checks if the transport is running.  <br /></td></tr>
 <tr class="separator:a2e544f968400464c8b1c3f5dbf154bd8"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -168,9 +168,9 @@ Protected Attributes</h2></td></tr>
 <tr class="memitem:a3fc10b2582a376adc08605d6190ea3b3" id="r_a3fc10b2582a376adc08605d6190ea3b3"><td class="memItemLeft" align="right" valign="top">std::atomic&lt; bool &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a3fc10b2582a376adc08605d6190ea3b3">running_</a></td></tr>
 <tr class="memdesc:a3fc10b2582a376adc08605d6190ea3b3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Atomic flag indicating if the transport is running.  <br /></td></tr>
 <tr class="separator:a3fc10b2582a376adc08605d6190ea3b3"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af0043718f411bb1bba23555b5f2e8343" id="r_af0043718f411bb1bba23555b5f2e8343"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classjsonrpc_1_1Dispatcher.html">Dispatcher</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af0043718f411bb1bba23555b5f2e8343">dispatcher_</a></td></tr>
-<tr class="memdesc:af0043718f411bb1bba23555b5f2e8343"><td class="mdescLeft">&#160;</td><td class="mdescRight">Pointer to the <a class="el" href="classjsonrpc_1_1Dispatcher.html" title="A class responsible for dispatching JSON-RPC requests to the appropriate handlers.">Dispatcher</a> object.  <br /></td></tr>
-<tr class="separator:af0043718f411bb1bba23555b5f2e8343"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2465300c323258686d564d5389b81cc8" id="r_a2465300c323258686d564d5389b81cc8"><td class="memItemLeft" align="right" valign="top">std::shared_ptr&lt; <a class="el" href="classjsonrpc_1_1IDispatcher.html">IDispatcher</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a2465300c323258686d564d5389b81cc8">dispatcher_</a></td></tr>
+<tr class="memdesc:a2465300c323258686d564d5389b81cc8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Pointer to the <a class="el" href="classjsonrpc_1_1Dispatcher.html" title="Dispatcher for JSON-RPC requests.">Dispatcher</a> object.  <br /></td></tr>
+<tr class="separator:a2465300c323258686d564d5389b81cc8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Abstract base class for server transport mechanisms. </p>
@@ -204,10 +204,10 @@ Protected Attributes</h2></td></tr>
 <p>Constructs a <a class="el" href="classjsonrpc_1_1ServerTransport.html" title="Abstract base class for server transport mechanisms.">ServerTransport</a> object. </p>
 
 <p class="definition">Definition at line <a class="el" href="server__transport_8hpp_source.html#l00023">23</a> of file <a class="el" href="server__transport_8hpp_source.html">server_transport.hpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   23</span>                    : <a class="code hl_variable" href="#af0043718f411bb1bba23555b5f2e8343">dispatcher_</a>(<span class="keyword">nullptr</span>), <a class="code hl_variable" href="#a3fc10b2582a376adc08605d6190ea3b3">running_</a>(<span class="keyword">false</span>) {</div>
+<div class="fragment"><div class="line"><span class="lineno">   23</span>                    : <a class="code hl_variable" href="#a2465300c323258686d564d5389b81cc8">dispatcher_</a>(<span class="keyword">nullptr</span>), <a class="code hl_variable" href="#a3fc10b2582a376adc08605d6190ea3b3">running_</a>(<span class="keyword">false</span>) {</div>
 <div class="line"><span class="lineno">   24</span>  }</div>
+<div class="ttc" id="aclassjsonrpc_1_1ServerTransport_html_a2465300c323258686d564d5389b81cc8"><div class="ttname"><a href="#a2465300c323258686d564d5389b81cc8">jsonrpc::ServerTransport::dispatcher_</a></div><div class="ttdeci">std::shared_ptr&lt; IDispatcher &gt; dispatcher_</div><div class="ttdoc">Pointer to the Dispatcher object.</div><div class="ttdef"><b>Definition</b> <a href="server__transport_8hpp_source.html#l00081">server_transport.hpp:81</a></div></div>
 <div class="ttc" id="aclassjsonrpc_1_1ServerTransport_html_a3fc10b2582a376adc08605d6190ea3b3"><div class="ttname"><a href="#a3fc10b2582a376adc08605d6190ea3b3">jsonrpc::ServerTransport::running_</a></div><div class="ttdeci">std::atomic&lt; bool &gt; running_</div><div class="ttdoc">Atomic flag indicating if the transport is running.</div><div class="ttdef"><b>Definition</b> <a href="server__transport_8hpp_source.html#l00078">server_transport.hpp:78</a></div></div>
-<div class="ttc" id="aclassjsonrpc_1_1ServerTransport_html_af0043718f411bb1bba23555b5f2e8343"><div class="ttname"><a href="#af0043718f411bb1bba23555b5f2e8343">jsonrpc::ServerTransport::dispatcher_</a></div><div class="ttdeci">Dispatcher * dispatcher_</div><div class="ttdoc">Pointer to the Dispatcher object.</div><div class="ttdef"><b>Definition</b> <a href="server__transport_8hpp_source.html#l00081">server_transport.hpp:81</a></div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -307,7 +307,7 @@ Here is the caller graph for this function:</div>
 <p>Listens for incoming messages. </p>
 <p>This is a pure virtual method that must be implemented by concrete transport classes. </p>
 
-<p>Implemented in <a class="el" href="classjsonrpc_1_1FramedStdioServerTransport.html#a5cd63df458df0cfd7d0d2c645e08b5fb">jsonrpc::FramedStdioServerTransport</a>, <a class="el" href="classjsonrpc_1_1HttpServerTransport.html#a7bc9a81944ee28c486c67c275b5d8021">jsonrpc::HttpServerTransport</a>, and <a class="el" href="classjsonrpc_1_1StdioServerTransport.html#a0a4dd8a152ff40cd9d00bf1461f483c7">jsonrpc::StdioServerTransport</a>.</p>
+<p>Implemented in <a class="el" href="classjsonrpc_1_1FramedStdioServerTransport.html#a5cd63df458df0cfd7d0d2c645e08b5fb">jsonrpc::FramedStdioServerTransport</a>, and <a class="el" href="classjsonrpc_1_1StdioServerTransport.html#a0a4dd8a152ff40cd9d00bf1461f483c7">jsonrpc::StdioServerTransport</a>.</p>
 
 <p class="reference">Referenced by <a class="el" href="server__transport_8hpp_source.html#l00036">Start()</a>.</p>
 <div class="dynheader">
@@ -318,8 +318,8 @@ Here is the caller graph for this function:</div>
 
 </div>
 </div>
-<a id="a615bed718f7a0bb7bedf4923393c6742" name="a615bed718f7a0bb7bedf4923393c6742"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a615bed718f7a0bb7bedf4923393c6742">&#9670;&#160;</a></span>SetDispatcher()</h2>
+<a id="ae6515e7188c90ea31c3d6f27e96018e4" name="ae6515e7188c90ea31c3d6f27e96018e4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae6515e7188c90ea31c3d6f27e96018e4">&#9670;&#160;</a></span>SetDispatcher()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -330,7 +330,7 @@ Here is the caller graph for this function:</div>
         <tr>
           <td class="memname">void jsonrpc::ServerTransport::SetDispatcher </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="classjsonrpc_1_1Dispatcher.html">Dispatcher</a> *</td>          <td class="paramname"><span class="paramname"><em>dispatcher</em></span></td><td>)</td>
+          <td class="paramtype">std::shared_ptr&lt; <a class="el" href="classjsonrpc_1_1IDispatcher.html">IDispatcher</a> &gt;</td>          <td class="paramname"><span class="paramname"><em>dispatcher</em></span></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -344,14 +344,14 @@ Here is the caller graph for this function:</div>
 <p>Sets the dispatcher for the transport. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">dispatcher</td><td>A pointer to the <a class="el" href="classjsonrpc_1_1Dispatcher.html" title="A class responsible for dispatching JSON-RPC requests to the appropriate handlers.">Dispatcher</a> object. </td></tr>
+    <tr><td class="paramname">dispatcher</td><td>A shared pointer to the <a class="el" href="classjsonrpc_1_1Dispatcher.html" title="Dispatcher for JSON-RPC requests.">Dispatcher</a> object. </td></tr>
   </table>
   </dd>
 </dl>
 
 <p class="definition">Definition at line <a class="el" href="server__transport_8hpp_source.html#l00055">55</a> of file <a class="el" href="server__transport_8hpp_source.html">server_transport.hpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   55</span>                                             {</div>
-<div class="line"><span class="lineno">   56</span>    <a class="code hl_variable" href="#af0043718f411bb1bba23555b5f2e8343">dispatcher_</a> = dispatcher;</div>
+<div class="fragment"><div class="line"><span class="lineno">   55</span>                                                            {</div>
+<div class="line"><span class="lineno">   56</span>    <a class="code hl_variable" href="#a2465300c323258686d564d5389b81cc8">dispatcher_</a> = std::move(dispatcher);</div>
 <div class="line"><span class="lineno">   57</span>  }</div>
 </div><!-- fragment -->
 <p class="reference">References <a class="el" href="server__transport_8hpp_source.html#l00081">dispatcher_</a>.</p>
@@ -426,8 +426,6 @@ Here is the call graph for this function:</div>
 <p>Stops the transport. </p>
 <p>This method sets the running state to false. </p>
 
-<p>Reimplemented in <a class="el" href="classjsonrpc_1_1HttpServerTransport.html#a03caed64d6583144557de7a303db328c">jsonrpc::HttpServerTransport</a>.</p>
-
 <p class="definition">Definition at line <a class="el" href="server__transport_8hpp_source.html#l00046">46</a> of file <a class="el" href="server__transport_8hpp_source.html">server_transport.hpp</a>.</p>
 <div class="fragment"><div class="line"><span class="lineno">   46</span>                      {</div>
 <div class="line"><span class="lineno">   47</span>    <a class="code hl_variable" href="#a3fc10b2582a376adc08605d6190ea3b3">running_</a>.store(<span class="keyword">false</span>, std::memory_order_release);</div>
@@ -438,8 +436,8 @@ Here is the call graph for this function:</div>
 </div>
 </div>
 <h2 class="groupheader">Member Data Documentation</h2>
-<a id="af0043718f411bb1bba23555b5f2e8343" name="af0043718f411bb1bba23555b5f2e8343"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#af0043718f411bb1bba23555b5f2e8343">&#9670;&#160;</a></span>dispatcher_</h2>
+<a id="a2465300c323258686d564d5389b81cc8" name="a2465300c323258686d564d5389b81cc8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2465300c323258686d564d5389b81cc8">&#9670;&#160;</a></span>dispatcher_</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -448,7 +446,7 @@ Here is the call graph for this function:</div>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="classjsonrpc_1_1Dispatcher.html">Dispatcher</a>* jsonrpc::ServerTransport::dispatcher_</td>
+          <td class="memname">std::shared_ptr&lt;<a class="el" href="classjsonrpc_1_1IDispatcher.html">IDispatcher</a>&gt; jsonrpc::ServerTransport::dispatcher_</td>
         </tr>
       </table>
   </td>
@@ -458,11 +456,11 @@ Here is the call graph for this function:</div>
 </table>
 </div><div class="memdoc">
 
-<p>Pointer to the <a class="el" href="classjsonrpc_1_1Dispatcher.html" title="A class responsible for dispatching JSON-RPC requests to the appropriate handlers.">Dispatcher</a> object. </p>
+<p>Pointer to the <a class="el" href="classjsonrpc_1_1Dispatcher.html" title="Dispatcher for JSON-RPC requests.">Dispatcher</a> object. </p>
 
 <p class="definition">Definition at line <a class="el" href="server__transport_8hpp_source.html#l00081">81</a> of file <a class="el" href="server__transport_8hpp_source.html">server_transport.hpp</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="http__server__transport_8cpp_source.html#l00007">jsonrpc::HttpServerTransport::HttpServerTransport()</a>, <a class="el" href="framed__stdio__server__transport_8cpp_source.html#l00012">jsonrpc::FramedStdioServerTransport::Listen()</a>, <a class="el" href="stdio__server__transport_8cpp_source.html#l00007">jsonrpc::StdioServerTransport::Listen()</a>, and <a class="el" href="server__transport_8hpp_source.html#l00055">SetDispatcher()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="framed__stdio__server__transport_8cpp_source.html#l00012">jsonrpc::FramedStdioServerTransport::Listen()</a>, <a class="el" href="stdio__server__transport_8cpp_source.html#l00007">jsonrpc::StdioServerTransport::Listen()</a>, and <a class="el" href="server__transport_8hpp_source.html#l00055">SetDispatcher()</a>.</p>
 
 </div>
 </div>
