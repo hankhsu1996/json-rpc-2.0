@@ -16,6 +16,17 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
+      - name: Cache CCache
+        uses: actions/cache@v4
+        id: ccache
+        with:
+          path: ~/.ccache
+          key: >
+            ${{ runner.os }}-ccache-
+            ${{ hashFiles('conanfile.py') }}-
+            ${{ hashFiles('CMakeLists.txt') }}-
+            ${{ hashFiles('CMakePresets.json') }}
+
       - name: Setup Conan
         uses: hankhsu1996/setup-conan@v1
         with:
@@ -38,6 +49,7 @@ jobs:
         with:
           name: build-files
           path: |
+            ConanPresets.json
             build/Release/CMakeCache.txt
             build/Release/CTestTestfile.cmake
             build/Release/tests/tests
@@ -55,7 +67,6 @@ jobs:
         uses: actions/download-artifact@v4
         with:
           name: build-files
-          path: build
 
       - name: Add execute permissions to test binary
         run: chmod +x build/Release/tests/tests

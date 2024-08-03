@@ -24,7 +24,6 @@ class JsonRpcConan(ConanFile):
     requires = [
         "nlohmann_json/3.11.2",
         "spdlog/1.9.2",
-        "cpp-httplib/0.11.0",
         "bshoshany-thread-pool/4.1.0"
     ]
 
