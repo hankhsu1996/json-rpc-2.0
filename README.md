@@ -99,15 +99,13 @@ To build and test the project, follow these steps:
 
 ### Step 1: Install Dependencies
 
-Before installing dependencies, ensure that you have a Conan profile configured. If the default profile (`.conan2/profiles/default`) does not exist, generate one based on your current machine setup:
+Ensure you have a Conan profile configured. If the default profile (`.conan2/profiles/default`) is missing, create it:
 
 ```bash
 conan profile detect --force
 ```
 
-This command will create a new default profile or overwrite the existing one if needed.
-
-Next, install the required dependencies using Conan. This step will also generate the necessary `ConanPresets.json` for CMake:
+Next, install dependencies and generate `ConanPresets.json`:
 
 ```bash
 conan install . --build=missing
@@ -115,7 +113,7 @@ conan install . --build=missing
 
 ### Step 2: Configure and Build the Project
 
-Next, use CMake presets to configure and build the project. Ensure you have CMake 3.19 or above to leverage the preset feature. The following commands will use the presets defined in `CMakePresets.json`:
+Use CMake presets to configure and build the project. Ensure CMake 3.19+ is installed.
 
 For Release configuration:
 
@@ -126,7 +124,7 @@ cmake --build --preset release
 
 ### Step 3: Run Tests
 
-After building, run the tests using the appropriate CMake preset:
+Run tests using the appropriate CMake preset:
 
 ```bash
 ctest --preset release
@@ -134,7 +132,7 @@ ctest --preset release
 
 ### Optional: Debug Configuration
 
-If you need to work with the Debug configuration, you can follow these steps:
+For Debug configuration:
 
 ```bash
 conan install . -s build_type=Debug
@@ -145,8 +143,8 @@ ctest --preset debug
 
 ### Additional Notes
 
-- All commands should be executed from the top-level project directory.
-- There is no need to navigate to the `build` directory, as the presets handle the configuration and build paths automatically.
+- Execute commands from the top-level project directory.
+- Presets handle configuration and build paths automatically.
 
 ## 🤝 Contributing
 

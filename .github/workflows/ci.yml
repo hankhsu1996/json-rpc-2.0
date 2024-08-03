@@ -9,7 +9,7 @@ on:
       - main
 
 jobs:
-  build:
+  build-and-test:
     runs-on: ubuntu-latest
 
     steps:
@@ -20,12 +20,9 @@ jobs:
         uses: actions/cache@v4
         id: ccache
         with:
-          path: ~/.ccache
+          path: ~/.cache/ccache
           key: >
-            ${{ runner.os }}-ccache-
-            ${{ hashFiles('conanfile.py') }}-
-            ${{ hashFiles('CMakeLists.txt') }}-
-            ${{ hashFiles('CMakePresets.json') }}
+            ${{ runner.os }}-ccache-${{ hashFiles('conanfile.py') }}-${{ hashFiles('CMakeLists.txt') }}-${{ hashFiles('CMakePresets.json') }}
 
       - name: Setup Conan
         uses: hankhsu1996/setup-conan@v1
@@ -44,35 +41,8 @@ jobs:
           cmake --preset release
           cmake --build --preset release
 
-      - name: Upload necessary build files
-        uses: actions/upload-artifact@v4
-        with:
-          name: build-files
-          path: |
-            ConanPresets.json
-            build/Release/CMakeCache.txt
-            build/Release/CTestTestfile.cmake
-            build/Release/tests/tests
-          retention-days: 7
-
-  test:
-    needs: build
-    runs-on: ubuntu-latest
-
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
-
-      - name: Download necessary build files
-        uses: actions/download-artifact@v4
-        with:
-          name: build-files
-
-      - name: Add execute permissions to test binary
-        run: chmod +x build/Release/tests/tests
-
       - name: Run tests
-        run: ctest --preset release --test-dir build/Release
+        run: ctest --preset release
 
   docs:
     runs-on: ubuntu-latest
