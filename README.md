@@ -99,30 +99,52 @@ To build and test the project, follow these steps:
 
 ### Step 1: Install Dependencies
 
-Run Conan to install the dependencies specified in the `conanfile.txt`:
+Ensure you have a Conan profile configured. If the default profile (`.conan2/profiles/default`) is missing, create it:
 
 ```bash
-conan install . --output-folder=build --build=missing
+conan profile detect --force
+```
+
+Next, install dependencies and generate `ConanPresets.json`:
+
+```bash
+conan install . --build=missing
 ```
 
 ### Step 2: Configure and Build the Project
 
-Use CMake presets for configuration and building. Ensure you have CMake 3.19 or above to utilize the modern preset feature. The configuration and build commands use `CMakePresets.json`:
+Use CMake presets to configure and build the project. Ensure CMake 3.19+ is installed.
+
+For Release configuration:
 
 ```bash
-cmake --preset default
-cmake --build --preset default
+cmake --preset release
+cmake --build --preset release
 ```
 
 ### Step 3: Run Tests
 
-Run the tests using CMake presets, as defined in `CMakePresets.json`:
+Run tests using the appropriate CMake preset:
 
 ```bash
-ctest --preset default
+ctest --preset release
 ```
 
-All commands should be executed from the top-level project directory. There is no need to navigate to the build directory.
+### Optional: Debug Configuration
+
+For Debug configuration:
+
+```bash
+conan install . -s build_type=Debug
+cmake --preset debug
+cmake --build --preset debug
+ctest --preset debug
+```
+
+### Additional Notes
+
+- Execute commands from the top-level project directory.
+- Presets handle configuration and build paths automatically.
 
 ## 🤝 Contributing
 

@@ -20,9 +20,8 @@
 build/
 conan.lock
 *.cmake
-conanfile.txt
-conanfile.py
 CMakeUserPresets.json
+ConanPresets.json
 
 # CMake generated files
 CMakeFiles/
