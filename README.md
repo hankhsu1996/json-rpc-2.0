@@ -99,30 +99,54 @@ To build and test the project, follow these steps:
 
 ### Step 1: Install Dependencies
 
-Run Conan to install the dependencies specified in the `conanfile.txt`:
+Before installing dependencies, ensure that you have a Conan profile configured. If the default profile (`.conan2/profiles/default`) does not exist, generate one based on your current machine setup:
 
 ```bash
-conan install . --output-folder=build --build=missing
+conan profile detect --force
+```
+
+This command will create a new default profile or overwrite the existing one if needed.
+
+Next, install the required dependencies using Conan. This step will also generate the necessary `ConanPresets.json` for CMake:
+
+```bash
+conan install . --build=missing
 ```
 
 ### Step 2: Configure and Build the Project
 
-Use CMake presets for configuration and building. Ensure you have CMake 3.19 or above to utilize the modern preset feature. The configuration and build commands use `CMakePresets.json`:
+Next, use CMake presets to configure and build the project. Ensure you have CMake 3.19 or above to leverage the preset feature. The following commands will use the presets defined in `CMakePresets.json`:
+
+For Release configuration:
 
 ```bash
-cmake --preset default
-cmake --build --preset default
+cmake --preset release
+cmake --build --preset release
 ```
 
 ### Step 3: Run Tests
 
-Run the tests using CMake presets, as defined in `CMakePresets.json`:
+After building, run the tests using the appropriate CMake preset:
 
 ```bash
-ctest --preset default
+ctest --preset release
 ```
 
-All commands should be executed from the top-level project directory. There is no need to navigate to the build directory.
+### Optional: Debug Configuration
+
+If you need to work with the Debug configuration, you can follow these steps:
+
+```bash
+conan install . -s build_type=Debug
+cmake --preset debug
+cmake --build --preset debug
+ctest --preset debug
+```
+
+### Additional Notes
+
+- All commands should be executed from the top-level project directory.
+- There is no need to navigate to the `build` directory, as the presets handle the configuration and build paths automatically.
 
 ## 🤝 Contributing
 

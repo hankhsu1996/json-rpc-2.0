@@ -19,30 +19,28 @@ jobs:
       - name: Setup Conan
         uses: hankhsu1996/setup-conan@v1
         with:
+          conan-version: "2.5.0"
           cache-dependencies: true
           cache-tool: true
-
-      - name: Setup Ninja
-        uses: seanmiddleditch/gha-setup-ninja@v5
 
       - name: Install dependencies
         run: |
           conan profile detect --force
-          conan install . --output-folder=build --build=missing
+          conan install . --build=missing
 
       - name: Configure CMake and build project
         run: |
-          cmake --preset default
-          cmake --build --preset default
+          cmake --preset release
+          cmake --build --preset release
 
       - name: Upload necessary build files
         uses: actions/upload-artifact@v4
         with:
           name: build-files
           path: |
-            build/CMakeCache.txt
-            build/CTestTestfile.cmake
-            build/tests/tests
+            build/Release/CMakeCache.txt
+            build/Release/CTestTestfile.cmake
+            build/Release/tests/tests
           retention-days: 7
 
   test:
@@ -60,10 +58,10 @@ jobs:
           path: build
 
       - name: Add execute permissions to test binary
-        run: chmod +x build/tests/tests
+        run: chmod +x build/Release/tests/tests
 
       - name: Run tests
-        run: ctest --preset default --test-dir build
+        run: ctest --preset release --test-dir build/Release
 
   docs:
     runs-on: ubuntu-latest
