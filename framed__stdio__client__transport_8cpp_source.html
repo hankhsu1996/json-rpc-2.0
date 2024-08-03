@@ -115,7 +115,7 @@ $(function(){initNavTree('framed__stdio__client__transport_8cpp_source.html','')
   <div class="headertitle"><div class="title">framed_stdio_client_transport.cpp</div></div>
 </div><!--header-->
 <div class="contents">
-<a href="framed__stdio__client__transport_8cpp.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="preprocessor">#include &quot;<a class="code" href="framed__stdio__client__transport_8hpp.html">jsonrpc/transports/framed_stdio_client_transport.hpp</a>&quot;</span></div>
+<a href="framed__stdio__client__transport_8cpp.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="preprocessor">#include &quot;<a class="code" href="framed__stdio__client__transport_8hpp.html">jsonrpc/client/transports/framed_stdio_client_transport.hpp</a>&quot;</span></div>
 <div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span> </div>
 <div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span><span class="preprocessor">#include &lt;iostream&gt;</span></div>
 <div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="preprocessor">#include &lt;optional&gt;</span></div>
@@ -125,36 +125,40 @@ $(function(){initNavTree('framed__stdio__client__transport_8cpp_source.html','')
 <div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="preprocessor">#include &lt;spdlog/spdlog.h&gt;</span></div>
 <div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span> </div>
 <div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span><span class="keyword">namespace </span><a class="code hl_namespace" href="namespacejsonrpc.html">jsonrpc</a> {</div>
-<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span> </div>
-<div class="foldopen" id="foldopen00012" data-start="{" data-end="}">
-<div class="line"><a id="l00012" name="l00012"></a><span class="lineno"><a class="line" href="classjsonrpc_1_1FramedStdioClientTransport.html#ac0ff246678c5f611ce34e368871456c2">   12</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classjsonrpc_1_1FramedStdioClientTransport.html#ac0ff246678c5f611ce34e368871456c2">FramedStdioClientTransport::SendRequest</a>(<span class="keyword">const</span> std::string &amp;message) {</div>
-<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span>  spdlog::debug(<span class="stringliteral">&quot;FramedStdioClientTransport sending message: {}&quot;</span>, message);</div>
-<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span>  <a class="code hl_function" href="classjsonrpc_1_1FramedTransport.html#aa129b76aec1aa02f70dc3e0f52958771">FrameMessage</a>(std::cout, message);</div>
-<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span>  std::cout &lt;&lt; std::flush;</div>
-<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span>}</div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span><span class="keyword">namespace </span>client {</div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span><span class="keyword">namespace </span>transports {</div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span> </div>
+<div class="foldopen" id="foldopen00014" data-start="{" data-end="}">
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno"><a class="line" href="classjsonrpc_1_1client_1_1transports_1_1FramedStdioClientTransport.html#a00b660a17a84f6f5ccd04939631e1eba">   14</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classjsonrpc_1_1client_1_1transports_1_1FramedStdioClientTransport.html#a00b660a17a84f6f5ccd04939631e1eba">FramedStdioClientTransport::SendRequest</a>(<span class="keyword">const</span> std::string &amp;message) {</div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span>  spdlog::debug(<span class="stringliteral">&quot;FramedStdioClientTransport sending message: {}&quot;</span>, message);</div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span>  <a class="code hl_function" href="classjsonrpc_1_1common_1_1transports_1_1FramedTransport.html#a0ea2cd369dbb1e908469977008f8ecef">FrameMessage</a>(std::cout, message);</div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span>  std::cout &lt;&lt; std::flush;</div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span>}</div>
 </div>
-<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span> </div>
-<div class="foldopen" id="foldopen00018" data-start="{" data-end="}">
-<div class="line"><a id="l00018" name="l00018"></a><span class="lineno"><a class="line" href="classjsonrpc_1_1FramedStdioClientTransport.html#a06a47c1a679a32aee73f536f9c7d1153">   18</a></span>std::string <a class="code hl_function" href="classjsonrpc_1_1FramedStdioClientTransport.html#a06a47c1a679a32aee73f536f9c7d1153">FramedStdioClientTransport::ReadResponse</a>() {</div>
-<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span>  std::string response = <a class="code hl_function" href="classjsonrpc_1_1FramedTransport.html#ae35e5417397b9ee229232ae437879d66">DeframeMessage</a>(std::cin);</div>
-<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span>  spdlog::debug(<span class="stringliteral">&quot;FramedStdioClientTransport received message: {}&quot;</span>, response);</div>
-<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span>  <span class="keywordflow">return</span> response;</div>
-<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span>}</div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span> </div>
+<div class="foldopen" id="foldopen00020" data-start="{" data-end="}">
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno"><a class="line" href="classjsonrpc_1_1client_1_1transports_1_1FramedStdioClientTransport.html#a59024a7471982dda4ce207f14c2a594d">   20</a></span>std::string <a class="code hl_function" href="classjsonrpc_1_1client_1_1transports_1_1FramedStdioClientTransport.html#a59024a7471982dda4ce207f14c2a594d">FramedStdioClientTransport::ReadResponse</a>() {</div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span>  std::string response = <a class="code hl_function" href="classjsonrpc_1_1common_1_1transports_1_1FramedTransport.html#a053c8f7bbec2c7b8574e6bd00ab19ad3">DeframeMessage</a>(std::cin);</div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span>  spdlog::debug(<span class="stringliteral">&quot;FramedStdioClientTransport received message: {}&quot;</span>, response);</div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span>  <span class="keywordflow">return</span> response;</div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span>}</div>
 </div>
-<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span> </div>
-<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span>} <span class="comment">// namespace jsonrpc</span></div>
-<div class="ttc" id="aclassjsonrpc_1_1FramedStdioClientTransport_html_a06a47c1a679a32aee73f536f9c7d1153"><div class="ttname"><a href="classjsonrpc_1_1FramedStdioClientTransport.html#a06a47c1a679a32aee73f536f9c7d1153">jsonrpc::FramedStdioClientTransport::ReadResponse</a></div><div class="ttdeci">std::string ReadResponse() override</div><div class="ttdoc">Reads a JSON-RPC response.</div><div class="ttdef"><b>Definition</b> <a href="#l00018">framed_stdio_client_transport.cpp:18</a></div></div>
-<div class="ttc" id="aclassjsonrpc_1_1FramedStdioClientTransport_html_ac0ff246678c5f611ce34e368871456c2"><div class="ttname"><a href="classjsonrpc_1_1FramedStdioClientTransport.html#ac0ff246678c5f611ce34e368871456c2">jsonrpc::FramedStdioClientTransport::SendRequest</a></div><div class="ttdeci">void SendRequest(const std::string &amp;request) override</div><div class="ttdoc">Sends a JSON-RPC request.</div><div class="ttdef"><b>Definition</b> <a href="#l00012">framed_stdio_client_transport.cpp:12</a></div></div>
-<div class="ttc" id="aclassjsonrpc_1_1FramedTransport_html_aa129b76aec1aa02f70dc3e0f52958771"><div class="ttname"><a href="classjsonrpc_1_1FramedTransport.html#aa129b76aec1aa02f70dc3e0f52958771">jsonrpc::FramedTransport::FrameMessage</a></div><div class="ttdeci">void FrameMessage(std::ostream &amp;output, const std::string &amp;message)</div><div class="ttdoc">Constructs a framed message.</div><div class="ttdef"><b>Definition</b> <a href="framed__transport_8cpp_source.html#l00010">framed_transport.cpp:10</a></div></div>
-<div class="ttc" id="aclassjsonrpc_1_1FramedTransport_html_ae35e5417397b9ee229232ae437879d66"><div class="ttname"><a href="classjsonrpc_1_1FramedTransport.html#ae35e5417397b9ee229232ae437879d66">jsonrpc::FramedTransport::DeframeMessage</a></div><div class="ttdeci">std::string DeframeMessage(std::istream &amp;input)</div><div class="ttdoc">Receives a framed message.</div><div class="ttdef"><b>Definition</b> <a href="framed__transport_8cpp_source.html#l00032">framed_transport.cpp:32</a></div></div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span> </div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span>} <span class="comment">// namespace transports</span></div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span>} <span class="comment">// namespace client</span></div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>} <span class="comment">// namespace jsonrpc</span></div>
+<div class="ttc" id="aclassjsonrpc_1_1client_1_1transports_1_1FramedStdioClientTransport_html_a00b660a17a84f6f5ccd04939631e1eba"><div class="ttname"><a href="classjsonrpc_1_1client_1_1transports_1_1FramedStdioClientTransport.html#a00b660a17a84f6f5ccd04939631e1eba">jsonrpc::client::transports::FramedStdioClientTransport::SendRequest</a></div><div class="ttdeci">void SendRequest(const std::string &amp;request) override</div><div class="ttdoc">Sends a JSON-RPC request.</div><div class="ttdef"><b>Definition</b> <a href="#l00014">framed_stdio_client_transport.cpp:14</a></div></div>
+<div class="ttc" id="aclassjsonrpc_1_1client_1_1transports_1_1FramedStdioClientTransport_html_a59024a7471982dda4ce207f14c2a594d"><div class="ttname"><a href="classjsonrpc_1_1client_1_1transports_1_1FramedStdioClientTransport.html#a59024a7471982dda4ce207f14c2a594d">jsonrpc::client::transports::FramedStdioClientTransport::ReadResponse</a></div><div class="ttdeci">std::string ReadResponse() override</div><div class="ttdoc">Reads a JSON-RPC response.</div><div class="ttdef"><b>Definition</b> <a href="#l00020">framed_stdio_client_transport.cpp:20</a></div></div>
+<div class="ttc" id="aclassjsonrpc_1_1common_1_1transports_1_1FramedTransport_html_a053c8f7bbec2c7b8574e6bd00ab19ad3"><div class="ttname"><a href="classjsonrpc_1_1common_1_1transports_1_1FramedTransport.html#a053c8f7bbec2c7b8574e6bd00ab19ad3">jsonrpc::common::transports::FramedTransport::DeframeMessage</a></div><div class="ttdeci">std::string DeframeMessage(std::istream &amp;input)</div><div class="ttdoc">Receives a framed message.</div><div class="ttdef"><b>Definition</b> <a href="framed__transport_8cpp_source.html#l00034">framed_transport.cpp:34</a></div></div>
+<div class="ttc" id="aclassjsonrpc_1_1common_1_1transports_1_1FramedTransport_html_a0ea2cd369dbb1e908469977008f8ecef"><div class="ttname"><a href="classjsonrpc_1_1common_1_1transports_1_1FramedTransport.html#a0ea2cd369dbb1e908469977008f8ecef">jsonrpc::common::transports::FramedTransport::FrameMessage</a></div><div class="ttdeci">void FrameMessage(std::ostream &amp;output, const std::string &amp;message)</div><div class="ttdoc">Constructs a framed message.</div><div class="ttdef"><b>Definition</b> <a href="framed__transport_8cpp_source.html#l00012">framed_transport.cpp:12</a></div></div>
 <div class="ttc" id="aframed__stdio__client__transport_8hpp_html"><div class="ttname"><a href="framed__stdio__client__transport_8hpp.html">framed_stdio_client_transport.hpp</a></div></div>
-<div class="ttc" id="anamespacejsonrpc_html"><div class="ttname"><a href="namespacejsonrpc.html">jsonrpc</a></div><div class="ttdef"><b>Definition</b> <a href="client_8hpp_source.html#l00016">client.hpp:16</a></div></div>
+<div class="ttc" id="anamespacejsonrpc_html"><div class="ttname"><a href="namespacejsonrpc.html">jsonrpc</a></div><div class="ttdef"><b>Definition</b> <a href="client_8hpp_source.html#l00018">client.hpp:18</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_4ef9e1fab6db8f1c439d7edf0c56068f.html">transports</a></li><li class="navelem"><a class="el" href="framed__stdio__client__transport_8cpp.html">framed_stdio_client_transport.cpp</a></li>
+    <li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_6908ff505388a07996d238c763adbdab.html">client</a></li><li class="navelem"><a class="el" href="dir_d85bb906f401e610b544e109514ad112.html">transports</a></li><li class="navelem"><a class="el" href="framed__stdio__client__transport_8cpp.html">framed_stdio_client_transport.cpp</a></li>
     <li class="footer">Generated by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.11.0 </li>
   </ul>
 </div>

@@ -1,5 +1,0 @@
-<map id="jsonrpc::ServerTransport::Listen" name="jsonrpc::ServerTransport::Listen">
-<area shape="rect" id="Node000001" title="Listens for incoming messages." alt="" coords="232,5,411,45"/>
-<area shape="rect" id="Node000002" href="$classjsonrpc_1_1ServerTransport.html#a922c8028067b9ee232dd845b5f65bcf2" title="Starts the transport." alt="" coords="5,5,184,45"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="218,28,184,28,184,23,218,23"/>
-</map>

@@ -1,5 +1,5 @@
 var searchData=
 [
   ['notes_0',['Additional Notes',['../index.html#autotoc_md13',1,'']]],
-  ['notificationhandler_1',['NotificationHandler',['../namespacejsonrpc.html#a6ed8cf4f67f491408089bb37db739456',1,'jsonrpc']]]
+  ['notificationhandler_1',['NotificationHandler',['../namespacejsonrpc_1_1server.html#a4f43d4eeec1a7837e83fde5608e97495',1,'jsonrpc::server']]]
 ];

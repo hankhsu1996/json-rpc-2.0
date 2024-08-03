@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['framemessage_0',['FrameMessage',['../classjsonrpc_1_1FramedTransport.html#aa129b76aec1aa02f70dc3e0f52958771',1,'jsonrpc::FramedTransport']]],
-  ['fromjson_1',['FromJson',['../classjsonrpc_1_1Request.html#aeef9a399fe1c52b7affd95d836b813b6',1,'jsonrpc::Request']]],
-  ['fromuserresponse_2',['FromUserResponse',['../classjsonrpc_1_1Response.html#aed5315413683f20b5c56e550290e367f',1,'jsonrpc::Response']]]
+  ['framemessage_0',['FrameMessage',['../classjsonrpc_1_1common_1_1transports_1_1FramedTransport.html#a0ea2cd369dbb1e908469977008f8ecef',1,'jsonrpc::common::transports::FramedTransport']]],
+  ['fromjson_1',['FromJson',['../classjsonrpc_1_1server_1_1Request.html#a8931bc20201a8a0cabfa34b89daf959c',1,'jsonrpc::server::Request']]],
+  ['fromuserresponse_2',['FromUserResponse',['../classjsonrpc_1_1server_1_1Response.html#ae53dbb354d36efd89eff35d61b44f836',1,'jsonrpc::server::Response']]]
 ];

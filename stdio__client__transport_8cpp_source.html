@@ -115,41 +115,45 @@ $(function(){initNavTree('stdio__client__transport_8cpp_source.html',''); initRe
   <div class="headertitle"><div class="title">stdio_client_transport.cpp</div></div>
 </div><!--header-->
 <div class="contents">
-<a href="stdio__client__transport_8cpp.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="preprocessor">#include &quot;<a class="code" href="stdio__client__transport_8hpp.html">jsonrpc/transports/stdio_client_transport.hpp</a>&quot;</span></div>
+<a href="stdio__client__transport_8cpp.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="preprocessor">#include &quot;<a class="code" href="stdio__client__transport_8hpp.html">jsonrpc/client/transports/stdio_client_transport.hpp</a>&quot;</span></div>
 <div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span> </div>
 <div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span><span class="preprocessor">#include &lt;iostream&gt;</span></div>
 <div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span> </div>
 <div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="preprocessor">#include &lt;spdlog/spdlog.h&gt;</span></div>
 <div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span> </div>
 <div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span><span class="keyword">namespace </span><a class="code hl_namespace" href="namespacejsonrpc.html">jsonrpc</a> {</div>
-<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span> </div>
-<div class="foldopen" id="foldopen00009" data-start="{" data-end="}">
-<div class="line"><a id="l00009" name="l00009"></a><span class="lineno"><a class="line" href="classjsonrpc_1_1StdioClientTransport.html#ac66c500da4ef1d97fea578685981657c">    9</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classjsonrpc_1_1StdioClientTransport.html#ac66c500da4ef1d97fea578685981657c">StdioClientTransport::SendRequest</a>(<span class="keyword">const</span> std::string &amp;message) {</div>
-<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span>  spdlog::debug(<span class="stringliteral">&quot;StdioClientTransport sending message: {}&quot;</span>, message);</div>
-<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span>  std::cout &lt;&lt; message &lt;&lt; std::endl;</div>
-<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span>}</div>
+<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="keyword">namespace </span>client {</div>
+<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span><span class="keyword">namespace </span>transports {</div>
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span> </div>
+<div class="foldopen" id="foldopen00011" data-start="{" data-end="}">
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno"><a class="line" href="classjsonrpc_1_1client_1_1transports_1_1StdioClientTransport.html#a3cfae4a619f8f8c662ea88119caf77bf">   11</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classjsonrpc_1_1client_1_1transports_1_1StdioClientTransport.html#a3cfae4a619f8f8c662ea88119caf77bf">StdioClientTransport::SendRequest</a>(<span class="keyword">const</span> std::string &amp;message) {</div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span>  spdlog::debug(<span class="stringliteral">&quot;StdioClientTransport sending message: {}&quot;</span>, message);</div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span>  std::cout &lt;&lt; message &lt;&lt; std::endl;</div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span>}</div>
 </div>
-<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span> </div>
-<div class="foldopen" id="foldopen00014" data-start="{" data-end="}">
-<div class="line"><a id="l00014" name="l00014"></a><span class="lineno"><a class="line" href="classjsonrpc_1_1StdioClientTransport.html#a5b1e38adea7b92812d7784ddffbb0a70">   14</a></span>std::string <a class="code hl_function" href="classjsonrpc_1_1StdioClientTransport.html#a5b1e38adea7b92812d7784ddffbb0a70">StdioClientTransport::ReadResponse</a>() {</div>
-<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span>  std::string response;</div>
-<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span>  std::getline(std::cin, response);</div>
-<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span>  spdlog::debug(<span class="stringliteral">&quot;StdioClientTransport received response: {}&quot;</span>, response);</div>
-<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span>  <span class="keywordflow">return</span> response;</div>
-<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span>}</div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span> </div>
+<div class="foldopen" id="foldopen00016" data-start="{" data-end="}">
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno"><a class="line" href="classjsonrpc_1_1client_1_1transports_1_1StdioClientTransport.html#ad45c0b28edbfc2dae47490d6050fa4cb">   16</a></span>std::string <a class="code hl_function" href="classjsonrpc_1_1client_1_1transports_1_1StdioClientTransport.html#ad45c0b28edbfc2dae47490d6050fa4cb">StdioClientTransport::ReadResponse</a>() {</div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span>  std::string response;</div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span>  std::getline(std::cin, response);</div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span>  spdlog::debug(<span class="stringliteral">&quot;StdioClientTransport received response: {}&quot;</span>, response);</div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span>  <span class="keywordflow">return</span> response;</div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span>}</div>
 </div>
-<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span> </div>
-<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span>} <span class="comment">// namespace jsonrpc</span></div>
-<div class="ttc" id="aclassjsonrpc_1_1StdioClientTransport_html_a5b1e38adea7b92812d7784ddffbb0a70"><div class="ttname"><a href="classjsonrpc_1_1StdioClientTransport.html#a5b1e38adea7b92812d7784ddffbb0a70">jsonrpc::StdioClientTransport::ReadResponse</a></div><div class="ttdeci">std::string ReadResponse() override</div><div class="ttdoc">Reads a JSON-RPC response.</div><div class="ttdef"><b>Definition</b> <a href="#l00014">stdio_client_transport.cpp:14</a></div></div>
-<div class="ttc" id="aclassjsonrpc_1_1StdioClientTransport_html_ac66c500da4ef1d97fea578685981657c"><div class="ttname"><a href="classjsonrpc_1_1StdioClientTransport.html#ac66c500da4ef1d97fea578685981657c">jsonrpc::StdioClientTransport::SendRequest</a></div><div class="ttdeci">void SendRequest(const std::string &amp;request) override</div><div class="ttdoc">Sends a JSON-RPC request.</div><div class="ttdef"><b>Definition</b> <a href="#l00009">stdio_client_transport.cpp:9</a></div></div>
-<div class="ttc" id="anamespacejsonrpc_html"><div class="ttname"><a href="namespacejsonrpc.html">jsonrpc</a></div><div class="ttdef"><b>Definition</b> <a href="client_8hpp_source.html#l00016">client.hpp:16</a></div></div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span> </div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span>} <span class="comment">// namespace transports</span></div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span>} <span class="comment">// namespace client</span></div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span>} <span class="comment">// namespace jsonrpc</span></div>
+<div class="ttc" id="aclassjsonrpc_1_1client_1_1transports_1_1StdioClientTransport_html_a3cfae4a619f8f8c662ea88119caf77bf"><div class="ttname"><a href="classjsonrpc_1_1client_1_1transports_1_1StdioClientTransport.html#a3cfae4a619f8f8c662ea88119caf77bf">jsonrpc::client::transports::StdioClientTransport::SendRequest</a></div><div class="ttdeci">void SendRequest(const std::string &amp;request) override</div><div class="ttdoc">Sends a JSON-RPC request.</div><div class="ttdef"><b>Definition</b> <a href="#l00011">stdio_client_transport.cpp:11</a></div></div>
+<div class="ttc" id="aclassjsonrpc_1_1client_1_1transports_1_1StdioClientTransport_html_ad45c0b28edbfc2dae47490d6050fa4cb"><div class="ttname"><a href="classjsonrpc_1_1client_1_1transports_1_1StdioClientTransport.html#ad45c0b28edbfc2dae47490d6050fa4cb">jsonrpc::client::transports::StdioClientTransport::ReadResponse</a></div><div class="ttdeci">std::string ReadResponse() override</div><div class="ttdoc">Reads a JSON-RPC response.</div><div class="ttdef"><b>Definition</b> <a href="#l00016">stdio_client_transport.cpp:16</a></div></div>
+<div class="ttc" id="anamespacejsonrpc_html"><div class="ttname"><a href="namespacejsonrpc.html">jsonrpc</a></div><div class="ttdef"><b>Definition</b> <a href="client_8hpp_source.html#l00018">client.hpp:18</a></div></div>
 <div class="ttc" id="astdio__client__transport_8hpp_html"><div class="ttname"><a href="stdio__client__transport_8hpp.html">stdio_client_transport.hpp</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_4ef9e1fab6db8f1c439d7edf0c56068f.html">transports</a></li><li class="navelem"><a class="el" href="stdio__client__transport_8cpp.html">stdio_client_transport.cpp</a></li>
+    <li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_6908ff505388a07996d238c763adbdab.html">client</a></li><li class="navelem"><a class="el" href="dir_d85bb906f401e610b544e109514ad112.html">transports</a></li><li class="navelem"><a class="el" href="stdio__client__transport_8cpp.html">stdio_client_transport.cpp</a></li>
     <li class="footer">Generated by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.11.0 </li>
   </ul>
 </div>

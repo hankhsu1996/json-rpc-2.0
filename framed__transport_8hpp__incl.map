@@ -1,5 +1,5 @@
-<map id="include/jsonrpc/transports/framed_transport.hpp" name="include/jsonrpc/transports/framed_transport.hpp">
-<area shape="rect" id="Node000001" title=" " alt="" coords="5,5,196,45"/>
-<area shape="rect" id="Node000002" title=" " alt="" coords="71,93,130,119"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="103,46,103,79,98,79,98,46"/>
+<map id="include/jsonrpc/common/transports/framed_transport.hpp" name="include/jsonrpc/common/transports/framed_transport.hpp">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,5,243,45"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="95,93,153,119"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="127,46,127,79,121,79,121,46"/>
 </map>

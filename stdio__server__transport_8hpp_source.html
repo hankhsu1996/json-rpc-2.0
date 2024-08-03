@@ -119,33 +119,35 @@ $(function(){initNavTree('stdio__server__transport_8hpp_source.html',''); initRe
 <div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span> </div>
 <div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span><span class="preprocessor">#include &lt;iostream&gt;</span></div>
 <div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span> </div>
-<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="preprocessor">#include &quot;<a class="code" href="dispatcher_8hpp.html">jsonrpc/core/dispatcher.hpp</a>&quot;</span></div>
-<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span><span class="preprocessor">#include &quot;<a class="code" href="server__transport_8hpp.html">jsonrpc/core/server_transport.hpp</a>&quot;</span></div>
-<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span><span class="preprocessor">#include &quot;<a class="code" href="types_8hpp.html">jsonrpc/core/types.hpp</a>&quot;</span></div>
-<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span> </div>
-<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span><span class="keyword">namespace </span><a class="code hl_namespace" href="namespacejsonrpc.html">jsonrpc</a> {</div>
-<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span> </div>
-<div class="foldopen" id="foldopen00017" data-start="{" data-end="};">
-<div class="line"><a id="l00017" name="l00017"></a><span class="lineno"><a class="line" href="classjsonrpc_1_1StdioServerTransport.html">   17</a></span><span class="keyword">class </span><a class="code hl_class" href="classjsonrpc_1_1StdioServerTransport.html">StdioServerTransport</a> : <span class="keyword">public</span> <a class="code hl_class" href="classjsonrpc_1_1ServerTransport.html">ServerTransport</a> {</div>
-<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span><span class="keyword">protected</span>:</div>
-<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span>  <span class="keywordtype">void</span> <a class="code hl_function" href="classjsonrpc_1_1StdioServerTransport.html#a0a4dd8a152ff40cd9d00bf1461f483c7">Listen</a>() <span class="keyword">override</span>;</div>
-<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span>};</div>
+<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="preprocessor">#include &quot;<a class="code" href="dispatcher_8hpp.html">jsonrpc/server/dispatcher.hpp</a>&quot;</span></div>
+<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span><span class="preprocessor">#include &quot;<a class="code" href="server__transport_8hpp.html">jsonrpc/server/transports/server_transport.hpp</a>&quot;</span></div>
+<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span> </div>
+<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="keyword">namespace </span><a class="code hl_namespace" href="namespacejsonrpc.html">jsonrpc</a> {</div>
+<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span><span class="keyword">namespace </span>server {</div>
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span><span class="keyword">namespace </span>transports {</div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span> </div>
+<div class="foldopen" id="foldopen00018" data-start="{" data-end="};">
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno"><a class="line" href="classjsonrpc_1_1server_1_1transports_1_1StdioServerTransport.html">   18</a></span><span class="keyword">class </span><a class="code hl_class" href="classjsonrpc_1_1server_1_1transports_1_1StdioServerTransport.html">StdioServerTransport</a> : <span class="keyword">public</span> <a class="code hl_class" href="classjsonrpc_1_1server_1_1transports_1_1ServerTransport.html">ServerTransport</a> {</div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span><span class="keyword">protected</span>:</div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span>  <span class="keywordtype">void</span> <a class="code hl_function" href="classjsonrpc_1_1server_1_1transports_1_1StdioServerTransport.html#a6ba894ca9dcc3730dce36702e50ae453">Listen</a>() <span class="keyword">override</span>;</div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span>};</div>
 </div>
-<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span> </div>
-<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span>} <span class="comment">// namespace jsonrpc</span></div>
-<div class="ttc" id="aclassjsonrpc_1_1ServerTransport_html"><div class="ttname"><a href="classjsonrpc_1_1ServerTransport.html">jsonrpc::ServerTransport</a></div><div class="ttdoc">Abstract base class for server transport mechanisms.</div><div class="ttdef"><b>Definition</b> <a href="server__transport_8hpp_source.html#l00018">server_transport.hpp:18</a></div></div>
-<div class="ttc" id="aclassjsonrpc_1_1StdioServerTransport_html"><div class="ttname"><a href="classjsonrpc_1_1StdioServerTransport.html">jsonrpc::StdioServerTransport</a></div><div class="ttdoc">Server transport using stdio for communication.</div><div class="ttdef"><b>Definition</b> <a href="#l00017">stdio_server_transport.hpp:17</a></div></div>
-<div class="ttc" id="aclassjsonrpc_1_1StdioServerTransport_html_a0a4dd8a152ff40cd9d00bf1461f483c7"><div class="ttname"><a href="classjsonrpc_1_1StdioServerTransport.html#a0a4dd8a152ff40cd9d00bf1461f483c7">jsonrpc::StdioServerTransport::Listen</a></div><div class="ttdeci">void Listen() override</div><div class="ttdoc">Listens for incoming messages and dispatches them to the appropriate handlers.</div><div class="ttdef"><b>Definition</b> <a href="stdio__server__transport_8cpp_source.html#l00007">stdio_server_transport.cpp:7</a></div></div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span> </div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span>} <span class="comment">// namespace transports</span></div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>} <span class="comment">// namespace server</span></div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>} <span class="comment">// namespace jsonrpc</span></div>
+<div class="ttc" id="aclassjsonrpc_1_1server_1_1transports_1_1ServerTransport_html"><div class="ttname"><a href="classjsonrpc_1_1server_1_1transports_1_1ServerTransport.html">jsonrpc::server::transports::ServerTransport</a></div><div class="ttdoc">Abstract base class for server transport mechanisms.</div><div class="ttdef"><b>Definition</b> <a href="server__transport_8hpp_source.html#l00019">server_transport.hpp:19</a></div></div>
+<div class="ttc" id="aclassjsonrpc_1_1server_1_1transports_1_1StdioServerTransport_html"><div class="ttname"><a href="classjsonrpc_1_1server_1_1transports_1_1StdioServerTransport.html">jsonrpc::server::transports::StdioServerTransport</a></div><div class="ttdoc">Server transport using stdio for communication.</div><div class="ttdef"><b>Definition</b> <a href="#l00018">stdio_server_transport.hpp:18</a></div></div>
+<div class="ttc" id="aclassjsonrpc_1_1server_1_1transports_1_1StdioServerTransport_html_a6ba894ca9dcc3730dce36702e50ae453"><div class="ttname"><a href="classjsonrpc_1_1server_1_1transports_1_1StdioServerTransport.html#a6ba894ca9dcc3730dce36702e50ae453">jsonrpc::server::transports::StdioServerTransport::Listen</a></div><div class="ttdeci">void Listen() override</div><div class="ttdoc">Listens for incoming messages and dispatches them to the appropriate handlers.</div><div class="ttdef"><b>Definition</b> <a href="stdio__server__transport_8cpp_source.html#l00009">stdio_server_transport.cpp:9</a></div></div>
 <div class="ttc" id="adispatcher_8hpp_html"><div class="ttname"><a href="dispatcher_8hpp.html">dispatcher.hpp</a></div></div>
-<div class="ttc" id="anamespacejsonrpc_html"><div class="ttname"><a href="namespacejsonrpc.html">jsonrpc</a></div><div class="ttdef"><b>Definition</b> <a href="client_8hpp_source.html#l00016">client.hpp:16</a></div></div>
+<div class="ttc" id="anamespacejsonrpc_html"><div class="ttname"><a href="namespacejsonrpc.html">jsonrpc</a></div><div class="ttdef"><b>Definition</b> <a href="client_8hpp_source.html#l00018">client.hpp:18</a></div></div>
 <div class="ttc" id="aserver__transport_8hpp_html"><div class="ttname"><a href="server__transport_8hpp.html">server_transport.hpp</a></div></div>
-<div class="ttc" id="atypes_8hpp_html"><div class="ttname"><a href="types_8hpp.html">types.hpp</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a class="el" href="dir_d44c64559bbebec7f509842c48db8b23.html">include</a></li><li class="navelem"><a class="el" href="dir_91acd94fd8e19b606395a4f5e16e64f3.html">jsonrpc</a></li><li class="navelem"><a class="el" href="dir_ebb0e51e103b84103073180003567a54.html">transports</a></li><li class="navelem"><a class="el" href="stdio__server__transport_8hpp.html">stdio_server_transport.hpp</a></li>
+    <li class="navelem"><a class="el" href="dir_d44c64559bbebec7f509842c48db8b23.html">include</a></li><li class="navelem"><a class="el" href="dir_91acd94fd8e19b606395a4f5e16e64f3.html">jsonrpc</a></li><li class="navelem"><a class="el" href="dir_bf2d1ebfe983e97e1c574c9975f7ce3f.html">server</a></li><li class="navelem"><a class="el" href="dir_9800160c87a116a85adc385ebf834c04.html">transports</a></li><li class="navelem"><a class="el" href="stdio__server__transport_8hpp.html">stdio_server_transport.hpp</a></li>
     <li class="footer">Generated by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.11.0 </li>
   </ul>
 </div>

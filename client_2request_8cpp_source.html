@@ -118,54 +118,55 @@ $(function(){initNavTree('client_2request_8cpp_source.html',''); initResizable(t
 <a href="client_2request_8cpp.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="preprocessor">#include &quot;<a class="code" href="client_2request_8hpp.html">jsonrpc/client/request.hpp</a>&quot;</span></div>
 <div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span> </div>
 <div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span><span class="keyword">namespace </span><a class="code hl_namespace" href="namespacejsonrpc.html">jsonrpc</a> {</div>
-<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span> </div>
-<div class="foldopen" id="foldopen00005" data-start="{" data-end="}">
-<div class="line"><a id="l00005" name="l00005"></a><span class="lineno"><a class="line" href="classjsonrpc_1_1ClientRequest.html#a1d743103632236efd2e688d2a2d46588">    5</a></span><a class="code hl_function" href="classjsonrpc_1_1ClientRequest.html#a1d743103632236efd2e688d2a2d46588">ClientRequest::ClientRequest</a>(<span class="keyword">const</span> std::string &amp;method,</div>
-<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span>    std::optional&lt;Json&gt; params, <span class="keywordtype">bool</span> isNotification,</div>
-<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span>    <span class="keyword">const</span> std::function&lt;<span class="keywordtype">int</span>()&gt; &amp;idGenerator)</div>
-<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span>    : method_(method), params_(std::move(params)),</div>
-<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span>      isNotification_(isNotification), id_(0) {</div>
-<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span>  <span class="keywordflow">if</span> (!isNotification_) {</div>
-<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span>    id_ = idGenerator();</div>
-<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span>  }</div>
-<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span>}</div>
+<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="keyword">namespace </span>client {</div>
+<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span> </div>
+<div class="foldopen" id="foldopen00006" data-start="{" data-end="}">
+<div class="line"><a id="l00006" name="l00006"></a><span class="lineno"><a class="line" href="classjsonrpc_1_1client_1_1Request.html#aab929fa546b0faa17c4429bf3b4cb57c">    6</a></span><a class="code hl_function" href="classjsonrpc_1_1client_1_1Request.html#aab929fa546b0faa17c4429bf3b4cb57c">Request::Request</a>(<span class="keyword">const</span> std::string &amp;method,</div>
+<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span>    std::optional&lt;nlohmann::json&gt; params, <span class="keywordtype">bool</span> isNotification,</div>
+<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span>    <span class="keyword">const</span> std::function&lt;<span class="keywordtype">int</span>()&gt; &amp;idGenerator)</div>
+<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span>    : method_(method), params_(std::move(params)),</div>
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span>      isNotification_(isNotification), id_(0) {</div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span>  <span class="keywordflow">if</span> (!isNotification_) {</div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span>    id_ = idGenerator();</div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span>  }</div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span>}</div>
 </div>
-<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span> </div>
-<div class="foldopen" id="foldopen00015" data-start="{" data-end="}">
-<div class="line"><a id="l00015" name="l00015"></a><span class="lineno"><a class="line" href="classjsonrpc_1_1ClientRequest.html#a983e98dbc18759da6cbd31a64f281252">   15</a></span><span class="keywordtype">bool</span> <a class="code hl_function" href="classjsonrpc_1_1ClientRequest.html#a983e98dbc18759da6cbd31a64f281252">ClientRequest::RequiresResponse</a>()<span class="keyword"> const </span>{</div>
-<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span>  <span class="keywordflow">return</span> !isNotification_;</div>
-<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span>}</div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span> </div>
+<div class="foldopen" id="foldopen00016" data-start="{" data-end="}">
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno"><a class="line" href="classjsonrpc_1_1client_1_1Request.html#a40c0b6aae4b41191cf888f9427267543">   16</a></span><span class="keywordtype">bool</span> <a class="code hl_function" href="classjsonrpc_1_1client_1_1Request.html#a40c0b6aae4b41191cf888f9427267543">Request::RequiresResponse</a>()<span class="keyword"> const </span>{</div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span>  <span class="keywordflow">return</span> !isNotification_;</div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span>}</div>
 </div>
-<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span> </div>
-<div class="foldopen" id="foldopen00019" data-start="{" data-end="}">
-<div class="line"><a id="l00019" name="l00019"></a><span class="lineno"><a class="line" href="classjsonrpc_1_1ClientRequest.html#a42a803eab7a915259eb903ae18360b06">   19</a></span><span class="keywordtype">int</span> <a class="code hl_function" href="classjsonrpc_1_1ClientRequest.html#a42a803eab7a915259eb903ae18360b06">ClientRequest::GetKey</a>()<span class="keyword"> const </span>{</div>
-<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span>  <span class="keywordflow">return</span> id_;</div>
-<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span>}</div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span> </div>
+<div class="foldopen" id="foldopen00020" data-start="{" data-end="}">
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno"><a class="line" href="classjsonrpc_1_1client_1_1Request.html#a2450bf7a96aa3296f51dd14d07f880b5">   20</a></span><span class="keywordtype">int</span> <a class="code hl_function" href="classjsonrpc_1_1client_1_1Request.html#a2450bf7a96aa3296f51dd14d07f880b5">Request::GetKey</a>()<span class="keyword"> const </span>{</div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span>  <span class="keywordflow">return</span> id_;</div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span>}</div>
 </div>
-<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span> </div>
-<div class="foldopen" id="foldopen00023" data-start="{" data-end="}">
-<div class="line"><a id="l00023" name="l00023"></a><span class="lineno"><a class="line" href="classjsonrpc_1_1ClientRequest.html#a4e577c38b19777e52417c522e3e82e2e">   23</a></span>std::string <a class="code hl_function" href="classjsonrpc_1_1ClientRequest.html#a4e577c38b19777e52417c522e3e82e2e">ClientRequest::Dump</a>()<span class="keyword"> const </span>{</div>
-<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span>  <a class="code hl_typedef" href="namespacejsonrpc.html#a268131906d306aae6d599fd490c524b5">Json</a> jsonRequest;</div>
-<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span>  jsonRequest[<span class="stringliteral">&quot;jsonrpc&quot;</span>] = <span class="stringliteral">&quot;2.0&quot;</span>;</div>
-<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span>  jsonRequest[<span class="stringliteral">&quot;method&quot;</span>] = method_;</div>
-<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span>  <span class="keywordflow">if</span> (params_) {</div>
-<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>    jsonRequest[<span class="stringliteral">&quot;params&quot;</span>] = *params_;</div>
-<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>  }</div>
-<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>  <span class="keywordflow">if</span> (!isNotification_) {</div>
-<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span>    jsonRequest[<span class="stringliteral">&quot;id&quot;</span>] = id_;</div>
-<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span>  }</div>
-<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span>  <span class="keywordflow">return</span> jsonRequest.dump();</div>
-<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>}</div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span> </div>
+<div class="foldopen" id="foldopen00024" data-start="{" data-end="}">
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno"><a class="line" href="classjsonrpc_1_1client_1_1Request.html#a9a39214e9119cbdb3daa1d4ea1b7efc1">   24</a></span>std::string <a class="code hl_function" href="classjsonrpc_1_1client_1_1Request.html#a9a39214e9119cbdb3daa1d4ea1b7efc1">Request::Dump</a>()<span class="keyword"> const </span>{</div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span>  nlohmann::json jsonRequest;</div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span>  jsonRequest[<span class="stringliteral">&quot;jsonrpc&quot;</span>] = <span class="stringliteral">&quot;2.0&quot;</span>;</div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span>  jsonRequest[<span class="stringliteral">&quot;method&quot;</span>] = method_;</div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>  <span class="keywordflow">if</span> (params_) {</div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>    jsonRequest[<span class="stringliteral">&quot;params&quot;</span>] = *params_;</div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>  }</div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span>  <span class="keywordflow">if</span> (!isNotification_) {</div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span>    jsonRequest[<span class="stringliteral">&quot;id&quot;</span>] = id_;</div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span>  }</div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>  <span class="keywordflow">return</span> jsonRequest.dump();</div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span>}</div>
 </div>
-<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span> </div>
-<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span>} <span class="comment">// namespace jsonrpc</span></div>
-<div class="ttc" id="aclassjsonrpc_1_1ClientRequest_html_a1d743103632236efd2e688d2a2d46588"><div class="ttname"><a href="classjsonrpc_1_1ClientRequest.html#a1d743103632236efd2e688d2a2d46588">jsonrpc::ClientRequest::ClientRequest</a></div><div class="ttdeci">ClientRequest(const std::string &amp;method, std::optional&lt; Json &gt; params, bool isNotification, const std::function&lt; int()&gt; &amp;idGenerator)</div><div class="ttdef"><b>Definition</b> <a href="#l00005">request.cpp:5</a></div></div>
-<div class="ttc" id="aclassjsonrpc_1_1ClientRequest_html_a42a803eab7a915259eb903ae18360b06"><div class="ttname"><a href="classjsonrpc_1_1ClientRequest.html#a42a803eab7a915259eb903ae18360b06">jsonrpc::ClientRequest::GetKey</a></div><div class="ttdeci">int GetKey() const</div><div class="ttdef"><b>Definition</b> <a href="#l00019">request.cpp:19</a></div></div>
-<div class="ttc" id="aclassjsonrpc_1_1ClientRequest_html_a4e577c38b19777e52417c522e3e82e2e"><div class="ttname"><a href="classjsonrpc_1_1ClientRequest.html#a4e577c38b19777e52417c522e3e82e2e">jsonrpc::ClientRequest::Dump</a></div><div class="ttdeci">std::string Dump() const</div><div class="ttdef"><b>Definition</b> <a href="#l00023">request.cpp:23</a></div></div>
-<div class="ttc" id="aclassjsonrpc_1_1ClientRequest_html_a983e98dbc18759da6cbd31a64f281252"><div class="ttname"><a href="classjsonrpc_1_1ClientRequest.html#a983e98dbc18759da6cbd31a64f281252">jsonrpc::ClientRequest::RequiresResponse</a></div><div class="ttdeci">bool RequiresResponse() const</div><div class="ttdef"><b>Definition</b> <a href="#l00015">request.cpp:15</a></div></div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span> </div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>} <span class="comment">// namespace client</span></div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>} <span class="comment">// namespace jsonrpc</span></div>
+<div class="ttc" id="aclassjsonrpc_1_1client_1_1Request_html_a2450bf7a96aa3296f51dd14d07f880b5"><div class="ttname"><a href="classjsonrpc_1_1client_1_1Request.html#a2450bf7a96aa3296f51dd14d07f880b5">jsonrpc::client::Request::GetKey</a></div><div class="ttdeci">int GetKey() const</div><div class="ttdoc">Returns the unique key (ID) for the request.</div><div class="ttdef"><b>Definition</b> <a href="#l00020">request.cpp:20</a></div></div>
+<div class="ttc" id="aclassjsonrpc_1_1client_1_1Request_html_a40c0b6aae4b41191cf888f9427267543"><div class="ttname"><a href="classjsonrpc_1_1client_1_1Request.html#a40c0b6aae4b41191cf888f9427267543">jsonrpc::client::Request::RequiresResponse</a></div><div class="ttdeci">bool RequiresResponse() const</div><div class="ttdoc">Checks if the request requires a response.</div><div class="ttdef"><b>Definition</b> <a href="#l00016">request.cpp:16</a></div></div>
+<div class="ttc" id="aclassjsonrpc_1_1client_1_1Request_html_a9a39214e9119cbdb3daa1d4ea1b7efc1"><div class="ttname"><a href="classjsonrpc_1_1client_1_1Request.html#a9a39214e9119cbdb3daa1d4ea1b7efc1">jsonrpc::client::Request::Dump</a></div><div class="ttdeci">std::string Dump() const</div><div class="ttdoc">Serializes the request to a JSON string.</div><div class="ttdef"><b>Definition</b> <a href="#l00024">request.cpp:24</a></div></div>
+<div class="ttc" id="aclassjsonrpc_1_1client_1_1Request_html_aab929fa546b0faa17c4429bf3b4cb57c"><div class="ttname"><a href="classjsonrpc_1_1client_1_1Request.html#aab929fa546b0faa17c4429bf3b4cb57c">jsonrpc::client::Request::Request</a></div><div class="ttdeci">Request(const std::string &amp;method, std::optional&lt; nlohmann::json &gt; params, bool isNotification, const std::function&lt; int()&gt; &amp;idGenerator)</div><div class="ttdoc">Constructs a new Request object.</div><div class="ttdef"><b>Definition</b> <a href="#l00006">request.cpp:6</a></div></div>
 <div class="ttc" id="aclient_2request_8hpp_html"><div class="ttname"><a href="client_2request_8hpp.html">request.hpp</a></div></div>
-<div class="ttc" id="anamespacejsonrpc_html"><div class="ttname"><a href="namespacejsonrpc.html">jsonrpc</a></div><div class="ttdef"><b>Definition</b> <a href="client_8hpp_source.html#l00016">client.hpp:16</a></div></div>
-<div class="ttc" id="anamespacejsonrpc_html_a268131906d306aae6d599fd490c524b5"><div class="ttname"><a href="namespacejsonrpc.html#a268131906d306aae6d599fd490c524b5">jsonrpc::Json</a></div><div class="ttdeci">nlohmann::json Json</div><div class="ttdoc">Alias for the JSON type used in the library.</div><div class="ttdef"><b>Definition</b> <a href="types_8hpp_source.html#l00014">types.hpp:14</a></div></div>
+<div class="ttc" id="anamespacejsonrpc_html"><div class="ttname"><a href="namespacejsonrpc.html">jsonrpc</a></div><div class="ttdef"><b>Definition</b> <a href="client_8hpp_source.html#l00018">client.hpp:18</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->

@@ -127,73 +127,78 @@ $(function(){initNavTree('client_8hpp_source.html',''); initResizable(true); });
 <div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span><span class="preprocessor">#include &lt;unordered_map&gt;</span></div>
 <div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span><span class="preprocessor">#include &lt;vector&gt;</span></div>
 <div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span> </div>
-<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span><span class="preprocessor">#include &quot;<a class="code" href="client_2request_8hpp.html">jsonrpc/client/request.hpp</a>&quot;</span></div>
-<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span><span class="preprocessor">#include &quot;<a class="code" href="client__transport_8hpp.html">jsonrpc/core/client_transport.hpp</a>&quot;</span></div>
-<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span> </div>
-<div class="foldopen" id="foldopen00016" data-start="{" data-end="}">
-<div class="line"><a id="l00016" name="l00016"></a><span class="lineno"><a class="line" href="namespacejsonrpc.html">   16</a></span><span class="keyword">namespace </span><a class="code hl_namespace" href="namespacejsonrpc.html">jsonrpc</a> {</div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span><span class="preprocessor">#include &lt;nlohmann/json.hpp&gt;</span></div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span> </div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span><span class="preprocessor">#include &quot;<a class="code" href="client_2request_8hpp.html">jsonrpc/client/request.hpp</a>&quot;</span></div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span><span class="preprocessor">#include &quot;<a class="code" href="client__transport_8hpp.html">jsonrpc/client/transports/client_transport.hpp</a>&quot;</span></div>
 <div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span> </div>
-<div class="foldopen" id="foldopen00019" data-start="{" data-end="};">
-<div class="line"><a id="l00019" name="l00019"></a><span class="lineno"><a class="line" href="classjsonrpc_1_1Client.html">   19</a></span><span class="keyword">class </span><a class="code hl_class" href="classjsonrpc_1_1Client.html">Client</a> {</div>
-<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span><span class="keyword">public</span>:</div>
-<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>  <a class="code hl_function" href="classjsonrpc_1_1Client.html#a340136549296e8eb664baf63c7a6aae1">Client</a>(std::unique_ptr&lt;ClientTransport&gt; transport);</div>
-<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span> </div>
-<div class="line"><a id="l00033" name="l00033"></a><span class="lineno"><a class="line" href="classjsonrpc_1_1Client.html#af5413abb9721efd50059ef727ad8e3df">   33</a></span>  <a class="code hl_function" href="classjsonrpc_1_1Client.html#af5413abb9721efd50059ef727ad8e3df">~Client</a>() = <span class="keywordflow">default</span>;</div>
+<div class="foldopen" id="foldopen00018" data-start="{" data-end="}">
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno"><a class="line" href="namespacejsonrpc.html">   18</a></span><span class="keyword">namespace </span><a class="code hl_namespace" href="namespacejsonrpc.html">jsonrpc</a> {</div>
+<div class="foldopen" id="foldopen00019" data-start="{" data-end="}">
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno"><a class="line" href="namespacejsonrpc_1_1client.html">   19</a></span><span class="keyword">namespace </span>client {</div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span> </div>
+<div class="foldopen" id="foldopen00022" data-start="{" data-end="};">
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno"><a class="line" href="classjsonrpc_1_1client_1_1Client.html">   22</a></span><span class="keyword">class </span><a class="code hl_class" href="classjsonrpc_1_1client_1_1Client.html">Client</a> {</div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span><span class="keyword">public</span>:</div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span>  <a class="code hl_function" href="classjsonrpc_1_1client_1_1Client.html#a5fc44005af58095fca26a3afcda0c454">Client</a>(std::unique_ptr&lt;transports::ClientTransport&gt; transport);</div>
 <div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span> </div>
-<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>  <span class="keywordtype">void</span> <a class="code hl_function" href="classjsonrpc_1_1Client.html#ad68863bdbbcac76b611cab4859ac35e9">Start</a>();</div>
-<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span> </div>
-<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>  <span class="keywordtype">void</span> <a class="code hl_function" href="classjsonrpc_1_1Client.html#a4964a3d774e746cc77900714fe80799b">Stop</a>();</div>
-<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span> </div>
-<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>  <span class="keywordtype">bool</span> <a class="code hl_function" href="classjsonrpc_1_1Client.html#a5706eed2820919869a0026626fbaf94b">isRunning</a>() <span class="keyword">const</span>;</div>
-<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span> </div>
-<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span>  <a class="code hl_typedef" href="namespacejsonrpc.html#a268131906d306aae6d599fd490c524b5">Json</a> <a class="code hl_function" href="classjsonrpc_1_1Client.html#a469665bf7c7a23657060422440bc387d">SendMethodCall</a>(</div>
-<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span>      <span class="keyword">const</span> std::string &amp;method, std::optional&lt;Json&gt; params = std::nullopt);</div>
-<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span> </div>
-<div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span>  <span class="keywordtype">void</span> <a class="code hl_function" href="classjsonrpc_1_1Client.html#afba5b802b6802739c2fa407fe887fe75">SendNotification</a>(</div>
-<div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span>      <span class="keyword">const</span> std::string &amp;method, std::optional&lt;Json&gt; params = std::nullopt);</div>
-<div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span> </div>
-<div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span><span class="keyword">private</span>:</div>
-<div class="line"><a id="l00093" name="l00093"></a><span class="lineno">   93</span>  <span class="keywordtype">void</span> Listener();</div>
-<div class="line"><a id="l00094" name="l00094"></a><span class="lineno">   94</span> </div>
-<div class="line"><a id="l00106" name="l00106"></a><span class="lineno">  106</span>  <a class="code hl_typedef" href="namespacejsonrpc.html#a268131906d306aae6d599fd490c524b5">Json</a> SendRequest(<span class="keyword">const</span> <a class="code hl_class" href="classjsonrpc_1_1ClientRequest.html">ClientRequest</a> &amp;request);</div>
-<div class="line"><a id="l00107" name="l00107"></a><span class="lineno">  107</span> </div>
-<div class="line"><a id="l00113" name="l00113"></a><span class="lineno">  113</span>  <span class="keywordtype">int</span> GetNextRequestId();</div>
-<div class="line"><a id="l00114" name="l00114"></a><span class="lineno">  114</span> </div>
-<div class="line"><a id="l00126" name="l00126"></a><span class="lineno">  126</span>  <span class="keywordtype">void</span> HandleResponse(<span class="keyword">const</span> std::string &amp;response);</div>
-<div class="line"><a id="l00127" name="l00127"></a><span class="lineno">  127</span> </div>
-<div class="line"><a id="l00136" name="l00136"></a><span class="lineno">  136</span>  <span class="keywordtype">bool</span> ValidateResponse(<span class="keyword">const</span> <a class="code hl_typedef" href="namespacejsonrpc.html#a268131906d306aae6d599fd490c524b5">Json</a> &amp;response);</div>
-<div class="line"><a id="l00137" name="l00137"></a><span class="lineno">  137</span> </div>
-<div class="line"><a id="l00139" name="l00139"></a><span class="lineno">  139</span>  std::unique_ptr&lt;ClientTransport&gt; transport_;</div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno"><a class="line" href="classjsonrpc_1_1client_1_1Client.html#a11196eccdb86b5cedc3301065aeb32b2">   36</a></span>  <a class="code hl_function" href="classjsonrpc_1_1client_1_1Client.html#a11196eccdb86b5cedc3301065aeb32b2">~Client</a>() = <span class="keywordflow">default</span>;</div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span> </div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>  <span class="keywordtype">void</span> <a class="code hl_function" href="classjsonrpc_1_1client_1_1Client.html#a24c4afc320a6e5951ca80908cab286f4">Start</a>();</div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span> </div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>  <span class="keywordtype">void</span> <a class="code hl_function" href="classjsonrpc_1_1client_1_1Client.html#abfad9508403f9eecfd2574fda00d70b8">Stop</a>();</div>
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span> </div>
+<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span>  <span class="keywordtype">bool</span> <a class="code hl_function" href="classjsonrpc_1_1client_1_1Client.html#aa057c607e81e9c3a2da54cba7163513b">isRunning</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span> </div>
+<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span>  nlohmann::json <a class="code hl_function" href="classjsonrpc_1_1client_1_1Client.html#a67b8d186492129150e24ab67180b336a">SendMethodCall</a>(<span class="keyword">const</span> std::string &amp;method,</div>
+<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span>      std::optional&lt;nlohmann::json&gt; params = std::nullopt);</div>
+<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span> </div>
+<div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span>  <span class="keywordtype">void</span> <a class="code hl_function" href="classjsonrpc_1_1client_1_1Client.html#a23da9136a74834da7852d35af8d394c3">SendNotification</a>(<span class="keyword">const</span> std::string &amp;method,</div>
+<div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span>      std::optional&lt;nlohmann::json&gt; params = std::nullopt);</div>
+<div class="line"><a id="l00092" name="l00092"></a><span class="lineno">   92</span> </div>
+<div class="line"><a id="l00093" name="l00093"></a><span class="lineno">   93</span><span class="keyword">private</span>:</div>
+<div class="line"><a id="l00096" name="l00096"></a><span class="lineno">   96</span>  <span class="keywordtype">void</span> Listener();</div>
+<div class="line"><a id="l00097" name="l00097"></a><span class="lineno">   97</span> </div>
+<div class="line"><a id="l00109" name="l00109"></a><span class="lineno">  109</span>  nlohmann::json SendRequest(<span class="keyword">const</span> <a class="code hl_class" href="classjsonrpc_1_1client_1_1Request.html">Request</a> &amp;request);</div>
+<div class="line"><a id="l00110" name="l00110"></a><span class="lineno">  110</span> </div>
+<div class="line"><a id="l00116" name="l00116"></a><span class="lineno">  116</span>  <span class="keywordtype">int</span> GetNextRequestId();</div>
+<div class="line"><a id="l00117" name="l00117"></a><span class="lineno">  117</span> </div>
+<div class="line"><a id="l00129" name="l00129"></a><span class="lineno">  129</span>  <span class="keywordtype">void</span> HandleResponse(<span class="keyword">const</span> std::string &amp;response);</div>
+<div class="line"><a id="l00130" name="l00130"></a><span class="lineno">  130</span> </div>
+<div class="line"><a id="l00139" name="l00139"></a><span class="lineno">  139</span>  <span class="keywordtype">bool</span> ValidateResponse(<span class="keyword">const</span> nlohmann::json &amp;response);</div>
 <div class="line"><a id="l00140" name="l00140"></a><span class="lineno">  140</span> </div>
-<div class="line"><a id="l00142" name="l00142"></a><span class="lineno">  142</span>  std::atomic&lt;int&gt; requestCounter_{0};</div>
+<div class="line"><a id="l00142" name="l00142"></a><span class="lineno">  142</span>  std::unique_ptr&lt;transports::ClientTransport&gt; transport_;</div>
 <div class="line"><a id="l00143" name="l00143"></a><span class="lineno">  143</span> </div>
-<div class="line"><a id="l00145" name="l00145"></a><span class="lineno">  145</span>  std::atomic&lt;int&gt; expectedResponses_{0};</div>
+<div class="line"><a id="l00145" name="l00145"></a><span class="lineno">  145</span>  std::atomic&lt;int&gt; requestCounter_{0};</div>
 <div class="line"><a id="l00146" name="l00146"></a><span class="lineno">  146</span> </div>
-<div class="line"><a id="l00148" name="l00148"></a><span class="lineno">  148</span>  std::unordered_map&lt;int, std::promise&lt;Json&gt;&gt; pendingRequests_;</div>
+<div class="line"><a id="l00148" name="l00148"></a><span class="lineno">  148</span>  std::atomic&lt;int&gt; expectedResponses_{0};</div>
 <div class="line"><a id="l00149" name="l00149"></a><span class="lineno">  149</span> </div>
-<div class="line"><a id="l00151" name="l00151"></a><span class="lineno">  151</span>  std::mutex pendingRequestsMutex_;</div>
+<div class="line"><a id="l00151" name="l00151"></a><span class="lineno">  151</span>  std::unordered_map&lt;int, std::promise&lt;nlohmann::json&gt;&gt; pendingRequests_;</div>
 <div class="line"><a id="l00152" name="l00152"></a><span class="lineno">  152</span> </div>
-<div class="line"><a id="l00154" name="l00154"></a><span class="lineno">  154</span>  std::thread listenerThread_;</div>
+<div class="line"><a id="l00154" name="l00154"></a><span class="lineno">  154</span>  std::mutex pendingRequestsMutex_;</div>
 <div class="line"><a id="l00155" name="l00155"></a><span class="lineno">  155</span> </div>
-<div class="line"><a id="l00157" name="l00157"></a><span class="lineno">  157</span>  std::atomic&lt;bool&gt; running_{<span class="keyword">true</span>};</div>
-<div class="line"><a id="l00158" name="l00158"></a><span class="lineno">  158</span>};</div>
+<div class="line"><a id="l00157" name="l00157"></a><span class="lineno">  157</span>  std::thread listenerThread_;</div>
+<div class="line"><a id="l00158" name="l00158"></a><span class="lineno">  158</span> </div>
+<div class="line"><a id="l00160" name="l00160"></a><span class="lineno">  160</span>  std::atomic&lt;bool&gt; running_{<span class="keyword">true</span>};</div>
+<div class="line"><a id="l00161" name="l00161"></a><span class="lineno">  161</span>};</div>
 </div>
-<div class="line"><a id="l00159" name="l00159"></a><span class="lineno">  159</span> </div>
-<div class="line"><a id="l00160" name="l00160"></a><span class="lineno">  160</span>} <span class="comment">// namespace jsonrpc</span></div>
+<div class="line"><a id="l00162" name="l00162"></a><span class="lineno">  162</span> </div>
+<div class="line"><a id="l00163" name="l00163"></a><span class="lineno">  163</span>} <span class="comment">// namespace client</span></div>
 </div>
-<div class="ttc" id="aclassjsonrpc_1_1ClientRequest_html"><div class="ttname"><a href="classjsonrpc_1_1ClientRequest.html">jsonrpc::ClientRequest</a></div><div class="ttdef"><b>Definition</b> <a href="client_2request_8hpp_source.html#l00012">request.hpp:12</a></div></div>
-<div class="ttc" id="aclassjsonrpc_1_1Client_html"><div class="ttname"><a href="classjsonrpc_1_1Client.html">jsonrpc::Client</a></div><div class="ttdoc">A JSON-RPC client for sending requests and receiving responses.</div><div class="ttdef"><b>Definition</b> <a href="#l00019">client.hpp:19</a></div></div>
-<div class="ttc" id="aclassjsonrpc_1_1Client_html_a340136549296e8eb664baf63c7a6aae1"><div class="ttname"><a href="classjsonrpc_1_1Client.html#a340136549296e8eb664baf63c7a6aae1">jsonrpc::Client::Client</a></div><div class="ttdeci">Client(std::unique_ptr&lt; ClientTransport &gt; transport)</div><div class="ttdoc">Constructs a JSON-RPC client with a specified transport layer.</div><div class="ttdef"><b>Definition</b> <a href="client_8cpp_source.html#l00007">client.cpp:7</a></div></div>
-<div class="ttc" id="aclassjsonrpc_1_1Client_html_a469665bf7c7a23657060422440bc387d"><div class="ttname"><a href="classjsonrpc_1_1Client.html#a469665bf7c7a23657060422440bc387d">jsonrpc::Client::SendMethodCall</a></div><div class="ttdeci">Json SendMethodCall(const std::string &amp;method, std::optional&lt; Json &gt; params=std::nullopt)</div><div class="ttdoc">Sends a JSON-RPC method call and waits for the response.</div><div class="ttdef"><b>Definition</b> <a href="client_8cpp_source.html#l00042">client.cpp:42</a></div></div>
-<div class="ttc" id="aclassjsonrpc_1_1Client_html_a4964a3d774e746cc77900714fe80799b"><div class="ttname"><a href="classjsonrpc_1_1Client.html#a4964a3d774e746cc77900714fe80799b">jsonrpc::Client::Stop</a></div><div class="ttdeci">void Stop()</div><div class="ttdoc">Stops the JSON-RPC client listener thread.</div><div class="ttdef"><b>Definition</b> <a href="client_8cpp_source.html#l00018">client.cpp:18</a></div></div>
-<div class="ttc" id="aclassjsonrpc_1_1Client_html_a5706eed2820919869a0026626fbaf94b"><div class="ttname"><a href="classjsonrpc_1_1Client.html#a5706eed2820919869a0026626fbaf94b">jsonrpc::Client::isRunning</a></div><div class="ttdeci">bool isRunning() const</div><div class="ttdoc">Checks if the client listener is running.</div><div class="ttdef"><b>Definition</b> <a href="client_8cpp_source.html#l00026">client.cpp:26</a></div></div>
-<div class="ttc" id="aclassjsonrpc_1_1Client_html_ad68863bdbbcac76b611cab4859ac35e9"><div class="ttname"><a href="classjsonrpc_1_1Client.html#ad68863bdbbcac76b611cab4859ac35e9">jsonrpc::Client::Start</a></div><div class="ttdeci">void Start()</div><div class="ttdoc">Starts the JSON-RPC client listener thread.</div><div class="ttdef"><b>Definition</b> <a href="client_8cpp_source.html#l00012">client.cpp:12</a></div></div>
-<div class="ttc" id="aclassjsonrpc_1_1Client_html_af5413abb9721efd50059ef727ad8e3df"><div class="ttname"><a href="classjsonrpc_1_1Client.html#af5413abb9721efd50059ef727ad8e3df">jsonrpc::Client::~Client</a></div><div class="ttdeci">~Client()=default</div><div class="ttdoc">Destructor.</div></div>
-<div class="ttc" id="aclassjsonrpc_1_1Client_html_afba5b802b6802739c2fa407fe887fe75"><div class="ttname"><a href="classjsonrpc_1_1Client.html#afba5b802b6802739c2fa407fe887fe75">jsonrpc::Client::SendNotification</a></div><div class="ttdeci">void SendNotification(const std::string &amp;method, std::optional&lt; Json &gt; params=std::nullopt)</div><div class="ttdoc">Sends a JSON-RPC notification.</div><div class="ttdef"><b>Definition</b> <a href="client_8cpp_source.html#l00049">client.cpp:49</a></div></div>
+<div class="line"><a id="l00164" name="l00164"></a><span class="lineno">  164</span>} <span class="comment">// namespace jsonrpc</span></div>
+</div>
+<div class="ttc" id="aclassjsonrpc_1_1client_1_1Client_html"><div class="ttname"><a href="classjsonrpc_1_1client_1_1Client.html">jsonrpc::client::Client</a></div><div class="ttdoc">A JSON-RPC client for sending requests and receiving responses.</div><div class="ttdef"><b>Definition</b> <a href="#l00022">client.hpp:22</a></div></div>
+<div class="ttc" id="aclassjsonrpc_1_1client_1_1Client_html_a11196eccdb86b5cedc3301065aeb32b2"><div class="ttname"><a href="classjsonrpc_1_1client_1_1Client.html#a11196eccdb86b5cedc3301065aeb32b2">jsonrpc::client::Client::~Client</a></div><div class="ttdeci">~Client()=default</div><div class="ttdoc">Destructor.</div></div>
+<div class="ttc" id="aclassjsonrpc_1_1client_1_1Client_html_a23da9136a74834da7852d35af8d394c3"><div class="ttname"><a href="classjsonrpc_1_1client_1_1Client.html#a23da9136a74834da7852d35af8d394c3">jsonrpc::client::Client::SendNotification</a></div><div class="ttdeci">void SendNotification(const std::string &amp;method, std::optional&lt; nlohmann::json &gt; params=std::nullopt)</div><div class="ttdoc">Sends a JSON-RPC notification.</div><div class="ttdef"><b>Definition</b> <a href="client_8cpp_source.html#l00050">client.cpp:50</a></div></div>
+<div class="ttc" id="aclassjsonrpc_1_1client_1_1Client_html_a24c4afc320a6e5951ca80908cab286f4"><div class="ttname"><a href="classjsonrpc_1_1client_1_1Client.html#a24c4afc320a6e5951ca80908cab286f4">jsonrpc::client::Client::Start</a></div><div class="ttdeci">void Start()</div><div class="ttdoc">Starts the JSON-RPC client listener thread.</div><div class="ttdef"><b>Definition</b> <a href="client_8cpp_source.html#l00013">client.cpp:13</a></div></div>
+<div class="ttc" id="aclassjsonrpc_1_1client_1_1Client_html_a5fc44005af58095fca26a3afcda0c454"><div class="ttname"><a href="classjsonrpc_1_1client_1_1Client.html#a5fc44005af58095fca26a3afcda0c454">jsonrpc::client::Client::Client</a></div><div class="ttdeci">Client(std::unique_ptr&lt; transports::ClientTransport &gt; transport)</div><div class="ttdoc">Constructs a JSON-RPC client with a specified transport layer.</div><div class="ttdef"><b>Definition</b> <a href="client_8cpp_source.html#l00008">client.cpp:8</a></div></div>
+<div class="ttc" id="aclassjsonrpc_1_1client_1_1Client_html_a67b8d186492129150e24ab67180b336a"><div class="ttname"><a href="classjsonrpc_1_1client_1_1Client.html#a67b8d186492129150e24ab67180b336a">jsonrpc::client::Client::SendMethodCall</a></div><div class="ttdeci">nlohmann::json SendMethodCall(const std::string &amp;method, std::optional&lt; nlohmann::json &gt; params=std::nullopt)</div><div class="ttdoc">Sends a JSON-RPC method call and waits for the response.</div><div class="ttdef"><b>Definition</b> <a href="client_8cpp_source.html#l00043">client.cpp:43</a></div></div>
+<div class="ttc" id="aclassjsonrpc_1_1client_1_1Client_html_aa057c607e81e9c3a2da54cba7163513b"><div class="ttname"><a href="classjsonrpc_1_1client_1_1Client.html#aa057c607e81e9c3a2da54cba7163513b">jsonrpc::client::Client::isRunning</a></div><div class="ttdeci">bool isRunning() const</div><div class="ttdoc">Checks if the client listener is running.</div><div class="ttdef"><b>Definition</b> <a href="client_8cpp_source.html#l00027">client.cpp:27</a></div></div>
+<div class="ttc" id="aclassjsonrpc_1_1client_1_1Client_html_abfad9508403f9eecfd2574fda00d70b8"><div class="ttname"><a href="classjsonrpc_1_1client_1_1Client.html#abfad9508403f9eecfd2574fda00d70b8">jsonrpc::client::Client::Stop</a></div><div class="ttdeci">void Stop()</div><div class="ttdoc">Stops the JSON-RPC client listener thread.</div><div class="ttdef"><b>Definition</b> <a href="client_8cpp_source.html#l00019">client.cpp:19</a></div></div>
+<div class="ttc" id="aclassjsonrpc_1_1client_1_1Request_html"><div class="ttname"><a href="classjsonrpc_1_1client_1_1Request.html">jsonrpc::client::Request</a></div><div class="ttdoc">Represents a JSON-RPC request.</div><div class="ttdef"><b>Definition</b> <a href="client_2request_8hpp_source.html#l00019">request.hpp:19</a></div></div>
 <div class="ttc" id="aclient_2request_8hpp_html"><div class="ttname"><a href="client_2request_8hpp.html">request.hpp</a></div></div>
 <div class="ttc" id="aclient__transport_8hpp_html"><div class="ttname"><a href="client__transport_8hpp.html">client_transport.hpp</a></div></div>
-<div class="ttc" id="anamespacejsonrpc_html"><div class="ttname"><a href="namespacejsonrpc.html">jsonrpc</a></div><div class="ttdef"><b>Definition</b> <a href="#l00016">client.hpp:16</a></div></div>
-<div class="ttc" id="anamespacejsonrpc_html_a268131906d306aae6d599fd490c524b5"><div class="ttname"><a href="namespacejsonrpc.html#a268131906d306aae6d599fd490c524b5">jsonrpc::Json</a></div><div class="ttdeci">nlohmann::json Json</div><div class="ttdoc">Alias for the JSON type used in the library.</div><div class="ttdef"><b>Definition</b> <a href="types_8hpp_source.html#l00014">types.hpp:14</a></div></div>
+<div class="ttc" id="anamespacejsonrpc_html"><div class="ttname"><a href="namespacejsonrpc.html">jsonrpc</a></div><div class="ttdef"><b>Definition</b> <a href="#l00018">client.hpp:18</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->

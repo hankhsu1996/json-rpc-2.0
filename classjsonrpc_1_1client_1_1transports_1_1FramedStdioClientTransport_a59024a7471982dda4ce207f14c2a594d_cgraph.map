@@ -1,0 +1,5 @@
+<map id="jsonrpc::client::transports::FramedStdioClientTransport::ReadResponse" name="jsonrpc::client::transports::FramedStdioClientTransport::ReadResponse">
+<area shape="rect" id="Node000001" title="Reads a JSON&#45;RPC response." alt="" coords="5,5,216,60"/>
+<area shape="rect" id="Node000002" href="$classjsonrpc_1_1common_1_1transports_1_1FramedTransport.html#a053c8f7bbec2c7b8574e6bd00ab19ad3" title="Receives a framed message." alt="" coords="264,13,527,53"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="216,30,250,30,250,35,216,35"/>
+</map>

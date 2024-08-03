@@ -1,0 +1,25 @@
+<map id="include/jsonrpc/server/request.hpp" name="include/jsonrpc/server/request.hpp">
+<area shape="rect" id="Node000001" title=" " alt="" coords="375,5,540,45"/>
+<area shape="rect" id="Node000002" href="$dispatcher_8hpp.html" title=" " alt="" coords="280,93,445,133"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="428,57,385,95,382,91,424,53"/>
+<area shape="rect" id="Node000011" href="$server_2request_8cpp.html" title=" " alt="" coords="470,101,637,126"/>
+<area shape="poly" id="edge12_Node000001_Node000011" title=" " alt="" coords="491,53,542,98,538,102,487,57"/>
+<area shape="rect" id="Node000003" href="$server_8hpp.html" title=" " alt="" coords="5,277,171,317"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="267,134,212,153,185,167,160,183,139,205,121,230,97,277,93,275,116,227,135,202,157,179,182,162,210,148,266,129"/>
+<area shape="rect" id="Node000005" href="$server__transport_8hpp.html" title=" " alt="" coords="171,181,402,221"/>
+<area shape="poly" id="edge4_Node000002_Node000005" title=" " alt="" coords="339,146,305,183,301,179,335,142"/>
+<area shape="rect" id="Node000008" href="$stdio__server__transport_8hpp.html" title=" " alt="" coords="403,269,579,324"/>
+<area shape="poly" id="edge10_Node000002_Node000008" title=" " alt="" coords="388,143,416,180,476,268,471,271,411,183,384,146"/>
+<area shape="rect" id="Node000010" href="$dispatcher_8cpp.html" title=" " alt="" coords="477,189,661,214"/>
+<area shape="poly" id="edge11_Node000002_Node000010" title=" " alt="" coords="421,136,543,186,541,191,419,141"/>
+<area shape="rect" id="Node000004" href="$server_8cpp.html" title=" " alt="" coords="9,387,167,412"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="91,330,91,386,85,386,85,330"/>
+<area shape="poly" id="edge5_Node000005_Node000003" title=" " alt="" coords="235,230,129,279,127,274,233,225"/>
+<area shape="rect" id="Node000006" href="$framed__stdio__server__transport_8hpp.html" title=" " alt="" coords="195,269,378,324"/>
+<area shape="poly" id="edge6_Node000005_Node000006" title=" " alt="" coords="289,235,289,269,284,269,284,235"/>
+<area shape="poly" id="edge8_Node000005_Node000008" title=" " alt="" coords="341,225,434,267,432,272,339,229"/>
+<area shape="rect" id="Node000007" href="$framed__stdio__server__transport_8cpp.html" title=" " alt="" coords="207,372,367,427"/>
+<area shape="poly" id="edge7_Node000006_Node000007" title=" " alt="" coords="289,338,289,372,284,372,284,338"/>
+<area shape="rect" id="Node000009" href="$stdio__server__transport_8cpp.html" title=" " alt="" coords="391,379,590,419"/>
+<area shape="poly" id="edge9_Node000008_Node000009" title=" " alt="" coords="493,338,493,379,488,379,488,338"/>
+</map>

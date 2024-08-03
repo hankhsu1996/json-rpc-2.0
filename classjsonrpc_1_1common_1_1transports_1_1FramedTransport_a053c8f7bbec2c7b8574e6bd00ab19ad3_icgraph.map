@@ -1,0 +1,7 @@
+<map id="jsonrpc::common::transports::FramedTransport::DeframeMessage" name="jsonrpc::common::transports::FramedTransport::DeframeMessage">
+<area shape="rect" id="Node000001" title="Receives a framed message." alt="" coords="268,53,531,93"/>
+<area shape="rect" id="Node000002" href="$classjsonrpc_1_1server_1_1transports_1_1FramedStdioServerTransport.html#a2764c87aacd4cdf8959731b11d76e505" title="Listens for incoming messages and dispatches them to the appropriate handlers." alt="" coords="5,5,220,60"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="254,55,220,50,221,45,255,50"/>
+<area shape="rect" id="Node000003" href="$classjsonrpc_1_1client_1_1transports_1_1FramedStdioClientTransport.html#a59024a7471982dda4ce207f14c2a594d" title="Reads a JSON&#45;RPC response." alt="" coords="7,84,218,139"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="255,95,218,100,218,95,254,90"/>
+</map>

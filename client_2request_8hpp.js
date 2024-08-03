@@ -1,4 +1,4 @@
 var client_2request_8hpp =
 [
-    [ "jsonrpc::ClientRequest", "classjsonrpc_1_1ClientRequest.html", "classjsonrpc_1_1ClientRequest" ]
+    [ "jsonrpc::client::Request", "classjsonrpc_1_1client_1_1Request.html", "classjsonrpc_1_1client_1_1Request" ]
 ];

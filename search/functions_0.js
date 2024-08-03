@@ -1,8 +1,7 @@
 var searchData=
 [
-  ['client_0',['Client',['../classjsonrpc_1_1Client.html#a340136549296e8eb664baf63c7a6aae1',1,'jsonrpc::Client']]],
-  ['clientrequest_1',['ClientRequest',['../classjsonrpc_1_1ClientRequest.html#a1d743103632236efd2e688d2a2d46588',1,'jsonrpc::ClientRequest']]],
-  ['createliberror_2',['CreateLibError',['../classjsonrpc_1_1Response.html#a0dce112a462bfbedf722cd9dc96b837a',1,'jsonrpc::Response']]],
-  ['createresult_3',['CreateResult',['../classjsonrpc_1_1Response.html#a4ae9a2ba4540889cd7ed68cea98d20f0',1,'jsonrpc::Response']]],
-  ['createusererror_4',['CreateUserError',['../classjsonrpc_1_1Response.html#a52ff1e3bf1d5060f2748081a5e3f7b26',1,'jsonrpc::Response']]]
+  ['client_0',['Client',['../classjsonrpc_1_1client_1_1Client.html#a5fc44005af58095fca26a3afcda0c454',1,'jsonrpc::client::Client']]],
+  ['createliberror_1',['CreateLibError',['../classjsonrpc_1_1server_1_1Response.html#ae8a060de7d64e465d17ca6acd6b7f4d5',1,'jsonrpc::server::Response']]],
+  ['createresult_2',['CreateResult',['../classjsonrpc_1_1server_1_1Response.html#a9e458f05aa6ac2bb7f0cbb2d68aa6fbf',1,'jsonrpc::server::Response']]],
+  ['createusererror_3',['CreateUserError',['../classjsonrpc_1_1server_1_1Response.html#adade4fc94249c2248f7dc869ff071bde',1,'jsonrpc::server::Response']]]
 ];

@@ -1,15 +1,15 @@
 <map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
-<area shape="rect" id="Node000000" href="$classjsonrpc_1_1ClientTransport.html" title="Base class for JSON&#45;RPC client transport." alt="" coords="11,35,186,60"/>
-<area shape="rect" id="Node000001" href="$classjsonrpc_1_1FramedStdioClientTransport.html" title="Transport layer using framed messaging over standard I/O for JSON&#45;RPC communication." alt="" coords="247,55,445,95"/>
-<area shape="poly" id="edge1_Node000000_Node000001" title=" " alt="" coords="200,56,247,62,247,67,200,61"/>
-<area shape="rect" id="Node000006" href="$classjsonrpc_1_1StdioClientTransport.html" title="Transport layer using standard I/O for JSON&#45;RPC communication." alt="" coords="242,5,450,31"/>
-<area shape="poly" id="edge2_Node000000_Node000006" title=" " alt="" coords="200,33,241,28,242,33,200,38"/>
-<area shape="rect" id="Node000002" href="$classjsonrpc_1_1FramedTransport.html" title="Base class for framed transport mechanisms." alt="" coords="5,105,192,131"/>
-<area shape="poly" id="edge3_Node000002_Node000001" title=" " alt="" coords="186,100,247,90,248,95,187,106"/>
-<area shape="rect" id="Node000003" href="$classjsonrpc_1_1FramedStdioServerTransport.html" title="Server transport using framed stdio for communication." alt="" coords="245,119,447,159"/>
-<area shape="poly" id="edge4_Node000002_Node000003" title=" " alt="" coords="206,125,245,128,245,133,205,130"/>
-<area shape="rect" id="Node000004" href="$classjsonrpc_1_1ServerTransport.html" title="Abstract base class for server transport mechanisms." alt="" coords="9,159,188,184"/>
-<area shape="poly" id="edge5_Node000004_Node000003" title=" " alt="" coords="202,155,245,150,246,155,202,161"/>
-<area shape="rect" id="Node000005" href="$classjsonrpc_1_1StdioServerTransport.html" title="Server transport using stdio for communication." alt="" coords="240,184,452,209"/>
-<area shape="poly" id="edge6_Node000004_Node000005" title=" " alt="" coords="202,179,240,183,240,188,202,185"/>
+<area shape="rect" id="Node000000" href="$classjsonrpc_1_1client_1_1transports_1_1ClientTransport.html" title="Base class for JSON&#45;RPC client transport." alt="" coords="16,37,203,77"/>
+<area shape="rect" id="Node000001" href="$classjsonrpc_1_1client_1_1transports_1_1FramedStdioClientTransport.html" title="Transport layer using framed messaging over standard I/O for JSON&#45;RPC communication." alt="" coords="263,69,474,109"/>
+<area shape="poly" id="edge1_Node000000_Node000001" title=" " alt="" coords="217,68,264,74,263,79,216,73"/>
+<area shape="rect" id="Node000006" href="$classjsonrpc_1_1client_1_1transports_1_1StdioClientTransport.html" title="Transport layer using standard I/O for JSON&#45;RPC communication." alt="" coords="275,5,462,45"/>
+<area shape="poly" id="edge2_Node000000_Node000006" title=" " alt="" coords="216,42,275,34,275,39,217,47"/>
+<area shape="rect" id="Node000002" href="$classjsonrpc_1_1common_1_1transports_1_1FramedTransport.html" title="Base class for framed transport mechanisms." alt="" coords="5,133,213,173"/>
+<area shape="poly" id="edge3_Node000002_Node000001" title=" " alt="" coords="204,127,286,107,288,112,205,133"/>
+<area shape="rect" id="Node000003" href="$classjsonrpc_1_1server_1_1transports_1_1FramedStdioServerTransport.html" title="Server transport using framed stdio for communication." alt="" coords="261,133,476,173"/>
+<area shape="poly" id="edge4_Node000002_Node000003" title=" " alt="" coords="227,151,261,151,261,156,227,156"/>
+<area shape="rect" id="Node000004" href="$classjsonrpc_1_1server_1_1transports_1_1ServerTransport.html" title="Abstract base class for server transport mechanisms." alt="" coords="13,197,205,237"/>
+<area shape="poly" id="edge5_Node000004_Node000003" title=" " alt="" coords="204,191,286,171,288,176,205,197"/>
+<area shape="rect" id="Node000005" href="$classjsonrpc_1_1server_1_1transports_1_1StdioServerTransport.html" title="Server transport using stdio for communication." alt="" coords="273,197,465,237"/>
+<area shape="poly" id="edge6_Node000004_Node000005" title=" " alt="" coords="219,215,272,215,272,220,219,220"/>
 </map>

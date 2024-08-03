@@ -1,18 +1,8 @@
-<map id="include/jsonrpc/transports/stdio_client_transport.hpp" name="include/jsonrpc/transports/stdio_client_transport.hpp">
-<area shape="rect" id="Node000001" title=" " alt="" coords="19,5,214,45"/>
-<area shape="rect" id="Node000002" title=" " alt="" coords="34,181,93,207"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="110,47,91,94,71,168,66,167,86,92,105,45"/>
-<area shape="rect" id="Node000003" href="$client__transport_8hpp.html" title=" " alt="" coords="101,93,242,133"/>
-<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="131,44,154,80,150,83,127,47"/>
-<area shape="poly" id="edge3_Node000003_Node000002" title=" " alt="" coords="147,136,92,175,89,171,144,131"/>
-<area shape="rect" id="Node000004" href="$types_8hpp.html" title=" " alt="" coords="117,181,287,207"/>
-<area shape="poly" id="edge4_Node000003_Node000004" title=" " alt="" coords="181,133,195,168,190,169,176,135"/>
-<area shape="rect" id="Node000005" title=" " alt="" coords="5,255,92,280"/>
-<area shape="poly" id="edge5_Node000004_Node000005" title=" " alt="" coords="178,209,87,251,85,246,176,204"/>
-<area shape="rect" id="Node000006" title=" " alt="" coords="117,255,191,280"/>
-<area shape="poly" id="edge6_Node000004_Node000006" title=" " alt="" coords="196,209,172,245,167,242,192,206"/>
-<area shape="rect" id="Node000007" title=" " alt="" coords="216,255,284,280"/>
-<area shape="poly" id="edge7_Node000004_Node000007" title=" " alt="" coords="212,206,237,242,232,245,208,209"/>
-<area shape="rect" id="Node000008" title=" " alt="" coords="309,255,455,280"/>
-<area shape="poly" id="edge8_Node000004_Node000008" title=" " alt="" coords="232,204,341,247,339,252,230,209"/>
+<map id="include/jsonrpc/client/transports/stdio_client_transport.hpp" name="include/jsonrpc/client/transports/stdio_client_transport.hpp">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,5,176,60"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="61,196,120,221"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="75,61,57,102,53,125,56,147,64,166,75,184,70,186,59,169,51,149,48,125,52,101,70,59"/>
+<area shape="rect" id="Node000003" href="$client__transport_8hpp.html" title=" " alt="" coords="65,108,244,148"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="111,59,136,95,132,98,107,62"/>
+<area shape="poly" id="edge3_Node000003_Node000002" title=" " alt="" coords="141,150,111,187,107,183,137,147"/>
 </map>
