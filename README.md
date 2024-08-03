@@ -53,17 +53,21 @@ You can then install the dependencies using Conan 2 and configure your project w
 Here’s how to create a simple JSON-RPC server:
 
 ```cpp
+using namespace jsonrpc::server;
+using namespace jsonrpc::server::transports;
+using Json = nlohmann::json;
+
 // Create a server with an stdio transport
-jsonrpc::Server server(std::make_unique<jsonrpc::StdioServerTransport>());
+Server server(std::make_unique<StdioServerTransport>());
 
 // Register a method named "add" that adds two numbers
-server.RegisterMethodCall("add", [](const std::optional<jsonrpc::Json> &params) {
+server.RegisterMethodCall("add", [](const std::optional<Json> &params) {
   int result = params.value()["a"] + params.value()["b"];
   return Json{{"result", result}};
 });
 
 // Register a notification named "stop" to stop the server
-server.RegisterNotification("stop", [&server](const std::optional<jsonrpc::Json> &) {
+server.RegisterNotification("stop", [&server](const std::optional<Json> &) {
   server.Stop();
 });
 
@@ -78,9 +82,13 @@ To register a method, you need to provide a function that takes optional `Json` 
 Here’s how to create a JSON-RPC client:
 
 ```cpp
+using namespace jsonrpc::client;
+using namespace jsonrpc::client::transports;
+using Json = nlohmann::json;
+
 // Create a client with an stdio transport
-auto transport = std::make_unique<jsonrpc::StdioClientTransport>();
-jsonrpc::Client client(std::move(transport));
+auto transport = std::make_unique<StdioClientTransport>();
+Client client(std::move(transport));
 client.Start();
 
 // Perform addition
