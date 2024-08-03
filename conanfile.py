@@ -25,13 +25,16 @@ class JsonRpcConan(ConanFile):
         "nlohmann_json/3.11.2",
         "spdlog/1.9.2",
         "cpp-httplib/0.11.0",
-        "catch2/3.6.0",
         "bshoshany-thread-pool/4.1.0"
     ]
 
     tool_requires = [
         "ninja/1.12.1",
         "ccache/4.10"
+    ]
+
+    test_requires = [
+        "catch2/3.6.0"
     ]
 
     # Sources are located in the same place as this recipe, copy them to the recipe
