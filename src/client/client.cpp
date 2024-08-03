@@ -42,20 +42,20 @@ void Client::Listener() {
 
 nlohmann::json Client::SendMethodCall(
     const std::string &method, std::optional<nlohmann::json> params) {
-  ClientRequest request(method, std::move(params), false,
+  Request request(method, std::move(params), false,
       [this]() { return GetNextRequestId(); });
   return SendRequest(request);
 }
 
 void Client::SendNotification(
     const std::string &method, std::optional<nlohmann::json> params) {
-  ClientRequest request(
+  Request request(
       method, std::move(params), true, [this]() { return GetNextRequestId(); });
   // Notifications do not expect a response
   transport_->SendRequest(request.Dump());
 }
 
-nlohmann::json Client::SendRequest(const ClientRequest &request) {
+nlohmann::json Client::SendRequest(const Request &request) {
   if (request.RequiresResponse()) {
     std::promise<nlohmann::json> responsePromise;
     auto futureResponse = responsePromise.get_future();

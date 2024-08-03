@@ -10,19 +10,33 @@
 namespace jsonrpc {
 namespace client {
 
-class ClientRequest {
+/**
+ * @brief Represents a JSON-RPC request.
+ *
+ * This class handles the creation and management of JSON-RPC requests,
+ * including notifications (requests that do not expect a response).
+ */
+class Request {
 public:
-  // Constructor for a single request with ID generation
-  ClientRequest(const std::string &method, std::optional<nlohmann::json> params,
+  /**
+   * @brief Constructs a new Request object.
+   *
+   * @param method The name of the method to be invoked.
+   * @param params Optional parameters to be passed with the request.
+   * @param isNotification True if this is a notification (no response
+   * expected).
+   * @param idGenerator A function to generate unique request IDs.
+   */
+  Request(const std::string &method, std::optional<nlohmann::json> params,
       bool isNotification, const std::function<int()> &idGenerator);
 
-  // Method to check if a response is required
+  /// @brief Checks if the request requires a response.
   bool RequiresResponse() const;
 
-  // Method to get the unique key
+  /// @brief Returns the unique key (ID) for the request.
   int GetKey() const;
 
-  // Method to dump the request to a JSON string
+  /// @brief Serializes the request to a JSON string.
   std::string Dump() const;
 
 private:

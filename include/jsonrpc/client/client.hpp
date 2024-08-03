@@ -106,7 +106,7 @@ private:
    * @param request The JSON-RPC request to be sent.
    * @return The JSON response received from the server.
    */
-  nlohmann::json SendRequest(const ClientRequest &request);
+  nlohmann::json SendRequest(const Request &request);
 
   /**
    * @brief Generates the next unique request ID.
