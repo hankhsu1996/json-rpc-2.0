@@ -191,7 +191,7 @@ Response Dispatcher::HandleMethodCall(
     spdlog::debug("Method call {} returned: {}", request.GetMethod(),
         responseJson.dump());
 
-    return Response::FromJson(responseJson, request.GetId());
+    return Response::FromUserResponse(responseJson, request.GetId());
   } catch (const std::exception &e) {
     spdlog::error("Exception during method call handling: {}", e.what());
     return Response::CreateLibError(

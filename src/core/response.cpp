@@ -8,42 +8,75 @@ const ErrorInfoMap Response::errorInfoMap = {
     {LibErrorKind::ParseError, {-32700, "Parse error"}},
     {LibErrorKind::InvalidRequest, {-32600, "Invalid Request"}},
     {LibErrorKind::MethodNotFound, {-32601, "Method not found"}},
-    {LibErrorKind::InvalidParams, {-32602, "Invalid params"}},
     {LibErrorKind::InternalError, {-32603, "Internal error"}},
     {LibErrorKind::ServerError, {-32000, "Server error"}}};
 
-Response::Response(const Json &response, std::optional<Json> id)
-    : response_(response) {
+Response::Response(Response &&other) noexcept
+    : response_(std::move(other.response_)) {
+}
+
+Response::Response(Json response, std::optional<Json> id)
+    : response_(std::move(response)) {
   if (id.has_value()) {
     response_["id"] = id.value();
   }
   ValidateResponse();
 }
 
-Response Response::FromJson(const Json &responseJson, std::optional<Json> id) {
+Response Response::FromUserResponse(
+    const Json &responseJson, std::optional<Json> id) {
   if (responseJson.contains("result")) {
-    return SuccessResponse(responseJson["result"], id);
+    return CreateResult(responseJson["result"], id);
   } else if (responseJson.contains("error")) {
-    return UserErrorResponse(responseJson["error"], id);
+    return CreateUserError(responseJson["error"], id);
   } else {
     throw std::invalid_argument(
         "Response JSON must contain either 'result' or 'error' field");
   }
 }
 
-Response Response::SuccessResponse(
+Response Response::CreateResult(
     const Json &result, const std::optional<Json> &id) {
   Json response = {{"jsonrpc", "2.0"}, {"result", result}};
   if (id.has_value()) {
     response["id"] = id.value();
   }
-  return Response(response);
+  return Response{std::move(response)};
 }
 
-Response Response::UserErrorResponse(
+Response Response::CreateUserError(
     const Json &error, const std::optional<Json> &id) {
-  Response response({{"jsonrpc", "2.0"}, {"error", error}}, id);
-  response.ValidateResponse();
+  Json response = {{"jsonrpc", "2.0"}, {"error", error}};
+  if (id.has_value()) {
+    response["id"] = id.value();
+  }
+  return Response{std::move(response)};
+}
+
+Json Response::ToJson() const {
+  return response_;
+}
+
+std::string Response::ToStr() const {
+  return response_.dump();
+}
+
+Response Response::CreateLibError(
+    LibErrorKind errorKind, const std::optional<Json> &id) {
+  const auto &[code, message] = errorInfoMap.at(errorKind);
+  Json errorResponse = CreateErrorResponse(message, code, id);
+  return Response{std::move(errorResponse)};
+}
+
+Json Response::CreateErrorResponse(
+    const std::string &message, int code, const std::optional<Json> &id) {
+  Json error = {{"code", code}, {"message", message}};
+  Json response = {{"jsonrpc", "2.0"}, {"error", error}};
+  if (id.has_value()) {
+    response["id"] = id.value();
+  } else {
+    response["id"] = nullptr;
+  }
   return response;
 }
 

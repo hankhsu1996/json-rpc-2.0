@@ -8,7 +8,7 @@ TEST_CASE("Response success creation and serialization", "[Response]") {
   Json result = {{"data", "value"}};
   std::optional<int> id = 1;
 
-  Response response = Response::SuccessResponse(result, id);
+  Response response = Response::CreateResult(result, id);
   Json responseJson = response.ToJson();
 
   REQUIRE(responseJson["result"] == result);
@@ -32,7 +32,7 @@ TEST_CASE("Response user error creation and serialization", "[Response]") {
   Json error = {{"code", -32602}, {"message", "Invalid params"}};
   std::optional<int> id = 1;
 
-  Response response = Response::UserErrorResponse(error, id);
+  Response response = Response::CreateUserError(error, id);
   Json responseJson = response.ToJson();
 
   REQUIRE(responseJson["error"] == error);
@@ -42,18 +42,18 @@ TEST_CASE("Response user error creation and serialization", "[Response]") {
 TEST_CASE("Response validation with missing 'code' or 'message' in error",
     "[Response]") {
   Json invalidErrorResponse = {{"error", {{"code", -32603}}}, {"id", 1}};
-  REQUIRE_THROWS_AS(
-      Response::FromJson(invalidErrorResponse, 1), std::invalid_argument);
+  REQUIRE_THROWS_AS(Response::FromUserResponse(invalidErrorResponse, 1),
+      std::invalid_argument);
 
   Json validErrorResponse = {
       {"error", {{"code", -32603}, {"message", "Internal error"}}}, {"id", 1}};
-  REQUIRE_NOTHROW(Response::FromJson(validErrorResponse, 1));
+  REQUIRE_NOTHROW(Response::FromUserResponse(validErrorResponse, 1));
 }
 
 TEST_CASE("Response creation without id", "[Response]") {
   Json result = {{"data", "value"}};
 
-  Response response = Response::SuccessResponse(result, std::nullopt);
+  Response response = Response::CreateResult(result, std::nullopt);
   Json responseJson = response.ToJson();
 
   REQUIRE(responseJson["result"] == result);
@@ -75,7 +75,7 @@ TEST_CASE("Library error response creation without id", "[Response]") {
 TEST_CASE("User error response creation without id", "[Response]") {
   Json error = {{"code", -32602}, {"message", "Invalid params"}};
 
-  Response response = Response::UserErrorResponse(error, std::nullopt);
+  Response response = Response::CreateUserError(error, std::nullopt);
   Json responseJson = response.ToJson();
 
   REQUIRE(responseJson["error"] == error);
