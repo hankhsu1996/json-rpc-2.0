@@ -3,8 +3,9 @@
 #include <spdlog/spdlog.h>
 
 namespace jsonrpc {
+namespace server {
 
-Server::Server(std::unique_ptr<ServerTransport> transport)
+Server::Server(std::unique_ptr<transports::ServerTransport> transport)
     : transport_(std::move(transport)) {
   dispatcher_ = std::make_shared<Dispatcher>();
   transport_->SetDispatcher(dispatcher_);
@@ -35,4 +36,5 @@ void Server::RegisterNotification(
   dispatcher_->RegisterNotification(method, handler);
 }
 
+} // namespace server
 } // namespace jsonrpc
