@@ -12,8 +12,10 @@ var index =
     [ "🛠️ Developer Guide", "index.html#autotoc_md8", [
       [ "Step 1: Install Dependencies", "index.html#autotoc_md9", null ],
       [ "Step 2: Configure and Build the Project", "index.html#autotoc_md10", null ],
-      [ "Step 3: Run Tests", "index.html#autotoc_md11", null ]
+      [ "Step 3: Run Tests", "index.html#autotoc_md11", null ],
+      [ "Optional: Debug Configuration", "index.html#autotoc_md12", null ],
+      [ "Additional Notes", "index.html#autotoc_md13", null ]
     ] ],
-    [ "🤝 Contributing", "index.html#autotoc_md12", null ],
-    [ "📄 License", "index.html#autotoc_md13", null ]
+    [ "🤝 Contributing", "index.html#autotoc_md14", null ],
+    [ "📄 License", "index.html#autotoc_md15", null ]
 ];

@@ -193,22 +193,37 @@ Creating a JSON-RPC Client</h2>
 <p>To build and test the project, follow these steps:</p>
 <h2><a class="anchor" id="autotoc_md9"></a>
 Step 1: Install Dependencies</h2>
-<p>Run Conan to install the dependencies specified in the <code>conanfile.txt</code>:</p>
-<div class="fragment"><div class="line">conan install . --output-folder=build --build=missing</div>
+<p>Ensure you have a Conan profile configured. If the default profile (<code>.conan2/profiles/default</code>) is missing, create it:</p>
+<div class="fragment"><div class="line">conan profile detect --force</div>
+</div><!-- fragment --><p>Next, install dependencies and generate <code>ConanPresets.json</code>:</p>
+<div class="fragment"><div class="line">conan install . --build=missing</div>
 </div><!-- fragment --><h2><a class="anchor" id="autotoc_md10"></a>
 Step 2: Configure and Build the Project</h2>
-<p>Use CMake presets for configuration and building. Ensure you have CMake 3.19 or above to utilize the modern preset feature. The configuration and build commands use <code>CMakePresets.json</code>:</p>
-<div class="fragment"><div class="line">cmake --preset default</div>
-<div class="line">cmake --build --preset default</div>
+<p>Use CMake presets to configure and build the project. Ensure CMake 3.19+ is installed.</p>
+<p>For Release configuration:</p>
+<div class="fragment"><div class="line">cmake --preset release</div>
+<div class="line">cmake --build --preset release</div>
 </div><!-- fragment --><h2><a class="anchor" id="autotoc_md11"></a>
 Step 3: Run Tests</h2>
-<p>Run the tests using CMake presets, as defined in <code>CMakePresets.json</code>:</p>
-<div class="fragment"><div class="line">ctest --preset default</div>
-</div><!-- fragment --><p>All commands should be executed from the top-level project directory. There is no need to navigate to the build directory.</p>
-<h1><a class="anchor" id="autotoc_md12"></a>
+<p>Run tests using the appropriate CMake preset:</p>
+<div class="fragment"><div class="line">ctest --preset release</div>
+</div><!-- fragment --><h2><a class="anchor" id="autotoc_md12"></a>
+Optional: Debug Configuration</h2>
+<p>For Debug configuration:</p>
+<div class="fragment"><div class="line">conan install . -s build_type=Debug</div>
+<div class="line">cmake --preset debug</div>
+<div class="line">cmake --build --preset debug</div>
+<div class="line">ctest --preset debug</div>
+</div><!-- fragment --><h2><a class="anchor" id="autotoc_md13"></a>
+Additional Notes</h2>
+<ul>
+<li>Execute commands from the top-level project directory.</li>
+<li>Presets handle configuration and build paths automatically.</li>
+</ul>
+<h1><a class="anchor" id="autotoc_md14"></a>
 🤝 Contributing</h1>
 <p>We welcome contributions! If you have suggestions or find any issues, feel free to open an issue or pull request.</p>
-<h1><a class="anchor" id="autotoc_md13"></a>
+<h1><a class="anchor" id="autotoc_md15"></a>
 📄 License</h1>
 <p>This project is licensed under the MIT License. See the <a href="./LICENSE">LICENSE</a> file for more details. </p>
 </div></div><!-- PageDoc -->
