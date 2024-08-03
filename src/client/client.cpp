@@ -3,8 +3,9 @@
 #include <spdlog/spdlog.h>
 
 namespace jsonrpc {
+namespace client {
 
-Client::Client(std::unique_ptr<ClientTransport> transport)
+Client::Client(std::unique_ptr<transports::ClientTransport> transport)
     : transport_(std::move(transport)) {
   spdlog::info("Initializing JSON-RPC client");
 }
@@ -39,24 +40,24 @@ void Client::Listener() {
   }
 }
 
-Json Client::SendMethodCall(
-    const std::string &method, std::optional<Json> params) {
+nlohmann::json Client::SendMethodCall(
+    const std::string &method, std::optional<nlohmann::json> params) {
   ClientRequest request(method, std::move(params), false,
       [this]() { return GetNextRequestId(); });
   return SendRequest(request);
 }
 
 void Client::SendNotification(
-    const std::string &method, std::optional<Json> params) {
+    const std::string &method, std::optional<nlohmann::json> params) {
   ClientRequest request(
       method, std::move(params), true, [this]() { return GetNextRequestId(); });
   // Notifications do not expect a response
   transport_->SendRequest(request.Dump());
 }
 
-Json Client::SendRequest(const ClientRequest &request) {
+nlohmann::json Client::SendRequest(const ClientRequest &request) {
   if (request.RequiresResponse()) {
-    std::promise<Json> responsePromise;
+    std::promise<nlohmann::json> responsePromise;
     auto futureResponse = responsePromise.get_future();
 
     {
@@ -80,8 +81,8 @@ Json Client::SendRequest(const ClientRequest &request) {
   } else {
     // No response expected, just send the request
     transport_->SendRequest(request.Dump());
-    return Json(); // Return an empty JSON object since no response is
-                   // expected
+    return nlohmann::json(); // Return an empty JSON object since no response is
+                             // expected
   }
 }
 
@@ -90,9 +91,9 @@ int Client::GetNextRequestId() {
 }
 
 void Client::HandleResponse(const std::string &response) {
-  Json jsonResponse;
+  nlohmann::json jsonResponse;
   try {
-    jsonResponse = Json::parse(response);
+    jsonResponse = nlohmann::json::parse(response);
   } catch (const std::exception &e) {
     spdlog::error("Failed to parse JSON response: {}", e.what());
     throw std::runtime_error(
@@ -118,7 +119,7 @@ void Client::HandleResponse(const std::string &response) {
   }
 }
 
-bool Client::ValidateResponse(const Json &response) {
+bool Client::ValidateResponse(const nlohmann::json &response) {
   if (!response.contains("jsonrpc") || response["jsonrpc"] != "2.0") {
     return false;
   }
@@ -135,7 +136,7 @@ bool Client::ValidateResponse(const Json &response) {
   }
 
   if (hasError) {
-    const Json &error = response["error"];
+    const nlohmann::json &error = response["error"];
     if (!error.contains("code") || !error["code"].is_number() ||
         !error.contains("message") || !error["message"].is_string()) {
       return false;
@@ -145,4 +146,5 @@ bool Client::ValidateResponse(const Json &response) {
   return true;
 }
 
+} // namespace client
 } // namespace jsonrpc

@@ -1,13 +1,15 @@
 #include <memory>
 
+#include <jsonrpc/server/server.hpp>
+#include <jsonrpc/server/transports/stdio_server_transport.hpp>
+#include <nlohmann/json.hpp>
 #include <spdlog/sinks/basic_file_sink.h>
 #include <spdlog/spdlog.h>
 
-#include "jsonrpc/jsonrpc.hpp"
-
 #include "calculator.hpp"
 
-using namespace jsonrpc;
+using namespace jsonrpc::server;
+using Json = nlohmann::json;
 
 int main() {
   auto logger = spdlog::basic_logger_mt("server_logger", "logs/server.log");
@@ -15,7 +17,7 @@ int main() {
   spdlog::set_level(spdlog::level::debug);
   spdlog::flush_on(spdlog::level::debug);
 
-  auto transport = std::make_unique<StdioServerTransport>();
+  auto transport = std::make_unique<transports::StdioServerTransport>();
   Server server(std::move(transport));
   Calculator calculator;
 

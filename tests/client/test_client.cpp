@@ -7,11 +7,13 @@
 
 #include <catch2/catch_test_macros.hpp>
 #include <catch2/matchers/catch_matchers_string.hpp>
+#include <nlohmann/json.hpp>
 
 #include "jsonrpc/client/client.hpp"
-#include "jsonrpc/core/client_transport.hpp"
+#include "jsonrpc/client/transports/client_transport.hpp"
 
-using namespace jsonrpc;
+using namespace jsonrpc::client;
+using namespace jsonrpc::client::transports;
 
 class MockTransport : public ClientTransport {
 public:
@@ -69,7 +71,8 @@ TEST_CASE(
   Client client(std::move(transport));
   client.Start();
 
-  client.SendNotification("notify_event", Json({{"param1", "value1"}}));
+  client.SendNotification(
+      "notify_event", nlohmann::json({{"param1", "value1"}}));
 
   REQUIRE(transportPtr->sentRequests.size() == 1);
   REQUIRE(

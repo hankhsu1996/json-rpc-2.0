@@ -1,12 +1,14 @@
 #include <iostream>
 #include <memory>
 
+#include <jsonrpc/client/client.hpp>
+#include <jsonrpc/client/transports/stdio_client_transport.hpp>
+#include <nlohmann/json.hpp>
 #include <spdlog/sinks/basic_file_sink.h>
 #include <spdlog/spdlog.h>
 
-#include "jsonrpc/jsonrpc.hpp"
-
-using namespace jsonrpc;
+using namespace jsonrpc::client;
+using Json = nlohmann::json;
 
 int main() {
   auto logger = spdlog::basic_logger_mt("client_logger", "logs/client.log");
@@ -14,7 +16,7 @@ int main() {
   spdlog::set_level(spdlog::level::debug);
   spdlog::flush_on(spdlog::level::debug);
 
-  auto transport = std::make_unique<StdioClientTransport>();
+  auto transport = std::make_unique<transports::StdioClientTransport>();
   Client client(std::move(transport));
   client.Start();
 

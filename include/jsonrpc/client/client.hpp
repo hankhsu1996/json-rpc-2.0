@@ -10,10 +10,13 @@
 #include <unordered_map>
 #include <vector>
 
+#include <nlohmann/json.hpp>
+
 #include "jsonrpc/client/request.hpp"
-#include "jsonrpc/core/client_transport.hpp"
+#include "jsonrpc/client/transports/client_transport.hpp"
 
 namespace jsonrpc {
+namespace client {
 
 /// @brief A JSON-RPC client for sending requests and receiving responses.
 class Client {
@@ -27,7 +30,7 @@ public:
    * @param transport A unique pointer to a transport layer used for
    * communication.
    */
-  Client(std::unique_ptr<ClientTransport> transport);
+  Client(std::unique_ptr<transports::ClientTransport> transport);
 
   /// @brief Destructor.
   ~Client() = default;
@@ -70,8 +73,8 @@ public:
    *
    * @see Json for details about the JSON type used in the library.
    */
-  Json SendMethodCall(
-      const std::string &method, std::optional<Json> params = std::nullopt);
+  nlohmann::json SendMethodCall(const std::string &method,
+      std::optional<nlohmann::json> params = std::nullopt);
 
   /**
    * @brief Sends a JSON-RPC notification.
@@ -84,8 +87,8 @@ public:
    *
    * @see Json for details about the JSON type used in the library.
    */
-  void SendNotification(
-      const std::string &method, std::optional<Json> params = std::nullopt);
+  void SendNotification(const std::string &method,
+      std::optional<nlohmann::json> params = std::nullopt);
 
 private:
   /// @brief Listener thread function for receiving responses from the transport
@@ -103,7 +106,7 @@ private:
    * @param request The JSON-RPC request to be sent.
    * @return The JSON response received from the server.
    */
-  Json SendRequest(const ClientRequest &request);
+  nlohmann::json SendRequest(const ClientRequest &request);
 
   /**
    * @brief Generates the next unique request ID.
@@ -133,10 +136,10 @@ private:
    * @param response The JSON-RPC response as a JSON object.
    * @return True if the response is valid, false otherwise.
    */
-  bool ValidateResponse(const Json &response);
+  bool ValidateResponse(const nlohmann::json &response);
 
   /// @brief Transport layer for communication.
-  std::unique_ptr<ClientTransport> transport_;
+  std::unique_ptr<transports::ClientTransport> transport_;
 
   /// @brief Counter for generating unique request IDs.
   std::atomic<int> requestCounter_{0};
@@ -145,7 +148,7 @@ private:
   std::atomic<int> expectedResponses_{0};
 
   /// @brief Map of pending requests and their associated promises.
-  std::unordered_map<int, std::promise<Json>> pendingRequests_;
+  std::unordered_map<int, std::promise<nlohmann::json>> pendingRequests_;
 
   /// @brief Mutex to protect access to the pending requests map.
   std::mutex pendingRequestsMutex_;
@@ -157,4 +160,5 @@ private:
   std::atomic<bool> running_{true};
 };
 
+} // namespace client
 } // namespace jsonrpc

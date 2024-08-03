@@ -2,13 +2,15 @@
 #include <thread>
 
 #include <catch2/catch_test_macros.hpp>
+#include <nlohmann/json.hpp>
 #include <spdlog/spdlog.h>
 
-#include "jsonrpc/core/dispatcher.hpp"
+#include "jsonrpc/server/dispatcher.hpp"
 #include "jsonrpc/server/server.hpp"
-#include "jsonrpc/transports/stdio_server_transport.hpp"
+#include "jsonrpc/server/transports/stdio_server_transport.hpp"
 
-using namespace jsonrpc;
+using namespace jsonrpc::server;
+using namespace jsonrpc::server::transports;
 
 class MockServerTransport : public ServerTransport {
 public:
@@ -58,12 +60,12 @@ TEST_CASE("Server method registration", "[server]") {
   Server server(std::move(transport));
 
   MethodCallHandler methodHandler =
-      [](const std::optional<Json> &params) -> Json {
+      [](const std::optional<nlohmann::json> &params) -> nlohmann::json {
     return {{"result", "testMethod"}};
   };
 
   NotificationHandler notificationHandler =
-      [](const std::optional<Json> &params) {};
+      [](const std::optional<nlohmann::json> &params) {};
 
   REQUIRE_NOTHROW(server.RegisterMethodCall("testMethod", methodHandler));
   REQUIRE_NOTHROW(

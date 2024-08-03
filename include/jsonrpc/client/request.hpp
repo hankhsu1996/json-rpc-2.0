@@ -5,14 +5,15 @@
 #include <string>
 #include <vector>
 
-#include "jsonrpc/core/types.hpp"
+#include <nlohmann/json.hpp>
 
 namespace jsonrpc {
+namespace client {
 
 class ClientRequest {
 public:
   // Constructor for a single request with ID generation
-  ClientRequest(const std::string &method, std::optional<Json> params,
+  ClientRequest(const std::string &method, std::optional<nlohmann::json> params,
       bool isNotification, const std::function<int()> &idGenerator);
 
   // Method to check if a response is required
@@ -26,9 +27,10 @@ public:
 
 private:
   std::string method_;
-  std::optional<Json> params_;
+  std::optional<nlohmann::json> params_;
   bool isNotification_;
   int id_;
 };
 
+} // namespace client
 } // namespace jsonrpc

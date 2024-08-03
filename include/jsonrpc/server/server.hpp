@@ -3,11 +3,12 @@
 #include <memory>
 #include <string>
 
-#include "jsonrpc/core/dispatcher.hpp"
-#include "jsonrpc/core/server_transport.hpp"
-#include "jsonrpc/core/types.hpp"
+#include "jsonrpc/server/dispatcher.hpp"
+#include "jsonrpc/server/transports/server_transport.hpp"
+#include "jsonrpc/server/types.hpp"
 
 namespace jsonrpc {
+namespace server {
 
 /**
  * @brief A JSON-RPC server for handling requests and notifications.
@@ -22,7 +23,7 @@ public:
    *
    * @param transport A unique pointer to the ServerTransport for communication.
    */
-  Server(std::unique_ptr<ServerTransport> transport);
+  Server(std::unique_ptr<transports::ServerTransport> transport);
 
   /// @brief Starts the server to handle incoming JSON-RPC requests.
   void Start();
@@ -60,7 +61,8 @@ private:
   std::shared_ptr<Dispatcher> dispatcher_;
 
   /// @brief Transport layer for communication.
-  std::unique_ptr<ServerTransport> transport_;
+  std::unique_ptr<transports::ServerTransport> transport_;
 };
 
+} // namespace server
 } // namespace jsonrpc
