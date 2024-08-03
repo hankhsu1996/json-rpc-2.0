@@ -1,0 +1,5 @@
+<map id="jsonrpc::Response::CreateUserError" name="jsonrpc::Response::CreateUserError">
+<area shape="rect" id="Node000001" title="Creates a Response object for a user error." alt="" coords="201,5,349,45"/>
+<area shape="rect" id="Node000002" href="$classjsonrpc_1_1Response.html#aed5315413683f20b5c56e550290e367f" title="Creates a Response object from a JSON object that represents a user response." alt="" coords="5,5,153,45"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="187,28,154,28,154,23,187,23"/>
+</map>

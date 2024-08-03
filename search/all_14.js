@@ -1,8 +1,25 @@
 var searchData=
 [
-  ['tests_0',['Step 3: Run Tests',['../index.html#autotoc_md11',1,'']]],
-  ['the_20project_1',['Step 2: Configure and Build the Project',['../index.html#autotoc_md10',1,'']]],
-  ['tojson_2',['ToJson',['../classjsonrpc_1_1Request.html#ae3a4906479b44b119b2a093433af1a87',1,'jsonrpc::Request::ToJson()'],['../classjsonrpc_1_1Response.html#ab8ef2a49c9fdb8ebc29b59844ea3918d',1,'jsonrpc::Response::ToJson() const']]],
-  ['tostr_3',['ToStr',['../classjsonrpc_1_1Response.html#a0ca1e37b725b5f4c81e32a13f928c1d9',1,'jsonrpc::Response']]],
-  ['types_2ehpp_4',['types.hpp',['../types_8hpp.html',1,'']]]
+  ['sendmethodcall_0',['SendMethodCall',['../classjsonrpc_1_1Client.html#a469665bf7c7a23657060422440bc387d',1,'jsonrpc::Client']]],
+  ['sendnotification_1',['SendNotification',['../classjsonrpc_1_1Client.html#afba5b802b6802739c2fa407fe887fe75',1,'jsonrpc::Client']]],
+  ['sendrequest_2',['SendRequest',['../classjsonrpc_1_1ClientTransport.html#a0ceb5197fee405a2713d0575316b0161',1,'jsonrpc::ClientTransport::SendRequest()'],['../classjsonrpc_1_1FramedStdioClientTransport.html#ac0ff246678c5f611ce34e368871456c2',1,'jsonrpc::FramedStdioClientTransport::SendRequest()'],['../classjsonrpc_1_1StdioClientTransport.html#ac66c500da4ef1d97fea578685981657c',1,'jsonrpc::StdioClientTransport::SendRequest()']]],
+  ['server_3',['Server',['../index.html#autotoc_md6',1,'Creating a JSON-RPC Server'],['../classjsonrpc_1_1Server.html',1,'jsonrpc::Server'],['../classjsonrpc_1_1Server.html#aa8fe1b7a8df300ee3541546302f7832b',1,'jsonrpc::Server::Server()']]],
+  ['server_2ecpp_4',['server.cpp',['../server_8cpp.html',1,'']]],
+  ['server_2ehpp_5',['server.hpp',['../server_8hpp.html',1,'']]],
+  ['server_5ftransport_2ehpp_6',['server_transport.hpp',['../server__transport_8hpp.html',1,'']]],
+  ['servererror_7',['ServerError',['../namespacejsonrpc.html#adde4101b40f8b5fd7d36801808e3ec9ca7d65c64901711bc2cd2a33ff2641fbe9',1,'jsonrpc']]],
+  ['servertransport_8',['ServerTransport',['../classjsonrpc_1_1ServerTransport.html',1,'jsonrpc::ServerTransport'],['../classjsonrpc_1_1ServerTransport.html#a9a7b0542a14e103bca1abcad582a3d1a',1,'jsonrpc::ServerTransport::ServerTransport()']]],
+  ['setdispatcher_9',['SetDispatcher',['../classjsonrpc_1_1ServerTransport.html#ae6515e7188c90ea31c3d6f27e96018e4',1,'jsonrpc::ServerTransport']]],
+  ['start_10',['Start',['../classjsonrpc_1_1Client.html#ad68863bdbbcac76b611cab4859ac35e9',1,'jsonrpc::Client::Start()'],['../classjsonrpc_1_1ServerTransport.html#a922c8028067b9ee232dd845b5f65bcf2',1,'jsonrpc::ServerTransport::Start()'],['../classjsonrpc_1_1Server.html#ae9cba0a98f1b2edce9fa566ac9dac2c0',1,'jsonrpc::Server::Start()']]],
+  ['started_11',['🚀 Getting Started',['../index.html#autotoc_md2',1,'']]],
+  ['stdio_5fclient_5ftransport_2ecpp_12',['stdio_client_transport.cpp',['../stdio__client__transport_8cpp.html',1,'']]],
+  ['stdio_5fclient_5ftransport_2ehpp_13',['stdio_client_transport.hpp',['../stdio__client__transport_8hpp.html',1,'']]],
+  ['stdio_5fserver_5ftransport_2ecpp_14',['stdio_server_transport.cpp',['../stdio__server__transport_8cpp.html',1,'']]],
+  ['stdio_5fserver_5ftransport_2ehpp_15',['stdio_server_transport.hpp',['../stdio__server__transport_8hpp.html',1,'']]],
+  ['stdioclienttransport_16',['StdioClientTransport',['../classjsonrpc_1_1StdioClientTransport.html',1,'jsonrpc']]],
+  ['stdioservertransport_17',['StdioServerTransport',['../classjsonrpc_1_1StdioServerTransport.html',1,'jsonrpc']]],
+  ['step_201_3a_20install_20dependencies_18',['Step 1: Install Dependencies',['../index.html#autotoc_md9',1,'']]],
+  ['step_202_3a_20configure_20and_20build_20the_20project_19',['Step 2: Configure and Build the Project',['../index.html#autotoc_md10',1,'']]],
+  ['step_203_3a_20run_20tests_20',['Step 3: Run Tests',['../index.html#autotoc_md11',1,'']]],
+  ['stop_21',['Stop',['../classjsonrpc_1_1Client.html#a4964a3d774e746cc77900714fe80799b',1,'jsonrpc::Client::Stop()'],['../classjsonrpc_1_1ServerTransport.html#a2c225806f1a0c31c5ec88be618fedc98',1,'jsonrpc::ServerTransport::Stop()'],['../classjsonrpc_1_1Server.html#a4369d975490da19252d6018e22e72128',1,'jsonrpc::Server::Stop()']]]
 ];

@@ -12,5 +12,6 @@ var searchData=
   ['framedstdioservertransport_9',['FramedStdioServerTransport',['../classjsonrpc_1_1FramedStdioServerTransport.html',1,'jsonrpc']]],
   ['framedtransport_10',['FramedTransport',['../classjsonrpc_1_1FramedTransport.html',1,'jsonrpc']]],
   ['framemessage_11',['FrameMessage',['../classjsonrpc_1_1FramedTransport.html#aa129b76aec1aa02f70dc3e0f52958771',1,'jsonrpc::FramedTransport']]],
-  ['fromjson_12',['FromJson',['../classjsonrpc_1_1Request.html#aeef9a399fe1c52b7affd95d836b813b6',1,'jsonrpc::Request::FromJson()'],['../classjsonrpc_1_1Response.html#ab738915fda5aef888209364b65947e63',1,'jsonrpc::Response::FromJson()']]]
+  ['fromjson_12',['FromJson',['../classjsonrpc_1_1Request.html#aeef9a399fe1c52b7affd95d836b813b6',1,'jsonrpc::Request']]],
+  ['fromuserresponse_13',['FromUserResponse',['../classjsonrpc_1_1Response.html#aed5315413683f20b5c56e550290e367f',1,'jsonrpc::Response']]]
 ];

@@ -12,6 +12,8 @@ var searchData=
   ['configure_20and_20build_20the_20project_9',['Step 2: Configure and Build the Project',['../index.html#autotoc_md10',1,'']]],
   ['contributing_10',['🤝 Contributing',['../index.html#autotoc_md12',1,'']]],
   ['createliberror_11',['CreateLibError',['../classjsonrpc_1_1Response.html#a0dce112a462bfbedf722cd9dc96b837a',1,'jsonrpc::Response']]],
-  ['creating_20a_20json_20rpc_20client_12',['Creating a JSON-RPC Client',['../index.html#autotoc_md7',1,'']]],
-  ['creating_20a_20json_20rpc_20server_13',['Creating a JSON-RPC Server',['../index.html#autotoc_md6',1,'']]]
+  ['createresult_12',['CreateResult',['../classjsonrpc_1_1Response.html#a4ae9a2ba4540889cd7ed68cea98d20f0',1,'jsonrpc::Response']]],
+  ['createusererror_13',['CreateUserError',['../classjsonrpc_1_1Response.html#a52ff1e3bf1d5060f2748081a5e3f7b26',1,'jsonrpc::Response']]],
+  ['creating_20a_20json_20rpc_20client_14',['Creating a JSON-RPC Client',['../index.html#autotoc_md7',1,'']]],
+  ['creating_20a_20json_20rpc_20server_15',['Creating a JSON-RPC Server',['../index.html#autotoc_md6',1,'']]]
 ];
