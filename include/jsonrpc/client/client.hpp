@@ -1,6 +1,7 @@
 #pragma once
 
 #include <atomic>
+#include <cassert>
 #include <future>
 #include <memory>
 #include <mutex>
@@ -18,14 +19,16 @@
 namespace jsonrpc {
 namespace client {
 
-/// @brief A JSON-RPC client for sending requests and receiving responses.
+/**
+ * @brief A JSON-RPC client for sending requests and receiving responses.
+ *
+ * This client allows for synchronous and asynchronous method calls as well as
+ * notifications.
+ */
 class Client {
 public:
   /**
    * @brief Constructs a JSON-RPC client with a specified transport layer.
-   *
-   * Initializes the client with the provided transport layer, which handles
-   * the communication between the client and the server.
    *
    * @param transport A unique pointer to a transport layer used for
    * communication.
@@ -40,17 +43,15 @@ public:
    *
    * Initializes and starts a background thread that listens for responses from
    * the server. This must be called before sending any requests.
-   *
-   * @throws std::runtime_error If the listener thread fails to start.
    */
   void Start();
 
   /**
    * @brief Stops the JSON-RPC client listener thread.
    *
-   * Stops the background listener thread and waits for it to join. This should
-   * be called before the client is destroyed or when the client no longer needs
-   * to listen for responses.
+   * Stops the background listener thread and waits for it to join.
+   * This should be called before the client is destroyed or when the client no
+   * longer needs to listen for responses.
    */
   void Stop();
 
@@ -64,31 +65,46 @@ public:
   /**
    * @brief Sends a JSON-RPC method call and waits for the response.
    *
-   * Sends a JSON-RPC method call to the server and waits for the corresponding
-   * response. The response is returned as a JSON object.
+   * This is a blocking call that sends a method request to the server and waits
+   * for the corresponding response.
    *
    * @param method The name of the method to call.
    * @param params Optional parameters to pass to the method.
    * @return The JSON response received from the server.
-   *
-   * @see Json for details about the JSON type used in the library.
    */
   nlohmann::json SendMethodCall(const std::string &method,
       std::optional<nlohmann::json> params = std::nullopt);
 
   /**
+   * @brief Sends a JSON-RPC method call asynchronously.
+   *
+   * This method sends a request to the server without blocking the calling
+   * thread.
+   *
+   * @param method The name of the method to call.
+   * @param params Optional parameters to pass to the method.
+   * @return A future that will hold the JSON response from the server.
+   */
+  std::future<nlohmann::json> SendMethodCallAsync(const std::string &method,
+      std::optional<nlohmann::json> params = std::nullopt);
+
+  /**
    * @brief Sends a JSON-RPC notification.
    *
-   * Sends a JSON-RPC notification to the server. Unlike method calls,
-   * notifications do not expect a response from the server.
+   * Notifications do not expect a response from the server.
    *
    * @param method The name of the method to notify.
    * @param params Optional parameters to pass to the method.
-   *
-   * @see Json for details about the JSON type used in the library.
    */
   void SendNotification(const std::string &method,
       std::optional<nlohmann::json> params = std::nullopt);
+
+  /**
+   * @brief Checks if there are any pending requests.
+   *
+   * @return True if there are pending requests, false otherwise.
+   */
+  bool HasPendingRequests() const;
 
 private:
   /// @brief Listener thread function for receiving responses from the transport
@@ -96,17 +112,26 @@ private:
   void Listener();
 
   /**
-   * @brief Helper function to send a request and optionally wait for a
-   * response.
+   * @brief Helper function to send a request and wait for a response.
    *
-   * Depending on the type of request (method call or notification), this
-   * function will either wait for a response or send the request without
-   * expecting one.
+   * This function sends a JSON-RPC method call and waits for the response
+   * synchronously. It wraps the asynchronous request handling with
+   * blocking logic to return the result.
    *
    * @param request The JSON-RPC request to be sent.
    * @return The JSON response received from the server.
    */
   nlohmann::json SendRequest(const Request &request);
+
+  /**
+   * @brief Sends a request asynchronously.
+   *
+   * This method handles the logic for sending asynchronous requests.
+   *
+   * @param request The JSON-RPC request to be sent.
+   * @return A future that will hold the JSON response from the server.
+   */
+  std::future<nlohmann::json> SendRequestAsync(const Request &request);
 
   /**
    * @brief Generates the next unique request ID.
@@ -122,9 +147,6 @@ private:
    * data.
    *
    * @param response The JSON-RPC response as a string.
-   *
-   * @throws std::runtime_error If the response is invalid or cannot be matched
-   * to a request.
    */
   void HandleResponse(const std::string &response);
 
@@ -138,25 +160,25 @@ private:
    */
   bool ValidateResponse(const nlohmann::json &response);
 
-  /// @brief Transport layer for communication.
+  /// Transport layer for communication.
   std::unique_ptr<transports::ClientTransport> transport_;
 
-  /// @brief Counter for generating unique request IDs.
+  /// Counter for generating unique request IDs.
   std::atomic<int> requestCounter_{0};
 
-  /// @brief Counter for tracking expected responses.
+  /// Counter for tracking expected responses.
   std::atomic<int> expectedResponses_{0};
 
-  /// @brief Map of pending requests and their associated promises.
+  /// Map of pending requests and their associated promises.
   std::unordered_map<int, std::promise<nlohmann::json>> pendingRequests_;
 
-  /// @brief Mutex to protect access to the pending requests map.
-  std::mutex pendingRequestsMutex_;
+  /// Mutex to protect access to the pending requests map.
+  mutable std::mutex pendingRequestsMutex_;
 
-  /// @brief Listener thread for receiving responses.
+  /// Listener thread for receiving responses.
   std::thread listenerThread_;
 
-  /// @brief Flag to control the running state of the listener thread.
+  /// Flag to control the running state of the listener thread.
   std::atomic<bool> running_{true};
 };
 
