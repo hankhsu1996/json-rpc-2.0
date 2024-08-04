@@ -5,6 +5,10 @@ project(jsonrpc VERSION 1.0.0 LANGUAGES CXX)
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED True)
 
+# Set C++ Compiler Launcher
+set(CMAKE_C_COMPILER_LAUNCHER ccache)
+set(CMAKE_CXX_COMPILER_LAUNCHER ccache)
+
 # Source files
 file(GLOB_RECURSE SOURCES "src/*.cpp")
 
