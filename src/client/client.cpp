@@ -28,10 +28,13 @@ bool Client::isRunning() const {
   return running_;
 }
 
+bool Client::HasPendingRequests() const {
+  std::lock_guard<std::mutex> lock(pendingRequestsMutex_);
+  return !pendingRequests_.empty();
+}
+
 void Client::Listener() {
   while (running_) {
-    spdlog::debug("JSON-RPC client listener running and expecting {} responses",
-        expectedResponses_);
     if (expectedResponses_ > 0) {
       std::string response = transport_->ReadResponse();
       HandleResponse(response);
@@ -47,43 +50,41 @@ nlohmann::json Client::SendMethodCall(
   return SendRequest(request);
 }
 
+std::future<nlohmann::json> Client::SendMethodCallAsync(
+    const std::string &method, std::optional<nlohmann::json> params) {
+  Request request(method, std::move(params), false,
+      [this]() { return GetNextRequestId(); });
+  return SendRequestAsync(request);
+}
+
 void Client::SendNotification(
     const std::string &method, std::optional<nlohmann::json> params) {
   Request request(
       method, std::move(params), true, [this]() { return GetNextRequestId(); });
-  // Notifications do not expect a response
   transport_->SendRequest(request.Dump());
 }
 
 nlohmann::json Client::SendRequest(const Request &request) {
-  if (request.RequiresResponse()) {
-    std::promise<nlohmann::json> responsePromise;
-    auto futureResponse = responsePromise.get_future();
+  auto futureResponse = SendRequestAsync(request);
+  return futureResponse.get();
+}
 
-    {
-      std::lock_guard<std::mutex> lock(pendingRequestsMutex_);
-      pendingRequests_[request.GetKey()] = std::move(responsePromise);
-    }
-    expectedResponses_++;
+std::future<nlohmann::json> Client::SendRequestAsync(const Request &request) {
+  assert(request.RequiresResponse() && "SendRequestAsync called for a request "
+                                       "that does not require a response.");
 
-    transport_->SendRequest(request.Dump());
+  std::promise<nlohmann::json> responsePromise;
+  auto futureResponse = responsePromise.get_future();
 
-    // Block until the promise is fulfilled and return the response
-    futureResponse.wait();
-    auto response = futureResponse.get();
-
-    {
-      std::lock_guard<std::mutex> lock(pendingRequestsMutex_);
-      pendingRequests_.erase(request.GetKey());
-    }
-
-    return response;
-  } else {
-    // No response expected, just send the request
-    transport_->SendRequest(request.Dump());
-    return nlohmann::json(); // Return an empty JSON object since no response is
-                             // expected
+  {
+    std::lock_guard<std::mutex> lock(pendingRequestsMutex_);
+    pendingRequests_[request.GetKey()] = std::move(responsePromise);
   }
+  expectedResponses_++;
+
+  transport_->SendRequest(request.Dump());
+
+  return futureResponse;
 }
 
 int Client::GetNextRequestId() {
