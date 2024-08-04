@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['listen_0',['Listen',['../classjsonrpc_1_1server_1_1transports_1_1FramedStdioServerTransport.html#a2764c87aacd4cdf8959731b11d76e505',1,'jsonrpc::server::transports::FramedStdioServerTransport::Listen()'],['../classjsonrpc_1_1server_1_1transports_1_1ServerTransport.html#ac567c9ca9f19e7fa64522b8a24951500',1,'jsonrpc::server::transports::ServerTransport::Listen()'],['../classjsonrpc_1_1server_1_1transports_1_1StdioServerTransport.html#a6ba894ca9dcc3730dce36702e50ae453',1,'jsonrpc::server::transports::StdioServerTransport::Listen()']]]
+  ['isrunning_0',['IsRunning',['../classjsonrpc_1_1server_1_1Server.html#a6c902b2c409b7a7e97835e3ff07565a5',1,'jsonrpc::server::Server::IsRunning()'],['../classjsonrpc_1_1server_1_1transports_1_1ServerTransport.html#a777d6dffaca6415218d9954e3ba54cdd',1,'jsonrpc::server::transports::ServerTransport::IsRunning()']]],
+  ['isrunning_1',['isRunning',['../classjsonrpc_1_1client_1_1Client.html#aa057c607e81e9c3a2da54cba7163513b',1,'jsonrpc::client::Client']]]
 ];

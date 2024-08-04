@@ -1,5 +1,12 @@
 var searchData=
 [
-  ['tojson_0',['ToJson',['../classjsonrpc_1_1server_1_1Request.html#abe23dc176306a50b1f6ee5b2eca9607b',1,'jsonrpc::server::Request::ToJson()'],['../classjsonrpc_1_1server_1_1Response.html#a3d3771311040556969012b8197eea2c7',1,'jsonrpc::server::Response::ToJson() const']]],
-  ['tostr_1',['ToStr',['../classjsonrpc_1_1server_1_1Response.html#af84d7e3f52456765a1cb4327a8c10c23',1,'jsonrpc::server::Response']]]
+  ['sendmethodcall_0',['SendMethodCall',['../classjsonrpc_1_1client_1_1Client.html#a67b8d186492129150e24ab67180b336a',1,'jsonrpc::client::Client']]],
+  ['sendmethodcallasync_1',['SendMethodCallAsync',['../classjsonrpc_1_1client_1_1Client.html#a757845614dca361808c272f92f7ffcba',1,'jsonrpc::client::Client']]],
+  ['sendnotification_2',['SendNotification',['../classjsonrpc_1_1client_1_1Client.html#a23da9136a74834da7852d35af8d394c3',1,'jsonrpc::client::Client']]],
+  ['sendrequest_3',['SendRequest',['../classjsonrpc_1_1client_1_1transports_1_1ClientTransport.html#a2e68b86f1e54c2aa0aba2b547924eb38',1,'jsonrpc::client::transports::ClientTransport::SendRequest()'],['../classjsonrpc_1_1client_1_1transports_1_1FramedStdioClientTransport.html#a00b660a17a84f6f5ccd04939631e1eba',1,'jsonrpc::client::transports::FramedStdioClientTransport::SendRequest()'],['../classjsonrpc_1_1client_1_1transports_1_1StdioClientTransport.html#a3cfae4a619f8f8c662ea88119caf77bf',1,'jsonrpc::client::transports::StdioClientTransport::SendRequest()']]],
+  ['server_4',['Server',['../classjsonrpc_1_1server_1_1Server.html#a011bab8a6e8fac43cfecbc60b6187e9c',1,'jsonrpc::server::Server']]],
+  ['servertransport_5',['ServerTransport',['../classjsonrpc_1_1server_1_1transports_1_1ServerTransport.html#a5094518e2e9d6faa0faf8e3c618003b7',1,'jsonrpc::server::transports::ServerTransport']]],
+  ['setdispatcher_6',['SetDispatcher',['../classjsonrpc_1_1server_1_1transports_1_1ServerTransport.html#a2fddfc9b4014cdfb6042bc3ee9fffb5f',1,'jsonrpc::server::transports::ServerTransport']]],
+  ['start_7',['Start',['../classjsonrpc_1_1client_1_1Client.html#a24c4afc320a6e5951ca80908cab286f4',1,'jsonrpc::client::Client::Start()'],['../classjsonrpc_1_1server_1_1Server.html#a02556987956f30de5480fad7cd07d335',1,'jsonrpc::server::Server::Start()'],['../classjsonrpc_1_1server_1_1transports_1_1ServerTransport.html#a55fe158551fea18adf01e75a182f5dfd',1,'jsonrpc::server::transports::ServerTransport::Start()']]],
+  ['stop_8',['Stop',['../classjsonrpc_1_1client_1_1Client.html#abfad9508403f9eecfd2574fda00d70b8',1,'jsonrpc::client::Client::Stop()'],['../classjsonrpc_1_1server_1_1Server.html#a79dbe3ca28cd13ab385bedc620c5ec7f',1,'jsonrpc::server::Server::Stop()'],['../classjsonrpc_1_1server_1_1transports_1_1ServerTransport.html#a5f4ab4260051041575de1b6952aa4968',1,'jsonrpc::server::transports::ServerTransport::Stop()']]]
 ];
