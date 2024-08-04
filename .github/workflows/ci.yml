@@ -21,10 +21,10 @@ jobs:
         id: ccache
         with:
           path: ~/.cache/ccache
-          key: |
-            ${{ runner.os }}-ccache-${{ hashFiles('conanfile.py') }}-${{ hashFiles('CMakeLists.txt') }}-${{ hashFiles('CMakePresets.json') }}-${{ github.run_id }}
+          key: ${{ runner.os }}-ccache-${{ hashFiles('conanfile.py') }}-${{ hashFiles('CMakeLists.txt') }}-${{ hashFiles('CMakePresets.json') }}-${{ github.run_id }}
           restore-keys: |
-            ${{ runner.os }}-ccache-${{ hashFiles('conanfile.py') }}-${{ hashFiles('CMakeLists.txt') }}-${{ hashFiles('CMakePresets.json') }}
+            ${{ runner.os }}-ccache-${{ hashFiles('conanfile.py') }}-${{ hashFiles('CMakeLists.txt') }}-${{ hashFiles('CMakePresets.json') }}-
+            ${{ runner.os }}-ccache-
 
       - name: Setup Conan
         uses: hankhsu1996/setup-conan@v1
