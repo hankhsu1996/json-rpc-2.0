@@ -1,0 +1,16 @@
+# examples/BUILD
+
+cc_binary(
+    name = "stdio_client",
+    srcs = ["stdio_client.cpp"],
+    deps = ["//src:jsonrpc_lib"],
+)
+
+cc_binary(
+    name = "stdio_server",
+    srcs = [
+        "calculator.hpp",
+        "stdio_server.cpp",
+    ],
+    deps = ["//src:jsonrpc_lib"],
+)

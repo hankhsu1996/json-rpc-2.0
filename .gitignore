@@ -32,6 +32,19 @@ CTestTestfile.cmake
 Makefile
 build/
 
+# Bazel output directories
+bazel-*
+*.runfiles/
+*.log
+*.err
+*.out
+*.runfiles_manifest
+bazel-out/
+bazel-bin/
+bazel-testlogs/
+bazel-genfiles/
+bazel-*
+
 # Doxygen generated files
 docs/generated/
 

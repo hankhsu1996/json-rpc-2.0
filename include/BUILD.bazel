@@ -1,0 +1,5 @@
+filegroup(
+    name = "jsonrpc_headers",
+    srcs = glob(["jsonrpc/**/*.hpp"]),
+    visibility = ["//visibility:public"],
+)

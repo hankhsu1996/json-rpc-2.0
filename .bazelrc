@@ -1,0 +1,8 @@
+# .bazelrc
+
+# Set the C++ standard to C++17
+build --cxxopt='-std=c++17'
+
+# Enable warnings
+build --cxxopt='-Wall'
+build --cxxopt='-Wextra'

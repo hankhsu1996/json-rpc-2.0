@@ -60,12 +60,12 @@ TEST_CASE("Server method registration", "[server]") {
   Server server(std::move(transport));
 
   MethodCallHandler methodHandler =
-      [](const std::optional<nlohmann::json> &params) -> nlohmann::json {
+      [](const std::optional<nlohmann::json> &) -> nlohmann::json {
     return {{"result", "testMethod"}};
   };
 
   NotificationHandler notificationHandler =
-      [](const std::optional<nlohmann::json> &params) {};
+      [](const std::optional<nlohmann::json> &) {};
 
   REQUIRE_NOTHROW(server.RegisterMethodCall("testMethod", methodHandler));
   REQUIRE_NOTHROW(

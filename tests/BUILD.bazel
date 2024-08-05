@@ -1,0 +1,74 @@
+# tests/BUILD
+
+cc_test(
+    name = "test_client",
+    size = "small",
+    srcs = ["client/test_client.cpp"],
+    deps = [
+        "//src:jsonrpc_lib",
+        "@catch2//:catch2_main",
+    ],
+)
+
+cc_test(
+    name = "test_stdio_client_transport",
+    size = "small",
+    srcs = [
+        "client/transports/test_stdio_client_transport.cpp",
+        "common/test_utilities.hpp",
+    ],
+    deps = [
+        "//src:jsonrpc_lib",
+        "@catch2//:catch2_main",
+    ],
+)
+
+cc_test(
+    name = "test_dispatcher",
+    size = "small",
+    srcs = ["server/test_dispatcher.cpp"],
+    deps = [
+        "//src:jsonrpc_lib",
+        "@catch2//:catch2_main",
+    ],
+)
+
+cc_test(
+    name = "test_request",
+    size = "small",
+    srcs = ["server/test_request.cpp"],
+    deps = [
+        "//src:jsonrpc_lib",
+        "@catch2//:catch2_main",
+    ],
+)
+
+cc_test(
+    name = "test_response",
+    size = "small",
+    srcs = ["server/test_response.cpp"],
+    deps = [
+        "//src:jsonrpc_lib",
+        "@catch2//:catch2_main",
+    ],
+)
+
+cc_test(
+    name = "test_server",
+    size = "small",
+    srcs = ["server/test_server.cpp"],
+    deps = [
+        "//src:jsonrpc_lib",
+        "@catch2//:catch2_main",
+    ],
+)
+
+cc_test(
+    name = "test_framed_transport",
+    size = "small",
+    srcs = ["common/transports/test_framed_transport.cpp"],
+    deps = [
+        "//src:jsonrpc_lib",
+        "@catch2//:catch2_main",
+    ],
+)
