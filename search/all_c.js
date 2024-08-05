@@ -1,9 +1,13 @@
 var searchData=
 [
-  ['idispatcher_0',['IDispatcher',['../classjsonrpc_1_1server_1_1IDispatcher.html',1,'jsonrpc::server']]],
-  ['install_20dependencies_1',['Step 1: Install Dependencies',['../index.html#autotoc_md9',1,'']]],
-  ['internalerror_2',['InternalError',['../namespacejsonrpc_1_1server.html#a3a6b1c2136612377f6d9743b25b7409ca8462b58246e70e5c83e5b939a9332cb5',1,'jsonrpc::server']]],
-  ['invalidrequest_3',['InvalidRequest',['../namespacejsonrpc_1_1server.html#a3a6b1c2136612377f6d9743b25b7409cad544eb3da2f68d24cf92a8519ed53a31',1,'jsonrpc::server']]],
-  ['isrunning_4',['IsRunning',['../classjsonrpc_1_1server_1_1Server.html#a6c902b2c409b7a7e97835e3ff07565a5',1,'jsonrpc::server::Server::IsRunning()'],['../classjsonrpc_1_1server_1_1transports_1_1ServerTransport.html#a777d6dffaca6415218d9954e3ba54cdd',1,'jsonrpc::server::transports::ServerTransport::IsRunning()']]],
-  ['isrunning_5',['isRunning',['../classjsonrpc_1_1client_1_1Client.html#aa057c607e81e9c3a2da54cba7163513b',1,'jsonrpc::client::Client']]]
+  ['json_20rpc_202_200_20modern_20c_20library_0',['JSON-RPC 2.0 Modern C++ Library',['../index.html',1,'']]],
+  ['json_20rpc_20client_1',['Creating a JSON-RPC Client',['../index.html#autotoc_md8',1,'']]],
+  ['json_20rpc_20server_2',['Creating a JSON-RPC Server',['../index.html#autotoc_md7',1,'']]],
+  ['jsonrpc_3',['jsonrpc',['../namespacejsonrpc.html',1,'']]],
+  ['jsonrpc_3a_3aclient_4',['client',['../namespacejsonrpc_1_1client.html',1,'jsonrpc']]],
+  ['jsonrpc_3a_3aclient_3a_3atransports_5',['transports',['../namespacejsonrpc_1_1client_1_1transports.html',1,'jsonrpc::client']]],
+  ['jsonrpc_3a_3acommon_6',['common',['../namespacejsonrpc_1_1common.html',1,'jsonrpc']]],
+  ['jsonrpc_3a_3acommon_3a_3atransports_7',['transports',['../namespacejsonrpc_1_1common_1_1transports.html',1,'jsonrpc::common']]],
+  ['jsonrpc_3a_3aserver_8',['server',['../namespacejsonrpc_1_1server.html',1,'jsonrpc']]],
+  ['jsonrpc_3a_3aserver_3a_3atransports_9',['transports',['../namespacejsonrpc_1_1server_1_1transports.html',1,'jsonrpc::server']]]
 ];

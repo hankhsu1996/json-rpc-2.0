@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['operator_3d_0',['operator=',['../classjsonrpc_1_1server_1_1Response.html#a23e22f19c4eb504296bfa83f79659648',1,'jsonrpc::server::Response']]],
-  ['optional_3a_20debug_20configuration_1',['Optional: Debug Configuration',['../index.html#autotoc_md12',1,'']]]
+  ['parseerror_0',['ParseError',['../namespacejsonrpc_1_1server.html#a3a6b1c2136612377f6d9743b25b7409cae41199faa7290c167f70f314c5e6c165',1,'jsonrpc::server']]],
+  ['preferred_1',['Option 1: Using Bazel (Preferred)',['../index.html#autotoc_md10',1,'']]]
 ];

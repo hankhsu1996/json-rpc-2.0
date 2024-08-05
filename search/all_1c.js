@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['🛠️_20developer_20guide_0',['🛠️ Developer Guide',['../index.html#autotoc_md8',1,'']]]
+  ['🤝_20contributing_0',['🤝 Contributing',['../index.html#autotoc_md13',1,'']]]
 ];

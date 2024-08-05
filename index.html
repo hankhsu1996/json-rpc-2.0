@@ -128,7 +128,7 @@ $(function(){initNavTree('index.html',''); initResizable(true); });
 </ul>
 <h1><a class="anchor" id="autotoc_md2"></a>
 🚀 Getting Started</h1>
-<p>To include this library in your project, you can use either CMake's FetchContent module or Conan 2.</p>
+<p>To include this library in your project, you can use CMake's FetchContent, Conan 2, or Bazel.</p>
 <h2><a class="anchor" id="autotoc_md3"></a>
 Using CMake FetchContent</h2>
 <p>Add the following to your <code>CMakeLists.txt</code> to fetch the library:</p>
@@ -148,10 +148,13 @@ Using Conan 2</h2>
 <div class="line">[generators]</div>
 <div class="line">CMakeDeps</div>
 <div class="line">CMakeToolchain</div>
-</div><!-- fragment --><p>You can then install the dependencies using Conan 2 and configure your project with CMake.</p>
-<h1><a class="anchor" id="autotoc_md5"></a>
+</div><!-- fragment --><h2><a class="anchor" id="autotoc_md5"></a>
+Using Bazel</h2>
+<p>Add the following to your <code>MODULE.bazel</code> file:</p>
+<div class="fragment"><div class="line">bazel_dep(name = &quot;jsonrpc&quot;, version = &quot;1.0.0&quot;)</div>
+</div><!-- fragment --><h1><a class="anchor" id="autotoc_md6"></a>
 📖 Usage and Examples</h1>
-<h2><a class="anchor" id="autotoc_md6"></a>
+<h2><a class="anchor" id="autotoc_md7"></a>
 Creating a JSON-RPC Server</h2>
 <p>Here’s how to create a simple JSON-RPC server:</p>
 <div class="fragment"><div class="line"><span class="keyword">using namespace </span><a class="code hl_namespace" href="namespacejsonrpc_1_1server.html">jsonrpc::server</a>;</div>
@@ -178,7 +181,7 @@ Creating a JSON-RPC Server</h2>
 <div class="ttc" id="anamespacejsonrpc_1_1server_1_1transports_html"><div class="ttname"><a href="namespacejsonrpc_1_1server_1_1transports.html">jsonrpc::server::transports</a></div><div class="ttdef"><b>Definition</b> <a href="framed__stdio__server__transport_8hpp_source.html#l00010">framed_stdio_server_transport.hpp:10</a></div></div>
 <div class="ttc" id="anamespacejsonrpc_1_1server_html"><div class="ttname"><a href="namespacejsonrpc_1_1server.html">jsonrpc::server</a></div><div class="ttdef"><b>Definition</b> <a href="dispatcher_8hpp_source.html#l00016">dispatcher.hpp:16</a></div></div>
 </div><!-- fragment --><p>To register a method, you need to provide a function that takes optional <code>Json</code> parameters and returns a <code>Json</code> object containing either a <code>result</code> or <code>error</code> field. The <code>error</code> field must follow the JSON-RPC spec, including code and message. For simplicity, this library does not provide a more structured way to create error responses.</p>
-<h2><a class="anchor" id="autotoc_md7"></a>
+<h2><a class="anchor" id="autotoc_md8"></a>
 Creating a JSON-RPC Client</h2>
 <p>Here’s how to create a JSON-RPC client:</p>
 <div class="fragment"><div class="line"><span class="keyword">using namespace </span><a class="code hl_namespace" href="namespacejsonrpc_1_1client.html">jsonrpc::client</a>;</div>
@@ -200,23 +203,30 @@ Creating a JSON-RPC Client</h2>
 <div class="ttc" id="anamespacejsonrpc_1_1client_1_1transports_html"><div class="ttname"><a href="namespacejsonrpc_1_1client_1_1transports.html">jsonrpc::client::transports</a></div><div class="ttdef"><b>Definition</b> <a href="client__transport_8hpp_source.html#l00007">client_transport.hpp:7</a></div></div>
 <div class="ttc" id="anamespacejsonrpc_1_1client_html"><div class="ttname"><a href="namespacejsonrpc_1_1client.html">jsonrpc::client</a></div><div class="ttdef"><b>Definition</b> <a href="client_8hpp_source.html#l00020">client.hpp:20</a></div></div>
 </div><!-- fragment --><p>These examples demonstrate the basic usage of setting up a JSON-RPC server and client. For more examples and detailed usage, please refer to the <a href="./examples/">examples folder</a>.</p>
-<h1><a class="anchor" id="autotoc_md8"></a>
+<h1><a class="anchor" id="autotoc_md9"></a>
 🛠️ Developer Guide</h1>
-<p>To build and test the project, follow these steps:</p>
-<h2><a class="anchor" id="autotoc_md9"></a>
-Step 1: Install Dependencies</h2>
+<p>To build and test the project, follow these steps. Bazel is the preferred method.</p>
+<h2><a class="anchor" id="autotoc_md10"></a>
+Option 1: Using Bazel (Preferred)</h2>
+<p><b>Step 1: Build the Project</b></p>
+<p>Simply run:</p>
+<div class="fragment"><div class="line">bazel build //...</div>
+</div><!-- fragment --><p><b>Step 2: Run Tests</b></p>
+<p>To run all tests:</p>
+<div class="fragment"><div class="line">bazel test //...</div>
+</div><!-- fragment --><h2><a class="anchor" id="autotoc_md11"></a>
+Option 2: Using CMake and Conan</h2>
+<p><b>Step 1: Install Dependencies</b></p>
 <p>Ensure you have a Conan profile configured. If the default profile (<code>.conan2/profiles/default</code>) is missing, create it:</p>
 <div class="fragment"><div class="line">conan profile detect --force</div>
 </div><!-- fragment --><p>Next, install dependencies and generate <code>ConanPresets.json</code>:</p>
 <div class="fragment"><div class="line">conan install . --build=missing</div>
-</div><!-- fragment --><h2><a class="anchor" id="autotoc_md10"></a>
-Step 2: Configure and Build the Project</h2>
+</div><!-- fragment --><p><b>Step 2: Configure and Build the Project</b></p>
 <p>Use CMake presets to configure and build the project. Ensure CMake 3.19+ is installed.</p>
 <p>For Release configuration:</p>
 <div class="fragment"><div class="line">cmake --preset release</div>
 <div class="line">cmake --build --preset release</div>
-</div><!-- fragment --><h2><a class="anchor" id="autotoc_md11"></a>
-Step 3: Run Tests</h2>
+</div><!-- fragment --><p><b>Step 3: Run Tests</b></p>
 <p>Run tests using the appropriate CMake preset:</p>
 <div class="fragment"><div class="line">ctest --preset release</div>
 </div><!-- fragment --><h2><a class="anchor" id="autotoc_md12"></a>
@@ -226,16 +236,10 @@ Optional: Debug Configuration</h2>
 <div class="line">cmake --preset debug</div>
 <div class="line">cmake --build --preset debug</div>
 <div class="line">ctest --preset debug</div>
-</div><!-- fragment --><h2><a class="anchor" id="autotoc_md13"></a>
-Additional Notes</h2>
-<ul>
-<li>Execute commands from the top-level project directory.</li>
-<li>Presets handle configuration and build paths automatically.</li>
-</ul>
-<h1><a class="anchor" id="autotoc_md14"></a>
+</div><!-- fragment --><h1><a class="anchor" id="autotoc_md13"></a>
 🤝 Contributing</h1>
 <p>We welcome contributions! If you have suggestions or find any issues, feel free to open an issue or pull request.</p>
-<h1><a class="anchor" id="autotoc_md15"></a>
+<h1><a class="anchor" id="autotoc_md14"></a>
 📄 License</h1>
 <p>This project is licensed under the MIT License. See the <a href="./LICENSE">LICENSE</a> file for more details. </p>
 </div></div><!-- PageDoc -->
