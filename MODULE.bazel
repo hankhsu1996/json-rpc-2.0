@@ -1,0 +1,19 @@
+"""This is the MODULE.bazel file for the jsonrpc module."""
+
+module(
+    name = "jsonrpc",
+    version = "1.0.0",
+)
+
+# Register the rules_foreign_cc and rules_cc dependencies
+bazel_dep(name = "rules_foreign_cc", version = "0.11.1")
+bazel_dep(name = "rules_cc", version = "0.0.9")
+
+# Register the nlohmann_json dependency
+bazel_dep(name = "nlohmann_json", version = "3.11.3")
+
+# Register the spdlog dependency
+bazel_dep(name = "spdlog", version = "1.14.1")
+
+# Register the catch2 dependency
+bazel_dep(name = "catch2", version = "3.6.0")

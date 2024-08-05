@@ -9,7 +9,7 @@ on:
       - main
 
 jobs:
-  build-and-test:
+  build-and-test-cmake:
     runs-on: ubuntu-latest
 
     steps:
@@ -45,6 +45,28 @@ jobs:
 
       - name: Run tests
         run: ctest --preset release
+
+  build-and-test-bazel:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Bazel
+        uses: bazel-contrib/setup-bazel@0.8.5
+        with:
+          bazelisk-cache: true
+          disk-cache: ${{ github.workflow }}
+          repository-cache: true
+
+      - name: Build with Bazel
+        run: |
+          bazel build //...
+
+      - name: Test with Bazel
+        run: |
+          bazel test //...
 
   docs:
     runs-on: ubuntu-latest
