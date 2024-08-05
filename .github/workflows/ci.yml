@@ -48,7 +48,6 @@ jobs:
 
   build-and-test-bazel:
     runs-on: ubuntu-latest
-    name: Build and Test with Bazel
 
     steps:
       - name: Checkout code
