@@ -14,7 +14,7 @@ Welcome to the **JSON-RPC 2.0 Modern C++ Library**! This library provides a ligh
 
 ## 🚀 Getting Started
 
-To include this library in your project, you can use either CMake's FetchContent module or Conan 2.
+To include this library in your project, you can use CMake's FetchContent, Conan 2, or Bazel.
 
 ### Using CMake FetchContent
 
@@ -44,7 +44,13 @@ CMakeToolchain
 
 ```
 
-You can then install the dependencies using Conan 2 and configure your project with CMake.
+### Using Bazel
+
+Add the following to your `MODULE.bazel` file:
+
+```bazel
+bazel_dep(name = "jsonrpc", version = "1.0.0")
+```
 
 ## 📖 Usage and Examples
 
@@ -103,9 +109,29 @@ These examples demonstrate the basic usage of setting up a JSON-RPC server and c
 
 ## 🛠️ Developer Guide
 
-To build and test the project, follow these steps:
+To build and test the project, follow these steps. Bazel is the preferred method.
 
-### Step 1: Install Dependencies
+### Option 1: Using Bazel (Preferred)
+
+**Step 1: Build the Project**
+
+Simply run:
+
+```bash
+bazel build //...
+```
+
+**Step 2: Run Tests**
+
+To run all tests:
+
+```bash
+bazel test //...
+```
+
+### Option 2: Using CMake and Conan
+
+**Step 1: Install Dependencies**
 
 Ensure you have a Conan profile configured. If the default profile (`.conan2/profiles/default`) is missing, create it:
 
@@ -119,7 +145,7 @@ Next, install dependencies and generate `ConanPresets.json`:
 conan install . --build=missing
 ```
 
-### Step 2: Configure and Build the Project
+**Step 2: Configure and Build the Project**
 
 Use CMake presets to configure and build the project. Ensure CMake 3.19+ is installed.
 
@@ -130,7 +156,7 @@ cmake --preset release
 cmake --build --preset release
 ```
 
-### Step 3: Run Tests
+**Step 3: Run Tests**
 
 Run tests using the appropriate CMake preset:
 
@@ -148,11 +174,6 @@ cmake --preset debug
 cmake --build --preset debug
 ctest --preset debug
 ```
-
-### Additional Notes
-
-- Execute commands from the top-level project directory.
-- Presets handle configuration and build paths automatically.
 
 ## 🤝 Contributing
 
