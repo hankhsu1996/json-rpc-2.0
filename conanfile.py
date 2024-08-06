@@ -22,7 +22,7 @@ class JsonRpcConan(ConanFile):
 
     # Declare package dependencies
     requires = [
-        "nlohmann_json/3.11.2",
+        "nlohmann_json/3.11.3",
         "spdlog/1.14.1",
         "bshoshany-thread-pool/4.1.0"
     ]
