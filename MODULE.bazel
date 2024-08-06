@@ -15,5 +15,8 @@ bazel_dep(name = "nlohmann_json", version = "3.11.3")
 # Register the spdlog dependency
 bazel_dep(name = "spdlog", version = "1.14.1")
 
+# Register the asio dependency
+bazel_dep(name = "asio", version = "1.28.2")
+
 # Register the catch2 dependency
 bazel_dep(name = "catch2", version = "3.6.0")
