@@ -11,9 +11,6 @@ on:
 jobs:
   format-check:
     runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        path: [src, include, examples, tests]
 
     steps:
       - name: Checkout code
@@ -21,8 +18,6 @@ jobs:
 
       - name: Run clang-format
         uses: jidicula/clang-format-action@v4.13.0
-        with:
-          check-path: ${{ matrix.path }}
 
   build-and-test-cmake:
     runs-on: ubuntu-latest
