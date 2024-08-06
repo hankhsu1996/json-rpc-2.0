@@ -1,8 +1,8 @@
+#include "jsonrpc/transport/stdio_transport.hpp"
+
 #include <iostream>
 
 #include <spdlog/spdlog.h>
-
-#include "jsonrpc/transport/stdio_transport.hpp"
 
 namespace jsonrpc {
 namespace transport {
