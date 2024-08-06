@@ -17,8 +17,8 @@ int main() {
   spdlog::set_level(spdlog::level::debug);
   spdlog::flush_on(spdlog::level::debug);
 
-  std::string socket_path = "/tmp/calculator_pipe";
-  auto transport = std::make_unique<PipeTransport>(socket_path, false);
+  std::string socketPath = "/tmp/calculator_pipe";
+  auto transport = std::make_unique<PipeTransport>(socketPath, false);
   Client client(std::move(transport));
   client.Start();
 
