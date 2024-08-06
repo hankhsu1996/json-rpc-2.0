@@ -1,54 +1,25 @@
-#include <condition_variable>
-#include <future>
-#include <mutex>
-#include <queue>
-#include <string>
-#include <vector>
-
 #include <catch2/catch_test_macros.hpp>
 #include <catch2/matchers/catch_matchers_string.hpp>
 #include <fmt/core.h>
 #include <nlohmann/json.hpp>
 
 #include "jsonrpc/client/client.hpp"
-#include "jsonrpc/client/transports/client_transport.hpp"
+
+#include "../common/mock_transport.hpp"
 
 using namespace jsonrpc::client;
-using namespace jsonrpc::client::transports;
-
-class MockTransport : public ClientTransport {
-public:
-  std::vector<std::string> sentRequests;
-  std::queue<std::string> responses;
-
-  void SendRequest(const std::string &request) override {
-    sentRequests.push_back(request);
-  }
-
-  std::string ReadResponse() override {
-    if (responses.empty()) {
-      return "";
-    }
-    std::string response = responses.front();
-    responses.pop();
-    return response;
-  }
-
-  void SetResponse(const std::string &response) {
-    responses.push(response);
-  }
-};
+using namespace jsonrpc::transport;
 
 TEST_CASE("Client starts and stops correctly", "[Client]") {
   auto transport = std::make_unique<MockTransport>();
   Client client(std::move(transport));
 
   client.Start();
-  REQUIRE(client.isRunning() == true);
+  REQUIRE(client.IsRunning() == true);
   REQUIRE(client.HasPendingRequests() == false);
 
   client.Stop();
-  REQUIRE(client.isRunning() == false);
+  REQUIRE(client.IsRunning() == false);
 }
 
 TEST_CASE("Client handles responses correctly", "[Client]") {

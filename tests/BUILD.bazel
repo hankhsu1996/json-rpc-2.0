@@ -1,21 +1,26 @@
 # tests/BUILD
 
+# Client
 cc_test(
     name = "test_client",
     size = "small",
-    srcs = ["client/test_client.cpp"],
+    srcs = [
+        "client/test_client.cpp",
+        "common/mock_transport.hpp",
+    ],
     deps = [
         "//src:jsonrpc_lib",
         "@catch2//:catch2_main",
     ],
 )
 
+# Server
 cc_test(
-    name = "test_stdio_client_transport",
+    name = "test_server",
     size = "small",
     srcs = [
-        "client/transports/test_stdio_client_transport.cpp",
-        "common/test_utilities.hpp",
+        "common/mock_transport.hpp",
+        "server/test_server.cpp",
     ],
     deps = [
         "//src:jsonrpc_lib",
@@ -53,10 +58,14 @@ cc_test(
     ],
 )
 
+# Transport
 cc_test(
-    name = "test_server",
+    name = "test_stdio_transport",
     size = "small",
-    srcs = ["server/test_server.cpp"],
+    srcs = [
+        "common/test_utils.hpp",
+        "transports/test_stdio_transport.cpp",
+    ],
     deps = [
         "//src:jsonrpc_lib",
         "@catch2//:catch2_main",
@@ -66,7 +75,7 @@ cc_test(
 cc_test(
     name = "test_framed_transport",
     size = "small",
-    srcs = ["common/transports/test_framed_transport.cpp"],
+    srcs = ["transports/test_framed_transport.cpp"],
     deps = [
         "//src:jsonrpc_lib",
         "@catch2//:catch2_main",

@@ -9,6 +9,16 @@ on:
       - main
 
 jobs:
+  format-check:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Run clang-format
+        uses: jidicula/clang-format-action@v4.13.0
+
   build-and-test-cmake:
     runs-on: ubuntu-latest
 

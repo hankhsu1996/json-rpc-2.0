@@ -1,4 +1,4 @@
-#include "jsonrpc/common/transports/framed_transport.hpp"
+#include "jsonrpc/transport/framed_transport.hpp"
 
 #include <iostream>
 #include <sstream>
@@ -6,8 +6,7 @@
 #include <spdlog/spdlog.h>
 
 namespace jsonrpc {
-namespace common {
-namespace transports {
+namespace transport {
 
 void FramedTransport::FrameMessage(
     std::ostream &output, const std::string &message) {
@@ -71,6 +70,5 @@ std::string FramedTransport::DeframeMessage(std::istream &input) {
   return content;
 }
 
-} // namespace transports
-} // namespace common
+} // namespace transport
 } // namespace jsonrpc

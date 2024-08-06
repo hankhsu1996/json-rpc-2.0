@@ -2,12 +2,12 @@
 #include <memory>
 
 #include <jsonrpc/client/client.hpp>
-#include <jsonrpc/client/transports/stdio_client_transport.hpp>
+#include <jsonrpc/transport/stdio_transport.hpp>
 #include <nlohmann/json.hpp>
 #include <spdlog/sinks/basic_file_sink.h>
 #include <spdlog/spdlog.h>
 
-using namespace jsonrpc::client;
+using namespace jsonrpc;
 using Json = nlohmann::json;
 
 int main() {
@@ -16,8 +16,8 @@ int main() {
   spdlog::set_level(spdlog::level::debug);
   spdlog::flush_on(spdlog::level::debug);
 
-  auto transport = std::make_unique<transports::StdioClientTransport>();
-  Client client(std::move(transport));
+  auto transport = std::make_unique<transport::StdioTransport>();
+  client::Client client(std::move(transport));
   client.Start();
 
   Json addRes = client.SendMethodCall("add", Json({{"a", 10}, {"b", 5}}));

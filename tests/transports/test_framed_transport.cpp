@@ -3,9 +3,9 @@
 #include <catch2/catch_test_macros.hpp>
 #include <catch2/matchers/catch_matchers_string.hpp>
 
-#include "jsonrpc/common/transports/framed_transport.hpp"
+#include "jsonrpc/transport/framed_transport.hpp"
 
-using namespace jsonrpc::common::transports;
+using namespace jsonrpc::transport;
 
 class MockFramedTransport : public FramedTransport {
 public:

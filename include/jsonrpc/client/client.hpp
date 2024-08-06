@@ -14,7 +14,7 @@
 #include <nlohmann/json.hpp>
 
 #include "jsonrpc/client/request.hpp"
-#include "jsonrpc/client/transports/client_transport.hpp"
+#include "jsonrpc/transport/transport.hpp"
 
 namespace jsonrpc {
 namespace client {
@@ -33,7 +33,7 @@ public:
    * @param transport A unique pointer to a transport layer used for
    * communication.
    */
-  Client(std::unique_ptr<transports::ClientTransport> transport);
+  Client(std::unique_ptr<transport::Transport> transport);
 
   /// @brief Destructor.
   ~Client() = default;
@@ -60,7 +60,7 @@ public:
    *
    * @return True if the listener thread is running, false otherwise.
    */
-  bool isRunning() const;
+  bool IsRunning() const;
 
   /**
    * @brief Sends a JSON-RPC method call and waits for the response.
@@ -161,7 +161,7 @@ private:
   bool ValidateResponse(const nlohmann::json &response);
 
   /// Transport layer for communication.
-  std::unique_ptr<transports::ClientTransport> transport_;
+  std::unique_ptr<transport::Transport> transport_;
 
   /// Counter for generating unique request IDs.
   std::atomic<int> requestCounter_{0};
@@ -179,7 +179,7 @@ private:
   std::thread listenerThread_;
 
   /// Flag to control the running state of the listener thread.
-  std::atomic<bool> running_{true};
+  std::atomic<bool> running_{false};
 };
 
 } // namespace client

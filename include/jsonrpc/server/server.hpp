@@ -1,11 +1,12 @@
 #pragma once
 
+#include <atomic>
 #include <memory>
 #include <string>
 
 #include "jsonrpc/server/dispatcher.hpp"
-#include "jsonrpc/server/transports/server_transport.hpp"
 #include "jsonrpc/server/types.hpp"
+#include "jsonrpc/transport/transport.hpp"
 
 namespace jsonrpc {
 namespace server {
@@ -21,9 +22,10 @@ public:
   /**
    * @brief Constructs a Server with the specified transport.
    *
-   * @param transport A unique pointer to the ServerTransport for communication.
+   * @param transport A unique pointer to the transport layer to use for
+   * communication.
    */
-  Server(std::unique_ptr<transports::ServerTransport> transport);
+  Server(std::unique_ptr<transport::Transport> transport);
 
   /// @brief Starts the server to handle incoming JSON-RPC requests.
   void Start();
@@ -57,11 +59,17 @@ public:
   bool IsRunning() const;
 
 private:
-  /// @brief Dispatcher for routing requests to the appropriate handlers.
-  std::shared_ptr<Dispatcher> dispatcher_;
+  /// @brief Listens for incoming JSON-RPC requests and dispatches them.
+  void Listen();
 
-  /// @brief Transport layer for communication.
-  std::unique_ptr<transports::ServerTransport> transport_;
+  /// Dispatcher for routing requests to the appropriate handlers.
+  std::unique_ptr<Dispatcher> dispatcher_;
+
+  /// Transport layer for communication.
+  std::unique_ptr<transport::Transport> transport_;
+
+  /// Flag indicating if the server is running.
+  std::atomic<bool> running_{false};
 };
 
 } // namespace server

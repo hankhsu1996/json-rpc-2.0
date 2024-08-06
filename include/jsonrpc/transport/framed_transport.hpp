@@ -3,8 +3,7 @@
 #include <string>
 
 namespace jsonrpc {
-namespace common {
-namespace transports {
+namespace transport {
 
 /**
  * @brief Base class for framed transport mechanisms.
@@ -45,6 +44,5 @@ private:
   int parseContentLength(const std::string &header_value);
 };
 
-} // namespace transports
-} // namespace common
+} // namespace transport
 } // namespace jsonrpc

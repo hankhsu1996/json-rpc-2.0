@@ -10,6 +10,15 @@
       "cacheVariables": {
         "CMAKE_EXPORT_COMPILE_COMMANDS": "ON"
       }
+    },
+    {
+      "name": "debug",
+      "displayName": "Debug Config",
+      "description": "Debug configuration preset inheriting from conan-debug.",
+      "inherits": "conan-debug",
+      "cacheVariables": {
+        "CMAKE_EXPORT_COMPILE_COMMANDS": "ON"
+      }
     }
   ],
   "buildPresets": [
@@ -17,6 +26,11 @@
       "name": "release",
       "configurePreset": "release",
       "description": "Build the project using the Release configuration."
+    },
+    {
+      "name": "debug",
+      "configurePreset": "debug",
+      "description": "Build the project using the Debug configuration."
     }
   ],
   "testPresets": [
@@ -24,6 +38,14 @@
       "name": "release",
       "configurePreset": "release",
       "description": "Test the project using the Release configuration.",
+      "output": {
+        "outputOnFailure": true
+      }
+    },
+    {
+      "name": "debug",
+      "configurePreset": "debug",
+      "description": "Test the project using the Debug configuration.",
       "output": {
         "outputOnFailure": true
       }
