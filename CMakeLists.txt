@@ -39,5 +39,11 @@ target_link_libraries(stdio_client PRIVATE jsonrpc)
 add_executable(stdio_server examples/stdio_server.cpp)
 target_link_libraries(stdio_server PRIVATE jsonrpc)
 
+add_executable(pipe_client examples/pipe_client.cpp)
+target_link_libraries(pipe_client PRIVATE jsonrpc)
+
+add_executable(pipe_server examples/pipe_server.cpp)
+target_link_libraries(pipe_server PRIVATE jsonrpc)
+
 enable_testing()
 add_subdirectory(tests)
