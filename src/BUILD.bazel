@@ -6,6 +6,7 @@ cc_library(
     linkopts = ["-pthread"],
     visibility = ["//visibility:public"],
     deps = [
+        "@asio",
         "@nlohmann_json//:json",
         "@spdlog",
         "@thread_pool",
