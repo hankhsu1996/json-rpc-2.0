@@ -131,9 +131,9 @@ Collaboration diagram for jsonrpc::server::Server:</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a011bab8a6e8fac43cfecbc60b6187e9c" id="r_a011bab8a6e8fac43cfecbc60b6187e9c"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a011bab8a6e8fac43cfecbc60b6187e9c">Server</a> (std::unique_ptr&lt; <a class="el" href="classjsonrpc_1_1server_1_1transports_1_1ServerTransport.html">transports::ServerTransport</a> &gt; transport)</td></tr>
-<tr class="memdesc:a011bab8a6e8fac43cfecbc60b6187e9c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructs a <a class="el" href="classjsonrpc_1_1server_1_1Server.html" title="A JSON-RPC server for handling requests and notifications.">Server</a> with the specified transport.  <br /></td></tr>
-<tr class="separator:a011bab8a6e8fac43cfecbc60b6187e9c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6a0755ca19e216e23879d2e3a1eebc03" id="r_a6a0755ca19e216e23879d2e3a1eebc03"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a6a0755ca19e216e23879d2e3a1eebc03">Server</a> (std::unique_ptr&lt; <a class="el" href="classjsonrpc_1_1transport_1_1Transport.html">transport::Transport</a> &gt; transport)</td></tr>
+<tr class="memdesc:a6a0755ca19e216e23879d2e3a1eebc03"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructs a <a class="el" href="classjsonrpc_1_1server_1_1Server.html" title="A JSON-RPC server for handling requests and notifications.">Server</a> with the specified transport.  <br /></td></tr>
+<tr class="separator:a6a0755ca19e216e23879d2e3a1eebc03"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a02556987956f30de5480fad7cd07d335" id="r_a02556987956f30de5480fad7cd07d335"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a02556987956f30de5480fad7cd07d335">Start</a> ()</td></tr>
 <tr class="memdesc:a02556987956f30de5480fad7cd07d335"><td class="mdescLeft">&#160;</td><td class="mdescRight">Starts the server to handle incoming JSON-RPC requests.  <br /></td></tr>
 <tr class="separator:a02556987956f30de5480fad7cd07d335"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -154,10 +154,10 @@ Public Member Functions</h2></td></tr>
 <div class="textblock"><p>A JSON-RPC server for handling requests and notifications. </p>
 <p>Manages the lifecycle of a JSON-RPC server, including starting and stopping, and registering RPC methods and notifications. </p>
 
-<p class="definition">Definition at line <a class="el" href="server_8hpp_source.html#l00019">19</a> of file <a class="el" href="server_8hpp_source.html">server.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="server_8hpp_source.html#l00020">20</a> of file <a class="el" href="server_8hpp_source.html">server.hpp</a>.</p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
-<a id="a011bab8a6e8fac43cfecbc60b6187e9c" name="a011bab8a6e8fac43cfecbc60b6187e9c"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a011bab8a6e8fac43cfecbc60b6187e9c">&#9670;&#160;</a></span>Server()</h2>
+<a id="a6a0755ca19e216e23879d2e3a1eebc03" name="a6a0755ca19e216e23879d2e3a1eebc03"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6a0755ca19e216e23879d2e3a1eebc03">&#9670;&#160;</a></span>Server()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -165,7 +165,7 @@ Public Member Functions</h2></td></tr>
         <tr>
           <td class="memname">jsonrpc::server::Server::Server </td>
           <td>(</td>
-          <td class="paramtype">std::unique_ptr&lt; <a class="el" href="classjsonrpc_1_1server_1_1transports_1_1ServerTransport.html">transports::ServerTransport</a> &gt;</td>          <td class="paramname"><span class="paramname"><em>transport</em></span></td><td>)</td>
+          <td class="paramtype">std::unique_ptr&lt; <a class="el" href="classjsonrpc_1_1transport_1_1Transport.html">transport::Transport</a> &gt;</td>          <td class="paramname"><span class="paramname"><em>transport</em></span></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -174,17 +174,16 @@ Public Member Functions</h2></td></tr>
 <p>Constructs a <a class="el" href="classjsonrpc_1_1server_1_1Server.html" title="A JSON-RPC server for handling requests and notifications.">Server</a> with the specified transport. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">transport</td><td>A unique pointer to the ServerTransport for communication. </td></tr>
+    <tr><td class="paramname">transport</td><td>A unique pointer to the transport layer to use for communication. </td></tr>
   </table>
   </dd>
 </dl>
 
 <p class="definition">Definition at line <a class="el" href="server_8cpp_source.html#l00008">8</a> of file <a class="el" href="server_8cpp_source.html">server.cpp</a>.</p>
 <div class="fragment"><div class="line"><span class="lineno">    9</span>    : transport_(std::move(transport)) {</div>
-<div class="line"><span class="lineno">   10</span>  dispatcher_ = std::make_shared&lt;Dispatcher&gt;();</div>
-<div class="line"><span class="lineno">   11</span>  transport_-&gt;SetDispatcher(dispatcher_);</div>
-<div class="line"><span class="lineno">   12</span>  spdlog::info(<span class="stringliteral">&quot;Server initialized with transport&quot;</span>);</div>
-<div class="line"><span class="lineno">   13</span>}</div>
+<div class="line"><span class="lineno">   10</span>  dispatcher_ = std::make_unique&lt;Dispatcher&gt;();</div>
+<div class="line"><span class="lineno">   11</span>  spdlog::info(<span class="stringliteral">&quot;Server initialized with transport&quot;</span>);</div>
+<div class="line"><span class="lineno">   12</span>}</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -208,7 +207,7 @@ Public Member Functions</h2></td></tr>
 
 <p class="definition">Definition at line <a class="el" href="server_8cpp_source.html#l00025">25</a> of file <a class="el" href="server_8cpp_source.html">server.cpp</a>.</p>
 <div class="fragment"><div class="line"><span class="lineno">   25</span>                             {</div>
-<div class="line"><span class="lineno">   26</span>  <span class="keywordflow">return</span> transport_-&gt;IsRunning();</div>
+<div class="line"><span class="lineno">   26</span>  <span class="keywordflow">return</span> running_.load();</div>
 <div class="line"><span class="lineno">   27</span>}</div>
 </div><!-- fragment -->
 </div>
@@ -242,10 +241,10 @@ Public Member Functions</h2></td></tr>
 </dl>
 <dl class="section see"><dt>See also</dt><dd><a class="el" href="namespacejsonrpc_1_1server.html#ac8d637644941e15c78da445655e95444" title="Type alias for method call handler functions.">MethodCallHandler</a> for the signature of the handler function. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="server_8cpp_source.html#l00029">29</a> of file <a class="el" href="server_8cpp_source.html">server.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   30</span>                                                               {</div>
-<div class="line"><span class="lineno">   31</span>  dispatcher_-&gt;RegisterMethodCall(method, handler);</div>
-<div class="line"><span class="lineno">   32</span>}</div>
+<p class="definition">Definition at line <a class="el" href="server_8cpp_source.html#l00048">48</a> of file <a class="el" href="server_8cpp_source.html">server.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   49</span>                                                               {</div>
+<div class="line"><span class="lineno">   50</span>  dispatcher_-&gt;RegisterMethodCall(method, handler);</div>
+<div class="line"><span class="lineno">   51</span>}</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -278,10 +277,10 @@ Public Member Functions</h2></td></tr>
 </dl>
 <dl class="section see"><dt>See also</dt><dd><a class="el" href="namespacejsonrpc_1_1server.html#a4f43d4eeec1a7837e83fde5608e97495" title="Type alias for notification handler functions.">NotificationHandler</a> for the signature of the handler function. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="server_8cpp_source.html#l00034">34</a> of file <a class="el" href="server_8cpp_source.html">server.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   35</span>                                                                 {</div>
-<div class="line"><span class="lineno">   36</span>  dispatcher_-&gt;RegisterNotification(method, handler);</div>
-<div class="line"><span class="lineno">   37</span>}</div>
+<p class="definition">Definition at line <a class="el" href="server_8cpp_source.html#l00053">53</a> of file <a class="el" href="server_8cpp_source.html">server.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   54</span>                                                                 {</div>
+<div class="line"><span class="lineno">   55</span>  dispatcher_-&gt;RegisterNotification(method, handler);</div>
+<div class="line"><span class="lineno">   56</span>}</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -302,10 +301,11 @@ Public Member Functions</h2></td></tr>
 
 <p>Starts the server to handle incoming JSON-RPC requests. </p>
 
-<p class="definition">Definition at line <a class="el" href="server_8cpp_source.html#l00015">15</a> of file <a class="el" href="server_8cpp_source.html">server.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   15</span>                   {</div>
-<div class="line"><span class="lineno">   16</span>  spdlog::info(<span class="stringliteral">&quot;Server starting&quot;</span>);</div>
-<div class="line"><span class="lineno">   17</span>  transport_-&gt;Start();</div>
+<p class="definition">Definition at line <a class="el" href="server_8cpp_source.html#l00014">14</a> of file <a class="el" href="server_8cpp_source.html">server.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   14</span>                   {</div>
+<div class="line"><span class="lineno">   15</span>  spdlog::info(<span class="stringliteral">&quot;Server starting&quot;</span>);</div>
+<div class="line"><span class="lineno">   16</span>  running_.store(<span class="keyword">true</span>);</div>
+<div class="line"><span class="lineno">   17</span>  Listen();</div>
 <div class="line"><span class="lineno">   18</span>}</div>
 </div><!-- fragment -->
 </div>
@@ -330,7 +330,7 @@ Public Member Functions</h2></td></tr>
 <p class="definition">Definition at line <a class="el" href="server_8cpp_source.html#l00020">20</a> of file <a class="el" href="server_8cpp_source.html">server.cpp</a>.</p>
 <div class="fragment"><div class="line"><span class="lineno">   20</span>                  {</div>
 <div class="line"><span class="lineno">   21</span>  spdlog::info(<span class="stringliteral">&quot;Server stopping&quot;</span>);</div>
-<div class="line"><span class="lineno">   22</span>  transport_-&gt;Stop();</div>
+<div class="line"><span class="lineno">   22</span>  running_.store(<span class="keyword">false</span>);</div>
 <div class="line"><span class="lineno">   23</span>}</div>
 </div><!-- fragment -->
 </div>

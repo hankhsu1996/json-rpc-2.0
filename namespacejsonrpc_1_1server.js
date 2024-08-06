@@ -1,6 +1,5 @@
 var namespacejsonrpc_1_1server =
 [
-    [ "transports", "namespacejsonrpc_1_1server_1_1transports.html", "namespacejsonrpc_1_1server_1_1transports" ],
     [ "Dispatcher", "classjsonrpc_1_1server_1_1Dispatcher.html", "classjsonrpc_1_1server_1_1Dispatcher" ],
     [ "IDispatcher", "classjsonrpc_1_1server_1_1IDispatcher.html", "classjsonrpc_1_1server_1_1IDispatcher" ],
     [ "Request", "classjsonrpc_1_1server_1_1Request.html", "classjsonrpc_1_1server_1_1Request" ],

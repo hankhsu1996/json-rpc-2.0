@@ -1,5 +1,0 @@
-<map id="jsonrpc::server::transports::StdioServerTransport::Listen" name="jsonrpc::server::transports::StdioServerTransport::Listen">
-<area shape="rect" id="Node000001" title="Listens for incoming messages and dispatches them to the appropriate handlers." alt="" coords="5,5,217,45"/>
-<area shape="rect" id="Node000002" href="$classjsonrpc_1_1server_1_1transports_1_1ServerTransport.html#a777d6dffaca6415218d9954e3ba54cdd" title="Checks if the transport is running." alt="" coords="265,5,469,45"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="218,23,252,23,252,28,218,28"/>
-</map>

@@ -1,6 +1,6 @@
 var classjsonrpc_1_1server_1_1Server =
 [
-    [ "Server", "classjsonrpc_1_1server_1_1Server.html#a011bab8a6e8fac43cfecbc60b6187e9c", null ],
+    [ "Server", "classjsonrpc_1_1server_1_1Server.html#a6a0755ca19e216e23879d2e3a1eebc03", null ],
     [ "IsRunning", "classjsonrpc_1_1server_1_1Server.html#a6c902b2c409b7a7e97835e3ff07565a5", null ],
     [ "RegisterMethodCall", "classjsonrpc_1_1server_1_1Server.html#a0d555953f59dc176f334bcb9905f382e", null ],
     [ "RegisterNotification", "classjsonrpc_1_1server_1_1Server.html#a1d630d4f32a0ac5e37cc6c7f4715a0a0", null ],

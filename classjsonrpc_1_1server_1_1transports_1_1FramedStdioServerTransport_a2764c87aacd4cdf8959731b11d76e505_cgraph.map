@@ -1,9 +1,0 @@
-<map id="jsonrpc::server::transports::FramedStdioServerTransport::Listen" name="jsonrpc::server::transports::FramedStdioServerTransport::Listen">
-<area shape="rect" id="Node000001" title="Listens for incoming messages and dispatches them to the appropriate handlers." alt="" coords="5,62,220,117"/>
-<area shape="rect" id="Node000002" href="$classjsonrpc_1_1common_1_1transports_1_1FramedTransport.html#a053c8f7bbec2c7b8574e6bd00ab19ad3" title="Receives a framed message." alt="" coords="268,5,531,45"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="220,63,295,46,297,51,221,68"/>
-<area shape="rect" id="Node000003" href="$classjsonrpc_1_1common_1_1transports_1_1FramedTransport.html#a0ea2cd369dbb1e908469977008f8ecef" title="Constructs a framed message." alt="" coords="276,69,523,109"/>
-<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="220,87,262,87,262,92,220,92"/>
-<area shape="rect" id="Node000004" href="$classjsonrpc_1_1server_1_1transports_1_1ServerTransport.html#a777d6dffaca6415218d9954e3ba54cdd" title="Checks if the transport is running." alt="" coords="297,133,501,173"/>
-<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="221,111,297,128,295,133,220,116"/>
-</map>

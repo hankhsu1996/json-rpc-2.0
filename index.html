@@ -157,12 +157,11 @@ Using Bazel</h2>
 <h2><a class="anchor" id="autotoc_md7"></a>
 Creating a JSON-RPC Server</h2>
 <p>Here’s how to create a simple JSON-RPC server:</p>
-<div class="fragment"><div class="line"><span class="keyword">using namespace </span><a class="code hl_namespace" href="namespacejsonrpc_1_1server.html">jsonrpc::server</a>;</div>
-<div class="line"><span class="keyword">using namespace </span><a class="code hl_namespace" href="namespacejsonrpc_1_1server_1_1transports.html">jsonrpc::server::transports</a>;</div>
+<div class="fragment"><div class="line"><span class="keyword">using namespace </span><a class="code hl_namespace" href="namespacejsonrpc.html">jsonrpc</a>;</div>
 <div class="line"><span class="keyword">using </span>Json = nlohmann::json;</div>
 <div class="line"> </div>
 <div class="line"><span class="comment">// Create a server with an stdio transport</span></div>
-<div class="line"><a class="code hl_class" href="classjsonrpc_1_1server_1_1Server.html">Server</a> server(std::make_unique&lt;StdioServerTransport&gt;());</div>
+<div class="line"><a class="code hl_class" href="classjsonrpc_1_1server_1_1Server.html">server::Server</a> server(std::make_unique&lt;transport::StdioTransport&gt;());</div>
 <div class="line"> </div>
 <div class="line"><span class="comment">// Register a method named &quot;add&quot; that adds two numbers</span></div>
 <div class="line">server.RegisterMethodCall(<span class="stringliteral">&quot;add&quot;</span>, [](<span class="keyword">const</span> std::optional&lt;Json&gt; &amp;params) {</div>
@@ -177,20 +176,17 @@ Creating a JSON-RPC Server</h2>
 <div class="line"> </div>
 <div class="line"><span class="comment">// Start the server</span></div>
 <div class="line">server.Start();</div>
-<div class="ttc" id="aclassjsonrpc_1_1server_1_1Server_html"><div class="ttname"><a href="classjsonrpc_1_1server_1_1Server.html">jsonrpc::server::Server</a></div><div class="ttdoc">A JSON-RPC server for handling requests and notifications.</div><div class="ttdef"><b>Definition</b> <a href="server_8hpp_source.html#l00019">server.hpp:19</a></div></div>
-<div class="ttc" id="anamespacejsonrpc_1_1server_1_1transports_html"><div class="ttname"><a href="namespacejsonrpc_1_1server_1_1transports.html">jsonrpc::server::transports</a></div><div class="ttdef"><b>Definition</b> <a href="framed__stdio__server__transport_8hpp_source.html#l00010">framed_stdio_server_transport.hpp:10</a></div></div>
-<div class="ttc" id="anamespacejsonrpc_1_1server_html"><div class="ttname"><a href="namespacejsonrpc_1_1server.html">jsonrpc::server</a></div><div class="ttdef"><b>Definition</b> <a href="dispatcher_8hpp_source.html#l00016">dispatcher.hpp:16</a></div></div>
+<div class="ttc" id="aclassjsonrpc_1_1server_1_1Server_html"><div class="ttname"><a href="classjsonrpc_1_1server_1_1Server.html">jsonrpc::server::Server</a></div><div class="ttdoc">A JSON-RPC server for handling requests and notifications.</div><div class="ttdef"><b>Definition</b> <a href="server_8hpp_source.html#l00020">server.hpp:20</a></div></div>
+<div class="ttc" id="anamespacejsonrpc_html"><div class="ttname"><a href="namespacejsonrpc.html">jsonrpc</a></div><div class="ttdef"><b>Definition</b> <a href="client_8hpp_source.html#l00019">client.hpp:19</a></div></div>
 </div><!-- fragment --><p>To register a method, you need to provide a function that takes optional <code>Json</code> parameters and returns a <code>Json</code> object containing either a <code>result</code> or <code>error</code> field. The <code>error</code> field must follow the JSON-RPC spec, including code and message. For simplicity, this library does not provide a more structured way to create error responses.</p>
 <h2><a class="anchor" id="autotoc_md8"></a>
 Creating a JSON-RPC Client</h2>
 <p>Here’s how to create a JSON-RPC client:</p>
-<div class="fragment"><div class="line"><span class="keyword">using namespace </span><a class="code hl_namespace" href="namespacejsonrpc_1_1client.html">jsonrpc::client</a>;</div>
-<div class="line"><span class="keyword">using namespace </span><a class="code hl_namespace" href="namespacejsonrpc_1_1client_1_1transports.html">jsonrpc::client::transports</a>;</div>
+<div class="fragment"><div class="line"><span class="keyword">using namespace </span><a class="code hl_namespace" href="namespacejsonrpc.html">jsonrpc</a>;</div>
 <div class="line"><span class="keyword">using </span>Json = nlohmann::json;</div>
 <div class="line"> </div>
 <div class="line"><span class="comment">// Create a client with an stdio transport</span></div>
-<div class="line"><span class="keyword">auto</span> transport = std::make_unique&lt;StdioClientTransport&gt;();</div>
-<div class="line"><a class="code hl_class" href="classjsonrpc_1_1client_1_1Client.html">Client</a> client(std::move(transport));</div>
+<div class="line"><a class="code hl_class" href="classjsonrpc_1_1client_1_1Client.html">client::Client</a> client(std::make_unique&lt;transport::StdioTransport&gt;());</div>
 <div class="line">client.Start();</div>
 <div class="line"> </div>
 <div class="line"><span class="comment">// Perform addition</span></div>
@@ -200,8 +196,6 @@ Creating a JSON-RPC Client</h2>
 <div class="line"><span class="comment">// Send stop notification</span></div>
 <div class="line">client.SendNotification(<span class="stringliteral">&quot;stop&quot;</span>);</div>
 <div class="ttc" id="aclassjsonrpc_1_1client_1_1Client_html"><div class="ttname"><a href="classjsonrpc_1_1client_1_1Client.html">jsonrpc::client::Client</a></div><div class="ttdoc">A JSON-RPC client for sending requests and receiving responses.</div><div class="ttdef"><b>Definition</b> <a href="client_8hpp_source.html#l00028">client.hpp:28</a></div></div>
-<div class="ttc" id="anamespacejsonrpc_1_1client_1_1transports_html"><div class="ttname"><a href="namespacejsonrpc_1_1client_1_1transports.html">jsonrpc::client::transports</a></div><div class="ttdef"><b>Definition</b> <a href="client__transport_8hpp_source.html#l00007">client_transport.hpp:7</a></div></div>
-<div class="ttc" id="anamespacejsonrpc_1_1client_html"><div class="ttname"><a href="namespacejsonrpc_1_1client.html">jsonrpc::client</a></div><div class="ttdef"><b>Definition</b> <a href="client_8hpp_source.html#l00020">client.hpp:20</a></div></div>
 </div><!-- fragment --><p>These examples demonstrate the basic usage of setting up a JSON-RPC server and client. For more examples and detailed usage, please refer to the <a href="./examples/">examples folder</a>.</p>
 <h1><a class="anchor" id="autotoc_md9"></a>
 🛠️ Developer Guide</h1>
@@ -232,7 +226,7 @@ Option 2: Using CMake and Conan</h2>
 </div><!-- fragment --><h2><a class="anchor" id="autotoc_md12"></a>
 Optional: Debug Configuration</h2>
 <p>For Debug configuration:</p>
-<div class="fragment"><div class="line">conan install . -s build_type=Debug</div>
+<div class="fragment"><div class="line">conan install . -s build_type=Debug --build=missing</div>
 <div class="line">cmake --preset debug</div>
 <div class="line">cmake --build --preset debug</div>
 <div class="line">ctest --preset debug</div>

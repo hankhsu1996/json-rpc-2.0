@@ -1,0 +1,5 @@
+<map id="jsonrpc::transport::FramedStdioTransport::ReceiveMessage" name="jsonrpc::transport::FramedStdioTransport::ReceiveMessage">
+<area shape="rect" id="Node000001" title="Receives a message from the transport layer." alt="" coords="5,5,177,60"/>
+<area shape="rect" id="Node000002" href="$classjsonrpc_1_1transport_1_1FramedTransport.html#a1a171b8d52be191fb7e2f7141077d43c" title="Receives a framed message." alt="" coords="225,5,429,60"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="178,30,212,30,212,35,178,35"/>
+</map>
