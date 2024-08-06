@@ -169,7 +169,7 @@ ctest --preset release
 For Debug configuration:
 
 ```bash
-conan install . -s build_type=Debug
+conan install . -s build_type=Debug --build=missing
 cmake --preset debug
 cmake --build --preset debug
 ctest --preset debug
