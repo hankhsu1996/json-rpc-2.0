@@ -5,27 +5,27 @@
 namespace jsonrpc {
 namespace client {
 
-Client::Client(std::unique_ptr<transports::ClientTransport> transport)
+Client::Client(std::unique_ptr<transport::Transport> transport)
     : transport_(std::move(transport)) {
   spdlog::info("Initializing JSON-RPC client");
 }
 
 void Client::Start() {
   spdlog::info("Starting JSON-RPC client");
-  running_ = true;
+  running_.store(true);
   listenerThread_ = std::thread(&Client::Listener, this);
 }
 
 void Client::Stop() {
   spdlog::info("Stopping JSON-RPC client");
-  running_ = false;
+  running_.store(false);
   if (listenerThread_.joinable()) {
     listenerThread_.join();
   }
 }
 
-bool Client::isRunning() const {
-  return running_;
+bool Client::IsRunning() const {
+  return running_.load();
 }
 
 bool Client::HasPendingRequests() const {
@@ -36,7 +36,7 @@ bool Client::HasPendingRequests() const {
 void Client::Listener() {
   while (running_) {
     if (expectedResponses_ > 0) {
-      std::string response = transport_->ReadResponse();
+      std::string response = transport_->ReceiveMessage();
       HandleResponse(response);
       expectedResponses_--;
     }
@@ -61,7 +61,7 @@ void Client::SendNotification(
     const std::string &method, std::optional<nlohmann::json> params) {
   Request request(
       method, std::move(params), true, [this]() { return GetNextRequestId(); });
-  transport_->SendRequest(request.Dump());
+  transport_->SendMessage(request.Dump());
 }
 
 nlohmann::json Client::SendRequest(const Request &request) {
@@ -82,7 +82,7 @@ std::future<nlohmann::json> Client::SendRequestAsync(const Request &request) {
   }
   expectedResponses_++;
 
-  transport_->SendRequest(request.Dump());
+  transport_->SendMessage(request.Dump());
 
   return futureResponse;
 }

@@ -64,7 +64,7 @@ using namespace jsonrpc::server::transports;
 using Json = nlohmann::json;
 
 // Create a server with an stdio transport
-Server server(std::make_unique<StdioServerTransport>());
+Server server(std::make_unique<StdioTransport>());
 
 // Register a method named "add" that adds two numbers
 server.RegisterMethodCall("add", [](const std::optional<Json> &params) {
@@ -93,7 +93,7 @@ using namespace jsonrpc::client::transports;
 using Json = nlohmann::json;
 
 // Create a client with an stdio transport
-auto transport = std::make_unique<StdioClientTransport>();
+auto transport = std::make_unique<StdioTransport>();
 Client client(std::move(transport));
 client.Start();
 
