@@ -59,12 +59,11 @@ bazel_dep(name = "jsonrpc", version = "1.0.0")
 Here’s how to create a simple JSON-RPC server:
 
 ```cpp
-using namespace jsonrpc::server;
-using namespace jsonrpc::server::transports;
+using namespace jsonrpc;
 using Json = nlohmann::json;
 
 // Create a server with an stdio transport
-Server server(std::make_unique<StdioTransport>());
+server::Server server(std::make_unique<transport::StdioTransport>());
 
 // Register a method named "add" that adds two numbers
 server.RegisterMethodCall("add", [](const std::optional<Json> &params) {
@@ -88,13 +87,11 @@ To register a method, you need to provide a function that takes optional `Json` 
 Here’s how to create a JSON-RPC client:
 
 ```cpp
-using namespace jsonrpc::client;
-using namespace jsonrpc::client::transports;
+using namespace jsonrpc;
 using Json = nlohmann::json;
 
 // Create a client with an stdio transport
-auto transport = std::make_unique<StdioTransport>();
-Client client(std::move(transport));
+client::Client client(std::make_unique<transport::StdioTransport>());
 client.Start();
 
 // Perform addition
