@@ -14,7 +14,9 @@ void StdioTransport::SendMessage(const std::string &message) {
 
 std::string StdioTransport::ReceiveMessage() {
   std::string response;
-  std::getline(std::cin, response);
+  if (!std::getline(std::cin, response)) {
+    throw std::runtime_error("Failed to receive message");
+  }
   spdlog::debug("StdioTransport received response: {}", response);
   return response;
 }
