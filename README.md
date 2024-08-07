@@ -7,12 +7,18 @@ Welcome to the **JSON-RPC 2.0 Modern C++ Library**! This library provides a ligh
 ## ✨ Features
 
 - **Fully Compliant with JSON-RPC 2.0**: Supports method calls, notifications, comprehensive error handling, and batch requests.
-- **Modern and Lightweight**: Leverages C++17 features with minimal dependencies, focusing solely on the JSON-RPC protocol.
+- **Modern and Lightweight**: Leverages C++20 features with minimal dependencies, focusing solely on the JSON-RPC protocol.
 - **Transport-Agnostic**: Abstract transport layer allows use of provided implementations or custom ones.
 - **Simple JSON Integration**: Uses [nlohmann/json](https://github.com/nlohmann/json) for easy JSON object interaction, requiring no learning curve.
 - **Flexible Handler Registration**: Register handlers using `std::function`, supporting lambdas, function pointers, and other callable objects.
 
 ## 🚀 Getting Started
+
+### Prerequisites
+
+- **Compiler**: Any compiler with C++20 support.
+- **CMake**: Version 3.19+ (for CMake preset support).
+- **Bazel**: Version 5.0+ (for Bazel module support).
 
 To include this library in your project, you can use CMake's FetchContent, Conan 2, or Bazel.
 
@@ -59,11 +65,12 @@ bazel_dep(name = "jsonrpc", version = "1.0.0")
 Here’s how to create a simple JSON-RPC server:
 
 ```cpp
-using namespace jsonrpc;
+using namespace jsonrpc::server;
+using namespace jsonrpc::transport;
 using Json = nlohmann::json;
 
 // Create a server with an stdio transport
-server::Server server(std::make_unique<transport::StdioTransport>());
+Server server(std::make_unique<StdioTransport>());
 
 // Register a method named "add" that adds two numbers
 server.RegisterMethodCall("add", [](const std::optional<Json> &params) {
@@ -87,16 +94,17 @@ To register a method, you need to provide a function that takes optional `Json` 
 Here’s how to create a JSON-RPC client:
 
 ```cpp
-using namespace jsonrpc;
+using namespace jsonrpc::client;
+using namespace jsonrpc::transport;
 using Json = nlohmann::json;
 
-// Create a client with an stdio transport
-client::Client client(std::make_unique<transport::StdioTransport>());
+// Create a client with a standard I/O transport
+Client client(std::make_unique<StdioTransport>());
 client.Start();
 
 // Perform addition
 auto response = client.SendMethodCall("add", Json({{"a", 10}, {"b", 5}}));
-std::cout << "Add result: " << response.dump() << std::endl;
+spdlog::info("Add result: {}", response.dump());
 
 // Send stop notification
 client.SendNotification("stop");
@@ -140,6 +148,7 @@ Next, install dependencies and generate `ConanPresets.json`:
 
 ```bash
 conan install . --build=missing
+conan install . -s build_type=Debug --build=missing
 ```
 
 **Step 2: Configure and Build the Project**
@@ -166,7 +175,6 @@ ctest --preset release
 For Debug configuration:
 
 ```bash
-conan install . -s build_type=Debug --build=missing
 cmake --preset debug
 cmake --build --preset debug
 ctest --preset debug

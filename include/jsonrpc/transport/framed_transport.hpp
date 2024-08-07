@@ -1,17 +1,28 @@
 #pragma once
 
+#include <istream>
+#include <ostream>
 #include <string>
+#include <unordered_map>
 
 namespace jsonrpc {
 namespace transport {
 
+class FramedTransportTest;
+
 /**
  * @brief Base class for framed transport mechanisms.
  *
- * Provides basic functionality for sending and receiving framed messages.
+ * Provides modular functionality for sending and receiving framed messages.
  */
 class FramedTransport {
+  /// @brief A map of headers to their values.
+  using HeaderMap = std::unordered_map<std::string, std::string>;
+
 protected:
+  /// @brief The delimiter used to separate headers from the message content.
+  static constexpr const char *HEADER_DELIMITER = "\r\n\r\n";
+
   /**
    * @brief Constructs a framed message.
    *
@@ -23,6 +34,18 @@ protected:
    */
   void FrameMessage(std::ostream &output, const std::string &message);
 
+  HeaderMap ReadHeadersFromStream(std::istream &input);
+  int ReadContentLengthFromStream(std::istream &input);
+
+  /**
+   * @brief Reads content from the input stream based on the content length.
+   *
+   * @param input The input stream to read the content from.
+   * @param content_length The length of the content to be read.
+   * @return The content as a string.
+   */
+  std::string ReadContent(std::istream &input, int content_length);
+
   /**
    * @brief Receives a framed message.
    *
@@ -30,9 +53,9 @@ protected:
    * content based on that length.
    *
    * @param input The input stream to read the framed message.
-   * @return The received message.
+   * @return The received message content.
    */
-  std::string DeframeMessage(std::istream &input);
+  std::string ReceiveFramedMessage(std::istream &input);
 
 private:
   /**
@@ -41,7 +64,9 @@ private:
    * @param header_value The header value containing the content length.
    * @return The parsed content length.
    */
-  int parseContentLength(const std::string &header_value);
+  int ParseContentLength(const std::string &header_value);
+
+  friend class FramedTransportTest;
 };
 
 } // namespace transport

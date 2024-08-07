@@ -24,7 +24,8 @@ class JsonRpcConan(ConanFile):
     requires = [
         "nlohmann_json/3.11.3",
         "spdlog/1.14.1",
-        "bshoshany-thread-pool/4.1.0"
+        "bshoshany-thread-pool/4.1.0",
+        "asio/1.28.2"
     ]
 
     tool_requires = [

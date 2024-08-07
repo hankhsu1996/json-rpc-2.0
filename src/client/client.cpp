@@ -34,6 +34,7 @@ bool Client::HasPendingRequests() const {
 }
 
 void Client::Listener() {
+  spdlog::info("Starting JSON-RPC client listener thread");
   while (running_) {
     if (expectedResponses_ > 0) {
       std::string response = transport_->ReceiveMessage();

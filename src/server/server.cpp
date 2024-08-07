@@ -38,6 +38,9 @@ void Server::Listen() {
 
   while (IsRunning()) {
     std::string request = transport_->ReceiveMessage();
+    if (request.empty()) {
+      continue;
+    }
     std::optional<std::string> response = dispatcher_->DispatchRequest(request);
     if (response.has_value()) {
       transport_->SendMessage(response.value());

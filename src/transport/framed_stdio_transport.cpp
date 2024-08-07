@@ -17,7 +17,7 @@ void FramedStdioTransport::SendMessage(const std::string &message) {
 }
 
 std::string FramedStdioTransport::ReceiveMessage() {
-  std::string response = DeframeMessage(std::cin);
+  std::string response = ReceiveFramedMessage(std::cin);
   spdlog::debug("FramedStdioTransport received message: {}", response);
   return response;
 }
