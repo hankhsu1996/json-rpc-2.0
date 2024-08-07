@@ -26,43 +26,43 @@ asio::ip::tcp::socket &SocketTransport::GetSocket() {
 
 SocketTransport::~SocketTransport() {
   spdlog::info("Closing socket and shutting down SocketTransport.");
-  socket_.close();
+  std::error_code ec;
+  socket_.close(ec);
+  if (ec) {
+    spdlog::warn("Socket close error: {}", ec.message());
+  }
   ioContext_.stop();
 }
 
 void SocketTransport::Connect() {
-  try {
-    asio::ip::tcp::resolver resolver(ioContext_);
-    asio::ip::tcp::resolver::results_type endpoints =
-        resolver.resolve(host_, std::to_string(port_));
-    asio::steady_timer timer(ioContext_);
-    bool connected = false;
+  asio::ip::tcp::resolver resolver(ioContext_);
+  auto endpoints = resolver.resolve(host_, std::to_string(port_));
 
-    timer.expires_after(std::chrono::seconds(3)); // Set timeout duration
-    timer.async_wait([&](const asio::error_code &error) {
-      if (!error) {
-        socket_.close(); // Close the socket if the timer expires
-        spdlog::error("Connection attempt timed out after 3 seconds.");
-      }
-    });
+  asio::steady_timer timer(ioContext_);
+  timer.expires_after(std::chrono::seconds(3));
 
-    asio::async_connect(socket_, endpoints,
-        [&](const asio::error_code &error, const asio::ip::tcp::endpoint &) {
-          timer.cancel(); // Cancel the timer if connection succeeds
-          if (!error) {
-            connected = true;
-          }
-        });
+  std::error_code connectError;
+  asio::async_connect(socket_, endpoints,
+      [&](const asio::error_code &error, const asio::ip::tcp::endpoint &) {
+        if (!error) {
+          timer.cancel();
+        } else {
+          connectError = error;
+        }
+      });
 
-    ioContext_.run();
-
-    if (!connected) {
-      throw std::runtime_error(
-          "Failed to connect within the specified timeout.");
+  timer.async_wait([&](const asio::error_code &error) {
+    if (!error) {
+      connectError = asio::error::timed_out;
+      socket_.close();
     }
-  } catch (const std::exception &e) {
-    spdlog::error(
-        "Error connecting to {}:{}. Error: {}", host_, port_, e.what());
+  });
+
+  ioContext_.run();
+
+  if (connectError) {
+    spdlog::error("Error connecting to {}:{}. Error: {}", host_, port_,
+        connectError.message());
     throw std::runtime_error("Error connecting to socket");
   }
 }
@@ -84,11 +84,10 @@ void SocketTransport::BindAndListen() {
 
 void SocketTransport::SendMessage(const std::string &message) {
   try {
-    std::string fullMessage = message + "\n";
-    asio::write(socket_, asio::buffer(fullMessage));
+    asio::write(socket_, asio::buffer(message + "\n"));
     spdlog::debug("Sent message: {}", message);
   } catch (const std::exception &e) {
-    spdlog::error("Error sending message: {}", std::string(e.what()));
+    spdlog::error("Error sending message: {}", e.what());
     throw std::runtime_error("Error sending message");
   }
 }
