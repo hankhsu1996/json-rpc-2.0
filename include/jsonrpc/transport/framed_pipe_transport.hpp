@@ -6,7 +6,6 @@
 
 #include "jsonrpc/transport/framed_transport.hpp"
 #include "jsonrpc/transport/pipe_transport.hpp"
-#include "jsonrpc/transport/transport.hpp"
 
 namespace jsonrpc {
 namespace transport {

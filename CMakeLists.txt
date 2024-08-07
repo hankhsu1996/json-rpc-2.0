@@ -57,5 +57,11 @@ target_link_libraries(socket_client PRIVATE jsonrpc)
 add_executable(socket_server examples/socket_server.cpp)
 target_link_libraries(socket_server PRIVATE jsonrpc)
 
+add_executable(framed_socket_client examples/framed_socket_client.cpp)
+target_link_libraries(framed_socket_client PRIVATE jsonrpc)
+
+add_executable(framed_socket_server examples/framed_socket_server.cpp)
+target_link_libraries(framed_socket_server PRIVATE jsonrpc)
+
 enable_testing()
 add_subdirectory(tests)

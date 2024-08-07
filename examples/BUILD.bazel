@@ -63,3 +63,19 @@ cc_binary(
     ],
     deps = ["//src:jsonrpc_lib"],
 )
+
+# Framed socket examples
+cc_binary(
+    name = "framed_socket_client",
+    srcs = ["framed_socket_client.cpp"],
+    deps = ["//src:jsonrpc_lib"],
+)
+
+cc_binary(
+    name = "framed_socket_server",
+    srcs = [
+        "calculator.hpp",
+        "framed_socket_server.cpp",
+    ],
+    deps = ["//src:jsonrpc_lib"],
+)
