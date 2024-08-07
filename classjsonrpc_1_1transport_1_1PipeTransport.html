@@ -310,7 +310,7 @@ Here is the caller graph for this function:</div>
 <div class="line"><span class="lineno">   89</span>  } <span class="keywordflow">catch</span> (<span class="keyword">const</span> std::exception &amp;e) {</div>
 <div class="line"><span class="lineno">   90</span>    spdlog::error(<span class="stringliteral">&quot;Error receiving message: {}&quot;</span>, e.what());</div>
 <div class="line"><span class="lineno">   91</span>    socket_.close();</div>
-<div class="line"><span class="lineno">   92</span>    <span class="keywordflow">return</span> <span class="stringliteral">&quot;&quot;</span>;</div>
+<div class="line"><span class="lineno">   92</span>    <span class="keywordflow">throw</span> std::runtime_error(<span class="stringliteral">&quot;Error receiving message&quot;</span>);</div>
 <div class="line"><span class="lineno">   93</span>  }</div>
 <div class="line"><span class="lineno">   94</span>}</div>
 </div><!-- fragment -->

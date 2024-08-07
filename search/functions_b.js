@@ -4,5 +4,6 @@ var searchData=
   ['_7edispatcher_1',['~Dispatcher',['../classjsonrpc_1_1server_1_1Dispatcher.html#a06f263a5db1c20b2efd58201d192416a',1,'jsonrpc::server::Dispatcher']]],
   ['_7eidispatcher_2',['~IDispatcher',['../classjsonrpc_1_1server_1_1IDispatcher.html#a6c457e34287c3b86c26ce85ac2523042',1,'jsonrpc::server::IDispatcher']]],
   ['_7epipetransport_3',['~PipeTransport',['../classjsonrpc_1_1transport_1_1PipeTransport.html#a5c7bd1ca4068954b39ddf3752c5f6c3f',1,'jsonrpc::transport::PipeTransport']]],
-  ['_7etransport_4',['~Transport',['../classjsonrpc_1_1transport_1_1Transport.html#a41ecc943dcac4073f965983859f48f2a',1,'jsonrpc::transport::Transport']]]
+  ['_7esockettransport_4',['~SocketTransport',['../classjsonrpc_1_1transport_1_1SocketTransport.html#a8d7135d22ed9bbc94ddb80f09044d2de',1,'jsonrpc::transport::SocketTransport']]],
+  ['_7etransport_5',['~Transport',['../classjsonrpc_1_1transport_1_1Transport.html#a41ecc943dcac4073f965983859f48f2a',1,'jsonrpc::transport::Transport']]]
 ];

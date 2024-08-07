@@ -3,6 +3,7 @@ var hierarchy =
     [ "jsonrpc::client::Client", "classjsonrpc_1_1client_1_1Client.html", null ],
     [ "jsonrpc::transport::FramedTransport", "classjsonrpc_1_1transport_1_1FramedTransport.html", [
       [ "jsonrpc::transport::FramedPipeTransport", "classjsonrpc_1_1transport_1_1FramedPipeTransport.html", null ],
+      [ "jsonrpc::transport::FramedSocketTransport", "classjsonrpc_1_1transport_1_1FramedSocketTransport.html", null ],
       [ "jsonrpc::transport::FramedStdioTransport", "classjsonrpc_1_1transport_1_1FramedStdioTransport.html", null ]
     ] ],
     [ "jsonrpc::server::IDispatcher", "classjsonrpc_1_1server_1_1IDispatcher.html", [
@@ -16,6 +17,9 @@ var hierarchy =
       [ "jsonrpc::transport::FramedStdioTransport", "classjsonrpc_1_1transport_1_1FramedStdioTransport.html", null ],
       [ "jsonrpc::transport::PipeTransport", "classjsonrpc_1_1transport_1_1PipeTransport.html", [
         [ "jsonrpc::transport::FramedPipeTransport", "classjsonrpc_1_1transport_1_1FramedPipeTransport.html", null ]
+      ] ],
+      [ "jsonrpc::transport::SocketTransport", "classjsonrpc_1_1transport_1_1SocketTransport.html", [
+        [ "jsonrpc::transport::FramedSocketTransport", "classjsonrpc_1_1transport_1_1FramedSocketTransport.html", null ]
       ] ],
       [ "jsonrpc::transport::StdioTransport", "classjsonrpc_1_1transport_1_1StdioTransport.html", null ]
     ] ]

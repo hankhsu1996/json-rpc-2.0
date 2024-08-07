@@ -202,15 +202,15 @@ Additional Inherited Members</h2></td></tr>
 
 <p>Implements <a class="el" href="classjsonrpc_1_1transport_1_1Transport.html#aa02f960bcd5d4ebc69a017c1ac54e274">jsonrpc::transport::Transport</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="framed__stdio__transport_8cpp_source.html#l00019">19</a> of file <a class="el" href="framed__stdio__transport_8cpp_source.html">framed_stdio_transport.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   19</span>                                               {</div>
-<div class="line"><span class="lineno">   20</span>  std::string response = <a class="code hl_function" href="classjsonrpc_1_1transport_1_1FramedTransport.html#a0b49a8a146fa2d225751c4e97cdf3617">ReceiveFramedMessage</a>(std::cin);</div>
-<div class="line"><span class="lineno">   21</span>  spdlog::debug(<span class="stringliteral">&quot;FramedStdioTransport received message: {}&quot;</span>, response);</div>
-<div class="line"><span class="lineno">   22</span>  <span class="keywordflow">return</span> response;</div>
-<div class="line"><span class="lineno">   23</span>}</div>
-<div class="ttc" id="aclassjsonrpc_1_1transport_1_1FramedTransport_html_a0b49a8a146fa2d225751c4e97cdf3617"><div class="ttname"><a href="classjsonrpc_1_1transport_1_1FramedTransport.html#a0b49a8a146fa2d225751c4e97cdf3617">jsonrpc::transport::FramedTransport::ReceiveFramedMessage</a></div><div class="ttdeci">std::string ReceiveFramedMessage(std::istream &amp;input)</div><div class="ttdoc">Receives a framed message.</div><div class="ttdef"><b>Definition</b> <a href="framed__transport_8cpp_source.html#l00059">framed_transport.cpp:59</a></div></div>
+<p class="definition">Definition at line <a class="el" href="framed__stdio__transport_8cpp_source.html#l00016">16</a> of file <a class="el" href="framed__stdio__transport_8cpp_source.html">framed_stdio_transport.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   16</span>                                               {</div>
+<div class="line"><span class="lineno">   17</span>  std::string response = <a class="code hl_function" href="classjsonrpc_1_1transport_1_1FramedTransport.html#a0b49a8a146fa2d225751c4e97cdf3617">ReceiveFramedMessage</a>(std::cin);</div>
+<div class="line"><span class="lineno">   18</span>  spdlog::debug(<span class="stringliteral">&quot;FramedStdioTransport received message: {}&quot;</span>, response);</div>
+<div class="line"><span class="lineno">   19</span>  <span class="keywordflow">return</span> response;</div>
+<div class="line"><span class="lineno">   20</span>}</div>
+<div class="ttc" id="aclassjsonrpc_1_1transport_1_1FramedTransport_html_a0b49a8a146fa2d225751c4e97cdf3617"><div class="ttname"><a href="classjsonrpc_1_1transport_1_1FramedTransport.html#a0b49a8a146fa2d225751c4e97cdf3617">jsonrpc::transport::FramedTransport::ReceiveFramedMessage</a></div><div class="ttdeci">std::string ReceiveFramedMessage(std::istream &amp;input)</div><div class="ttdoc">Receives a framed message.</div><div class="ttdef"><b>Definition</b> <a href="framed__transport_8cpp_source.html#l00058">framed_transport.cpp:58</a></div></div>
 </div><!-- fragment -->
-<p class="reference">References <a class="el" href="framed__transport_8cpp_source.html#l00059">jsonrpc::transport::FramedTransport::ReceiveFramedMessage()</a>.</p>
+<p class="reference">References <a class="el" href="framed__transport_8cpp_source.html#l00058">jsonrpc::transport::FramedTransport::ReceiveFramedMessage()</a>.</p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -252,15 +252,15 @@ Here is the call graph for this function:</div>
 
 <p>Implements <a class="el" href="classjsonrpc_1_1transport_1_1Transport.html#a78b358aaff9eaf7e67a80245edb48034">jsonrpc::transport::Transport</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="framed__stdio__transport_8cpp_source.html#l00013">13</a> of file <a class="el" href="framed__stdio__transport_8cpp_source.html">framed_stdio_transport.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   13</span>                                                               {</div>
-<div class="line"><span class="lineno">   14</span>  spdlog::debug(<span class="stringliteral">&quot;FramedStdioTransport sending message: {}&quot;</span>, message);</div>
-<div class="line"><span class="lineno">   15</span>  <a class="code hl_function" href="classjsonrpc_1_1transport_1_1FramedTransport.html#ae5317dd37dd2638b8e7c013854719dec">FrameMessage</a>(std::cout, message);</div>
-<div class="line"><span class="lineno">   16</span>  std::cout &lt;&lt; std::flush;</div>
-<div class="line"><span class="lineno">   17</span>}</div>
-<div class="ttc" id="aclassjsonrpc_1_1transport_1_1FramedTransport_html_ae5317dd37dd2638b8e7c013854719dec"><div class="ttname"><a href="classjsonrpc_1_1transport_1_1FramedTransport.html#ae5317dd37dd2638b8e7c013854719dec">jsonrpc::transport::FramedTransport::FrameMessage</a></div><div class="ttdeci">void FrameMessage(std::ostream &amp;output, const std::string &amp;message)</div><div class="ttdoc">Constructs a framed message.</div><div class="ttdef"><b>Definition</b> <a href="framed__transport_8cpp_source.html#l00011">framed_transport.cpp:11</a></div></div>
+<p class="definition">Definition at line <a class="el" href="framed__stdio__transport_8cpp_source.html#l00010">10</a> of file <a class="el" href="framed__stdio__transport_8cpp_source.html">framed_stdio_transport.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   10</span>                                                               {</div>
+<div class="line"><span class="lineno">   11</span>  spdlog::debug(<span class="stringliteral">&quot;FramedStdioTransport sending message: {}&quot;</span>, message);</div>
+<div class="line"><span class="lineno">   12</span>  <a class="code hl_function" href="classjsonrpc_1_1transport_1_1FramedTransport.html#ae5317dd37dd2638b8e7c013854719dec">FrameMessage</a>(std::cout, message);</div>
+<div class="line"><span class="lineno">   13</span>  std::cout &lt;&lt; std::flush;</div>
+<div class="line"><span class="lineno">   14</span>}</div>
+<div class="ttc" id="aclassjsonrpc_1_1transport_1_1FramedTransport_html_ae5317dd37dd2638b8e7c013854719dec"><div class="ttname"><a href="classjsonrpc_1_1transport_1_1FramedTransport.html#ae5317dd37dd2638b8e7c013854719dec">jsonrpc::transport::FramedTransport::FrameMessage</a></div><div class="ttdeci">void FrameMessage(std::ostream &amp;output, const std::string &amp;message)</div><div class="ttdoc">Constructs a framed message.</div><div class="ttdef"><b>Definition</b> <a href="framed__transport_8cpp_source.html#l00010">framed_transport.cpp:10</a></div></div>
 </div><!-- fragment -->
-<p class="reference">References <a class="el" href="framed__transport_8cpp_source.html#l00011">jsonrpc::transport::FramedTransport::FrameMessage()</a>.</p>
+<p class="reference">References <a class="el" href="framed__transport_8cpp_source.html#l00010">jsonrpc::transport::FramedTransport::FrameMessage()</a>.</p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">

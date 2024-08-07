@@ -215,7 +215,7 @@ $(function(){initNavTree('pipe__transport_8cpp_source.html',''); initResizable(t
 <div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span>  } <span class="keywordflow">catch</span> (<span class="keyword">const</span> std::exception &amp;e) {</div>
 <div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span>    spdlog::error(<span class="stringliteral">&quot;Error receiving message: {}&quot;</span>, e.what());</div>
 <div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span>    socket_.close();</div>
-<div class="line"><a id="l00092" name="l00092"></a><span class="lineno">   92</span>    <span class="keywordflow">return</span> <span class="stringliteral">&quot;&quot;</span>;</div>
+<div class="line"><a id="l00092" name="l00092"></a><span class="lineno">   92</span>    <span class="keywordflow">throw</span> std::runtime_error(<span class="stringliteral">&quot;Error receiving message&quot;</span>);</div>
 <div class="line"><a id="l00093" name="l00093"></a><span class="lineno">   93</span>  }</div>
 <div class="line"><a id="l00094" name="l00094"></a><span class="lineno">   94</span>}</div>
 </div>
@@ -227,7 +227,7 @@ $(function(){initNavTree('pipe__transport_8cpp_source.html',''); initResizable(t
 <div class="ttc" id="aclassjsonrpc_1_1transport_1_1PipeTransport_html_a13906d1e26201cc4dc0ec7b6be25dd9b"><div class="ttname"><a href="classjsonrpc_1_1transport_1_1PipeTransport.html#a13906d1e26201cc4dc0ec7b6be25dd9b">jsonrpc::transport::PipeTransport::PipeTransport</a></div><div class="ttdeci">PipeTransport(const std::string &amp;socketPath, bool isServer)</div><div class="ttdoc">Constructs a PipeTransport.</div><div class="ttdef"><b>Definition</b> <a href="#l00011">pipe_transport.cpp:11</a></div></div>
 <div class="ttc" id="aclassjsonrpc_1_1transport_1_1PipeTransport_html_a4b0f65e701b07b346be6e481dde52337"><div class="ttname"><a href="classjsonrpc_1_1transport_1_1PipeTransport.html#a4b0f65e701b07b346be6e481dde52337">jsonrpc::transport::PipeTransport::ReceiveMessage</a></div><div class="ttdeci">std::string ReceiveMessage() override</div><div class="ttdoc">Receives a message from the transport layer.</div><div class="ttdef"><b>Definition</b> <a href="#l00080">pipe_transport.cpp:80</a></div></div>
 <div class="ttc" id="aclassjsonrpc_1_1transport_1_1PipeTransport_html_a5c7bd1ca4068954b39ddf3752c5f6c3f"><div class="ttname"><a href="classjsonrpc_1_1transport_1_1PipeTransport.html#a5c7bd1ca4068954b39ddf3752c5f6c3f">jsonrpc::transport::PipeTransport::~PipeTransport</a></div><div class="ttdeci">~PipeTransport()</div><div class="ttdef"><b>Definition</b> <a href="#l00028">pipe_transport.cpp:28</a></div></div>
-<div class="ttc" id="anamespacejsonrpc_html"><div class="ttname"><a href="namespacejsonrpc.html">jsonrpc</a></div><div class="ttdef"><b>Definition</b> <a href="client_8hpp_source.html#l00019">client.hpp:19</a></div></div>
+<div class="ttc" id="anamespacejsonrpc_html"><div class="ttname"><a href="namespacejsonrpc.html">jsonrpc</a></div><div class="ttdef"><b>Definition</b> <a href="client_8hpp_source.html#l00018">client.hpp:18</a></div></div>
 <div class="ttc" id="apipe__transport_8hpp_html"><div class="ttname"><a href="pipe__transport_8hpp.html">pipe_transport.hpp</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->

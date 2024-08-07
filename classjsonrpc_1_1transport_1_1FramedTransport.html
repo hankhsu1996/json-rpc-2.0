@@ -128,7 +128,7 @@ $(function(){initNavTree('classjsonrpc_1_1transport_1_1FramedTransport.html','')
 <div class="dynheader">
 Inheritance diagram for jsonrpc::transport::FramedTransport:</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="classjsonrpc_1_1transport_1_1FramedTransport__inherit__graph.svg" width="376" height="339"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="classjsonrpc_1_1transport_1_1FramedTransport__inherit__graph.svg" width="591" height="339"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 <div class="dynheader">
 Collaboration diagram for jsonrpc::transport::FramedTransport:</div>
@@ -206,19 +206,19 @@ Friends</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="framed__transport_8cpp_source.html#l00011">11</a> of file <a class="el" href="framed__transport_8cpp_source.html">framed_transport.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   12</span>                                                  {</div>
-<div class="line"><span class="lineno">   13</span>  output &lt;&lt; <span class="stringliteral">&quot;Content-Length: &quot;</span> &lt;&lt; message.size() &lt;&lt; <span class="stringliteral">&quot;\r\n&quot;</span></div>
-<div class="line"><span class="lineno">   14</span>         &lt;&lt; <span class="stringliteral">&quot;Content-Type: application/vscode-jsonrpc; charset=utf-8\r\n&quot;</span></div>
-<div class="line"><span class="lineno">   15</span>         &lt;&lt; <span class="stringliteral">&quot;\r\n&quot;</span></div>
-<div class="line"><span class="lineno">   16</span>         &lt;&lt; message;</div>
-<div class="line"><span class="lineno">   17</span>}</div>
+<p class="definition">Definition at line <a class="el" href="framed__transport_8cpp_source.html#l00010">10</a> of file <a class="el" href="framed__transport_8cpp_source.html">framed_transport.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   11</span>                                                  {</div>
+<div class="line"><span class="lineno">   12</span>  output &lt;&lt; <span class="stringliteral">&quot;Content-Length: &quot;</span> &lt;&lt; message.size() &lt;&lt; <span class="stringliteral">&quot;\r\n&quot;</span></div>
+<div class="line"><span class="lineno">   13</span>         &lt;&lt; <span class="stringliteral">&quot;Content-Type: application/vscode-jsonrpc; charset=utf-8\r\n&quot;</span></div>
+<div class="line"><span class="lineno">   14</span>         &lt;&lt; <span class="stringliteral">&quot;\r\n&quot;</span></div>
+<div class="line"><span class="lineno">   15</span>         &lt;&lt; message;</div>
+<div class="line"><span class="lineno">   16</span>}</div>
 </div><!-- fragment -->
-<p class="reference">Referenced by <a class="el" href="framed__pipe__transport_8cpp_source.html#l00018">jsonrpc::transport::FramedPipeTransport::SendMessage()</a>, and <a class="el" href="framed__stdio__transport_8cpp_source.html#l00013">jsonrpc::transport::FramedStdioTransport::SendMessage()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="framed__pipe__transport_8cpp_source.html#l00018">jsonrpc::transport::FramedPipeTransport::SendMessage()</a>, <a class="el" href="framed__socket__transport_8cpp_source.html#l00019">jsonrpc::transport::FramedSocketTransport::SendMessage()</a>, and <a class="el" href="framed__stdio__transport_8cpp_source.html#l00010">jsonrpc::transport::FramedStdioTransport::SendMessage()</a>.</p>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="classjsonrpc_1_1transport_1_1FramedTransport_ae5317dd37dd2638b8e7c013854719dec_icgraph.svg" width="478" height="144"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="classjsonrpc_1_1transport_1_1FramedTransport_ae5317dd37dd2638b8e7c013854719dec_icgraph.svg" width="488" height="223"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 
 </div>
@@ -260,17 +260,17 @@ Here is the caller graph for this function:</div>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>The content as a string. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="framed__transport_8cpp_source.html#l00049">49</a> of file <a class="el" href="framed__transport_8cpp_source.html">framed_transport.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   50</span>                                           {</div>
-<div class="line"><span class="lineno">   51</span>  std::string content(content_length, <span class="charliteral">&#39;\0&#39;</span>);</div>
-<div class="line"><span class="lineno">   52</span>  input.read(&amp;content[0], content_length);</div>
-<div class="line"><span class="lineno">   53</span>  <span class="keywordflow">if</span> (input.gcount() != content_length) {</div>
-<div class="line"><span class="lineno">   54</span>    <span class="keywordflow">throw</span> std::runtime_error(<span class="stringliteral">&quot;Failed to read the expected content length&quot;</span>);</div>
-<div class="line"><span class="lineno">   55</span>  }</div>
-<div class="line"><span class="lineno">   56</span>  <span class="keywordflow">return</span> content;</div>
-<div class="line"><span class="lineno">   57</span>}</div>
+<p class="definition">Definition at line <a class="el" href="framed__transport_8cpp_source.html#l00048">48</a> of file <a class="el" href="framed__transport_8cpp_source.html">framed_transport.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   49</span>                                           {</div>
+<div class="line"><span class="lineno">   50</span>  std::string content(content_length, <span class="charliteral">&#39;\0&#39;</span>);</div>
+<div class="line"><span class="lineno">   51</span>  input.read(&amp;content[0], content_length);</div>
+<div class="line"><span class="lineno">   52</span>  <span class="keywordflow">if</span> (input.gcount() != content_length) {</div>
+<div class="line"><span class="lineno">   53</span>    <span class="keywordflow">throw</span> std::runtime_error(<span class="stringliteral">&quot;Failed to read the expected content length&quot;</span>);</div>
+<div class="line"><span class="lineno">   54</span>  }</div>
+<div class="line"><span class="lineno">   55</span>  <span class="keywordflow">return</span> content;</div>
+<div class="line"><span class="lineno">   56</span>}</div>
 </div><!-- fragment -->
-<p class="reference">Referenced by <a class="el" href="framed__transport_8cpp_source.html#l00059">ReceiveFramedMessage()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="framed__transport_8cpp_source.html#l00058">ReceiveFramedMessage()</a>.</p>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
@@ -302,20 +302,20 @@ Here is the caller graph for this function:</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="framed__transport_8cpp_source.html#l00040">40</a> of file <a class="el" href="framed__transport_8cpp_source.html">framed_transport.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   40</span>                                                                  {</div>
-<div class="line"><span class="lineno">   41</span>  <span class="keyword">auto</span> headers = <a class="code hl_function" href="#adcfc8964bb8112eea2daaff3ac23d9cc">ReadHeadersFromStream</a>(input);</div>
-<div class="line"><span class="lineno">   42</span>  <span class="keyword">auto</span> it = headers.find(<span class="stringliteral">&quot;Content-Length&quot;</span>);</div>
-<div class="line"><span class="lineno">   43</span>  <span class="keywordflow">if</span> (it == headers.end()) {</div>
-<div class="line"><span class="lineno">   44</span>    <span class="keywordflow">throw</span> std::runtime_error(<span class="stringliteral">&quot;Content-Length header missing&quot;</span>);</div>
-<div class="line"><span class="lineno">   45</span>  }</div>
-<div class="line"><span class="lineno">   46</span>  <span class="keywordflow">return</span> ParseContentLength(it-&gt;second);</div>
-<div class="line"><span class="lineno">   47</span>}</div>
-<div class="ttc" id="aclassjsonrpc_1_1transport_1_1FramedTransport_html_adcfc8964bb8112eea2daaff3ac23d9cc"><div class="ttname"><a href="#adcfc8964bb8112eea2daaff3ac23d9cc">jsonrpc::transport::FramedTransport::ReadHeadersFromStream</a></div><div class="ttdeci">HeaderMap ReadHeadersFromStream(std::istream &amp;input)</div><div class="ttdef"><b>Definition</b> <a href="framed__transport_8cpp_source.html#l00019">framed_transport.cpp:19</a></div></div>
+<p class="definition">Definition at line <a class="el" href="framed__transport_8cpp_source.html#l00039">39</a> of file <a class="el" href="framed__transport_8cpp_source.html">framed_transport.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   39</span>                                                                  {</div>
+<div class="line"><span class="lineno">   40</span>  <span class="keyword">auto</span> headers = <a class="code hl_function" href="#adcfc8964bb8112eea2daaff3ac23d9cc">ReadHeadersFromStream</a>(input);</div>
+<div class="line"><span class="lineno">   41</span>  <span class="keyword">auto</span> it = headers.find(<span class="stringliteral">&quot;Content-Length&quot;</span>);</div>
+<div class="line"><span class="lineno">   42</span>  <span class="keywordflow">if</span> (it == headers.end()) {</div>
+<div class="line"><span class="lineno">   43</span>    <span class="keywordflow">throw</span> std::runtime_error(<span class="stringliteral">&quot;Content-Length header missing&quot;</span>);</div>
+<div class="line"><span class="lineno">   44</span>  }</div>
+<div class="line"><span class="lineno">   45</span>  <span class="keywordflow">return</span> ParseContentLength(it-&gt;second);</div>
+<div class="line"><span class="lineno">   46</span>}</div>
+<div class="ttc" id="aclassjsonrpc_1_1transport_1_1FramedTransport_html_adcfc8964bb8112eea2daaff3ac23d9cc"><div class="ttname"><a href="#adcfc8964bb8112eea2daaff3ac23d9cc">jsonrpc::transport::FramedTransport::ReadHeadersFromStream</a></div><div class="ttdeci">HeaderMap ReadHeadersFromStream(std::istream &amp;input)</div><div class="ttdef"><b>Definition</b> <a href="framed__transport_8cpp_source.html#l00018">framed_transport.cpp:18</a></div></div>
 </div><!-- fragment -->
-<p class="reference">References <a class="el" href="framed__transport_8cpp_source.html#l00019">ReadHeadersFromStream()</a>.</p>
+<p class="reference">References <a class="el" href="framed__transport_8cpp_source.html#l00018">ReadHeadersFromStream()</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="framed__transport_8cpp_source.html#l00059">ReceiveFramedMessage()</a>, and <a class="el" href="framed__pipe__transport_8cpp_source.html#l00039">jsonrpc::transport::FramedPipeTransport::ReceiveMessage()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="framed__transport_8cpp_source.html#l00058">ReceiveFramedMessage()</a>, <a class="el" href="framed__pipe__transport_8cpp_source.html#l00039">jsonrpc::transport::FramedPipeTransport::ReceiveMessage()</a>, and <a class="el" href="framed__socket__transport_8cpp_source.html#l00040">jsonrpc::transport::FramedSocketTransport::ReceiveMessage()</a>.</p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -324,7 +324,7 @@ Here is the call graph for this function:</div>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="classjsonrpc_1_1transport_1_1FramedTransport_abc9bb6673778ecab6c5b9f8d50d44574_icgraph.svg" width="708" height="144"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="classjsonrpc_1_1transport_1_1FramedTransport_abc9bb6673778ecab6c5b9f8d50d44574_icgraph.svg" width="708" height="223"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 
 </div>
@@ -352,31 +352,31 @@ Here is the caller graph for this function:</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="framed__transport_8cpp_source.html#l00019">19</a> of file <a class="el" href="framed__transport_8cpp_source.html">framed_transport.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   20</span>                       {</div>
-<div class="line"><span class="lineno">   21</span>  HeaderMap headers;</div>
-<div class="line"><span class="lineno">   22</span>  std::string line;</div>
-<div class="line"><span class="lineno">   23</span> </div>
-<div class="line"><span class="lineno">   24</span>  <span class="keywordflow">while</span> (std::getline(input, line) &amp;&amp; !line.empty() &amp;&amp; line != <span class="stringliteral">&quot;\r&quot;</span>) {</div>
-<div class="line"><span class="lineno">   25</span>    <span class="keyword">auto</span> colonPos = line.find(<span class="charliteral">&#39;:&#39;</span>);</div>
-<div class="line"><span class="lineno">   26</span>    <span class="keywordflow">if</span> (colonPos != std::string::npos) {</div>
-<div class="line"><span class="lineno">   27</span>      std::string header_key = <a class="code hl_function" href="namespacejsonrpc_1_1utils.html#a0f4ab48ccb12fe3cb75a70867a56214a">utils::trim</a>(line.substr(0, colonPos));</div>
-<div class="line"><span class="lineno">   28</span>      std::string header_value = <a class="code hl_function" href="namespacejsonrpc_1_1utils.html#a0f4ab48ccb12fe3cb75a70867a56214a">utils::trim</a>(line.substr(colonPos + 1));</div>
-<div class="line"><span class="lineno">   29</span>      headers[header_key] = header_value;</div>
-<div class="line"><span class="lineno">   30</span>    }</div>
-<div class="line"><span class="lineno">   31</span>  }</div>
-<div class="line"><span class="lineno">   32</span> </div>
-<div class="line"><span class="lineno">   33</span>  <span class="keywordflow">if</span> (headers.empty()) {</div>
-<div class="line"><span class="lineno">   34</span>    <span class="keywordflow">throw</span> std::runtime_error(<span class="stringliteral">&quot;Failed to read headers&quot;</span>);</div>
-<div class="line"><span class="lineno">   35</span>  }</div>
-<div class="line"><span class="lineno">   36</span> </div>
-<div class="line"><span class="lineno">   37</span>  <span class="keywordflow">return</span> headers;</div>
-<div class="line"><span class="lineno">   38</span>}</div>
-<div class="ttc" id="anamespacejsonrpc_1_1utils_html_a0f4ab48ccb12fe3cb75a70867a56214a"><div class="ttname"><a href="namespacejsonrpc_1_1utils.html#a0f4ab48ccb12fe3cb75a70867a56214a">jsonrpc::utils::trim</a></div><div class="ttdeci">std::string trim(std::string_view in)</div><div class="ttdef"><b>Definition</b> <a href="string__utils_8hpp_source.html#l00012">string_utils.hpp:12</a></div></div>
+<p class="definition">Definition at line <a class="el" href="framed__transport_8cpp_source.html#l00018">18</a> of file <a class="el" href="framed__transport_8cpp_source.html">framed_transport.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   19</span>                       {</div>
+<div class="line"><span class="lineno">   20</span>  HeaderMap headers;</div>
+<div class="line"><span class="lineno">   21</span>  std::string line;</div>
+<div class="line"><span class="lineno">   22</span> </div>
+<div class="line"><span class="lineno">   23</span>  <span class="keywordflow">while</span> (std::getline(input, line) &amp;&amp; !line.empty() &amp;&amp; line != <span class="stringliteral">&quot;\r&quot;</span>) {</div>
+<div class="line"><span class="lineno">   24</span>    <span class="keyword">auto</span> colonPos = line.find(<span class="charliteral">&#39;:&#39;</span>);</div>
+<div class="line"><span class="lineno">   25</span>    <span class="keywordflow">if</span> (colonPos != std::string::npos) {</div>
+<div class="line"><span class="lineno">   26</span>      std::string header_key = <a class="code hl_function" href="namespacejsonrpc_1_1utils.html#a0f4ab48ccb12fe3cb75a70867a56214a">utils::trim</a>(line.substr(0, colonPos));</div>
+<div class="line"><span class="lineno">   27</span>      std::string header_value = <a class="code hl_function" href="namespacejsonrpc_1_1utils.html#a0f4ab48ccb12fe3cb75a70867a56214a">utils::trim</a>(line.substr(colonPos + 1));</div>
+<div class="line"><span class="lineno">   28</span>      headers[header_key] = header_value;</div>
+<div class="line"><span class="lineno">   29</span>    }</div>
+<div class="line"><span class="lineno">   30</span>  }</div>
+<div class="line"><span class="lineno">   31</span> </div>
+<div class="line"><span class="lineno">   32</span>  <span class="keywordflow">if</span> (headers.empty()) {</div>
+<div class="line"><span class="lineno">   33</span>    <span class="keywordflow">throw</span> std::runtime_error(<span class="stringliteral">&quot;Failed to read headers&quot;</span>);</div>
+<div class="line"><span class="lineno">   34</span>  }</div>
+<div class="line"><span class="lineno">   35</span> </div>
+<div class="line"><span class="lineno">   36</span>  <span class="keywordflow">return</span> headers;</div>
+<div class="line"><span class="lineno">   37</span>}</div>
+<div class="ttc" id="anamespacejsonrpc_1_1utils_html_a0f4ab48ccb12fe3cb75a70867a56214a"><div class="ttname"><a href="namespacejsonrpc_1_1utils.html#a0f4ab48ccb12fe3cb75a70867a56214a">jsonrpc::utils::trim</a></div><div class="ttdeci">std::string trim(std::string_view in)</div><div class="ttdef"><b>Definition</b> <a href="string__utils_8hpp_source.html#l00011">string_utils.hpp:11</a></div></div>
 </div><!-- fragment -->
-<p class="reference">References <a class="el" href="string__utils_8hpp_source.html#l00012">jsonrpc::utils::trim()</a>.</p>
+<p class="reference">References <a class="el" href="string__utils_8hpp_source.html#l00011">jsonrpc::utils::trim()</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="framed__transport_8cpp_source.html#l00040">ReadContentLengthFromStream()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="framed__transport_8cpp_source.html#l00039">ReadContentLengthFromStream()</a>.</p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -385,7 +385,7 @@ Here is the call graph for this function:</div>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="classjsonrpc_1_1transport_1_1FramedTransport_adcfc8964bb8112eea2daaff3ac23d9cc_icgraph.svg" width="991" height="144"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="classjsonrpc_1_1transport_1_1FramedTransport_adcfc8964bb8112eea2daaff3ac23d9cc_icgraph.svg" width="991" height="223"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 
 </div>
@@ -423,17 +423,17 @@ Here is the caller graph for this function:</div>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>The received message content. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="framed__transport_8cpp_source.html#l00059">59</a> of file <a class="el" href="framed__transport_8cpp_source.html">framed_transport.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   59</span>                                                                 {</div>
-<div class="line"><span class="lineno">   60</span>  <span class="keywordtype">int</span> content_length = <a class="code hl_function" href="#abc9bb6673778ecab6c5b9f8d50d44574">ReadContentLengthFromStream</a>(input);</div>
-<div class="line"><span class="lineno">   61</span>  <span class="keywordflow">return</span> <a class="code hl_function" href="#ab3aa716415afe7fe695502cc47a30c82">ReadContent</a>(input, content_length);</div>
-<div class="line"><span class="lineno">   62</span>}</div>
-<div class="ttc" id="aclassjsonrpc_1_1transport_1_1FramedTransport_html_ab3aa716415afe7fe695502cc47a30c82"><div class="ttname"><a href="#ab3aa716415afe7fe695502cc47a30c82">jsonrpc::transport::FramedTransport::ReadContent</a></div><div class="ttdeci">std::string ReadContent(std::istream &amp;input, int content_length)</div><div class="ttdoc">Reads content from the input stream based on the content length.</div><div class="ttdef"><b>Definition</b> <a href="framed__transport_8cpp_source.html#l00049">framed_transport.cpp:49</a></div></div>
-<div class="ttc" id="aclassjsonrpc_1_1transport_1_1FramedTransport_html_abc9bb6673778ecab6c5b9f8d50d44574"><div class="ttname"><a href="#abc9bb6673778ecab6c5b9f8d50d44574">jsonrpc::transport::FramedTransport::ReadContentLengthFromStream</a></div><div class="ttdeci">int ReadContentLengthFromStream(std::istream &amp;input)</div><div class="ttdef"><b>Definition</b> <a href="framed__transport_8cpp_source.html#l00040">framed_transport.cpp:40</a></div></div>
+<p class="definition">Definition at line <a class="el" href="framed__transport_8cpp_source.html#l00058">58</a> of file <a class="el" href="framed__transport_8cpp_source.html">framed_transport.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   58</span>                                                                 {</div>
+<div class="line"><span class="lineno">   59</span>  <span class="keywordtype">int</span> content_length = <a class="code hl_function" href="#abc9bb6673778ecab6c5b9f8d50d44574">ReadContentLengthFromStream</a>(input);</div>
+<div class="line"><span class="lineno">   60</span>  <span class="keywordflow">return</span> <a class="code hl_function" href="#ab3aa716415afe7fe695502cc47a30c82">ReadContent</a>(input, content_length);</div>
+<div class="line"><span class="lineno">   61</span>}</div>
+<div class="ttc" id="aclassjsonrpc_1_1transport_1_1FramedTransport_html_ab3aa716415afe7fe695502cc47a30c82"><div class="ttname"><a href="#ab3aa716415afe7fe695502cc47a30c82">jsonrpc::transport::FramedTransport::ReadContent</a></div><div class="ttdeci">std::string ReadContent(std::istream &amp;input, int content_length)</div><div class="ttdoc">Reads content from the input stream based on the content length.</div><div class="ttdef"><b>Definition</b> <a href="framed__transport_8cpp_source.html#l00048">framed_transport.cpp:48</a></div></div>
+<div class="ttc" id="aclassjsonrpc_1_1transport_1_1FramedTransport_html_abc9bb6673778ecab6c5b9f8d50d44574"><div class="ttname"><a href="#abc9bb6673778ecab6c5b9f8d50d44574">jsonrpc::transport::FramedTransport::ReadContentLengthFromStream</a></div><div class="ttdeci">int ReadContentLengthFromStream(std::istream &amp;input)</div><div class="ttdef"><b>Definition</b> <a href="framed__transport_8cpp_source.html#l00039">framed_transport.cpp:39</a></div></div>
 </div><!-- fragment -->
-<p class="reference">References <a class="el" href="framed__transport_8cpp_source.html#l00049">ReadContent()</a>, and <a class="el" href="framed__transport_8cpp_source.html#l00040">ReadContentLengthFromStream()</a>.</p>
+<p class="reference">References <a class="el" href="framed__transport_8cpp_source.html#l00048">ReadContent()</a>, and <a class="el" href="framed__transport_8cpp_source.html#l00039">ReadContentLengthFromStream()</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="framed__stdio__transport_8cpp_source.html#l00019">jsonrpc::transport::FramedStdioTransport::ReceiveMessage()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="framed__stdio__transport_8cpp_source.html#l00016">jsonrpc::transport::FramedStdioTransport::ReceiveMessage()</a>.</p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -497,7 +497,7 @@ Here is the caller graph for this function:</div>
 
 <p class="definition">Definition at line <a class="el" href="framed__transport_8hpp_source.html#l00024">24</a> of file <a class="el" href="framed__transport_8hpp_source.html">framed_transport.hpp</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="framed__pipe__transport_8cpp_source.html#l00039">jsonrpc::transport::FramedPipeTransport::ReceiveMessage()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="framed__pipe__transport_8cpp_source.html#l00039">jsonrpc::transport::FramedPipeTransport::ReceiveMessage()</a>, and <a class="el" href="framed__socket__transport_8cpp_source.html#l00040">jsonrpc::transport::FramedSocketTransport::ReceiveMessage()</a>.</p>
 
 </div>
 </div>
