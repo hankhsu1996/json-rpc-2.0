@@ -1,11 +1,9 @@
 #include <memory>
-#include <string>
 
 #include <catch2/catch_test_macros.hpp>
 #include <nlohmann/json.hpp>
 
 #include "jsonrpc/server/server.hpp"
-#include "jsonrpc/transport/stdio_transport.hpp"
 
 #include "../common/mock_transport.hpp"
 

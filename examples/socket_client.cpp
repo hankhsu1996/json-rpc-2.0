@@ -1,4 +1,3 @@
-#include <iostream>
 #include <memory>
 
 #include <jsonrpc/client/client.hpp>
