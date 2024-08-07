@@ -12,16 +12,16 @@ namespace transport {
  * @brief Transport implementation using Unix domain sockets.
  *
  * This class provides transport functionality over Unix domain sockets,
- * allowing communication between processes on the same machine. It supports
- * both client and server modes.
+ * supporting both client and server modes for inter-process communication
+ * on the same machine.
  */
 class PipeTransport : public Transport {
 public:
   /**
    * @brief Constructs a PipeTransport.
    * @param socketPath Path to the Unix domain socket.
-   * @param isServer True if the transport acts as a server; otherwise, it acts
-   * as a client.
+   * @param isServer True if the transport acts as a server; false if it acts as
+   * a client.
    */
   PipeTransport(const std::string &socketPath, bool isServer);
 
@@ -29,6 +29,9 @@ public:
 
   void SendMessage(const std::string &message) override;
   std::string ReceiveMessage() override;
+
+protected:
+  asio::local::stream_protocol::socket &GetSocket();
 
 private:
   void RemoveExistingSocketFile();

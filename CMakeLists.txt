@@ -2,7 +2,7 @@ cmake_minimum_required(VERSION 3.19)
 project(jsonrpc VERSION 1.0.0 LANGUAGES CXX)
 
 # Set C++ standard
-set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED True)
 
 # Set C++ Compiler Launcher
@@ -44,6 +44,12 @@ target_link_libraries(pipe_client PRIVATE jsonrpc)
 
 add_executable(pipe_server examples/pipe_server.cpp)
 target_link_libraries(pipe_server PRIVATE jsonrpc)
+
+add_executable(framed_pipe_client examples/framed_pipe_client.cpp)
+target_link_libraries(framed_pipe_client PRIVATE jsonrpc)
+
+add_executable(framed_pipe_server examples/framed_pipe_server.cpp)
+target_link_libraries(framed_pipe_server PRIVATE jsonrpc)
 
 enable_testing()
 add_subdirectory(tests)

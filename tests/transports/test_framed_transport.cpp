@@ -1,4 +1,8 @@
+#include <iostream>
 #include <sstream>
+#include <stdexcept>
+#include <string>
+#include <unordered_map>
 
 #include <catch2/catch_test_macros.hpp>
 #include <catch2/matchers/catch_matchers_string.hpp>
@@ -7,79 +11,117 @@
 
 using namespace jsonrpc::transport;
 
-class MockFramedTransport : public FramedTransport {
+namespace jsonrpc {
+namespace transport {
+
+class FramedTransportTest : public FramedTransport {
 public:
-  using FramedTransport::DeframeMessage;
   using FramedTransport::FrameMessage;
+  using FramedTransport::ReadContent;
+  using FramedTransport::ReadContentLengthFromStream;
+  using FramedTransport::ReadHeadersFromStream;
+  using FramedTransport::ReceiveFramedMessage;
+
+  int TestParseContentLength(const std::string &header_value) {
+    return ParseContentLength(header_value);
+  }
 };
 
-TEST_CASE("FramedTransport frames a message correctly", "[FramedTransport]") {
-  std::ostringstream output;
-  std::string message = R"({"jsonrpc": "2.0", "method": "example"})";
+} // namespace transport
+} // namespace jsonrpc
 
-  MockFramedTransport transport;
+TEST_CASE("FramedTransport correctly frames a message", "[FramedTransport]") {
+  FramedTransportTest transport;
+  std::ostringstream output;
+  std::string message = R"({"jsonrpc":"2.0","method":"testMethod"})";
+
   transport.FrameMessage(output, message);
 
-  std::string expected_output =
+  std::string expectedOutput =
       "Content-Length: 39\r\n"
       "Content-Type: application/vscode-jsonrpc; charset=utf-8\r\n"
       "\r\n" +
       message;
 
-  REQUIRE(output.str() == expected_output);
+  REQUIRE(output.str() == expectedOutput);
 }
 
-TEST_CASE("FramedTransport deframes a message correctly", "[FramedTransport]") {
-  std::string framed_message =
-      "Content-Length: 39\r\n"
-      "Content-Type: application/vscode-jsonrpc; charset=utf-8\r\n"
-      "\r\n"
-      R"({"jsonrpc": "2.0", "method": "example"})";
-  std::istringstream input(framed_message);
+TEST_CASE("FramedTransport parses headers correctly", "[FramedTransport]") {
+  FramedTransportTest transport;
+  std::string headerString =
+      "Content-Length: 37\r\nContent-Type: "
+      "application/vscode-jsonrpc; charset=utf-8\r\n\r\n";
+  std::istringstream headerStream(headerString);
 
-  MockFramedTransport transport;
-  std::string message = transport.DeframeMessage(input);
+  auto headers = transport.ReadHeadersFromStream(headerStream);
 
-  REQUIRE(message == R"({"jsonrpc": "2.0", "method": "example"})");
+  REQUIRE(headers.size() == 2);
+  REQUIRE(headers["Content-Length"] == "37");
+  REQUIRE(
+      headers["Content-Type"] == "application/vscode-jsonrpc; charset=utf-8");
 }
 
-TEST_CASE("FramedTransport throws when Content-Length header is missing",
+TEST_CASE(
+    "FramedTransport returns correct content length", "[FramedTransport]") {
+  FramedTransportTest transport;
+  std::string headerString =
+      "Content-Length: 37\r\nContent-Type: "
+      "application/vscode-jsonrpc; charset=utf-8\r\n\r\n";
+  std::istringstream headerStream(headerString);
+
+  int contentLength = transport.ReadContentLengthFromStream(headerStream);
+
+  REQUIRE(contentLength == 37);
+}
+
+TEST_CASE("FramedTransport reads correct content", "[FramedTransport]") {
+  FramedTransportTest transport;
+  std::string content = R"({"jsonrpc":"2.0","method":"testMethod"})";
+  std::istringstream input(content);
+
+  std::string result = transport.ReadContent(input, content.size());
+
+  REQUIRE(result == content);
+}
+
+TEST_CASE(
+    "FramedTransport correctly receives framed message", "[FramedTransport]") {
+  FramedTransportTest transport;
+  std::string framedMessage =
+      "Content-Length: 39\r\nContent-Type: application/vscode-jsonrpc; "
+      "charset=utf-8\r\n\r\n"
+      R"({"jsonrpc":"2.0","method":"testMethod"})";
+  std::istringstream input(framedMessage);
+
+  std::string result = transport.ReceiveFramedMessage(input);
+
+  REQUIRE(result == R"({"jsonrpc":"2.0","method":"testMethod"})");
+}
+
+TEST_CASE("FramedTransport throws error on invalid content length",
     "[FramedTransport]") {
-  std::string framed_message =
-      "Content-Type: application/vscode-jsonrpc; charset=utf-8\r\n"
-      "\r\n"
-      R"({"jsonrpc": "2.0", "method": "example"})";
-  std::istringstream input(framed_message);
+  FramedTransportTest transport;
+  std::istringstream input("Content-Length: invalid\r\n\r\n");
 
-  MockFramedTransport transport;
-  REQUIRE_THROWS_WITH(
-      transport.DeframeMessage(input), "Content-Length header missing");
+  REQUIRE_THROWS_WITH(transport.ReadContentLengthFromStream(input),
+      "Invalid Content-Length value");
 }
 
-TEST_CASE("FramedTransport throws on invalid Content-Length value",
+TEST_CASE("FramedTransport throws error on missing Content-Length",
     "[FramedTransport]") {
-  std::string framed_message =
-      "Content-Length: abc\r\n"
-      "Content-Type: application/vscode-jsonrpc; charset=utf-8\r\n"
-      "\r\n"
-      R"({"jsonrpc": "2.0", "method": "example"})";
-  std::istringstream input(framed_message);
+  FramedTransportTest transport;
+  std::istringstream input(
+      "Content-Type: application/vscode-jsonrpc; charset=utf-8\r\n\r\n");
 
-  MockFramedTransport transport;
-  REQUIRE_THROWS_WITH(
-      transport.DeframeMessage(input), "Invalid Content-Length value");
+  REQUIRE_THROWS_WITH(transport.ReadContentLengthFromStream(input),
+      "Content-Length header missing");
 }
 
-TEST_CASE("FramedTransport throws when content read is incomplete",
+TEST_CASE("FramedTransport throws error on out of range content length",
     "[FramedTransport]") {
-  std::string framed_message =
-      "Content-Length: 50\r\n"
-      "Content-Type: application/vscode-jsonrpc; charset=utf-8\r\n"
-      "\r\n"
-      R"({"jsonrpc": "2.0", "method": "example"})";
-  std::istringstream input(framed_message);
+  FramedTransportTest transport;
+  std::istringstream input("Content-Length: 9999999999999999999999\r\n\r\n");
 
-  MockFramedTransport transport;
-  REQUIRE_THROWS_WITH(transport.DeframeMessage(input),
-      "Failed to read the expected content length");
+  REQUIRE_THROWS_WITH(transport.ReadContentLengthFromStream(input),
+      "Content-Length value out of range");
 }

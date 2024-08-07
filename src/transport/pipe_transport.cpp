@@ -21,6 +21,10 @@ PipeTransport::PipeTransport(const std::string &socketPath, bool isServer)
   }
 }
 
+asio::local::stream_protocol::socket &PipeTransport::GetSocket() {
+  return socket_;
+}
+
 PipeTransport::~PipeTransport() {
   spdlog::info("Closing socket and shutting down PipeTransport.");
   socket_.close();
@@ -69,6 +73,7 @@ void PipeTransport::SendMessage(const std::string &message) {
     spdlog::debug("Sent message: {}", message);
   } catch (const std::exception &e) {
     spdlog::error("Error sending message: {}", e.what());
+    throw std::runtime_error("Error sending message");
   }
 }
 

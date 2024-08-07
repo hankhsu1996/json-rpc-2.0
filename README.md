@@ -7,7 +7,7 @@ Welcome to the **JSON-RPC 2.0 Modern C++ Library**! This library provides a ligh
 ## ✨ Features
 
 - **Fully Compliant with JSON-RPC 2.0**: Supports method calls, notifications, comprehensive error handling, and batch requests.
-- **Modern and Lightweight**: Leverages C++17 features with minimal dependencies, focusing solely on the JSON-RPC protocol.
+- **Modern and Lightweight**: Leverages C++20 features with minimal dependencies, focusing solely on the JSON-RPC protocol.
 - **Transport-Agnostic**: Abstract transport layer allows use of provided implementations or custom ones.
 - **Simple JSON Integration**: Uses [nlohmann/json](https://github.com/nlohmann/json) for easy JSON object interaction, requiring no learning curve.
 - **Flexible Handler Registration**: Register handlers using `std::function`, supporting lambdas, function pointers, and other callable objects.
@@ -140,6 +140,7 @@ Next, install dependencies and generate `ConanPresets.json`:
 
 ```bash
 conan install . --build=missing
+conan install . -s build_type=Debug --build=missing
 ```
 
 **Step 2: Configure and Build the Project**
@@ -166,7 +167,6 @@ ctest --preset release
 For Debug configuration:
 
 ```bash
-conan install . -s build_type=Debug --build=missing
 cmake --preset debug
 cmake --build --preset debug
 ctest --preset debug

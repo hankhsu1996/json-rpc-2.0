@@ -5,8 +5,6 @@
 
 #include "jsonrpc/transport/pipe_transport.hpp"
 
-#include "../common/test_utils.hpp"
-
 TEST_CASE(
     "PipeTransport starts server and client communication", "[PipeTransport]") {
   std::string socketPath = "/tmp/test_socket";
