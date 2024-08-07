@@ -1,0 +1,10 @@
+<map id="include/jsonrpc/transport/pipe_transport.hpp" name="include/jsonrpc/transport/pipe_transport.hpp">
+<area shape="rect" id="Node000001" title=" " alt="" coords="29,5,211,45"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="5,93,83,119"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="104,47,67,85,63,81,100,44"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="164,167,223,192"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="125,45,133,80,148,117,174,155,170,158,143,120,128,81,120,46"/>
+<area shape="rect" id="Node000004" href="$transport_8hpp.html" title=" " alt="" coords="157,93,379,119"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="157,43,235,84,233,89,154,48"/>
+<area shape="poly" id="edge4_Node000004_Node000003" title=" " alt="" coords="258,121,217,159,214,155,254,117"/>
+</map>

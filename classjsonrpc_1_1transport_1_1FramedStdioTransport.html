@@ -126,12 +126,12 @@ $(function(){initNavTree('classjsonrpc_1_1transport_1_1FramedStdioTransport.html
 <div class="dynheader">
 Inheritance diagram for jsonrpc::transport::FramedStdioTransport:</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="classjsonrpc_1_1transport_1_1FramedStdioTransport__inherit__graph.svg" width="339" height="279"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="classjsonrpc_1_1transport_1_1FramedStdioTransport__inherit__graph.svg" width="432" height="319"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 <div class="dynheader">
 Collaboration diagram for jsonrpc::transport::FramedStdioTransport:</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="classjsonrpc_1_1transport_1_1FramedStdioTransport__coll__graph.svg" width="339" height="279"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="classjsonrpc_1_1transport_1_1FramedStdioTransport__coll__graph.svg" width="432" height="319"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
@@ -153,9 +153,20 @@ Additional Inherited Members</h2></td></tr>
 <tr class="memitem:ae5317dd37dd2638b8e7c013854719dec inherit pro_methods_classjsonrpc_1_1transport_1_1FramedTransport" id="r_ae5317dd37dd2638b8e7c013854719dec"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classjsonrpc_1_1transport_1_1FramedTransport.html#ae5317dd37dd2638b8e7c013854719dec">FrameMessage</a> (std::ostream &amp;output, const std::string &amp;message)</td></tr>
 <tr class="memdesc:ae5317dd37dd2638b8e7c013854719dec inherit pro_methods_classjsonrpc_1_1transport_1_1FramedTransport"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructs a framed message.  <br /></td></tr>
 <tr class="separator:ae5317dd37dd2638b8e7c013854719dec inherit pro_methods_classjsonrpc_1_1transport_1_1FramedTransport"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1a171b8d52be191fb7e2f7141077d43c inherit pro_methods_classjsonrpc_1_1transport_1_1FramedTransport" id="r_a1a171b8d52be191fb7e2f7141077d43c"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classjsonrpc_1_1transport_1_1FramedTransport.html#a1a171b8d52be191fb7e2f7141077d43c">DeframeMessage</a> (std::istream &amp;input)</td></tr>
-<tr class="memdesc:a1a171b8d52be191fb7e2f7141077d43c inherit pro_methods_classjsonrpc_1_1transport_1_1FramedTransport"><td class="mdescLeft">&#160;</td><td class="mdescRight">Receives a framed message.  <br /></td></tr>
-<tr class="separator:a1a171b8d52be191fb7e2f7141077d43c inherit pro_methods_classjsonrpc_1_1transport_1_1FramedTransport"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adcfc8964bb8112eea2daaff3ac23d9cc inherit pro_methods_classjsonrpc_1_1transport_1_1FramedTransport" id="r_adcfc8964bb8112eea2daaff3ac23d9cc"><td class="memItemLeft" align="right" valign="top">HeaderMap&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classjsonrpc_1_1transport_1_1FramedTransport.html#adcfc8964bb8112eea2daaff3ac23d9cc">ReadHeadersFromStream</a> (std::istream &amp;input)</td></tr>
+<tr class="separator:adcfc8964bb8112eea2daaff3ac23d9cc inherit pro_methods_classjsonrpc_1_1transport_1_1FramedTransport"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abc9bb6673778ecab6c5b9f8d50d44574 inherit pro_methods_classjsonrpc_1_1transport_1_1FramedTransport" id="r_abc9bb6673778ecab6c5b9f8d50d44574"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classjsonrpc_1_1transport_1_1FramedTransport.html#abc9bb6673778ecab6c5b9f8d50d44574">ReadContentLengthFromStream</a> (std::istream &amp;input)</td></tr>
+<tr class="separator:abc9bb6673778ecab6c5b9f8d50d44574 inherit pro_methods_classjsonrpc_1_1transport_1_1FramedTransport"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab3aa716415afe7fe695502cc47a30c82 inherit pro_methods_classjsonrpc_1_1transport_1_1FramedTransport" id="r_ab3aa716415afe7fe695502cc47a30c82"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classjsonrpc_1_1transport_1_1FramedTransport.html#ab3aa716415afe7fe695502cc47a30c82">ReadContent</a> (std::istream &amp;input, int content_length)</td></tr>
+<tr class="memdesc:ab3aa716415afe7fe695502cc47a30c82 inherit pro_methods_classjsonrpc_1_1transport_1_1FramedTransport"><td class="mdescLeft">&#160;</td><td class="mdescRight">Reads content from the input stream based on the content length.  <br /></td></tr>
+<tr class="separator:ab3aa716415afe7fe695502cc47a30c82 inherit pro_methods_classjsonrpc_1_1transport_1_1FramedTransport"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0b49a8a146fa2d225751c4e97cdf3617 inherit pro_methods_classjsonrpc_1_1transport_1_1FramedTransport" id="r_a0b49a8a146fa2d225751c4e97cdf3617"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classjsonrpc_1_1transport_1_1FramedTransport.html#a0b49a8a146fa2d225751c4e97cdf3617">ReceiveFramedMessage</a> (std::istream &amp;input)</td></tr>
+<tr class="memdesc:a0b49a8a146fa2d225751c4e97cdf3617 inherit pro_methods_classjsonrpc_1_1transport_1_1FramedTransport"><td class="mdescLeft">&#160;</td><td class="mdescRight">Receives a framed message.  <br /></td></tr>
+<tr class="separator:a0b49a8a146fa2d225751c4e97cdf3617 inherit pro_methods_classjsonrpc_1_1transport_1_1FramedTransport"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="inherit_header pro_static_attribs_classjsonrpc_1_1transport_1_1FramedTransport"><td colspan="2" onclick="javascript:dynsection.toggleInherit('pro_static_attribs_classjsonrpc_1_1transport_1_1FramedTransport')"><img src="closed.png" alt="-"/>&#160;Static Protected Attributes inherited from <a class="el" href="classjsonrpc_1_1transport_1_1FramedTransport.html">jsonrpc::transport::FramedTransport</a></td></tr>
+<tr class="memitem:a4f086f41f74009a02fd7851acd5e6c10 inherit pro_static_attribs_classjsonrpc_1_1transport_1_1FramedTransport" id="r_a4f086f41f74009a02fd7851acd5e6c10"><td class="memItemLeft" align="right" valign="top">static constexpr const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classjsonrpc_1_1transport_1_1FramedTransport.html#a4f086f41f74009a02fd7851acd5e6c10">HEADER_DELIMITER</a> = &quot;\r\n\r\n&quot;</td></tr>
+<tr class="memdesc:a4f086f41f74009a02fd7851acd5e6c10 inherit pro_static_attribs_classjsonrpc_1_1transport_1_1FramedTransport"><td class="mdescLeft">&#160;</td><td class="mdescRight">The delimiter used to separate headers from the message content.  <br /></td></tr>
+<tr class="separator:a4f086f41f74009a02fd7851acd5e6c10 inherit pro_static_attribs_classjsonrpc_1_1transport_1_1FramedTransport"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p><a class="el" href="classjsonrpc_1_1transport_1_1Transport.html" title="Base class for JSON-RPC transport.">Transport</a> layer using framed messaging over standard I/O for JSON-RPC communication. </p>
@@ -193,17 +204,17 @@ Additional Inherited Members</h2></td></tr>
 
 <p class="definition">Definition at line <a class="el" href="framed__stdio__transport_8cpp_source.html#l00019">19</a> of file <a class="el" href="framed__stdio__transport_8cpp_source.html">framed_stdio_transport.cpp</a>.</p>
 <div class="fragment"><div class="line"><span class="lineno">   19</span>                                               {</div>
-<div class="line"><span class="lineno">   20</span>  std::string response = <a class="code hl_function" href="classjsonrpc_1_1transport_1_1FramedTransport.html#a1a171b8d52be191fb7e2f7141077d43c">DeframeMessage</a>(std::cin);</div>
+<div class="line"><span class="lineno">   20</span>  std::string response = <a class="code hl_function" href="classjsonrpc_1_1transport_1_1FramedTransport.html#a0b49a8a146fa2d225751c4e97cdf3617">ReceiveFramedMessage</a>(std::cin);</div>
 <div class="line"><span class="lineno">   21</span>  spdlog::debug(<span class="stringliteral">&quot;FramedStdioTransport received message: {}&quot;</span>, response);</div>
 <div class="line"><span class="lineno">   22</span>  <span class="keywordflow">return</span> response;</div>
 <div class="line"><span class="lineno">   23</span>}</div>
-<div class="ttc" id="aclassjsonrpc_1_1transport_1_1FramedTransport_html_a1a171b8d52be191fb7e2f7141077d43c"><div class="ttname"><a href="classjsonrpc_1_1transport_1_1FramedTransport.html#a1a171b8d52be191fb7e2f7141077d43c">jsonrpc::transport::FramedTransport::DeframeMessage</a></div><div class="ttdeci">std::string DeframeMessage(std::istream &amp;input)</div><div class="ttdoc">Receives a framed message.</div><div class="ttdef"><b>Definition</b> <a href="framed__transport_8cpp_source.html#l00033">framed_transport.cpp:33</a></div></div>
+<div class="ttc" id="aclassjsonrpc_1_1transport_1_1FramedTransport_html_a0b49a8a146fa2d225751c4e97cdf3617"><div class="ttname"><a href="classjsonrpc_1_1transport_1_1FramedTransport.html#a0b49a8a146fa2d225751c4e97cdf3617">jsonrpc::transport::FramedTransport::ReceiveFramedMessage</a></div><div class="ttdeci">std::string ReceiveFramedMessage(std::istream &amp;input)</div><div class="ttdoc">Receives a framed message.</div><div class="ttdef"><b>Definition</b> <a href="framed__transport_8cpp_source.html#l00059">framed_transport.cpp:59</a></div></div>
 </div><!-- fragment -->
-<p class="reference">References <a class="el" href="framed__transport_8cpp_source.html#l00033">jsonrpc::transport::FramedTransport::DeframeMessage()</a>.</p>
+<p class="reference">References <a class="el" href="framed__transport_8cpp_source.html#l00059">jsonrpc::transport::FramedTransport::ReceiveFramedMessage()</a>.</p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="classjsonrpc_1_1transport_1_1FramedStdioTransport_ab895abe72713d7016b4cc59ba96c9ecc_cgraph.svg" width="435" height="66"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="classjsonrpc_1_1transport_1_1FramedStdioTransport_ab895abe72713d7016b4cc59ba96c9ecc_cgraph.svg" width="1179" height="131"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 
 </div>

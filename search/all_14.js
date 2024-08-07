@@ -4,5 +4,6 @@ var searchData=
   ['tostr_1',['ToStr',['../classjsonrpc_1_1server_1_1Response.html#af84d7e3f52456765a1cb4327a8c10c23',1,'jsonrpc::server::Response']]],
   ['transport_2',['Transport',['../classjsonrpc_1_1transport_1_1Transport.html',1,'jsonrpc::transport']]],
   ['transport_2ehpp_3',['transport.hpp',['../transport_8hpp.html',1,'']]],
-  ['types_2ehpp_4',['types.hpp',['../types_8hpp.html',1,'']]]
+  ['trim_4',['trim',['../namespacejsonrpc_1_1utils.html#a0f4ab48ccb12fe3cb75a70867a56214a',1,'jsonrpc::utils']]],
+  ['types_2ehpp_5',['types.hpp',['../types_8hpp.html',1,'']]]
 ];

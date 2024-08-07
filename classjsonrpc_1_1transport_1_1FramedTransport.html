@@ -114,6 +114,8 @@ $(function(){initNavTree('classjsonrpc_1_1transport_1_1FramedTransport.html','')
 <div class="header">
   <div class="summary">
 <a href="#pro-methods">Protected Member Functions</a> &#124;
+<a href="#pro-static-attribs">Static Protected Attributes</a> &#124;
+<a href="#friends">Friends</a> &#124;
 <a href="classjsonrpc_1_1transport_1_1FramedTransport-members.html">List of all members</a>  </div>
   <div class="headertitle"><div class="title">jsonrpc::transport::FramedTransport Class Reference</div></div>
 </div><!--header-->
@@ -126,12 +128,12 @@ $(function(){initNavTree('classjsonrpc_1_1transport_1_1FramedTransport.html','')
 <div class="dynheader">
 Inheritance diagram for jsonrpc::transport::FramedTransport:</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="classjsonrpc_1_1transport_1_1FramedTransport__inherit__graph.svg" width="175" height="259"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="classjsonrpc_1_1transport_1_1FramedTransport__inherit__graph.svg" width="376" height="339"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 <div class="dynheader">
 Collaboration diagram for jsonrpc::transport::FramedTransport:</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="classjsonrpc_1_1transport_1_1FramedTransport__coll__graph.svg" width="164" height="111"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="classjsonrpc_1_1transport_1_1FramedTransport__coll__graph.svg" width="258" height="171"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pro-methods" name="pro-methods"></a>
@@ -139,99 +141,34 @@ Protected Member Functions</h2></td></tr>
 <tr class="memitem:ae5317dd37dd2638b8e7c013854719dec" id="r_ae5317dd37dd2638b8e7c013854719dec"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae5317dd37dd2638b8e7c013854719dec">FrameMessage</a> (std::ostream &amp;output, const std::string &amp;message)</td></tr>
 <tr class="memdesc:ae5317dd37dd2638b8e7c013854719dec"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructs a framed message.  <br /></td></tr>
 <tr class="separator:ae5317dd37dd2638b8e7c013854719dec"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1a171b8d52be191fb7e2f7141077d43c" id="r_a1a171b8d52be191fb7e2f7141077d43c"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a1a171b8d52be191fb7e2f7141077d43c">DeframeMessage</a> (std::istream &amp;input)</td></tr>
-<tr class="memdesc:a1a171b8d52be191fb7e2f7141077d43c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Receives a framed message.  <br /></td></tr>
-<tr class="separator:a1a171b8d52be191fb7e2f7141077d43c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adcfc8964bb8112eea2daaff3ac23d9cc" id="r_adcfc8964bb8112eea2daaff3ac23d9cc"><td class="memItemLeft" align="right" valign="top">HeaderMap&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#adcfc8964bb8112eea2daaff3ac23d9cc">ReadHeadersFromStream</a> (std::istream &amp;input)</td></tr>
+<tr class="separator:adcfc8964bb8112eea2daaff3ac23d9cc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abc9bb6673778ecab6c5b9f8d50d44574" id="r_abc9bb6673778ecab6c5b9f8d50d44574"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#abc9bb6673778ecab6c5b9f8d50d44574">ReadContentLengthFromStream</a> (std::istream &amp;input)</td></tr>
+<tr class="separator:abc9bb6673778ecab6c5b9f8d50d44574"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab3aa716415afe7fe695502cc47a30c82" id="r_ab3aa716415afe7fe695502cc47a30c82"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab3aa716415afe7fe695502cc47a30c82">ReadContent</a> (std::istream &amp;input, int content_length)</td></tr>
+<tr class="memdesc:ab3aa716415afe7fe695502cc47a30c82"><td class="mdescLeft">&#160;</td><td class="mdescRight">Reads content from the input stream based on the content length.  <br /></td></tr>
+<tr class="separator:ab3aa716415afe7fe695502cc47a30c82"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0b49a8a146fa2d225751c4e97cdf3617" id="r_a0b49a8a146fa2d225751c4e97cdf3617"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a0b49a8a146fa2d225751c4e97cdf3617">ReceiveFramedMessage</a> (std::istream &amp;input)</td></tr>
+<tr class="memdesc:a0b49a8a146fa2d225751c4e97cdf3617"><td class="mdescLeft">&#160;</td><td class="mdescRight">Receives a framed message.  <br /></td></tr>
+<tr class="separator:a0b49a8a146fa2d225751c4e97cdf3617"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pro-static-attribs" name="pro-static-attribs"></a>
+Static Protected Attributes</h2></td></tr>
+<tr class="memitem:a4f086f41f74009a02fd7851acd5e6c10" id="r_a4f086f41f74009a02fd7851acd5e6c10"><td class="memItemLeft" align="right" valign="top">static constexpr const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a4f086f41f74009a02fd7851acd5e6c10">HEADER_DELIMITER</a> = &quot;\r\n\r\n&quot;</td></tr>
+<tr class="memdesc:a4f086f41f74009a02fd7851acd5e6c10"><td class="mdescLeft">&#160;</td><td class="mdescRight">The delimiter used to separate headers from the message content.  <br /></td></tr>
+<tr class="separator:a4f086f41f74009a02fd7851acd5e6c10"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="friends" name="friends"></a>
+Friends</h2></td></tr>
+<tr class="memitem:ab17de8da018257c556c0a31e0a05b16f" id="r_ab17de8da018257c556c0a31e0a05b16f"><td class="memItemLeft" align="right" valign="top">class&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab17de8da018257c556c0a31e0a05b16f">FramedTransportTest</a></td></tr>
+<tr class="separator:ab17de8da018257c556c0a31e0a05b16f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Base class for framed transport mechanisms. </p>
-<p>Provides basic functionality for sending and receiving framed messages. </p>
+<p>Provides modular functionality for sending and receiving framed messages. </p>
 
-<p class="definition">Definition at line <a class="el" href="framed__transport_8hpp_source.html#l00013">13</a> of file <a class="el" href="framed__transport_8hpp_source.html">framed_transport.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="framed__transport_8hpp_source.html#l00018">18</a> of file <a class="el" href="framed__transport_8hpp_source.html">framed_transport.hpp</a>.</p>
 </div><h2 class="groupheader">Member Function Documentation</h2>
-<a id="a1a171b8d52be191fb7e2f7141077d43c" name="a1a171b8d52be191fb7e2f7141077d43c"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a1a171b8d52be191fb7e2f7141077d43c">&#9670;&#160;</a></span>DeframeMessage()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">std::string jsonrpc::transport::FramedTransport::DeframeMessage </td>
-          <td>(</td>
-          <td class="paramtype">std::istream &amp;</td>          <td class="paramname"><span class="paramname"><em>input</em></span></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Receives a framed message. </p>
-<p>Reads headers to determine the content length, then reads the message content based on that length.</p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">input</td><td>The input stream to read the framed message. </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>The received message. </dd></dl>
-
-<p class="definition">Definition at line <a class="el" href="framed__transport_8cpp_source.html#l00033">33</a> of file <a class="el" href="framed__transport_8cpp_source.html">framed_transport.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   33</span>                                                           {</div>
-<div class="line"><span class="lineno">   34</span>  spdlog::info(<span class="stringliteral">&quot;FramedTransport deframing message&quot;</span>);</div>
-<div class="line"><span class="lineno">   35</span>  std::string line;</div>
-<div class="line"><span class="lineno">   36</span>  std::string headers;</div>
-<div class="line"><span class="lineno">   37</span>  <span class="keywordtype">int</span> content_length = 0;</div>
-<div class="line"><span class="lineno">   38</span>  <span class="keywordtype">bool</span> content_length_found = <span class="keyword">false</span>;</div>
-<div class="line"><span class="lineno">   39</span> </div>
-<div class="line"><span class="lineno">   40</span>  <span class="comment">// Read headers</span></div>
-<div class="line"><span class="lineno">   41</span>  <span class="keywordflow">while</span> (std::getline(input, line) &amp;&amp; !line.empty() &amp;&amp; line != <span class="stringliteral">&quot;\r&quot;</span>) {</div>
-<div class="line"><span class="lineno">   42</span>    headers += line + <span class="stringliteral">&quot;\n&quot;</span>;</div>
-<div class="line"><span class="lineno">   43</span>    std::istringstream line_stream(line);</div>
-<div class="line"><span class="lineno">   44</span>    std::string header_key;</div>
-<div class="line"><span class="lineno">   45</span>    <span class="keywordflow">if</span> (std::getline(line_stream, header_key, <span class="charliteral">&#39;:&#39;</span>)) {</div>
-<div class="line"><span class="lineno">   46</span>      std::string header_value;</div>
-<div class="line"><span class="lineno">   47</span>      <span class="keywordflow">if</span> (std::getline(line_stream &gt;&gt; std::ws, header_value)) {</div>
-<div class="line"><span class="lineno">   48</span>        spdlog::debug(<span class="stringliteral">&quot;Parsed header: {}: {}&quot;</span>, header_key, header_value);</div>
-<div class="line"><span class="lineno">   49</span>        <span class="keywordflow">if</span> (header_key == <span class="stringliteral">&quot;Content-Length&quot;</span>) {</div>
-<div class="line"><span class="lineno">   50</span>          content_length = parseContentLength(header_value);</div>
-<div class="line"><span class="lineno">   51</span>          content_length_found = <span class="keyword">true</span>;</div>
-<div class="line"><span class="lineno">   52</span>        }</div>
-<div class="line"><span class="lineno">   53</span>      }</div>
-<div class="line"><span class="lineno">   54</span>    }</div>
-<div class="line"><span class="lineno">   55</span>  }</div>
-<div class="line"><span class="lineno">   56</span> </div>
-<div class="line"><span class="lineno">   57</span>  <span class="keywordflow">if</span> (!content_length_found) {</div>
-<div class="line"><span class="lineno">   58</span>    spdlog::error(<span class="stringliteral">&quot;Content-Length header missing&quot;</span>);</div>
-<div class="line"><span class="lineno">   59</span>    <span class="keywordflow">throw</span> std::runtime_error(<span class="stringliteral">&quot;Content-Length header missing&quot;</span>);</div>
-<div class="line"><span class="lineno">   60</span>  }</div>
-<div class="line"><span class="lineno">   61</span> </div>
-<div class="line"><span class="lineno">   62</span>  <span class="comment">// Read content</span></div>
-<div class="line"><span class="lineno">   63</span>  spdlog::debug(</div>
-<div class="line"><span class="lineno">   64</span>      <span class="stringliteral">&quot;FramedTransport reading content of length: {}&quot;</span>, content_length);</div>
-<div class="line"><span class="lineno">   65</span>  std::string content(content_length, <span class="charliteral">&#39;\0&#39;</span>);</div>
-<div class="line"><span class="lineno">   66</span>  input.read(&amp;content[0], content_length);</div>
-<div class="line"><span class="lineno">   67</span>  <span class="keywordflow">if</span> (input.gcount() != content_length) {</div>
-<div class="line"><span class="lineno">   68</span>    <span class="keywordflow">throw</span> std::runtime_error(<span class="stringliteral">&quot;Failed to read the expected content length&quot;</span>);</div>
-<div class="line"><span class="lineno">   69</span>  }</div>
-<div class="line"><span class="lineno">   70</span>  <span class="keywordflow">return</span> content;</div>
-<div class="line"><span class="lineno">   71</span>}</div>
-</div><!-- fragment -->
-<p class="reference">Referenced by <a class="el" href="framed__stdio__transport_8cpp_source.html#l00019">jsonrpc::transport::FramedStdioTransport::ReceiveMessage()</a>.</p>
-<div class="dynheader">
-Here is the caller graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="classjsonrpc_1_1transport_1_1FramedTransport_a1a171b8d52be191fb7e2f7141077d43c_icgraph.svg" width="435" height="66"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
-</div>
-
-</div>
-</div>
 <a id="ae5317dd37dd2638b8e7c013854719dec" name="ae5317dd37dd2638b8e7c013854719dec"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ae5317dd37dd2638b8e7c013854719dec">&#9670;&#160;</a></span>FrameMessage()</h2>
 
@@ -271,19 +208,296 @@ Here is the caller graph for this function:</div>
 
 <p class="definition">Definition at line <a class="el" href="framed__transport_8cpp_source.html#l00011">11</a> of file <a class="el" href="framed__transport_8cpp_source.html">framed_transport.cpp</a>.</p>
 <div class="fragment"><div class="line"><span class="lineno">   12</span>                                                  {</div>
-<div class="line"><span class="lineno">   13</span>  spdlog::debug(<span class="stringliteral">&quot;FramedTransport framing message: {}&quot;</span>, message);</div>
-<div class="line"><span class="lineno">   14</span>  output &lt;&lt; <span class="stringliteral">&quot;Content-Length: &quot;</span> &lt;&lt; message.size() &lt;&lt; <span class="stringliteral">&quot;\r\n&quot;</span></div>
-<div class="line"><span class="lineno">   15</span>         &lt;&lt; <span class="stringliteral">&quot;Content-Type: application/vscode-jsonrpc; charset=utf-8\r\n&quot;</span></div>
-<div class="line"><span class="lineno">   16</span>         &lt;&lt; <span class="stringliteral">&quot;\r\n&quot;</span></div>
-<div class="line"><span class="lineno">   17</span>         &lt;&lt; message;</div>
-<div class="line"><span class="lineno">   18</span>}</div>
+<div class="line"><span class="lineno">   13</span>  output &lt;&lt; <span class="stringliteral">&quot;Content-Length: &quot;</span> &lt;&lt; message.size() &lt;&lt; <span class="stringliteral">&quot;\r\n&quot;</span></div>
+<div class="line"><span class="lineno">   14</span>         &lt;&lt; <span class="stringliteral">&quot;Content-Type: application/vscode-jsonrpc; charset=utf-8\r\n&quot;</span></div>
+<div class="line"><span class="lineno">   15</span>         &lt;&lt; <span class="stringliteral">&quot;\r\n&quot;</span></div>
+<div class="line"><span class="lineno">   16</span>         &lt;&lt; message;</div>
+<div class="line"><span class="lineno">   17</span>}</div>
 </div><!-- fragment -->
-<p class="reference">Referenced by <a class="el" href="framed__stdio__transport_8cpp_source.html#l00013">jsonrpc::transport::FramedStdioTransport::SendMessage()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="framed__pipe__transport_8cpp_source.html#l00018">jsonrpc::transport::FramedPipeTransport::SendMessage()</a>, and <a class="el" href="framed__stdio__transport_8cpp_source.html#l00013">jsonrpc::transport::FramedStdioTransport::SendMessage()</a>.</p>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="classjsonrpc_1_1transport_1_1FramedTransport_ae5317dd37dd2638b8e7c013854719dec_icgraph.svg" width="478" height="66"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="classjsonrpc_1_1transport_1_1FramedTransport_ae5317dd37dd2638b8e7c013854719dec_icgraph.svg" width="478" height="144"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
+
+</div>
+</div>
+<a id="ab3aa716415afe7fe695502cc47a30c82" name="ab3aa716415afe7fe695502cc47a30c82"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab3aa716415afe7fe695502cc47a30c82">&#9670;&#160;</a></span>ReadContent()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::string jsonrpc::transport::FramedTransport::ReadContent </td>
+          <td>(</td>
+          <td class="paramtype">std::istream &amp;</td>          <td class="paramname"><span class="paramname"><em>input</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>content_length</em></span>&#160;)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Reads content from the input stream based on the content length. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">input</td><td>The input stream to read the content from. </td></tr>
+    <tr><td class="paramname">content_length</td><td>The length of the content to be read. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>The content as a string. </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="framed__transport_8cpp_source.html#l00049">49</a> of file <a class="el" href="framed__transport_8cpp_source.html">framed_transport.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   50</span>                                           {</div>
+<div class="line"><span class="lineno">   51</span>  std::string content(content_length, <span class="charliteral">&#39;\0&#39;</span>);</div>
+<div class="line"><span class="lineno">   52</span>  input.read(&amp;content[0], content_length);</div>
+<div class="line"><span class="lineno">   53</span>  <span class="keywordflow">if</span> (input.gcount() != content_length) {</div>
+<div class="line"><span class="lineno">   54</span>    <span class="keywordflow">throw</span> std::runtime_error(<span class="stringliteral">&quot;Failed to read the expected content length&quot;</span>);</div>
+<div class="line"><span class="lineno">   55</span>  }</div>
+<div class="line"><span class="lineno">   56</span>  <span class="keywordflow">return</span> content;</div>
+<div class="line"><span class="lineno">   57</span>}</div>
+</div><!-- fragment -->
+<p class="reference">Referenced by <a class="el" href="framed__transport_8cpp_source.html#l00059">ReceiveFramedMessage()</a>.</p>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><iframe scrolling="no" frameborder="0" src="classjsonrpc_1_1transport_1_1FramedTransport_ab3aa716415afe7fe695502cc47a30c82_icgraph.svg" width="708" height="66"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+
+</div>
+</div>
+<a id="abc9bb6673778ecab6c5b9f8d50d44574" name="abc9bb6673778ecab6c5b9f8d50d44574"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abc9bb6673778ecab6c5b9f8d50d44574">&#9670;&#160;</a></span>ReadContentLengthFromStream()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int jsonrpc::transport::FramedTransport::ReadContentLengthFromStream </td>
+          <td>(</td>
+          <td class="paramtype">std::istream &amp;</td>          <td class="paramname"><span class="paramname"><em>input</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="framed__transport_8cpp_source.html#l00040">40</a> of file <a class="el" href="framed__transport_8cpp_source.html">framed_transport.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   40</span>                                                                  {</div>
+<div class="line"><span class="lineno">   41</span>  <span class="keyword">auto</span> headers = <a class="code hl_function" href="#adcfc8964bb8112eea2daaff3ac23d9cc">ReadHeadersFromStream</a>(input);</div>
+<div class="line"><span class="lineno">   42</span>  <span class="keyword">auto</span> it = headers.find(<span class="stringliteral">&quot;Content-Length&quot;</span>);</div>
+<div class="line"><span class="lineno">   43</span>  <span class="keywordflow">if</span> (it == headers.end()) {</div>
+<div class="line"><span class="lineno">   44</span>    <span class="keywordflow">throw</span> std::runtime_error(<span class="stringliteral">&quot;Content-Length header missing&quot;</span>);</div>
+<div class="line"><span class="lineno">   45</span>  }</div>
+<div class="line"><span class="lineno">   46</span>  <span class="keywordflow">return</span> ParseContentLength(it-&gt;second);</div>
+<div class="line"><span class="lineno">   47</span>}</div>
+<div class="ttc" id="aclassjsonrpc_1_1transport_1_1FramedTransport_html_adcfc8964bb8112eea2daaff3ac23d9cc"><div class="ttname"><a href="#adcfc8964bb8112eea2daaff3ac23d9cc">jsonrpc::transport::FramedTransport::ReadHeadersFromStream</a></div><div class="ttdeci">HeaderMap ReadHeadersFromStream(std::istream &amp;input)</div><div class="ttdef"><b>Definition</b> <a href="framed__transport_8cpp_source.html#l00019">framed_transport.cpp:19</a></div></div>
+</div><!-- fragment -->
+<p class="reference">References <a class="el" href="framed__transport_8cpp_source.html#l00019">ReadHeadersFromStream()</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="framed__transport_8cpp_source.html#l00059">ReceiveFramedMessage()</a>, and <a class="el" href="framed__pipe__transport_8cpp_source.html#l00039">jsonrpc::transport::FramedPipeTransport::ReceiveMessage()</a>.</p>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><iframe scrolling="no" frameborder="0" src="classjsonrpc_1_1transport_1_1FramedTransport_abc9bb6673778ecab6c5b9f8d50d44574_cgraph.svg" width="712" height="66"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><iframe scrolling="no" frameborder="0" src="classjsonrpc_1_1transport_1_1FramedTransport_abc9bb6673778ecab6c5b9f8d50d44574_icgraph.svg" width="708" height="144"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+
+</div>
+</div>
+<a id="adcfc8964bb8112eea2daaff3ac23d9cc" name="adcfc8964bb8112eea2daaff3ac23d9cc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#adcfc8964bb8112eea2daaff3ac23d9cc">&#9670;&#160;</a></span>ReadHeadersFromStream()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">FramedTransport::HeaderMap jsonrpc::transport::FramedTransport::ReadHeadersFromStream </td>
+          <td>(</td>
+          <td class="paramtype">std::istream &amp;</td>          <td class="paramname"><span class="paramname"><em>input</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="framed__transport_8cpp_source.html#l00019">19</a> of file <a class="el" href="framed__transport_8cpp_source.html">framed_transport.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   20</span>                       {</div>
+<div class="line"><span class="lineno">   21</span>  HeaderMap headers;</div>
+<div class="line"><span class="lineno">   22</span>  std::string line;</div>
+<div class="line"><span class="lineno">   23</span> </div>
+<div class="line"><span class="lineno">   24</span>  <span class="keywordflow">while</span> (std::getline(input, line) &amp;&amp; !line.empty() &amp;&amp; line != <span class="stringliteral">&quot;\r&quot;</span>) {</div>
+<div class="line"><span class="lineno">   25</span>    <span class="keyword">auto</span> colonPos = line.find(<span class="charliteral">&#39;:&#39;</span>);</div>
+<div class="line"><span class="lineno">   26</span>    <span class="keywordflow">if</span> (colonPos != std::string::npos) {</div>
+<div class="line"><span class="lineno">   27</span>      std::string header_key = <a class="code hl_function" href="namespacejsonrpc_1_1utils.html#a0f4ab48ccb12fe3cb75a70867a56214a">utils::trim</a>(line.substr(0, colonPos));</div>
+<div class="line"><span class="lineno">   28</span>      std::string header_value = <a class="code hl_function" href="namespacejsonrpc_1_1utils.html#a0f4ab48ccb12fe3cb75a70867a56214a">utils::trim</a>(line.substr(colonPos + 1));</div>
+<div class="line"><span class="lineno">   29</span>      headers[header_key] = header_value;</div>
+<div class="line"><span class="lineno">   30</span>    }</div>
+<div class="line"><span class="lineno">   31</span>  }</div>
+<div class="line"><span class="lineno">   32</span> </div>
+<div class="line"><span class="lineno">   33</span>  <span class="keywordflow">if</span> (headers.empty()) {</div>
+<div class="line"><span class="lineno">   34</span>    <span class="keywordflow">throw</span> std::runtime_error(<span class="stringliteral">&quot;Failed to read headers&quot;</span>);</div>
+<div class="line"><span class="lineno">   35</span>  }</div>
+<div class="line"><span class="lineno">   36</span> </div>
+<div class="line"><span class="lineno">   37</span>  <span class="keywordflow">return</span> headers;</div>
+<div class="line"><span class="lineno">   38</span>}</div>
+<div class="ttc" id="anamespacejsonrpc_1_1utils_html_a0f4ab48ccb12fe3cb75a70867a56214a"><div class="ttname"><a href="namespacejsonrpc_1_1utils.html#a0f4ab48ccb12fe3cb75a70867a56214a">jsonrpc::utils::trim</a></div><div class="ttdeci">std::string trim(std::string_view in)</div><div class="ttdef"><b>Definition</b> <a href="string__utils_8hpp_source.html#l00012">string_utils.hpp:12</a></div></div>
+</div><!-- fragment -->
+<p class="reference">References <a class="el" href="string__utils_8hpp_source.html#l00012">jsonrpc::utils::trim()</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="framed__transport_8cpp_source.html#l00040">ReadContentLengthFromStream()</a>.</p>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><iframe scrolling="no" frameborder="0" src="classjsonrpc_1_1transport_1_1FramedTransport_adcfc8964bb8112eea2daaff3ac23d9cc_cgraph.svg" width="434" height="66"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><iframe scrolling="no" frameborder="0" src="classjsonrpc_1_1transport_1_1FramedTransport_adcfc8964bb8112eea2daaff3ac23d9cc_icgraph.svg" width="991" height="144"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+
+</div>
+</div>
+<a id="a0b49a8a146fa2d225751c4e97cdf3617" name="a0b49a8a146fa2d225751c4e97cdf3617"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0b49a8a146fa2d225751c4e97cdf3617">&#9670;&#160;</a></span>ReceiveFramedMessage()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::string jsonrpc::transport::FramedTransport::ReceiveFramedMessage </td>
+          <td>(</td>
+          <td class="paramtype">std::istream &amp;</td>          <td class="paramname"><span class="paramname"><em>input</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Receives a framed message. </p>
+<p>Reads headers to determine the content length, then reads the message content based on that length.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">input</td><td>The input stream to read the framed message. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>The received message content. </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="framed__transport_8cpp_source.html#l00059">59</a> of file <a class="el" href="framed__transport_8cpp_source.html">framed_transport.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   59</span>                                                                 {</div>
+<div class="line"><span class="lineno">   60</span>  <span class="keywordtype">int</span> content_length = <a class="code hl_function" href="#abc9bb6673778ecab6c5b9f8d50d44574">ReadContentLengthFromStream</a>(input);</div>
+<div class="line"><span class="lineno">   61</span>  <span class="keywordflow">return</span> <a class="code hl_function" href="#ab3aa716415afe7fe695502cc47a30c82">ReadContent</a>(input, content_length);</div>
+<div class="line"><span class="lineno">   62</span>}</div>
+<div class="ttc" id="aclassjsonrpc_1_1transport_1_1FramedTransport_html_ab3aa716415afe7fe695502cc47a30c82"><div class="ttname"><a href="#ab3aa716415afe7fe695502cc47a30c82">jsonrpc::transport::FramedTransport::ReadContent</a></div><div class="ttdeci">std::string ReadContent(std::istream &amp;input, int content_length)</div><div class="ttdoc">Reads content from the input stream based on the content length.</div><div class="ttdef"><b>Definition</b> <a href="framed__transport_8cpp_source.html#l00049">framed_transport.cpp:49</a></div></div>
+<div class="ttc" id="aclassjsonrpc_1_1transport_1_1FramedTransport_html_abc9bb6673778ecab6c5b9f8d50d44574"><div class="ttname"><a href="#abc9bb6673778ecab6c5b9f8d50d44574">jsonrpc::transport::FramedTransport::ReadContentLengthFromStream</a></div><div class="ttdeci">int ReadContentLengthFromStream(std::istream &amp;input)</div><div class="ttdef"><b>Definition</b> <a href="framed__transport_8cpp_source.html#l00040">framed_transport.cpp:40</a></div></div>
+</div><!-- fragment -->
+<p class="reference">References <a class="el" href="framed__transport_8cpp_source.html#l00049">ReadContent()</a>, and <a class="el" href="framed__transport_8cpp_source.html#l00040">ReadContentLengthFromStream()</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="framed__stdio__transport_8cpp_source.html#l00019">jsonrpc::transport::FramedStdioTransport::ReceiveMessage()</a>.</p>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><iframe scrolling="no" frameborder="0" src="classjsonrpc_1_1transport_1_1FramedTransport_a0b49a8a146fa2d225751c4e97cdf3617_cgraph.svg" width="959" height="131"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><iframe scrolling="no" frameborder="0" src="classjsonrpc_1_1transport_1_1FramedTransport_a0b49a8a146fa2d225751c4e97cdf3617_icgraph.svg" width="430" height="66"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+
+</div>
+</div>
+<h2 class="groupheader">Friends And Related Symbol Documentation</h2>
+<a id="ab17de8da018257c556c0a31e0a05b16f" name="ab17de8da018257c556c0a31e0a05b16f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab17de8da018257c556c0a31e0a05b16f">&#9670;&#160;</a></span>FramedTransportTest</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">friend class FramedTransportTest</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">friend</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="framed__transport_8hpp_source.html#l00069">69</a> of file <a class="el" href="framed__transport_8hpp_source.html">framed_transport.hpp</a>.</p>
+
+</div>
+</div>
+<h2 class="groupheader">Member Data Documentation</h2>
+<a id="a4f086f41f74009a02fd7851acd5e6c10" name="a4f086f41f74009a02fd7851acd5e6c10"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4f086f41f74009a02fd7851acd5e6c10">&#9670;&#160;</a></span>HEADER_DELIMITER</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const char* jsonrpc::transport::FramedTransport::HEADER_DELIMITER = &quot;\r\n\r\n&quot;</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">constexpr</span><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>The delimiter used to separate headers from the message content. </p>
+
+<p class="definition">Definition at line <a class="el" href="framed__transport_8hpp_source.html#l00024">24</a> of file <a class="el" href="framed__transport_8hpp_source.html">framed_transport.hpp</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="framed__pipe__transport_8cpp_source.html#l00039">jsonrpc::transport::FramedPipeTransport::ReceiveMessage()</a>.</p>
 
 </div>
 </div>

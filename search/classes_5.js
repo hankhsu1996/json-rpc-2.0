@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['server_0',['Server',['../classjsonrpc_1_1server_1_1Server.html',1,'jsonrpc::server']]],
-  ['stdiotransport_1',['StdioTransport',['../classjsonrpc_1_1transport_1_1StdioTransport.html',1,'jsonrpc::transport']]]
+  ['request_0',['Request',['../classjsonrpc_1_1client_1_1Request.html',1,'jsonrpc::client::Request'],['../classjsonrpc_1_1server_1_1Request.html',1,'jsonrpc::server::Request']]],
+  ['response_1',['Response',['../classjsonrpc_1_1server_1_1Response.html',1,'jsonrpc::server']]]
 ];

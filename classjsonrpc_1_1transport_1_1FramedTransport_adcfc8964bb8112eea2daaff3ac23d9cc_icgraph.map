@@ -1,0 +1,11 @@
+<map id="jsonrpc::transport::FramedTransport::ReadHeadersFromStream" name="jsonrpc::transport::FramedTransport::ReadHeadersFromStream">
+<area shape="rect" id="Node000001" title=" " alt="" coords="751,45,985,100"/>
+<area shape="rect" id="Node000002" href="$classjsonrpc_1_1transport_1_1FramedTransport.html#abc9bb6673778ecab6c5b9f8d50d44574" title=" " alt="" coords="472,45,703,100"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="737,75,703,75,703,70,737,70"/>
+<area shape="rect" id="Node000003" href="$classjsonrpc_1_1transport_1_1FramedTransport.html#a0b49a8a146fa2d225751c4e97cdf3617" title="Receives a framed message." alt="" coords="225,5,424,60"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="458,56,424,50,424,45,459,50"/>
+<area shape="rect" id="Node000005" href="$classjsonrpc_1_1transport_1_1FramedPipeTransport.html#aa90a2b497357b34bfdac1f0f66302161" title="Receives a message from the transport layer." alt="" coords="241,84,408,139"/>
+<area shape="poly" id="edge4_Node000002_Node000005" title=" " alt="" coords="459,94,409,102,408,96,458,89"/>
+<area shape="rect" id="Node000004" href="$classjsonrpc_1_1transport_1_1FramedStdioTransport.html#ab895abe72713d7016b4cc59ba96c9ecc" title="Receives a message from the transport layer." alt="" coords="5,5,177,60"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="212,35,178,35,178,30,212,30"/>
+</map>

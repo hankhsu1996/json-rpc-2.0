@@ -304,12 +304,12 @@ Public Member Functions</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>The JSON response received from the server. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="client_8cpp_source.html#l00046">46</a> of file <a class="el" href="client_8cpp_source.html">client.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   47</span>                                                               {</div>
-<div class="line"><span class="lineno">   48</span>  Request request(method, std::move(params), <span class="keyword">false</span>,</div>
-<div class="line"><span class="lineno">   49</span>      [<span class="keyword">this</span>]() { <span class="keywordflow">return</span> GetNextRequestId(); });</div>
-<div class="line"><span class="lineno">   50</span>  <span class="keywordflow">return</span> SendRequest(request);</div>
-<div class="line"><span class="lineno">   51</span>}</div>
+<p class="definition">Definition at line <a class="el" href="client_8cpp_source.html#l00047">47</a> of file <a class="el" href="client_8cpp_source.html">client.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   48</span>                                                               {</div>
+<div class="line"><span class="lineno">   49</span>  Request request(method, std::move(params), <span class="keyword">false</span>,</div>
+<div class="line"><span class="lineno">   50</span>      [<span class="keyword">this</span>]() { <span class="keywordflow">return</span> GetNextRequestId(); });</div>
+<div class="line"><span class="lineno">   51</span>  <span class="keywordflow">return</span> SendRequest(request);</div>
+<div class="line"><span class="lineno">   52</span>}</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -343,12 +343,12 @@ Public Member Functions</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>A future that will hold the JSON response from the server. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="client_8cpp_source.html#l00053">53</a> of file <a class="el" href="client_8cpp_source.html">client.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   54</span>                                                               {</div>
-<div class="line"><span class="lineno">   55</span>  Request request(method, std::move(params), <span class="keyword">false</span>,</div>
-<div class="line"><span class="lineno">   56</span>      [<span class="keyword">this</span>]() { <span class="keywordflow">return</span> GetNextRequestId(); });</div>
-<div class="line"><span class="lineno">   57</span>  <span class="keywordflow">return</span> SendRequestAsync(request);</div>
-<div class="line"><span class="lineno">   58</span>}</div>
+<p class="definition">Definition at line <a class="el" href="client_8cpp_source.html#l00054">54</a> of file <a class="el" href="client_8cpp_source.html">client.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   55</span>                                                               {</div>
+<div class="line"><span class="lineno">   56</span>  Request request(method, std::move(params), <span class="keyword">false</span>,</div>
+<div class="line"><span class="lineno">   57</span>      [<span class="keyword">this</span>]() { <span class="keywordflow">return</span> GetNextRequestId(); });</div>
+<div class="line"><span class="lineno">   58</span>  <span class="keywordflow">return</span> SendRequestAsync(request);</div>
+<div class="line"><span class="lineno">   59</span>}</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -381,12 +381,12 @@ Public Member Functions</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="client_8cpp_source.html#l00060">60</a> of file <a class="el" href="client_8cpp_source.html">client.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   61</span>                                                               {</div>
-<div class="line"><span class="lineno">   62</span>  Request request(</div>
-<div class="line"><span class="lineno">   63</span>      method, std::move(params), <span class="keyword">true</span>, [<span class="keyword">this</span>]() { <span class="keywordflow">return</span> GetNextRequestId(); });</div>
-<div class="line"><span class="lineno">   64</span>  transport_-&gt;SendMessage(request.Dump());</div>
-<div class="line"><span class="lineno">   65</span>}</div>
+<p class="definition">Definition at line <a class="el" href="client_8cpp_source.html#l00061">61</a> of file <a class="el" href="client_8cpp_source.html">client.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   62</span>                                                               {</div>
+<div class="line"><span class="lineno">   63</span>  Request request(</div>
+<div class="line"><span class="lineno">   64</span>      method, std::move(params), <span class="keyword">true</span>, [<span class="keyword">this</span>]() { <span class="keywordflow">return</span> GetNextRequestId(); });</div>
+<div class="line"><span class="lineno">   65</span>  transport_-&gt;SendMessage(request.Dump());</div>
+<div class="line"><span class="lineno">   66</span>}</div>
 </div><!-- fragment -->
 </div>
 </div>
