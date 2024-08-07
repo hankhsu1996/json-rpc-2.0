@@ -1,5 +1,6 @@
 # examples/BUILD
 
+# Standard I/O examples
 cc_binary(
     name = "stdio_client",
     srcs = ["stdio_client.cpp"],
@@ -11,6 +12,54 @@ cc_binary(
     srcs = [
         "calculator.hpp",
         "stdio_server.cpp",
+    ],
+    deps = ["//src:jsonrpc_lib"],
+)
+
+# Unix domain socket examples
+cc_binary(
+    name = "pipe_client",
+    srcs = ["pipe_client.cpp"],
+    deps = ["//src:jsonrpc_lib"],
+)
+
+cc_binary(
+    name = "pipe_server",
+    srcs = [
+        "calculator.hpp",
+        "pipe_server.cpp",
+    ],
+    deps = ["//src:jsonrpc_lib"],
+)
+
+# Framed Unix domain socket examples
+cc_binary(
+    name = "framed_pipe_client",
+    srcs = ["framed_pipe_client.cpp"],
+    deps = ["//src:jsonrpc_lib"],
+)
+
+cc_binary(
+    name = "framed_pipe_server",
+    srcs = [
+        "calculator.hpp",
+        "framed_pipe_server.cpp",
+    ],
+    deps = ["//src:jsonrpc_lib"],
+)
+
+# Socket examples
+cc_binary(
+    name = "socket_client",
+    srcs = ["socket_client.cpp"],
+    deps = ["//src:jsonrpc_lib"],
+)
+
+cc_binary(
+    name = "socket_server",
+    srcs = [
+        "calculator.hpp",
+        "socket_server.cpp",
     ],
     deps = ["//src:jsonrpc_lib"],
 )
