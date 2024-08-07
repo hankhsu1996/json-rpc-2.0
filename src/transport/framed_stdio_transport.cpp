@@ -1,9 +1,6 @@
 #include "jsonrpc/transport/framed_stdio_transport.hpp"
 
 #include <iostream>
-#include <optional>
-#include <sstream>
-#include <unordered_map>
 
 #include <spdlog/spdlog.h>
 

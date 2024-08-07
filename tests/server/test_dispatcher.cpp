@@ -1,12 +1,9 @@
-#include <iostream>
 #include <numeric>
 
 #include <catch2/catch_test_macros.hpp>
 #include <nlohmann/json.hpp>
 
 #include "jsonrpc/server/dispatcher.hpp"
-#include "jsonrpc/server/request.hpp"
-#include "jsonrpc/server/response.hpp"
 
 using namespace jsonrpc::server;
 

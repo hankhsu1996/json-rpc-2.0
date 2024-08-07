@@ -1,22 +1,25 @@
-"""This is the MODULE.bazel file for the jsonrpc module."""
+"""
+MODULE.bazel file for the jsonrpc module
+"""
 
 module(
     name = "jsonrpc",
     version = "1.0.0",
 )
 
-# Register the rules_foreign_cc and rules_cc dependencies
-bazel_dep(name = "rules_foreign_cc", version = "0.11.1")
+# Dependencies from the Bazel Central Registry
 bazel_dep(name = "rules_cc", version = "0.0.9")
-
-# Register the nlohmann_json dependency
 bazel_dep(name = "nlohmann_json", version = "3.11.3")
-
-# Register the spdlog dependency
 bazel_dep(name = "spdlog", version = "1.14.1")
-
-# Register the asio dependency
 bazel_dep(name = "asio", version = "1.28.2")
-
-# Register the catch2 dependency
 bazel_dep(name = "catch2", version = "3.6.0")
+
+# Dependency using traditional HTTP archive
+http_archive = use_repo_rule("@bazel_tools//tools/build_defs/repo:http.bzl", "http_archive")
+http_archive(
+    name = "thread_pool",
+    build_file = "//third_party/thread_pool:BUILD.bazel",
+    sha256 = "be7abecbc420bb87919eeef729b13ff7c29d5ce547bdae284923296c695415bd",
+    strip_prefix = "thread-pool-4.1.0",
+    urls = ["https://github.com/bshoshany/thread-pool/archive/refs/tags/v4.1.0.tar.gz"],
+)

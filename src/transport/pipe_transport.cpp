@@ -89,7 +89,7 @@ std::string PipeTransport::ReceiveMessage() {
   } catch (const std::exception &e) {
     spdlog::error("Error receiving message: {}", e.what());
     socket_.close();
-    return "";
+    throw std::runtime_error("Error receiving message");
   }
 }
 

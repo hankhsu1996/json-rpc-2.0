@@ -1,6 +1,5 @@
 #include "jsonrpc/transport/framed_transport.hpp"
 
-#include <sstream>
 #include <stdexcept>
 
 #include "jsonrpc/utils/string_utils.hpp"
