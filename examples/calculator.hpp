@@ -3,24 +3,31 @@
 #include <nlohmann/json.hpp>
 #include <spdlog/spdlog.h>
 
-using Json = nlohmann::json;
+const int kDivideByZeroErrorCode = -32602;
 
 class Calculator {
-public:
-  Json Add(const Json &params) {
+ public:
+  static auto Add(const nlohmann::json &params) -> nlohmann::json {
     spdlog::debug("Received add request with params: {}", params.dump());
-    double a = params["a"];
-    double b = params["b"];
-    return {{"result", a + b}};
+
+    double a_double = params["a"];
+    double b_double = params["b"];
+
+    return {{"result", a_double + b_double}};
   }
 
-  Json Divide(const Json &params) {
+  static auto Divide(const nlohmann::json &params) -> nlohmann::json {
     spdlog::debug("Received divide request with params: {}", params.dump());
-    double a = params["a"];
-    double b = params["b"];
-    if (b == 0) {
-      return {{"error", {{"code", -32602}, {"message", "Division by zero"}}}};
+
+    double a_double = params["a"];
+    double b_double = params["b"];
+
+    if (b_double == 0) {
+      return {{"error",
+               {{"code", kDivideByZeroErrorCode},
+                {"message", "Division by zero"}}}};
     }
-    return {{"result", a / b}};
+
+    return {{"result", a_double / b_double}};
   }
 };

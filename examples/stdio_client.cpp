@@ -6,11 +6,11 @@
 #include <spdlog/sinks/basic_file_sink.h>
 #include <spdlog/spdlog.h>
 
-using namespace jsonrpc::client;
-using namespace jsonrpc::transport;
+using jsonrpc::client::Client;
+using jsonrpc::transport::StdioTransport;
 using Json = nlohmann::json;
 
-int main() {
+auto main() -> int {
   auto logger = spdlog::basic_logger_mt("client", "logs/client.log");
   spdlog::set_default_logger(logger);
   spdlog::set_level(spdlog::level::debug);
@@ -20,11 +20,17 @@ int main() {
   Client client(std::move(transport));
   client.Start();
 
-  Json addRes = client.SendMethodCall("add", Json({{"a", 10}, {"b", 5}}));
-  spdlog::info("Add result: {}", addRes.dump());
+  const int add_op1 = 10;
+  const int add_op2 = 5;
+  Json add_resp =
+      client.SendMethodCall("add", Json({{"a", add_op1}, {"b", add_op2}}));
+  spdlog::info("Add result: {}", add_resp.dump());
 
-  Json divRes = client.SendMethodCall("divide", Json({{"a", 10}, {"b", 0}}));
-  spdlog::info("Divide result: {}", divRes.dump());
+  const int div_op1 = 10;
+  const int div_op2 = 2;
+  Json div_resp =
+      client.SendMethodCall("divide", Json({{"a", div_op1}, {"b", div_op2}}));
+  spdlog::info("Divide result: {}", div_resp.dump());
 
   client.SendNotification("stop");
 
