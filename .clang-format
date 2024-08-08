@@ -1,5 +1,5 @@
 Language: Cpp
-BasedOnStyle: llvm
+BasedOnStyle: Google
 IncludeBlocks: Regroup
 IncludeCategories:
   - Regex: '^"jsonrpc/.*"'
@@ -8,6 +8,3 @@ IncludeCategories:
     Priority: 2
   - Regex: "^<.*>"
     Priority: 1
-AlignAfterOpenBracket: DontAlign
-AllowShortFunctionsOnASingleLine: false
-BreakInheritanceList: AfterColon

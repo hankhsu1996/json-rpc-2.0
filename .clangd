@@ -7,4 +7,4 @@ CompileFlags:
 
 Diagnostics:
   ClangTidy:
-    Remove: bugprone-unused-return-value
+    FastCheckFilter: Strict
