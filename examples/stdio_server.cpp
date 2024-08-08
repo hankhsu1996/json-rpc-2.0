@@ -8,8 +8,8 @@
 
 #include "calculator.hpp"
 
-using namespace jsonrpc::server;
-using namespace jsonrpc::transport;
+using jsonrpc::server::Server;
+using jsonrpc::transport::StdioTransport;
 using Json = nlohmann::json;
 
 int main() {
@@ -20,17 +20,14 @@ int main() {
 
   auto transport = std::make_unique<StdioTransport>();
   Server server(std::move(transport));
-  Calculator calculator;
 
-  server.RegisterMethodCall(
-      "add", [&calculator](const std::optional<Json> &params) {
-        return calculator.Add(params.value());
-      });
+  server.RegisterMethodCall("add", [](const std::optional<Json> &params) {
+    return Calculator::Add(params.value());
+  });
 
-  server.RegisterMethodCall(
-      "divide", [&calculator](const std::optional<Json> &params) {
-        return calculator.Divide(params.value());
-      });
+  server.RegisterMethodCall("divide", [](const std::optional<Json> &params) {
+    return Calculator::Divide(params.value());
+  });
 
   server.RegisterNotification(
       "stop", [&server](const std::optional<Json> &) { server.Stop(); });

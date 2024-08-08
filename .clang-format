@@ -1,5 +1,8 @@
 Language: Cpp
-BasedOnStyle: llvm
+BasedOnStyle: Google
+
+# Regroup includes to improve readability and maintain consistent grouping.
+# Reference: https://clang.llvm.org/docs/ClangFormatStyleOptions.html#includeblocks
 IncludeBlocks: Regroup
 IncludeCategories:
   - Regex: '^"jsonrpc/.*"'
@@ -8,6 +11,7 @@ IncludeCategories:
     Priority: 2
   - Regex: "^<.*>"
     Priority: 1
-AlignAfterOpenBracket: DontAlign
+
+# Override default settings to optimize alignment for modern C++ trailing return types.
+AlignAfterOpenBracket: AlwaysBreak
 AllowShortFunctionsOnASingleLine: false
-BreakInheritanceList: AfterColon
