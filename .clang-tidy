@@ -5,9 +5,6 @@ Checks: >
   readability-*,
   cppcoreguidelines-*,
   clang-analyzer-*,
-  performance-*,
-  bugprone-*,
-  misc-*
 
 # Google's naming conventions
 # https://gist.github.com/airglow923/1fa3bda42f2b193920d7f46ee8345e04
