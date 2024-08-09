@@ -50,7 +50,7 @@ class Request {
   }
 
   /// @brief Gets the request ID.
-  [[nodiscard]] std::optional<nlohmann::json> GetId() const {
+  [[nodiscard]] auto GetId() const -> std::optional<nlohmann::json> {
     return id_;
   }
 

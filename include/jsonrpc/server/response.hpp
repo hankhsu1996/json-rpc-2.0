@@ -6,16 +6,15 @@
 
 #include <nlohmann/json.hpp>
 
-namespace jsonrpc {
-namespace server {
+namespace jsonrpc::server {
 
 /// @brief Enumeration for library error kinds.
 enum class LibErrorKind {
-  ParseError,
-  InvalidRequest,
-  MethodNotFound,
-  InternalError,
-  ServerError
+  kParseError,
+  kInvalidRequest,
+  kMethodNotFound,
+  kInternalError,
+  kServerError
 };
 
 using ErrorInfoMap =
@@ -23,21 +22,15 @@ using ErrorInfoMap =
 
 /// @brief Represents a JSON-RPC response.
 class Response {
-public:
-  /// @brief Deleted default constructor to prevent instantiation without data.
+ public:
   Response() = delete;
-
-  /// @brief Deleted copy constructor to prevent copying of Response objects.
   Response(const Response &) = delete;
+  auto operator=(const Response &) -> Response & = delete;
 
-  /// @brief Deleted copy assignment operator to prevent assignment.
-  Response &operator=(const Response &) = delete;
-
-  /**
-   * @brief Move constructor for efficient resource management.
-   * @param other The response to move from.
-   */
   Response(Response &&other) noexcept;
+  auto operator=(Response &&other) noexcept -> Response & = delete;
+
+  ~Response() = default;
 
   /**
    * @brief Creates a Response object from a JSON object that represents a user
@@ -46,8 +39,9 @@ public:
    * @param id The ID of the request. It can be a JSON object or null.
    * @return A Response object.
    */
-  static Response FromUserResponse(
-      const nlohmann::json &responseJson, std::optional<nlohmann::json> id);
+  static auto FromUserResponse(
+      const nlohmann::json &response_json,
+      std::optional<nlohmann::json> id) -> Response;
 
   /**
    * @brief Creates a successful Response object.
@@ -55,8 +49,9 @@ public:
    * @param id The ID of the request. It can be a JSON object or null.
    * @return A Response object indicating success.
    */
-  static Response CreateResult(
-      const nlohmann::json &result, const std::optional<nlohmann::json> &id);
+  static auto CreateResult(
+      const nlohmann::json &result,
+      const std::optional<nlohmann::json> &id) -> Response;
 
   /**
    * @brief Creates a Response object for a library error.
@@ -64,8 +59,9 @@ public:
    * @param id The ID of the request. It can be a JSON object or null.
    * @return A Response object indicating a library error.
    */
-  static Response CreateLibError(LibErrorKind errorKind,
-      const std::optional<nlohmann::json> &id = std::nullopt);
+  static auto CreateLibError(
+      LibErrorKind error_kind,
+      const std::optional<nlohmann::json> &id = std::nullopt) -> Response;
 
   /**
    * @brief Creates a Response object for a user error.
@@ -73,22 +69,23 @@ public:
    * @param id The ID of the request. It can be a JSON object or null.
    * @return A Response object indicating a user error.
    */
-  static Response CreateUserError(
-      const nlohmann::json &error, const std::optional<nlohmann::json> &id);
+  static auto CreateUserError(
+      const nlohmann::json &error,
+      const std::optional<nlohmann::json> &id) -> Response;
 
   /**
    * @brief Serializes the Response object to a JSON object.
    * @return The JSON representation of the response.
    */
-  nlohmann::json ToJson() const;
+  [[nodiscard]] auto ToJson() const -> nlohmann::json;
 
   /**
    * @brief Serializes the Response object to a string.
    * @return The string representation of the response.
    */
-  std::string ToStr() const;
+  [[nodiscard]] auto ToStr() const -> std::string;
 
-private:
+ private:
   /**
    * @brief Private constructor to ensure the class is only instantiated through
    * factory methods.
@@ -108,15 +105,15 @@ private:
    * @param id The ID of the request.
    * @return The JSON representation of the error response.
    */
-  static nlohmann::json CreateErrorResponse(const std::string &message,
-      int code, const std::optional<nlohmann::json> &id);
+  static auto CreateErrorResponse(
+      const std::string &message, int code,
+      const std::optional<nlohmann::json> &id) -> nlohmann::json;
 
   /// @brief The JSON object representing the response.
   nlohmann::json response_;
 
   /// @brief Static data member for mapping error kinds to messages.
-  static const ErrorInfoMap errorInfoMap;
+  static const ErrorInfoMap kErrorInfoMap;
 };
 
-} // namespace server
-} // namespace jsonrpc
+}  // namespace jsonrpc::server
