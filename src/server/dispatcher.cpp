@@ -2,110 +2,106 @@
 
 #include <spdlog/spdlog.h>
 
-namespace jsonrpc {
-namespace server {
+namespace jsonrpc::server {
 
-Dispatcher::Dispatcher(bool enableMultithreading, size_t numThreads)
-    : enableMultithreading_(enableMultithreading),
-      thread_pool_(enableMultithreading ? numThreads : 0) {
+Dispatcher::Dispatcher(bool enable_multithreading, size_t num_threads)
+    : enable_multithreading_(enable_multithreading),
+      thread_pool_(enable_multithreading ? num_threads : 0) {
   // Optionally log or perform additional setup if needed
-  if (enableMultithreading_) {
+  if (enable_multithreading_) {
     spdlog::info(
         "Dispatcher initialized with multithreading support using {} threads",
-        numThreads);
+        num_threads);
   } else {
     spdlog::info("Dispatcher initialized without multithreading support");
   }
 }
 
-std::optional<std::string> Dispatcher::DispatchRequest(
-    const std::string &requestStr) {
-
-  auto requestJson = ParseAndValidateJson(requestStr);
-  if (!requestJson.has_value()) {
-    return Response::CreateLibError(LibErrorKind::ParseError).ToStr();
+auto Dispatcher::DispatchRequest(const std::string &request_str)
+    -> std::optional<std::string> {
+  auto request_json = ParseAndValidateJson(request_str);
+  if (!request_json.has_value()) {
+    return Response::CreateLibError(LibErrorKind::kParseError).ToStr();
   }
 
-  if (requestJson->is_array()) {
-    return DispatchBatchRequest(*requestJson);
-  } else {
-    return DispatchSingleRequest(*requestJson);
+  if (request_json->is_array()) {
+    return DispatchBatchRequest(*request_json);
   }
+
+  return DispatchSingleRequest(*request_json);
 }
 
-std::optional<nlohmann::json> Dispatcher::ParseAndValidateJson(
-    const std::string &requestStr) {
+auto Dispatcher::ParseAndValidateJson(const std::string &request_str)
+    -> std::optional<nlohmann::json> {
   try {
-    return nlohmann::json::parse(requestStr);
+    return nlohmann::json::parse(request_str);
   } catch (const nlohmann::json::parse_error &) {
-    spdlog::error("JSON parsing error: {}", requestStr);
+    spdlog::error("JSON parsing error: {}", request_str);
     return std::nullopt;
   }
 }
 
-std::optional<std::string> Dispatcher::DispatchSingleRequest(
-    const nlohmann::json &requestJson) {
-  std::optional<nlohmann::json> responseJson =
-      DispatchSingleRequestInner(requestJson);
-  if (responseJson.has_value()) {
-    return responseJson->dump();
+auto Dispatcher::DispatchSingleRequest(const nlohmann::json &request_json)
+    -> std::optional<std::string> {
+  auto response_json = DispatchSingleRequestInner(request_json);
+  if (response_json.has_value()) {
+    return response_json->dump();
   }
   return std::nullopt;
 }
 
-std::optional<nlohmann::json> Dispatcher::DispatchSingleRequestInner(
-    const nlohmann::json &requestJson) {
-  auto validationError = ValidateRequest(requestJson);
-  if (validationError.has_value()) {
-    return validationError->ToJson();
+auto Dispatcher::DispatchSingleRequestInner(const nlohmann::json &request_json)
+    -> std::optional<nlohmann::json> {
+  auto validation_error = ValidateRequest(request_json);
+  if (validation_error.has_value()) {
+    return validation_error->ToJson();
   }
 
-  Request request = Request::FromJson(requestJson);
+  Request request = Request::FromJson(request_json);
   spdlog::info("Dispatching request: method={}", request.GetMethod());
 
-  auto optionalHandler = FindHandler(handlers_, request.GetMethod());
-  if (!optionalHandler.has_value()) {
+  auto optional_handler = FindHandler(handlers_, request.GetMethod());
+  if (!optional_handler.has_value()) {
     if (request.GetId().has_value()) {
       return Response::CreateLibError(
-          LibErrorKind::MethodNotFound, request.GetId())
+                 LibErrorKind::kMethodNotFound, request.GetId())
           .ToJson();
-    } else {
-      spdlog::warn("Method {} not found for notification", request.GetMethod());
-      return std::nullopt;
     }
-  }
-
-  return HandleRequest(request, optionalHandler.value());
-}
-
-std::optional<std::string> Dispatcher::DispatchBatchRequest(
-    const nlohmann::json &requestJson) {
-  if (requestJson.empty()) {
-    spdlog::warn("Empty batch request");
-    return Response::CreateLibError(LibErrorKind::InvalidRequest).ToStr();
-  }
-
-  std::vector<nlohmann::json> responseJsons =
-      DispatchBatchRequestInner(requestJson);
-  if (responseJsons.empty()) {
+    spdlog::warn("Method {} not found for notification", request.GetMethod());
     return std::nullopt;
   }
 
-  return nlohmann::json(responseJsons).dump();
+  return HandleRequest(request, optional_handler.value());
 }
 
-std::vector<nlohmann::json> Dispatcher::DispatchBatchRequestInner(
-    const nlohmann::json &requestJson) {
+auto Dispatcher::DispatchBatchRequest(const nlohmann::json &request_json)
+    -> std::optional<std::string> {
+  if (request_json.empty()) {
+    spdlog::warn("Empty batch request");
+    return Response::CreateLibError(LibErrorKind::kInvalidRequest).ToStr();
+  }
+
+  auto response_jsons = DispatchBatchRequestInner(request_json);
+  if (response_jsons.empty()) {
+    return std::nullopt;
+  }
+
+  return nlohmann::json(response_jsons).dump();
+}
+
+auto Dispatcher::DispatchBatchRequestInner(const nlohmann::json &request_json)
+    -> std::vector<nlohmann::json> {
   std::vector<std::future<std::optional<nlohmann::json>>> futures;
 
-  for (const auto &element : requestJson) {
-    if (enableMultithreading_) {
+  for (const auto &element : request_json) {
+    if (enable_multithreading_) {
       futures.emplace_back(thread_pool_.submit_task(
           [this, element]() -> std::optional<nlohmann::json> {
             return DispatchSingleRequestInner(element);
           }));
     } else {
-      futures.emplace_back(std::async(std::launch::deferred,
+      futures.emplace_back(std::async(
+          std::launch::deferred,
           [this, element]() -> std::optional<nlohmann::json> {
             return DispatchSingleRequestInner(element);
           }));
@@ -123,83 +119,79 @@ std::vector<nlohmann::json> Dispatcher::DispatchBatchRequestInner(
   return responses;
 }
 
-std::optional<Response> Dispatcher::ValidateRequest(
-    const nlohmann::json &requestJson) {
-  if (!requestJson.is_object()) {
-    return Response::CreateLibError(LibErrorKind::InvalidRequest);
+auto Dispatcher::ValidateRequest(const nlohmann::json &request_json)
+    -> std::optional<Response> {
+  if (!request_json.is_object()) {
+    return Response::CreateLibError(LibErrorKind::kInvalidRequest);
   }
 
-  if (!requestJson.contains("jsonrpc") || requestJson["jsonrpc"] != "2.0") {
-    return Response::CreateLibError(LibErrorKind::InvalidRequest);
+  if (!request_json.contains("jsonrpc") || request_json["jsonrpc"] != "2.0") {
+    return Response::CreateLibError(LibErrorKind::kInvalidRequest);
   }
 
-  if (!requestJson.contains("method")) {
-    if (requestJson.contains("id")) {
+  if (!request_json.contains("method")) {
+    if (request_json.contains("id")) {
       // Method call without method field, will return an error
-      return Response::CreateLibError(LibErrorKind::InvalidRequest);
-    } else {
-      // Notification without method field, will be ignored
-      spdlog::warn("Request missing method field and id");
-      return std::nullopt;
+      return Response::CreateLibError(LibErrorKind::kInvalidRequest);
     }
-  } else if (!requestJson["method"].is_string()) {
-    return Response::CreateLibError(LibErrorKind::InvalidRequest);
+    // Notification without method field, will be ignored
+    spdlog::warn("Request missing method field and id");
+    return std::nullopt;
   }
 
-  return std::nullopt; // No errors found
+  if (!request_json["method"].is_string()) {
+    return Response::CreateLibError(LibErrorKind::kInvalidRequest);
+  }
+
+  return std::nullopt;  // No errors found
 }
 
-std::optional<Handler> Dispatcher::FindHandler(
+auto Dispatcher::FindHandler(
     const std::unordered_map<std::string, Handler> &handlers,
-    const std::string &method) {
+    const std::string &method) -> std::optional<Handler> {
   auto it = handlers.find(method);
   if (it != handlers.end()) {
     return it->second;
-  } else {
-    return std::nullopt;
   }
+  return std::nullopt;
 }
 
-std::optional<nlohmann::json> Dispatcher::HandleRequest(
-    const Request &request, const Handler &handler) {
+auto Dispatcher::HandleRequest(const Request &request, const Handler &handler)
+    -> std::optional<nlohmann::json> {
   if (request.GetId().has_value()) {
     // If the request has an ID, it is a method call
     if (std::holds_alternative<MethodCallHandler>(handler)) {
-      const MethodCallHandler &methodCallHandler =
-          std::get<MethodCallHandler>(handler);
-      Response response = HandleMethodCall(request, methodCallHandler);
+      const auto &method_call_handler = std::get<MethodCallHandler>(handler);
+      Response response = HandleMethodCall(request, method_call_handler);
       return response.ToJson();
-    } else {
-      return Response::CreateLibError(
-          LibErrorKind::InvalidRequest, request.GetId())
-          .ToJson();
     }
-  } else {
-    // Otherwise, it is a notification
-    if (std::holds_alternative<NotificationHandler>(handler)) {
-      const NotificationHandler &notificationHandler =
-          std::get<NotificationHandler>(handler);
-      HandleNotification(request, notificationHandler);
-      return std::nullopt;
-    } else {
-      // Invalid request type for a notification
-      return std::nullopt;
-    }
+    return Response::CreateLibError(
+               LibErrorKind::kInvalidRequest, request.GetId())
+        .ToJson();
   }
+  // Otherwise, it is a notification
+  if (std::holds_alternative<NotificationHandler>(handler)) {
+    const auto &notification_handler = std::get<NotificationHandler>(handler);
+    HandleNotification(request, notification_handler);
+    return std::nullopt;
+  }
+  // Invalid request type for a notification
+  return std::nullopt;
 }
 
-Response Dispatcher::HandleMethodCall(
-    const Request &request, const MethodCallHandler &handler) {
+auto Dispatcher::HandleMethodCall(
+    const Request &request, const MethodCallHandler &handler) -> Response {
   try {
-    nlohmann::json responseJson = handler(request.GetParams());
-    spdlog::debug("Method call {} returned: {}", request.GetMethod(),
-        responseJson.dump());
+    nlohmann::json response_json = handler(request.GetParams());
+    spdlog::debug(
+        "Method call {} returned: {}", request.GetMethod(),
+        response_json.dump());
 
-    return Response::FromUserResponse(responseJson, request.GetId());
+    return Response::FromUserResponse(response_json, request.GetId());
   } catch (const std::exception &e) {
     spdlog::error("Exception during method call handling: {}", e.what());
     return Response::CreateLibError(
-        LibErrorKind::InternalError, request.GetId());
+        LibErrorKind::kInternalError, request.GetId());
   }
 }
 
@@ -225,5 +217,4 @@ void Dispatcher::RegisterNotification(
   spdlog::info("Dispatcher registered notification: {}", method);
 }
 
-} // namespace server
-} // namespace jsonrpc
+}  // namespace jsonrpc::server
