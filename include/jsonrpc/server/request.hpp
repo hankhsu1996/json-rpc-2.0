@@ -5,14 +5,13 @@
 
 #include <nlohmann/json.hpp>
 
-namespace jsonrpc {
-namespace server {
+namespace jsonrpc::server {
 
 /**
  * @brief Represents a JSON-RPC request.
  */
 class Request {
-public:
+ public:
   /**
    * @brief Constructs a Request object.
    *
@@ -20,11 +19,11 @@ public:
    * @param params The parameters for the method (optional).
    * @param id The ID of the request (optional).
    */
-  explicit Request(const std::string &method,
+  explicit Request(
+      std::string method,
       const std::optional<nlohmann::json> &params = std::nullopt,
-      std::optional<nlohmann::json> id = std::nullopt)
-      : method_(method), params_(params), id_(id) {
-  }
+      // NOLINTNEXTLINE(readability-identifier-length)
+      std::optional<nlohmann::json> id = std::nullopt);
 
   /**
    * @brief Creates a Request object from a JSON object.
@@ -32,31 +31,31 @@ public:
    * @param jsonObj The JSON object representing the request.
    * @return A Request object.
    */
-  static Request FromJson(const nlohmann::json &jsonObj);
+  static auto FromJson(const nlohmann::json &json_obj) -> Request;
 
   /**
    * @brief Serializes the Request object to a JSON object.
    *
    * @return The JSON representation of the request.
    */
-  nlohmann::json ToJson() const;
+  [[nodiscard]] auto ToJson() const -> nlohmann::json;
 
   /// @brief Gets the method name.
-  std::string GetMethod() const {
+  [[nodiscard]] auto GetMethod() const -> std::string {
     return method_;
   }
 
   /// @brief Gets the parameters.
-  std::optional<nlohmann::json> GetParams() const {
+  [[nodiscard]] auto GetParams() const -> std::optional<nlohmann::json> {
     return params_;
   }
 
   /// @brief Gets the request ID.
-  std::optional<nlohmann::json> GetId() const {
+  [[nodiscard]] std::optional<nlohmann::json> GetId() const {
     return id_;
   }
 
-private:
+ private:
   /// @brief The name of the method to be invoked.
   std::string method_;
 
@@ -67,5 +66,4 @@ private:
   std::optional<nlohmann::json> id_;
 };
 
-} // namespace server
-} // namespace jsonrpc
+}  // namespace jsonrpc::server
