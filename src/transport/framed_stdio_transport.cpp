@@ -4,8 +4,7 @@
 
 #include <spdlog/spdlog.h>
 
-namespace jsonrpc {
-namespace transport {
+namespace jsonrpc::transport {
 
 void FramedStdioTransport::SendMessage(const std::string &message) {
   spdlog::debug("FramedStdioTransport sending message: {}", message);
@@ -13,11 +12,10 @@ void FramedStdioTransport::SendMessage(const std::string &message) {
   std::cout << std::flush;
 }
 
-std::string FramedStdioTransport::ReceiveMessage() {
+auto FramedStdioTransport::ReceiveMessage() -> std::string {
   std::string response = ReceiveFramedMessage(std::cin);
   spdlog::debug("FramedStdioTransport received message: {}", response);
   return response;
 }
 
-} // namespace transport
-} // namespace jsonrpc
+}  // namespace jsonrpc::transport

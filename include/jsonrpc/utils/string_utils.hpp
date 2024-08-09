@@ -5,14 +5,12 @@
 #include <string>
 #include <string_view>
 
-namespace jsonrpc {
-namespace utils {
+namespace jsonrpc::utils {
 
-std::string trim(std::string_view in) {
+auto Trim(std::string_view in) -> std::string {
   auto view = in | std::views::drop_while(::isspace) | std::views::reverse |
               std::views::drop_while(::isspace) | std::views::reverse;
   return {view.begin(), view.end()};
 }
 
-} // namespace utils
-} // namespace jsonrpc
+}  // namespace jsonrpc::utils

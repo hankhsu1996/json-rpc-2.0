@@ -7,20 +7,18 @@
 #include "jsonrpc/transport/framed_transport.hpp"
 #include "jsonrpc/transport/pipe_transport.hpp"
 
-namespace jsonrpc {
-namespace transport {
+namespace jsonrpc::transport {
 
 /**
  * @brief Transport layer using Asio Unix domain sockets for JSON-RPC
  * communication with framing.
  */
 class FramedPipeTransport : public PipeTransport, protected FramedTransport {
-public:
-  FramedPipeTransport(const std::string &socketPath, bool isServer);
+ public:
+  FramedPipeTransport(const std::string &socket_path, bool is_server);
 
   void SendMessage(const std::string &message) override;
-  std::string ReceiveMessage() override;
+  auto ReceiveMessage() -> std::string override;
 };
 
-} // namespace transport
-} // namespace jsonrpc
+}  // namespace jsonrpc::transport

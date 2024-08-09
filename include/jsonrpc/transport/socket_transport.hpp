@@ -5,8 +5,7 @@
 
 #include "jsonrpc/transport/transport.hpp"
 
-namespace jsonrpc {
-namespace transport {
+namespace jsonrpc::transport {
 
 /**
  * @brief Transport implementation using TCP/IP sockets.
@@ -15,7 +14,7 @@ namespace transport {
  * supporting both client and server modes for communication over a network.
  */
 class SocketTransport : public Transport {
-public:
+ public:
   /**
    * @brief Constructs a SocketTransport.
    * @param host The host address (IP or domain name).
@@ -23,26 +22,31 @@ public:
    * @param isServer True if the transport acts as a server; false if it acts as
    * a client.
    */
-  SocketTransport(const std::string &host, uint16_t port, bool isServer);
+  SocketTransport(const std::string &host, uint16_t port, bool is_server);
 
-  ~SocketTransport();
+  ~SocketTransport() override;
+
+  SocketTransport(const SocketTransport &) = delete;
+  auto operator=(const SocketTransport &) -> SocketTransport & = delete;
+
+  SocketTransport(SocketTransport &&) = delete;
+  auto operator=(SocketTransport &&) -> SocketTransport & = delete;
 
   void SendMessage(const std::string &message) override;
-  std::string ReceiveMessage() override;
+  auto ReceiveMessage() -> std::string override;
 
-protected:
-  asio::ip::tcp::socket &GetSocket();
+ protected:
+  auto GetSocket() -> asio::ip::tcp::socket &;
 
-private:
+ private:
   void Connect();
   void BindAndListen();
 
-  asio::io_context ioContext_;
+  asio::io_context io_context_;
   asio::ip::tcp::socket socket_;
   std::string host_;
   uint16_t port_;
-  bool isServer_;
+  bool is_server_;
 };
 
-} // namespace transport
-} // namespace jsonrpc
+}  // namespace jsonrpc::transport

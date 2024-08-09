@@ -14,14 +14,13 @@ namespace jsonrpc::transport {
  * @brief Transport layer using Asio sockets for JSON-RPC
  * communication with framing.
  */
-class FramedSocketTransport :
-    public SocketTransport,
-    protected FramedTransport {
-public:
-  FramedSocketTransport(const std::string &host, uint16_t port, bool isServer);
+class FramedSocketTransport : public SocketTransport,
+                              protected FramedTransport {
+ public:
+  FramedSocketTransport(const std::string &host, uint16_t port, bool is_server);
 
   void SendMessage(const std::string &message) override;
-  std::string ReceiveMessage() override;
+  auto ReceiveMessage() -> std::string override;
 };
 
-} // namespace jsonrpc::transport
+}  // namespace jsonrpc::transport

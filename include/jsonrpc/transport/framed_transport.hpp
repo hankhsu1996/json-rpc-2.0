@@ -5,8 +5,7 @@
 #include <string>
 #include <unordered_map>
 
-namespace jsonrpc {
-namespace transport {
+namespace jsonrpc::transport {
 
 class FramedTransportTest;
 
@@ -19,9 +18,9 @@ class FramedTransport {
   /// @brief A map of headers to their values.
   using HeaderMap = std::unordered_map<std::string, std::string>;
 
-protected:
+ protected:
   /// @brief The delimiter used to separate headers from the message content.
-  static constexpr const char *HEADER_DELIMITER = "\r\n\r\n";
+  static constexpr const char *kHeaderDelimiter = "\r\n\r\n";
 
   /**
    * @brief Constructs a framed message.
@@ -32,10 +31,10 @@ protected:
    * @param output The output stream to write the framed message.
    * @param message The message to be framed.
    */
-  void FrameMessage(std::ostream &output, const std::string &message);
+  static void FrameMessage(std::ostream &output, const std::string &message);
 
-  HeaderMap ReadHeadersFromStream(std::istream &input);
-  int ReadContentLengthFromStream(std::istream &input);
+  static auto ReadHeadersFromStream(std::istream &input) -> HeaderMap;
+  static auto ReadContentLengthFromStream(std::istream &input) -> int;
 
   /**
    * @brief Reads content from the input stream based on the content length.
@@ -44,7 +43,8 @@ protected:
    * @param content_length The length of the content to be read.
    * @return The content as a string.
    */
-  std::string ReadContent(std::istream &input, int content_length);
+  static auto ReadContent(std::istream &input, int content_length)
+      -> std::string;
 
   /**
    * @brief Receives a framed message.
@@ -55,19 +55,18 @@ protected:
    * @param input The input stream to read the framed message.
    * @return The received message content.
    */
-  std::string ReceiveFramedMessage(std::istream &input);
+  static auto ReceiveFramedMessage(std::istream &input) -> std::string;
 
-private:
+ private:
   /**
    * @brief Parses the content length from the header value.
    *
    * @param header_value The header value containing the content length.
    * @return The parsed content length.
    */
-  int ParseContentLength(const std::string &header_value);
+  static auto ParseContentLength(const std::string &header_value) -> int;
 
   friend class FramedTransportTest;
 };
 
-} // namespace transport
-} // namespace jsonrpc
+}  // namespace jsonrpc::transport
