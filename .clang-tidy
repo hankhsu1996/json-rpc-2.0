@@ -1,3 +1,4 @@
+# Some variables, like 'id', are common in JSON-RPC, so we disable the min length check.
 Checks: >
   -*,
   google-*,
@@ -5,10 +6,11 @@ Checks: >
   readability-*,
   cppcoreguidelines-*,
   clang-analyzer-*,
+  -readability-identifier-length
 
-# Google's naming conventions
-# https://gist.github.com/airglow923/1fa3bda42f2b193920d7f46ee8345e04
 CheckOptions:
+  # Google's naming conventions.
+  # See: https://gist.github.com/airglow923/1fa3bda42f2b193920d7f46ee8345e04
   - key: readability-identifier-naming.ClassCase
     value: CamelCase
   - key: readability-identifier-naming.ClassMemberCase

@@ -22,7 +22,6 @@ class Request {
   explicit Request(
       std::string method,
       const std::optional<nlohmann::json> &params = std::nullopt,
-      // NOLINTNEXTLINE(readability-identifier-length)
       std::optional<nlohmann::json> id = std::nullopt);
 
   /**

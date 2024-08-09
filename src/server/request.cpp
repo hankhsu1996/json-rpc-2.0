@@ -4,7 +4,6 @@ namespace jsonrpc::server {
 
 Request::Request(
     std::string method, const std::optional<nlohmann::json> &params,
-    // NOLINTNEXTLINE(readability-identifier-length)
     std::optional<nlohmann::json> id)
     : method_(std::move(method)), params_(params), id_(std::move(id)) {
 }
@@ -14,7 +13,6 @@ auto Request::FromJson(const nlohmann::json &json_obj) -> Request {
                     ? std::optional<nlohmann::json>(json_obj["params"])
                     : std::nullopt;
 
-  // NOLINTNEXTLINE(readability-identifier-length)
   auto id = json_obj.contains("id")
                 ? std::optional<nlohmann::json>(json_obj["id"])
                 : std::nullopt;
