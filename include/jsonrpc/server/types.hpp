@@ -6,8 +6,7 @@
 
 #include <nlohmann/json.hpp>
 
-namespace jsonrpc {
-namespace server {
+namespace jsonrpc::server {
 
 /**
  * @brief Type alias for method call handler functions.
@@ -33,5 +32,4 @@ using NotificationHandler =
  */
 using Handler = std::variant<MethodCallHandler, NotificationHandler>;
 
-} // namespace server
-} // namespace jsonrpc
+}  // namespace jsonrpc::server
