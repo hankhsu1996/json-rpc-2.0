@@ -2,8 +2,7 @@
 
 #include <spdlog/spdlog.h>
 
-namespace jsonrpc {
-namespace server {
+namespace jsonrpc::server {
 
 Server::Server(std::unique_ptr<transport::Transport> transport)
     : transport_(std::move(transport)) {
@@ -22,7 +21,7 @@ void Server::Stop() {
   running_.store(false);
 }
 
-bool Server::IsRunning() const {
+auto Server::IsRunning() const -> bool {
   return running_.load();
 }
 
@@ -58,5 +57,4 @@ void Server::RegisterNotification(
   dispatcher_->RegisterNotification(method, handler);
 }
 
-} // namespace server
-} // namespace jsonrpc
+}  // namespace jsonrpc::server
