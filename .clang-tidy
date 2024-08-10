@@ -1,4 +1,5 @@
-# Some variables, like 'id', are common in JSON-RPC, so we disable the min length check.
+# 'id' is common in JSON-RPC, so we disable the identifier length check.
+# Magic numbers are acceptable here since we use a calculator as the main example.
 Checks: >
   -*,
   google-*,
@@ -6,7 +7,9 @@ Checks: >
   readability-*,
   cppcoreguidelines-*,
   clang-analyzer-*,
-  -readability-identifier-length
+  -readability-identifier-length,
+  -readability-magic-numbers,
+  -cppcoreguidelines-avoid-magic-numbers,
 
 CheckOptions:
   # Google's naming conventions.

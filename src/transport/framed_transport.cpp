@@ -44,11 +44,11 @@ auto FramedTransport::ReadContentLengthFromStream(std::istream &input) -> int {
   return ParseContentLength(it->second);
 }
 
-auto FramedTransport::ReadContent(std::istream &input, int content_length)
-    -> std::string {
+auto FramedTransport::ReadContent(
+    std::istream &input, std::size_t content_length) -> std::string {
   std::string content(content_length, '\0');
-  input.read(content.data(), content_length);
-  if (input.gcount() != content_length) {
+  input.read(content.data(), static_cast<std::streamsize>(content_length));
+  if (input.gcount() != static_cast<std::streamsize>(content_length)) {
     throw std::runtime_error("Failed to read the expected content length");
   }
   return content;

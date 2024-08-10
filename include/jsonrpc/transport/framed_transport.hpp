@@ -1,5 +1,6 @@
 #pragma once
 
+#include <cstddef>
 #include <istream>
 #include <ostream>
 #include <string>
@@ -43,7 +44,7 @@ class FramedTransport {
    * @param content_length The length of the content to be read.
    * @return The content as a string.
    */
-  static auto ReadContent(std::istream &input, int content_length)
+  static auto ReadContent(std::istream &input, std::size_t content_length)
       -> std::string;
 
   /**
