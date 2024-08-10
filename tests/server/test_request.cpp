@@ -2,15 +2,13 @@
 
 #include "jsonrpc/server/request.hpp"
 
-using namespace jsonrpc::server;
-
 // Test the Request constructor and accessors
 TEST_CASE("Request constructor and accessors", "[Request]") {
   std::string method = "testMethod";
   nlohmann::json params = {{"param1", 1}, {"param2", 2}};
   std::optional<int> id = 1;
 
-  Request request(method, params, id);
+  jsonrpc::server::Request request(method, params, id);
 
   REQUIRE(request.GetMethod() == method);
   REQUIRE(request.GetParams() == params);
@@ -24,13 +22,13 @@ TEST_CASE("Request serialization to JSON", "[Request]") {
   nlohmann::json params = {{"param1", 1}, {"param2", 2}};
   std::optional<int> id = 1;
 
-  Request request(method, params, id);
-  nlohmann::json jsonObj = request.ToJson();
+  jsonrpc::server::Request request(method, params, id);
+  nlohmann::json json_obj = request.ToJson();
 
-  REQUIRE(jsonObj["jsonrpc"] == "2.0");
-  REQUIRE(jsonObj["method"] == method);
-  REQUIRE(jsonObj["params"] == params);
-  REQUIRE(jsonObj["id"] == id.value());
+  REQUIRE(json_obj["jsonrpc"] == "2.0");
+  REQUIRE(json_obj["method"] == method);
+  REQUIRE(json_obj["params"] == params);
+  REQUIRE(json_obj["id"] == id.value());
 }
 
 // Test deserialization from JSON
@@ -39,10 +37,11 @@ TEST_CASE("Request deserialization from JSON", "[Request]") {
   nlohmann::json params = {{"param1", 1}, {"param2", 2}};
   int id = 1;
 
-  nlohmann::json jsonObj = {
+  nlohmann::json json_obj = {
       {"jsonrpc", "2.0"}, {"method", method}, {"params", params}, {"id", id}};
 
-  Request request = Request::FromJson(jsonObj);
+  jsonrpc::server::Request request =
+      jsonrpc::server::Request::FromJson(json_obj);
 
   REQUIRE(request.GetMethod() == method);
   REQUIRE(request.GetParams() == params);
@@ -55,10 +54,11 @@ TEST_CASE("Request deserialization from JSON without id", "[Request]") {
   std::string method = "testMethod";
   nlohmann::json params = {{"param1", 1}, {"param2", 2}};
 
-  nlohmann::json jsonObj = {
+  nlohmann::json json_obj = {
       {"jsonrpc", "2.0"}, {"method", method}, {"params", params}};
 
-  Request request = Request::FromJson(jsonObj);
+  jsonrpc::server::Request request =
+      jsonrpc::server::Request::FromJson(json_obj);
 
   REQUIRE(request.GetMethod() == method);
   REQUIRE(request.GetParams() == params);
@@ -70,9 +70,11 @@ TEST_CASE("Request deserialization from JSON without params", "[Request]") {
   std::string method = "testMethod";
   int id = 1;
 
-  nlohmann::json jsonObj = {{"jsonrpc", "2.0"}, {"method", method}, {"id", id}};
+  nlohmann::json json_obj = {
+      {"jsonrpc", "2.0"}, {"method", method}, {"id", id}};
 
-  Request request = Request::FromJson(jsonObj);
+  jsonrpc::server::Request request =
+      jsonrpc::server::Request::FromJson(json_obj);
 
   REQUIRE(request.GetMethod() == method);
   REQUIRE(!request.GetParams().has_value());

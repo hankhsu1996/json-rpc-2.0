@@ -82,5 +82,5 @@ TEST_CASE("StdioTransport handles reading empty response", "[StdioTransport]") {
   jsonrpc::transport::StdioTransport transport;
   std::string response = transport.ReceiveMessage();
 
-  REQUIRE(response == "");
+  REQUIRE(response.empty());
 }
