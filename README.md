@@ -64,8 +64,8 @@ CMakeToolchain
 Here’s how to create a simple JSON-RPC server:
 
 ```cpp
-using namespace jsonrpc::server;
-using namespace jsonrpc::transport;
+using jsonrpc::server::Server;
+using jsonrpc::transport::StdioTransport;
 using Json = nlohmann::json;
 
 // Create a server with an stdio transport
@@ -93,8 +93,8 @@ To register a method, you need to provide a function that takes optional `Json` 
 Here’s how to create a JSON-RPC client:
 
 ```cpp
-using namespace jsonrpc::client;
-using namespace jsonrpc::transport;
+using jsonrpc::client::Client;
+using jsonrpc::transport::StdioTransport;
 using Json = nlohmann::json;
 
 // Create a client with a standard I/O transport
