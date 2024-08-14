@@ -18,17 +18,17 @@ enum class LibErrorKind {
 };
 
 using ErrorInfoMap =
-    std::unordered_map<LibErrorKind, std::pair<int, const char *>>;
+    std::unordered_map<LibErrorKind, std::pair<int, const char*>>;
 
 /// @brief Represents a JSON-RPC response.
 class Response {
  public:
   Response() = delete;
-  Response(const Response &) = delete;
-  auto operator=(const Response &) -> Response & = delete;
+  Response(const Response&) = delete;
+  auto operator=(const Response&) -> Response& = delete;
 
-  Response(Response &&other) noexcept;
-  auto operator=(Response &&other) noexcept -> Response & = delete;
+  Response(Response&& other) noexcept;
+  auto operator=(Response&& other) noexcept -> Response& = delete;
 
   ~Response() = default;
 
@@ -40,7 +40,7 @@ class Response {
    * @return A Response object.
    */
   static auto FromUserResponse(
-      const nlohmann::json &response_json,
+      const nlohmann::json& response_json,
       std::optional<nlohmann::json> id) -> Response;
 
   /**
@@ -50,8 +50,8 @@ class Response {
    * @return A Response object indicating success.
    */
   static auto CreateResult(
-      const nlohmann::json &result,
-      const std::optional<nlohmann::json> &id) -> Response;
+      const nlohmann::json& result,
+      const std::optional<nlohmann::json>& id) -> Response;
 
   /**
    * @brief Creates a Response object for a library error.
@@ -61,7 +61,7 @@ class Response {
    */
   static auto CreateLibError(
       LibErrorKind error_kind,
-      const std::optional<nlohmann::json> &id = std::nullopt) -> Response;
+      const std::optional<nlohmann::json>& id = std::nullopt) -> Response;
 
   /**
    * @brief Creates a Response object for a user error.
@@ -70,8 +70,8 @@ class Response {
    * @return A Response object indicating a user error.
    */
   static auto CreateUserError(
-      const nlohmann::json &error,
-      const std::optional<nlohmann::json> &id) -> Response;
+      const nlohmann::json& error,
+      const std::optional<nlohmann::json>& id) -> Response;
 
   /**
    * @brief Serializes the Response object to a JSON object.
@@ -106,8 +106,8 @@ class Response {
    * @return The JSON representation of the error response.
    */
   static auto CreateErrorResponse(
-      const std::string &message, int code,
-      const std::optional<nlohmann::json> &id) -> nlohmann::json;
+      const std::string& message, int code,
+      const std::optional<nlohmann::json>& id) -> nlohmann::json;
 
   /// @brief The JSON object representing the response.
   nlohmann::json response_;
