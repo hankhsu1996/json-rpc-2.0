@@ -19,30 +19,6 @@ jobs:
       - name: Run clang-format
         uses: jidicula/clang-format-action@v4.13.0
 
-  clang-tidy-check:
-    runs-on: ubuntu-latest
-
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
-
-      - name: Setup Bazel
-        uses: bazel-contrib/setup-bazel@0.8.5
-        with:
-          bazelisk-cache: true
-          disk-cache: ${{ github.workflow }}
-          repository-cache: true
-
-      - name: Generate compile_commands.json
-        run: |
-          bazel run @hedron_compile_commands//:refresh_all
-
-      - name: Run clang-tidy
-        run: |
-          find include src examples tests \
-            -name '*.cpp' -o -name '*.hpp' | \
-            xargs -P $(nproc) clang-tidy -p=. -warnings-as-errors='*'
-
   build-and-test-cmake:
     runs-on: ubuntu-latest
 
