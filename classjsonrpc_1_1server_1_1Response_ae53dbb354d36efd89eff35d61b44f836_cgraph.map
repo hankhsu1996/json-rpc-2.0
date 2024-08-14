@@ -1,7 +1,0 @@
-<map id="jsonrpc::server::Response::FromUserResponse" name="jsonrpc::server::Response::FromUserResponse">
-<area shape="rect" id="Node000001" title="Creates a Response object from a JSON object that represents a user response." alt="" coords="5,37,195,77"/>
-<area shape="rect" id="Node000002" href="$classjsonrpc_1_1server_1_1Response.html#a9e458f05aa6ac2bb7f0cbb2d68aa6fbf" title="Creates a successful Response object." alt="" coords="243,5,432,45"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="194,42,229,37,229,43,195,47"/>
-<area shape="rect" id="Node000003" href="$classjsonrpc_1_1server_1_1Response.html#adade4fc94249c2248f7dc869ff071bde" title="Creates a Response object for a user error." alt="" coords="243,69,432,109"/>
-<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="195,67,229,72,229,77,194,73"/>
-</map>

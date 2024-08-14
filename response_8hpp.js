@@ -1,12 +1,12 @@
 var response_8hpp =
 [
     [ "jsonrpc::server::Response", "classjsonrpc_1_1server_1_1Response.html", "classjsonrpc_1_1server_1_1Response" ],
-    [ "ErrorInfoMap", "response_8hpp.html#a5380caa26203100315014f72af8d371e", null ],
+    [ "ErrorInfoMap", "response_8hpp.html#aeb26a8845afa60dee4b40e5d1e5d6e77", null ],
     [ "LibErrorKind", "response_8hpp.html#a3a6b1c2136612377f6d9743b25b7409c", [
-      [ "ParseError", "response_8hpp.html#a3a6b1c2136612377f6d9743b25b7409cae41199faa7290c167f70f314c5e6c165", null ],
-      [ "InvalidRequest", "response_8hpp.html#a3a6b1c2136612377f6d9743b25b7409cad544eb3da2f68d24cf92a8519ed53a31", null ],
-      [ "MethodNotFound", "response_8hpp.html#a3a6b1c2136612377f6d9743b25b7409ca011fb1f694f7b928964b898fc5d0ca5c", null ],
-      [ "InternalError", "response_8hpp.html#a3a6b1c2136612377f6d9743b25b7409ca8462b58246e70e5c83e5b939a9332cb5", null ],
-      [ "ServerError", "response_8hpp.html#a3a6b1c2136612377f6d9743b25b7409ca7d65c64901711bc2cd2a33ff2641fbe9", null ]
+      [ "kParseError", "response_8hpp.html#a3a6b1c2136612377f6d9743b25b7409ca70bc2f6598437e307b2b8d35f1c49a18", null ],
+      [ "kInvalidRequest", "response_8hpp.html#a3a6b1c2136612377f6d9743b25b7409ca6c4ae9ad285a625b8bfdc0a62e289f6e", null ],
+      [ "kMethodNotFound", "response_8hpp.html#a3a6b1c2136612377f6d9743b25b7409caa0fcc6e288e7806a406405f780cdaf0f", null ],
+      [ "kInternalError", "response_8hpp.html#a3a6b1c2136612377f6d9743b25b7409cafcd417a134c251034b0d61b07c826394", null ],
+      [ "kServerError", "response_8hpp.html#a3a6b1c2136612377f6d9743b25b7409cac0743fba36fbd100b50c78be97655ae8", null ]
     ] ]
 ];

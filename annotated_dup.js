@@ -7,7 +7,6 @@ var annotated_dup =
       ] ],
       [ "server", "namespacejsonrpc_1_1server.html", [
         [ "Dispatcher", "classjsonrpc_1_1server_1_1Dispatcher.html", "classjsonrpc_1_1server_1_1Dispatcher" ],
-        [ "IDispatcher", "classjsonrpc_1_1server_1_1IDispatcher.html", "classjsonrpc_1_1server_1_1IDispatcher" ],
         [ "Request", "classjsonrpc_1_1server_1_1Request.html", "classjsonrpc_1_1server_1_1Request" ],
         [ "Response", "classjsonrpc_1_1server_1_1Response.html", "classjsonrpc_1_1server_1_1Response" ],
         [ "Server", "classjsonrpc_1_1server_1_1Server.html", "classjsonrpc_1_1server_1_1Server" ]

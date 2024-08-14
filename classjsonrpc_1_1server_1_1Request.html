@@ -132,35 +132,35 @@ Collaboration diagram for jsonrpc::server::Request:</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a8f9011dd4ce4e8aa8dbab833e627c6c1" id="r_a8f9011dd4ce4e8aa8dbab833e627c6c1"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a8f9011dd4ce4e8aa8dbab833e627c6c1">Request</a> (const std::string &amp;method, const std::optional&lt; nlohmann::json &gt; &amp;params=std::nullopt, std::optional&lt; nlohmann::json &gt; id=std::nullopt)</td></tr>
-<tr class="memdesc:a8f9011dd4ce4e8aa8dbab833e627c6c1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructs a <a class="el" href="classjsonrpc_1_1server_1_1Request.html" title="Represents a JSON-RPC request.">Request</a> object.  <br /></td></tr>
-<tr class="separator:a8f9011dd4ce4e8aa8dbab833e627c6c1"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:abe23dc176306a50b1f6ee5b2eca9607b" id="r_abe23dc176306a50b1f6ee5b2eca9607b"><td class="memItemLeft" align="right" valign="top">nlohmann::json&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#abe23dc176306a50b1f6ee5b2eca9607b">ToJson</a> () const</td></tr>
-<tr class="memdesc:abe23dc176306a50b1f6ee5b2eca9607b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Serializes the <a class="el" href="classjsonrpc_1_1server_1_1Request.html" title="Represents a JSON-RPC request.">Request</a> object to a JSON object.  <br /></td></tr>
-<tr class="separator:abe23dc176306a50b1f6ee5b2eca9607b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:afac27c52b26413049df9a73aec7dfb5c" id="r_afac27c52b26413049df9a73aec7dfb5c"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#afac27c52b26413049df9a73aec7dfb5c">GetMethod</a> () const</td></tr>
-<tr class="memdesc:afac27c52b26413049df9a73aec7dfb5c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the method name.  <br /></td></tr>
-<tr class="separator:afac27c52b26413049df9a73aec7dfb5c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a525796e8514ea07d0839880b7fa2be4c" id="r_a525796e8514ea07d0839880b7fa2be4c"><td class="memItemLeft" align="right" valign="top">std::optional&lt; nlohmann::json &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a525796e8514ea07d0839880b7fa2be4c">GetParams</a> () const</td></tr>
-<tr class="memdesc:a525796e8514ea07d0839880b7fa2be4c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the parameters.  <br /></td></tr>
-<tr class="separator:a525796e8514ea07d0839880b7fa2be4c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6f6a64591f4a77cd444aac51bd9336be" id="r_a6f6a64591f4a77cd444aac51bd9336be"><td class="memItemLeft" align="right" valign="top">std::optional&lt; nlohmann::json &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a6f6a64591f4a77cd444aac51bd9336be">GetId</a> () const</td></tr>
-<tr class="memdesc:a6f6a64591f4a77cd444aac51bd9336be"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the request ID.  <br /></td></tr>
-<tr class="separator:a6f6a64591f4a77cd444aac51bd9336be"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad6a5301ec5dc8b168511e95daeebe404" id="r_ad6a5301ec5dc8b168511e95daeebe404"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad6a5301ec5dc8b168511e95daeebe404">Request</a> (std::string method, const std::optional&lt; nlohmann::json &gt; &amp;params=std::nullopt, std::optional&lt; nlohmann::json &gt; id=std::nullopt)</td></tr>
+<tr class="memdesc:ad6a5301ec5dc8b168511e95daeebe404"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructs a <a class="el" href="classjsonrpc_1_1server_1_1Request.html" title="Represents a JSON-RPC request.">Request</a> object.  <br /></td></tr>
+<tr class="separator:ad6a5301ec5dc8b168511e95daeebe404"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acf560e12ea752b65477dbd9724287ad3" id="r_acf560e12ea752b65477dbd9724287ad3"><td class="memItemLeft" align="right" valign="top">auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#acf560e12ea752b65477dbd9724287ad3">ToJson</a> () const -&gt; nlohmann::json</td></tr>
+<tr class="memdesc:acf560e12ea752b65477dbd9724287ad3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Serializes the <a class="el" href="classjsonrpc_1_1server_1_1Request.html" title="Represents a JSON-RPC request.">Request</a> object to a JSON object.  <br /></td></tr>
+<tr class="separator:acf560e12ea752b65477dbd9724287ad3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa6693e593a3e8719e477b369fac4d9aa" id="r_aa6693e593a3e8719e477b369fac4d9aa"><td class="memItemLeft" align="right" valign="top">auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa6693e593a3e8719e477b369fac4d9aa">GetMethod</a> () const -&gt; std::string</td></tr>
+<tr class="memdesc:aa6693e593a3e8719e477b369fac4d9aa"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the method name.  <br /></td></tr>
+<tr class="separator:aa6693e593a3e8719e477b369fac4d9aa"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1d2e3e95d623a7972759c9e074826502" id="r_a1d2e3e95d623a7972759c9e074826502"><td class="memItemLeft" align="right" valign="top">auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a1d2e3e95d623a7972759c9e074826502">GetParams</a> () const -&gt; std::optional&lt; nlohmann::json &gt;</td></tr>
+<tr class="memdesc:a1d2e3e95d623a7972759c9e074826502"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the parameters.  <br /></td></tr>
+<tr class="separator:a1d2e3e95d623a7972759c9e074826502"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4060ec64596f59b72dece2e59ff783e1" id="r_a4060ec64596f59b72dece2e59ff783e1"><td class="memItemLeft" align="right" valign="top">auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a4060ec64596f59b72dece2e59ff783e1">GetId</a> () const -&gt; std::optional&lt; nlohmann::json &gt;</td></tr>
+<tr class="memdesc:a4060ec64596f59b72dece2e59ff783e1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the request ID.  <br /></td></tr>
+<tr class="separator:a4060ec64596f59b72dece2e59ff783e1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-static-methods" name="pub-static-methods"></a>
 Static Public Member Functions</h2></td></tr>
-<tr class="memitem:a8931bc20201a8a0cabfa34b89daf959c" id="r_a8931bc20201a8a0cabfa34b89daf959c"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="classjsonrpc_1_1server_1_1Request.html">Request</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a8931bc20201a8a0cabfa34b89daf959c">FromJson</a> (const nlohmann::json &amp;jsonObj)</td></tr>
-<tr class="memdesc:a8931bc20201a8a0cabfa34b89daf959c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates a <a class="el" href="classjsonrpc_1_1server_1_1Request.html" title="Represents a JSON-RPC request.">Request</a> object from a JSON object.  <br /></td></tr>
-<tr class="separator:a8931bc20201a8a0cabfa34b89daf959c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a148c5ec33fd15819878d71148fbd67cf" id="r_a148c5ec33fd15819878d71148fbd67cf"><td class="memItemLeft" align="right" valign="top">static auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a148c5ec33fd15819878d71148fbd67cf">FromJson</a> (const nlohmann::json &amp;json_obj) -&gt; <a class="el" href="classjsonrpc_1_1server_1_1Request.html">Request</a></td></tr>
+<tr class="memdesc:a148c5ec33fd15819878d71148fbd67cf"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates a <a class="el" href="classjsonrpc_1_1server_1_1Request.html" title="Represents a JSON-RPC request.">Request</a> object from a JSON object.  <br /></td></tr>
+<tr class="separator:a148c5ec33fd15819878d71148fbd67cf"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Represents a JSON-RPC request. </p>
 
-<p class="definition">Definition at line <a class="el" href="server_2request_8hpp_source.html#l00014">14</a> of file <a class="el" href="server_2request_8hpp_source.html">request.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="server_2request_8hpp_source.html#l00013">13</a> of file <a class="el" href="server_2request_8hpp_source.html">request.hpp</a>.</p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
-<a id="a8f9011dd4ce4e8aa8dbab833e627c6c1" name="a8f9011dd4ce4e8aa8dbab833e627c6c1"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a8f9011dd4ce4e8aa8dbab833e627c6c1">&#9670;&#160;</a></span>Request()</h2>
+<a id="ad6a5301ec5dc8b168511e95daeebe404" name="ad6a5301ec5dc8b168511e95daeebe404"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad6a5301ec5dc8b168511e95daeebe404">&#9670;&#160;</a></span>Request()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -171,7 +171,7 @@ Static Public Member Functions</h2></td></tr>
         <tr>
           <td class="memname">jsonrpc::server::Request::Request </td>
           <td>(</td>
-          <td class="paramtype">const std::string &amp;</td>          <td class="paramname"><span class="paramname"><em>method</em></span>, </td>
+          <td class="paramtype">std::string</td>          <td class="paramname"><span class="paramname"><em>method</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -186,7 +186,7 @@ Static Public Member Functions</h2></td></tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">explicit</span></span>  </td>
+<span class="mlabels"><span class="mlabel">explicit</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
@@ -201,22 +201,15 @@ Static Public Member Functions</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="server_2request_8hpp_source.html#l00023">23</a> of file <a class="el" href="server_2request_8hpp_source.html">request.hpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   26</span>      : method_(method), params_(params), id_(<span class="keywordtype">id</span>) {</div>
-<div class="line"><span class="lineno">   27</span>  }</div>
+<p class="definition">Definition at line <a class="el" href="server_2request_8cpp_source.html#l00005">5</a> of file <a class="el" href="server_2request_8cpp_source.html">request.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">    8</span>    : method_(std::move(method)), params_(params), id_(std::move(<span class="keywordtype">id</span>)) {</div>
+<div class="line"><span class="lineno">    9</span>}</div>
 </div><!-- fragment -->
-<p class="reference">Referenced by <a class="el" href="server_2request_8cpp_source.html#l00006">FromJson()</a>.</p>
-<div class="dynheader">
-Here is the caller graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="classjsonrpc_1_1server_1_1Request_a8f9011dd4ce4e8aa8dbab833e627c6c1_icgraph.svg" width="416" height="51"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
-</div>
-
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
-<a id="a8931bc20201a8a0cabfa34b89daf959c" name="a8931bc20201a8a0cabfa34b89daf959c"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a8931bc20201a8a0cabfa34b89daf959c">&#9670;&#160;</a></span>FromJson()</h2>
+<a id="a148c5ec33fd15819878d71148fbd67cf" name="a148c5ec33fd15819878d71148fbd67cf"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a148c5ec33fd15819878d71148fbd67cf">&#9670;&#160;</a></span>FromJson()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -225,10 +218,10 @@ Here is the caller graph for this function:</div>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="classjsonrpc_1_1server_1_1Request.html">Request</a> jsonrpc::server::Request::FromJson </td>
+          <td class="memname">auto jsonrpc::server::Request::FromJson </td>
           <td>(</td>
-          <td class="paramtype">const nlohmann::json &amp;</td>          <td class="paramname"><span class="paramname"><em>jsonObj</em></span></td><td>)</td>
-          <td></td>
+          <td class="paramtype">const nlohmann::json &amp;</td>          <td class="paramname"><span class="paramname"><em>json_obj</em></span></td><td>)</td>
+          <td> -&gt; <a class="el" href="classjsonrpc_1_1server_1_1Request.html">Request</a></td>
         </tr>
       </table>
   </td>
@@ -247,29 +240,23 @@ Here is the caller graph for this function:</div>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>A <a class="el" href="classjsonrpc_1_1server_1_1Request.html" title="Represents a JSON-RPC request.">Request</a> object. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="server_2request_8cpp_source.html#l00006">6</a> of file <a class="el" href="server_2request_8cpp_source.html">request.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">    6</span>                                                     {</div>
-<div class="line"><span class="lineno">    7</span>  <span class="keyword">auto</span> params = jsonObj.contains(<span class="stringliteral">&quot;params&quot;</span>)</div>
-<div class="line"><span class="lineno">    8</span>                    ? std::optional&lt;nlohmann::json&gt;(jsonObj[<span class="stringliteral">&quot;params&quot;</span>])</div>
-<div class="line"><span class="lineno">    9</span>                    : std::nullopt;</div>
-<div class="line"><span class="lineno">   10</span>  <span class="keyword">auto</span> <span class="keywordtype">id</span> = jsonObj.contains(<span class="stringliteral">&quot;id&quot;</span>)</div>
-<div class="line"><span class="lineno">   11</span>                ? std::optional&lt;nlohmann::json&gt;(jsonObj[<span class="stringliteral">&quot;id&quot;</span>])</div>
-<div class="line"><span class="lineno">   12</span>                : std::nullopt;</div>
-<div class="line"><span class="lineno">   13</span>  <span class="keywordflow">return</span> <a class="code hl_function" href="#a8f9011dd4ce4e8aa8dbab833e627c6c1">Request</a>(jsonObj[<span class="stringliteral">&quot;method&quot;</span>], params, <span class="keywordtype">id</span>);</div>
-<div class="line"><span class="lineno">   14</span>}</div>
-<div class="ttc" id="aclassjsonrpc_1_1server_1_1Request_html_a8f9011dd4ce4e8aa8dbab833e627c6c1"><div class="ttname"><a href="#a8f9011dd4ce4e8aa8dbab833e627c6c1">jsonrpc::server::Request::Request</a></div><div class="ttdeci">Request(const std::string &amp;method, const std::optional&lt; nlohmann::json &gt; &amp;params=std::nullopt, std::optional&lt; nlohmann::json &gt; id=std::nullopt)</div><div class="ttdoc">Constructs a Request object.</div><div class="ttdef"><b>Definition</b> <a href="server_2request_8hpp_source.html#l00023">request.hpp:23</a></div></div>
+<p class="definition">Definition at line <a class="el" href="server_2request_8cpp_source.html#l00011">11</a> of file <a class="el" href="server_2request_8cpp_source.html">request.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   11</span>                                                              {</div>
+<div class="line"><span class="lineno">   12</span>  <span class="keyword">auto</span> params = json_obj.contains(<span class="stringliteral">&quot;params&quot;</span>)</div>
+<div class="line"><span class="lineno">   13</span>                    ? std::optional&lt;nlohmann::json&gt;(json_obj[<span class="stringliteral">&quot;params&quot;</span>])</div>
+<div class="line"><span class="lineno">   14</span>                    : std::nullopt;</div>
+<div class="line"><span class="lineno">   15</span> </div>
+<div class="line"><span class="lineno">   16</span>  <span class="keyword">auto</span> <span class="keywordtype">id</span> = json_obj.contains(<span class="stringliteral">&quot;id&quot;</span>)</div>
+<div class="line"><span class="lineno">   17</span>                ? std::optional&lt;nlohmann::json&gt;(json_obj[<span class="stringliteral">&quot;id&quot;</span>])</div>
+<div class="line"><span class="lineno">   18</span>                : std::nullopt;</div>
+<div class="line"><span class="lineno">   19</span>  <span class="keywordflow">return</span> <a class="code hl_function" href="#ad6a5301ec5dc8b168511e95daeebe404">Request</a>(json_obj[<span class="stringliteral">&quot;method&quot;</span>], params, <span class="keywordtype">id</span>);</div>
+<div class="line"><span class="lineno">   20</span>}</div>
+<div class="ttc" id="aclassjsonrpc_1_1server_1_1Request_html_ad6a5301ec5dc8b168511e95daeebe404"><div class="ttname"><a href="#ad6a5301ec5dc8b168511e95daeebe404">jsonrpc::server::Request::Request</a></div><div class="ttdeci">Request(std::string method, const std::optional&lt; nlohmann::json &gt; &amp;params=std::nullopt, std::optional&lt; nlohmann::json &gt; id=std::nullopt)</div><div class="ttdoc">Constructs a Request object.</div><div class="ttdef"><b>Definition</b> <a href="server_2request_8cpp_source.html#l00005">request.cpp:5</a></div></div>
 </div><!-- fragment -->
-<p class="reference">References <a class="el" href="server_2request_8hpp_source.html#l00023">Request()</a>.</p>
-<div class="dynheader">
-Here is the call graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="classjsonrpc_1_1server_1_1Request_a8931bc20201a8a0cabfa34b89daf959c_cgraph.svg" width="416" height="51"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
-</div>
-
 </div>
 </div>
-<a id="a6f6a64591f4a77cd444aac51bd9336be" name="a6f6a64591f4a77cd444aac51bd9336be"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a6f6a64591f4a77cd444aac51bd9336be">&#9670;&#160;</a></span>GetId()</h2>
+<a id="a4060ec64596f59b72dece2e59ff783e1" name="a4060ec64596f59b72dece2e59ff783e1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4060ec64596f59b72dece2e59ff783e1">&#9670;&#160;</a></span>GetId()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -278,30 +265,30 @@ Here is the call graph for this function:</div>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">std::optional&lt; nlohmann::json &gt; jsonrpc::server::Request::GetId </td>
+          <td class="memname">auto jsonrpc::server::Request::GetId </td>
           <td>(</td>
           <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
-          <td> const</td>
+          <td> const -&gt; std::optional&lt;nlohmann::json&gt; </td>
         </tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">nodiscard</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
 
 <p>Gets the request ID. </p>
 
-<p class="definition">Definition at line <a class="el" href="server_2request_8hpp_source.html#l00055">55</a> of file <a class="el" href="server_2request_8hpp_source.html">request.hpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   55</span>                                          {</div>
-<div class="line"><span class="lineno">   56</span>    <span class="keywordflow">return</span> id_;</div>
-<div class="line"><span class="lineno">   57</span>  }</div>
+<p class="definition">Definition at line <a class="el" href="server_2request_8hpp_source.html#l00053">53</a> of file <a class="el" href="server_2request_8hpp_source.html">request.hpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   53</span>                                                                {</div>
+<div class="line"><span class="lineno">   54</span>    <span class="keywordflow">return</span> id_;</div>
+<div class="line"><span class="lineno">   55</span>  }</div>
 </div><!-- fragment -->
 </div>
 </div>
-<a id="afac27c52b26413049df9a73aec7dfb5c" name="afac27c52b26413049df9a73aec7dfb5c"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#afac27c52b26413049df9a73aec7dfb5c">&#9670;&#160;</a></span>GetMethod()</h2>
+<a id="aa6693e593a3e8719e477b369fac4d9aa" name="aa6693e593a3e8719e477b369fac4d9aa"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa6693e593a3e8719e477b369fac4d9aa">&#9670;&#160;</a></span>GetMethod()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -310,30 +297,30 @@ Here is the call graph for this function:</div>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">std::string jsonrpc::server::Request::GetMethod </td>
+          <td class="memname">auto jsonrpc::server::Request::GetMethod </td>
           <td>(</td>
           <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
-          <td> const</td>
+          <td> const -&gt; std::string </td>
         </tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">nodiscard</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
 
 <p>Gets the method name. </p>
 
-<p class="definition">Definition at line <a class="el" href="server_2request_8hpp_source.html#l00045">45</a> of file <a class="el" href="server_2request_8hpp_source.html">request.hpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   45</span>                              {</div>
-<div class="line"><span class="lineno">   46</span>    <span class="keywordflow">return</span> method_;</div>
-<div class="line"><span class="lineno">   47</span>  }</div>
+<p class="definition">Definition at line <a class="el" href="server_2request_8hpp_source.html#l00043">43</a> of file <a class="el" href="server_2request_8hpp_source.html">request.hpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   43</span>                                                    {</div>
+<div class="line"><span class="lineno">   44</span>    <span class="keywordflow">return</span> method_;</div>
+<div class="line"><span class="lineno">   45</span>  }</div>
 </div><!-- fragment -->
 </div>
 </div>
-<a id="a525796e8514ea07d0839880b7fa2be4c" name="a525796e8514ea07d0839880b7fa2be4c"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a525796e8514ea07d0839880b7fa2be4c">&#9670;&#160;</a></span>GetParams()</h2>
+<a id="a1d2e3e95d623a7972759c9e074826502" name="a1d2e3e95d623a7972759c9e074826502"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1d2e3e95d623a7972759c9e074826502">&#9670;&#160;</a></span>GetParams()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -342,59 +329,67 @@ Here is the call graph for this function:</div>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">std::optional&lt; nlohmann::json &gt; jsonrpc::server::Request::GetParams </td>
+          <td class="memname">auto jsonrpc::server::Request::GetParams </td>
           <td>(</td>
           <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
-          <td> const</td>
+          <td> const -&gt; std::optional&lt;nlohmann::json&gt; </td>
         </tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">nodiscard</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
 
 <p>Gets the parameters. </p>
 
-<p class="definition">Definition at line <a class="el" href="server_2request_8hpp_source.html#l00050">50</a> of file <a class="el" href="server_2request_8hpp_source.html">request.hpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   50</span>                                              {</div>
-<div class="line"><span class="lineno">   51</span>    <span class="keywordflow">return</span> params_;</div>
-<div class="line"><span class="lineno">   52</span>  }</div>
+<p class="definition">Definition at line <a class="el" href="server_2request_8hpp_source.html#l00048">48</a> of file <a class="el" href="server_2request_8hpp_source.html">request.hpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   48</span>                                                                    {</div>
+<div class="line"><span class="lineno">   49</span>    <span class="keywordflow">return</span> params_;</div>
+<div class="line"><span class="lineno">   50</span>  }</div>
 </div><!-- fragment -->
 </div>
 </div>
-<a id="abe23dc176306a50b1f6ee5b2eca9607b" name="abe23dc176306a50b1f6ee5b2eca9607b"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#abe23dc176306a50b1f6ee5b2eca9607b">&#9670;&#160;</a></span>ToJson()</h2>
+<a id="acf560e12ea752b65477dbd9724287ad3" name="acf560e12ea752b65477dbd9724287ad3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acf560e12ea752b65477dbd9724287ad3">&#9670;&#160;</a></span>ToJson()</h2>
 
 <div class="memitem">
 <div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">nlohmann::json jsonrpc::server::Request::ToJson </td>
+          <td class="memname">auto jsonrpc::server::Request::ToJson </td>
           <td>(</td>
           <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
-          <td> const</td>
+          <td> const -&gt; nlohmann::json</td>
         </tr>
       </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">nodiscard</span></span>  </td>
+  </tr>
+</table>
 </div><div class="memdoc">
 
 <p>Serializes the <a class="el" href="classjsonrpc_1_1server_1_1Request.html" title="Represents a JSON-RPC request.">Request</a> object to a JSON object. </p>
 <dl class="section return"><dt>Returns</dt><dd>The JSON representation of the request. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="server_2request_8cpp_source.html#l00016">16</a> of file <a class="el" href="server_2request_8cpp_source.html">request.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   16</span>                                   {</div>
-<div class="line"><span class="lineno">   17</span>  nlohmann::json jsonObj;</div>
-<div class="line"><span class="lineno">   18</span>  jsonObj[<span class="stringliteral">&quot;jsonrpc&quot;</span>] = <span class="stringliteral">&quot;2.0&quot;</span>;</div>
-<div class="line"><span class="lineno">   19</span>  jsonObj[<span class="stringliteral">&quot;method&quot;</span>] = method_;</div>
-<div class="line"><span class="lineno">   20</span>  <span class="keywordflow">if</span> (params_.has_value()) {</div>
-<div class="line"><span class="lineno">   21</span>    jsonObj[<span class="stringliteral">&quot;params&quot;</span>] = params_.value();</div>
-<div class="line"><span class="lineno">   22</span>  }</div>
-<div class="line"><span class="lineno">   23</span>  <span class="keywordflow">if</span> (id_.has_value()) {</div>
-<div class="line"><span class="lineno">   24</span>    jsonObj[<span class="stringliteral">&quot;id&quot;</span>] = id_.value();</div>
-<div class="line"><span class="lineno">   25</span>  }</div>
-<div class="line"><span class="lineno">   26</span>  <span class="keywordflow">return</span> jsonObj;</div>
-<div class="line"><span class="lineno">   27</span>}</div>
+<p class="definition">Definition at line <a class="el" href="server_2request_8cpp_source.html#l00022">22</a> of file <a class="el" href="server_2request_8cpp_source.html">request.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   22</span>                                           {</div>
+<div class="line"><span class="lineno">   23</span>  nlohmann::json json_obj;</div>
+<div class="line"><span class="lineno">   24</span>  json_obj[<span class="stringliteral">&quot;jsonrpc&quot;</span>] = <span class="stringliteral">&quot;2.0&quot;</span>;</div>
+<div class="line"><span class="lineno">   25</span>  json_obj[<span class="stringliteral">&quot;method&quot;</span>] = method_;</div>
+<div class="line"><span class="lineno">   26</span>  <span class="keywordflow">if</span> (params_.has_value()) {</div>
+<div class="line"><span class="lineno">   27</span>    json_obj[<span class="stringliteral">&quot;params&quot;</span>] = params_.value();</div>
+<div class="line"><span class="lineno">   28</span>  }</div>
+<div class="line"><span class="lineno">   29</span>  <span class="keywordflow">if</span> (id_.has_value()) {</div>
+<div class="line"><span class="lineno">   30</span>    json_obj[<span class="stringliteral">&quot;id&quot;</span>] = id_.value();</div>
+<div class="line"><span class="lineno">   31</span>  }</div>
+<div class="line"><span class="lineno">   32</span>  <span class="keywordflow">return</span> json_obj;</div>
+<div class="line"><span class="lineno">   33</span>}</div>
 </div><!-- fragment -->
 </div>
 </div>

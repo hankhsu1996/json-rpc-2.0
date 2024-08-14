@@ -132,13 +132,17 @@ $(function(){initNavTree('index.html',''); initResizable(true); });
 Prerequisites</h2>
 <ul>
 <li><b>Compiler</b>: Any compiler with C++20 support.</li>
-<li><b>CMake</b>: Version 3.19+ (for CMake preset support).</li>
-<li><b>Bazel</b>: Version 5.0+ (for Bazel module support).</li>
+<li><b>Bazel</b>: Version 7.0+ (for Bzlmod support).</li>
+<li><b>CMake</b>: Version 3.19+ (for CMake preset support, optional).</li>
+<li><b>Conan</b>: Version 2.0+ (optional).</li>
 </ul>
-<p>To include this library in your project, you can use CMake's FetchContent, Conan 2, or Bazel.</p>
 <h2><a class="anchor" id="autotoc_md4"></a>
-Using CMake FetchContent</h2>
-<p>Add the following to your <code>CMakeLists.txt</code> to fetch the library:</p>
+Using Bazel</h2>
+<p>To include this library in your project with Bazel, ensure you are using Bazel 7.0 or later, as Bzlmod is enabled by default. Add the following to your <code>MODULE.bazel</code> file:</p>
+<div class="fragment"><div class="line">bazel_dep(name = &quot;jsonrpc&quot;, version = &quot;1.0.0&quot;)</div>
+</div><!-- fragment --><h2><a class="anchor" id="autotoc_md5"></a>
+Optional: Using CMake FetchContent</h2>
+<p>If you prefer using CMake, add the library to your project with the following in your <code>CMakeLists.txt</code>:</p>
 <div class="fragment"><div class="line">include(FetchContent)</div>
 <div class="line">FetchContent_Declare(</div>
 <div class="line">  jsonrpc</div>
@@ -146,30 +150,26 @@ Using CMake FetchContent</h2>
 <div class="line">  GIT_TAG main</div>
 <div class="line">)</div>
 <div class="line">FetchContent_MakeAvailable(jsonrpc)</div>
-</div><!-- fragment --><h2><a class="anchor" id="autotoc_md5"></a>
-Using Conan 2</h2>
-<p>Create a <code>conanfile.txt</code> in your project directory with the following content:</p>
+</div><!-- fragment --><h2><a class="anchor" id="autotoc_md6"></a>
+Optional: Using Conan 2</h2>
+<p>For projects using Conan, create a <code>conanfile.txt</code> in your project directory with the following content:</p>
 <div class="fragment"><div class="line">[requires]</div>
 <div class="line">json-rpc-2.0/1.0.0</div>
 <div class="line"> </div>
 <div class="line">[generators]</div>
 <div class="line">CMakeDeps</div>
 <div class="line">CMakeToolchain</div>
-</div><!-- fragment --><h2><a class="anchor" id="autotoc_md6"></a>
-Using Bazel</h2>
-<p>Add the following to your <code>MODULE.bazel</code> file:</p>
-<div class="fragment"><div class="line">bazel_dep(name = &quot;jsonrpc&quot;, version = &quot;1.0.0&quot;)</div>
 </div><!-- fragment --><h1><a class="anchor" id="autotoc_md7"></a>
 📖 Usage and Examples</h1>
 <h2><a class="anchor" id="autotoc_md8"></a>
 Creating a JSON-RPC Server</h2>
 <p>Here’s how to create a simple JSON-RPC server:</p>
-<div class="fragment"><div class="line"><span class="keyword">using namespace </span><a class="code hl_namespace" href="namespacejsonrpc_1_1server.html">jsonrpc::server</a>;</div>
-<div class="line"><span class="keyword">using namespace </span><a class="code hl_namespace" href="namespacejsonrpc_1_1transport.html">jsonrpc::transport</a>;</div>
+<div class="fragment"><div class="line"><span class="keyword">using </span><a class="code hl_class" href="classjsonrpc_1_1server_1_1Server.html">jsonrpc::server::Server</a>;</div>
+<div class="line"><span class="keyword">using </span><a class="code hl_class" href="classjsonrpc_1_1transport_1_1StdioTransport.html">jsonrpc::transport::StdioTransport</a>;</div>
 <div class="line"><span class="keyword">using </span>Json = nlohmann::json;</div>
 <div class="line"> </div>
 <div class="line"><span class="comment">// Create a server with an stdio transport</span></div>
-<div class="line"><a class="code hl_class" href="classjsonrpc_1_1server_1_1Server.html">Server</a> server(std::make_unique&lt;StdioTransport&gt;());</div>
+<div class="line">Server server(std::make_unique&lt;StdioTransport&gt;());</div>
 <div class="line"> </div>
 <div class="line"><span class="comment">// Register a method named &quot;add&quot; that adds two numbers</span></div>
 <div class="line">server.RegisterMethodCall(<span class="stringliteral">&quot;add&quot;</span>, [](<span class="keyword">const</span> std::optional&lt;Json&gt; &amp;params) {</div>
@@ -184,19 +184,18 @@ Creating a JSON-RPC Server</h2>
 <div class="line"> </div>
 <div class="line"><span class="comment">// Start the server</span></div>
 <div class="line">server.Start();</div>
-<div class="ttc" id="aclassjsonrpc_1_1server_1_1Server_html"><div class="ttname"><a href="classjsonrpc_1_1server_1_1Server.html">jsonrpc::server::Server</a></div><div class="ttdoc">A JSON-RPC server for handling requests and notifications.</div><div class="ttdef"><b>Definition</b> <a href="server_8hpp_source.html#l00020">server.hpp:20</a></div></div>
-<div class="ttc" id="anamespacejsonrpc_1_1server_html"><div class="ttname"><a href="namespacejsonrpc_1_1server.html">jsonrpc::server</a></div><div class="ttdef"><b>Definition</b> <a href="dispatcher_8hpp_source.html#l00016">dispatcher.hpp:16</a></div></div>
-<div class="ttc" id="anamespacejsonrpc_1_1transport_html"><div class="ttname"><a href="namespacejsonrpc_1_1transport.html">jsonrpc::transport</a></div><div class="ttdef"><b>Definition</b> <a href="framed__pipe__transport_8hpp_source.html#l00011">framed_pipe_transport.hpp:11</a></div></div>
+<div class="ttc" id="aclassjsonrpc_1_1server_1_1Server_html"><div class="ttname"><a href="classjsonrpc_1_1server_1_1Server.html">jsonrpc::server::Server</a></div><div class="ttdoc">A JSON-RPC server for handling requests and notifications.</div><div class="ttdef"><b>Definition</b> <a href="server_8hpp_source.html#l00019">server.hpp:19</a></div></div>
+<div class="ttc" id="aclassjsonrpc_1_1transport_1_1StdioTransport_html"><div class="ttname"><a href="classjsonrpc_1_1transport_1_1StdioTransport.html">jsonrpc::transport::StdioTransport</a></div><div class="ttdoc">Transport layer using standard I/O for JSON-RPC communication.</div><div class="ttdef"><b>Definition</b> <a href="stdio__transport_8hpp_source.html#l00012">stdio_transport.hpp:12</a></div></div>
 </div><!-- fragment --><p>To register a method, you need to provide a function that takes optional <code>Json</code> parameters and returns a <code>Json</code> object containing either a <code>result</code> or <code>error</code> field. The <code>error</code> field must follow the JSON-RPC spec, including code and message. For simplicity, this library does not provide a more structured way to create error responses.</p>
 <h2><a class="anchor" id="autotoc_md9"></a>
 Creating a JSON-RPC Client</h2>
 <p>Here’s how to create a JSON-RPC client:</p>
-<div class="fragment"><div class="line"><span class="keyword">using namespace </span><a class="code hl_namespace" href="namespacejsonrpc_1_1client.html">jsonrpc::client</a>;</div>
-<div class="line"><span class="keyword">using namespace </span><a class="code hl_namespace" href="namespacejsonrpc_1_1transport.html">jsonrpc::transport</a>;</div>
+<div class="fragment"><div class="line"><span class="keyword">using </span><a class="code hl_class" href="classjsonrpc_1_1client_1_1Client.html">jsonrpc::client::Client</a>;</div>
+<div class="line"><span class="keyword">using </span><a class="code hl_class" href="classjsonrpc_1_1transport_1_1StdioTransport.html">jsonrpc::transport::StdioTransport</a>;</div>
 <div class="line"><span class="keyword">using </span>Json = nlohmann::json;</div>
 <div class="line"> </div>
 <div class="line"><span class="comment">// Create a client with a standard I/O transport</span></div>
-<div class="line"><a class="code hl_class" href="classjsonrpc_1_1client_1_1Client.html">Client</a> client(std::make_unique&lt;StdioTransport&gt;());</div>
+<div class="line">Client client(std::make_unique&lt;StdioTransport&gt;());</div>
 <div class="line">client.Start();</div>
 <div class="line"> </div>
 <div class="line"><span class="comment">// Perform addition</span></div>
@@ -205,35 +204,27 @@ Creating a JSON-RPC Client</h2>
 <div class="line"> </div>
 <div class="line"><span class="comment">// Send stop notification</span></div>
 <div class="line">client.SendNotification(<span class="stringliteral">&quot;stop&quot;</span>);</div>
-<div class="ttc" id="aclassjsonrpc_1_1client_1_1Client_html"><div class="ttname"><a href="classjsonrpc_1_1client_1_1Client.html">jsonrpc::client::Client</a></div><div class="ttdoc">A JSON-RPC client for sending requests and receiving responses.</div><div class="ttdef"><b>Definition</b> <a href="client_8hpp_source.html#l00027">client.hpp:27</a></div></div>
-<div class="ttc" id="anamespacejsonrpc_1_1client_html"><div class="ttname"><a href="namespacejsonrpc_1_1client.html">jsonrpc::client</a></div><div class="ttdef"><b>Definition</b> <a href="client_8hpp_source.html#l00019">client.hpp:19</a></div></div>
+<div class="ttc" id="aclassjsonrpc_1_1client_1_1Client_html"><div class="ttname"><a href="classjsonrpc_1_1client_1_1Client.html">jsonrpc::client::Client</a></div><div class="ttdoc">A JSON-RPC client for sending requests and receiving responses.</div><div class="ttdef"><b>Definition</b> <a href="client_8hpp_source.html#l00025">client.hpp:25</a></div></div>
 </div><!-- fragment --><p>These examples demonstrate the basic usage of setting up a JSON-RPC server and client. For more examples and detailed usage, please refer to the <a href="./examples/">examples folder</a>.</p>
 <h1><a class="anchor" id="autotoc_md10"></a>
 🛠️ Developer Guide</h1>
-<p>To build and test the project, follow these steps. Bazel is the preferred method.</p>
+<p>Follow these steps to build, test, and set up your development environment. Bazel is the preferred method.</p>
 <h2><a class="anchor" id="autotoc_md11"></a>
 Option 1: Using Bazel (Preferred)</h2>
 <p><b>Step 1: Build the Project</b></p>
-<p>Simply run:</p>
 <div class="fragment"><div class="line">bazel build //...</div>
 </div><!-- fragment --><p><b>Step 2: Run Tests</b></p>
-<p>To run all tests:</p>
 <div class="fragment"><div class="line">bazel test //...</div>
 </div><!-- fragment --><h2><a class="anchor" id="autotoc_md12"></a>
 Option 2: Using CMake and Conan</h2>
 <p><b>Step 1: Install Dependencies</b></p>
-<p>Ensure you have a Conan profile configured. If the default profile (<code>.conan2/profiles/default</code>) is missing, create it:</p>
 <div class="fragment"><div class="line">conan profile detect --force</div>
-</div><!-- fragment --><p>Next, install dependencies and generate <code>ConanPresets.json</code>:</p>
-<div class="fragment"><div class="line">conan install . --build=missing</div>
+<div class="line">conan install . --build=missing</div>
 <div class="line">conan install . -s build_type=Debug --build=missing</div>
-</div><!-- fragment --><p><b>Step 2: Configure and Build the Project</b></p>
-<p>Use CMake presets to configure and build the project. Ensure CMake 3.19+ is installed.</p>
-<p>For Release configuration:</p>
+</div><!-- fragment --><p><b>Step 2: Configure and Build</b></p>
 <div class="fragment"><div class="line">cmake --preset release</div>
 <div class="line">cmake --build --preset release</div>
 </div><!-- fragment --><p><b>Step 3: Run Tests</b></p>
-<p>Run tests using the appropriate CMake preset:</p>
 <div class="fragment"><div class="line">ctest --preset release</div>
 </div><!-- fragment --><h2><a class="anchor" id="autotoc_md13"></a>
 Optional: Debug Configuration</h2>
@@ -241,10 +232,18 @@ Optional: Debug Configuration</h2>
 <div class="fragment"><div class="line">cmake --preset debug</div>
 <div class="line">cmake --build --preset debug</div>
 <div class="line">ctest --preset debug</div>
-</div><!-- fragment --><h1><a class="anchor" id="autotoc_md14"></a>
+</div><!-- fragment --><h2><a class="anchor" id="autotoc_md14"></a>
+Compilation Database</h2>
+<p>Generate the <code>compile_commands.json</code> file for tools like <code>clang-tidy</code> and <code>clangd</code>:</p>
+<ul>
+<li><b>Bazel</b>: Run <code>bazel run @hedron_compile_commands//:refresh_all</code>.</li>
+<li><b>CMake</b>: Simply build the project. The database will be generated automatically.</li>
+</ul>
+<p>In both cases, the <code>compile_commands.json</code> file will be placed in the root directory.</p>
+<h1><a class="anchor" id="autotoc_md15"></a>
 🤝 Contributing</h1>
 <p>We welcome contributions! If you have suggestions or find any issues, feel free to open an issue or pull request.</p>
-<h1><a class="anchor" id="autotoc_md15"></a>
+<h1><a class="anchor" id="autotoc_md16"></a>
 📄 License</h1>
 <p>This project is licensed under the MIT License. See the <a href="./LICENSE">LICENSE</a> file for more details. </p>
 </div></div><!-- PageDoc -->

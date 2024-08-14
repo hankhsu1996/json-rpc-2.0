@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['idispatcher_0',['IDispatcher',['../classjsonrpc_1_1server_1_1IDispatcher.html',1,'jsonrpc::server']]]
+  ['pipetransport_0',['PipeTransport',['../classjsonrpc_1_1transport_1_1PipeTransport.html',1,'jsonrpc::transport']]]
 ];

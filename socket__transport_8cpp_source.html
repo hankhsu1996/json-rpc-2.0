@@ -121,128 +121,128 @@ $(function(){initNavTree('socket__transport_8cpp_source.html',''); initResizable
 <div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span> </div>
 <div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="preprocessor">#include &lt;spdlog/spdlog.h&gt;</span></div>
 <div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span> </div>
-<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span><span class="keyword">namespace </span><a class="code hl_namespace" href="namespacejsonrpc.html">jsonrpc</a> {</div>
-<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="keyword">namespace </span>transport {</div>
-<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span> </div>
-<div class="foldopen" id="foldopen00010" data-start="{" data-end="}">
-<div class="line"><a id="l00010" name="l00010"></a><span class="lineno"><a class="line" href="classjsonrpc_1_1transport_1_1SocketTransport.html#ac92e95654faa8bbe2f23463053629e97">   10</a></span><a class="code hl_function" href="classjsonrpc_1_1transport_1_1SocketTransport.html#ac92e95654faa8bbe2f23463053629e97">SocketTransport::SocketTransport</a>(</div>
-<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span>    <span class="keyword">const</span> std::string &amp;host, uint16_t port, <span class="keywordtype">bool</span> isServer)</div>
-<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span>    : socket_(ioContext_), host_(host), port_(port), isServer_(isServer) {</div>
-<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span>  spdlog::info(</div>
-<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span>      <span class="stringliteral">&quot;Initializing SocketTransport with host: {} and port: {}&quot;</span>, host, port);</div>
-<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span> </div>
-<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span>  <span class="keywordflow">if</span> (isServer_) {</div>
-<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span>    BindAndListen();</div>
-<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span>  } <span class="keywordflow">else</span> {</div>
-<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span>    Connect();</div>
-<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span>  }</div>
-<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span>}</div>
+<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span><span class="keyword">namespace </span><a class="code hl_namespace" href="namespacejsonrpc_1_1transport.html">jsonrpc::transport</a> {</div>
+<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span> </div>
+<div class="foldopen" id="foldopen00009" data-start="{" data-end="}">
+<div class="line"><a id="l00009" name="l00009"></a><span class="lineno"><a class="line" href="classjsonrpc_1_1transport_1_1SocketTransport.html#a8c5b98c6bc57cbe0812e47152545cf6e">    9</a></span><a class="code hl_function" href="classjsonrpc_1_1transport_1_1SocketTransport.html#a8c5b98c6bc57cbe0812e47152545cf6e">SocketTransport::SocketTransport</a>(</div>
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span>    <span class="keyword">const</span> std::string &amp;host, uint16_t port, <span class="keywordtype">bool</span> is_server)</div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span>    : socket_(io_context_), host_(host), port_(port), is_server_(is_server) {</div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span>  spdlog::info(</div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span>      <span class="stringliteral">&quot;Initializing SocketTransport with host: {} and port: {}&quot;</span>, host, port);</div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span> </div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span>  <span class="keywordflow">if</span> (is_server_) {</div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span>    BindAndListen();</div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span>  } <span class="keywordflow">else</span> {</div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span>    Connect();</div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span>  }</div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span>}</div>
 </div>
-<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span> </div>
-<div class="foldopen" id="foldopen00023" data-start="{" data-end="}">
-<div class="line"><a id="l00023" name="l00023"></a><span class="lineno"><a class="line" href="classjsonrpc_1_1transport_1_1SocketTransport.html#a564440aa09015b546fe10305cbe9846f">   23</a></span>asio::ip::tcp::socket &amp;<a class="code hl_function" href="classjsonrpc_1_1transport_1_1SocketTransport.html#a564440aa09015b546fe10305cbe9846f">SocketTransport::GetSocket</a>() {</div>
-<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span>  <span class="keywordflow">return</span> socket_;</div>
-<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span>}</div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span> </div>
+<div class="foldopen" id="foldopen00022" data-start="{" data-end="}">
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno"><a class="line" href="classjsonrpc_1_1transport_1_1SocketTransport.html#a336ccd597046e343c7f4026359c7887c">   22</a></span><span class="keyword">auto</span> <a class="code hl_function" href="classjsonrpc_1_1transport_1_1SocketTransport.html#a336ccd597046e343c7f4026359c7887c">SocketTransport::GetSocket</a>() -&gt; asio::ip::tcp::socket &amp; {</div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span>  <span class="keywordflow">return</span> socket_;</div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span>}</div>
 </div>
-<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span> </div>
-<div class="foldopen" id="foldopen00027" data-start="{" data-end="}">
-<div class="line"><a id="l00027" name="l00027"></a><span class="lineno"><a class="line" href="classjsonrpc_1_1transport_1_1SocketTransport.html#a8d7135d22ed9bbc94ddb80f09044d2de">   27</a></span><a class="code hl_function" href="classjsonrpc_1_1transport_1_1SocketTransport.html#a8d7135d22ed9bbc94ddb80f09044d2de">SocketTransport::~SocketTransport</a>() {</div>
-<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>  spdlog::info(<span class="stringliteral">&quot;Closing socket and shutting down SocketTransport.&quot;</span>);</div>
-<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>  std::error_code ec;</div>
-<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>  socket_.close(ec);</div>
-<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span>  <span class="keywordflow">if</span> (ec) {</div>
-<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span>    spdlog::warn(<span class="stringliteral">&quot;Socket close error: {}&quot;</span>, ec.message());</div>
-<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span>  }</div>
-<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>  ioContext_.stop();</div>
-<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span>}</div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span> </div>
+<div class="foldopen" id="foldopen00026" data-start="{" data-end="}">
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno"><a class="line" href="classjsonrpc_1_1transport_1_1SocketTransport.html#a2180ab77872ad9238c6a0b30d4f0b6bc">   26</a></span><a class="code hl_function" href="classjsonrpc_1_1transport_1_1SocketTransport.html#a2180ab77872ad9238c6a0b30d4f0b6bc">SocketTransport::~SocketTransport</a>() {</div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span>  spdlog::info(<span class="stringliteral">&quot;Closing socket and shutting down SocketTransport.&quot;</span>);</div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>  std::error_code ec;</div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>  socket_.close(ec);</div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>  <span class="keywordflow">if</span> (ec) {</div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span>    spdlog::warn(<span class="stringliteral">&quot;Socket close error: {}&quot;</span>, ec.message());</div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span>  }</div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span>  io_context_.stop();</div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>}</div>
 </div>
-<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span> </div>
-<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span><span class="keywordtype">void</span> SocketTransport::Connect() {</div>
-<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>  asio::ip::tcp::resolver resolver(ioContext_);</div>
-<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>  <span class="keyword">auto</span> endpoints = resolver.resolve(host_, std::to_string(port_));</div>
-<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span> </div>
-<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>  asio::steady_timer timer(ioContext_);</div>
-<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>  timer.expires_after(std::chrono::seconds(3));</div>
-<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span> </div>
-<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>  std::error_code connectError;</div>
-<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>  asio::async_connect(socket_, endpoints,</div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span> </div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span><span class="keywordtype">void</span> SocketTransport::Connect() {</div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>  asio::ip::tcp::resolver resolver(io_context_);</div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>  <span class="keyword">auto</span> endpoints = resolver.resolve(host_, std::to_string(port_));</div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span> </div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>  asio::steady_timer timer(io_context_);</div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>  timer.expires_after(std::chrono::seconds(3));</div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span> </div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>  std::error_code connect_error;</div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>  asio::async_connect(</div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>      socket_, endpoints,</div>
 <div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>      [&amp;](<span class="keyword">const</span> asio::error_code &amp;error, <span class="keyword">const</span> asio::ip::tcp::endpoint &amp;) {</div>
 <div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>        <span class="keywordflow">if</span> (!error) {</div>
 <div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>          timer.cancel();</div>
 <div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>        } <span class="keywordflow">else</span> {</div>
-<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>          connectError = error;</div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>          connect_error = error;</div>
 <div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>        }</div>
 <div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>      });</div>
 <div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span> </div>
 <div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>  timer.async_wait([&amp;](<span class="keyword">const</span> asio::error_code &amp;error) {</div>
 <div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>    <span class="keywordflow">if</span> (!error) {</div>
-<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>      connectError = asio::error::timed_out;</div>
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>      connect_error = asio::error::timed_out;</div>
 <div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>      socket_.close();</div>
 <div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>    }</div>
 <div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>  });</div>
 <div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span> </div>
-<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span>  ioContext_.run();</div>
+<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span>  io_context_.run();</div>
 <div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span> </div>
-<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span>  <span class="keywordflow">if</span> (connectError) {</div>
-<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span>    spdlog::error(<span class="stringliteral">&quot;Error connecting to {}:{}. Error: {}&quot;</span>, host_, port_,</div>
-<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span>        connectError.message());</div>
-<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span>    <span class="keywordflow">throw</span> std::runtime_error(<span class="stringliteral">&quot;Error connecting to socket&quot;</span>);</div>
-<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span>  }</div>
-<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span>}</div>
-<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span> </div>
-<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span><span class="keywordtype">void</span> SocketTransport::BindAndListen() {</div>
-<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span>  <span class="keywordflow">try</span> {</div>
-<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span>    asio::ip::tcp::acceptor acceptor(</div>
-<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span>        ioContext_, asio::ip::tcp::endpoint(asio::ip::tcp::v4(), port_));</div>
-<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span>    acceptor.listen();</div>
-<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span>    spdlog::info(<span class="stringliteral">&quot;Listening on {}:{}&quot;</span>, host_, port_);</div>
-<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span>    acceptor.accept(socket_);</div>
-<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span>    spdlog::info(<span class="stringliteral">&quot;Accepted connection on {}:{}&quot;</span>, host_, port_);</div>
-<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span>  } <span class="keywordflow">catch</span> (<span class="keyword">const</span> std::exception &amp;e) {</div>
-<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span>    spdlog::error(</div>
-<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span>        <span class="stringliteral">&quot;Error binding/listening on {}:{}. Error: {}&quot;</span>, host_, port_, e.what());</div>
-<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span>    <span class="keywordflow">throw</span> std::runtime_error(<span class="stringliteral">&quot;Error binding/listening on socket&quot;</span>);</div>
-<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span>  }</div>
-<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span>}</div>
-<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span> </div>
-<div class="foldopen" id="foldopen00085" data-start="{" data-end="}">
-<div class="line"><a id="l00085" name="l00085"></a><span class="lineno"><a class="line" href="classjsonrpc_1_1transport_1_1SocketTransport.html#a51bbeceff1c2073621e50f7ea716354b">   85</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classjsonrpc_1_1transport_1_1SocketTransport.html#a51bbeceff1c2073621e50f7ea716354b">SocketTransport::SendMessage</a>(<span class="keyword">const</span> std::string &amp;message) {</div>
-<div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span>  <span class="keywordflow">try</span> {</div>
-<div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span>    asio::write(socket_, asio::buffer(message + <span class="stringliteral">&quot;\n&quot;</span>));</div>
-<div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span>    spdlog::debug(<span class="stringliteral">&quot;Sent message: {}&quot;</span>, message);</div>
-<div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span>  } <span class="keywordflow">catch</span> (<span class="keyword">const</span> std::exception &amp;e) {</div>
-<div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span>    spdlog::error(<span class="stringliteral">&quot;Error sending message: {}&quot;</span>, e.what());</div>
-<div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span>    <span class="keywordflow">throw</span> std::runtime_error(<span class="stringliteral">&quot;Error sending message&quot;</span>);</div>
-<div class="line"><a id="l00092" name="l00092"></a><span class="lineno">   92</span>  }</div>
-<div class="line"><a id="l00093" name="l00093"></a><span class="lineno">   93</span>}</div>
+<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span>  <span class="keywordflow">if</span> (connect_error) {</div>
+<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span>    spdlog::error(</div>
+<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span>        <span class="stringliteral">&quot;Error connecting to {}:{}. Error: {}&quot;</span>, host_, port_,</div>
+<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span>        connect_error.message());</div>
+<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span>    <span class="keywordflow">throw</span> std::runtime_error(<span class="stringliteral">&quot;Error connecting to socket&quot;</span>);</div>
+<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span>  }</div>
+<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span>}</div>
+<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span> </div>
+<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span><span class="keywordtype">void</span> SocketTransport::BindAndListen() {</div>
+<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span>  <span class="keywordflow">try</span> {</div>
+<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span>    asio::ip::tcp::acceptor acceptor(</div>
+<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span>        io_context_, asio::ip::tcp::endpoint(asio::ip::tcp::v4(), port_));</div>
+<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span>    acceptor.listen();</div>
+<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span>    spdlog::info(<span class="stringliteral">&quot;Listening on {}:{}&quot;</span>, host_, port_);</div>
+<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span>    acceptor.accept(socket_);</div>
+<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span>    spdlog::info(<span class="stringliteral">&quot;Accepted connection on {}:{}&quot;</span>, host_, port_);</div>
+<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span>  } <span class="keywordflow">catch</span> (<span class="keyword">const</span> std::exception &amp;e) {</div>
+<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span>    spdlog::error(</div>
+<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span>        <span class="stringliteral">&quot;Error binding/listening on {}:{}. Error: {}&quot;</span>, host_, port_, e.what());</div>
+<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span>    <span class="keywordflow">throw</span> std::runtime_error(<span class="stringliteral">&quot;Error binding/listening on socket&quot;</span>);</div>
+<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span>  }</div>
+<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span>}</div>
+<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span> </div>
+<div class="foldopen" id="foldopen00086" data-start="{" data-end="}">
+<div class="line"><a id="l00086" name="l00086"></a><span class="lineno"><a class="line" href="classjsonrpc_1_1transport_1_1SocketTransport.html#a51bbeceff1c2073621e50f7ea716354b">   86</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classjsonrpc_1_1transport_1_1SocketTransport.html#a51bbeceff1c2073621e50f7ea716354b">SocketTransport::SendMessage</a>(<span class="keyword">const</span> std::string &amp;message) {</div>
+<div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span>  <span class="keywordflow">try</span> {</div>
+<div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span>    asio::write(socket_, asio::buffer(message + <span class="stringliteral">&quot;\n&quot;</span>));</div>
+<div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span>    spdlog::debug(<span class="stringliteral">&quot;Sent message: {}&quot;</span>, message);</div>
+<div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span>  } <span class="keywordflow">catch</span> (<span class="keyword">const</span> std::exception &amp;e) {</div>
+<div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span>    spdlog::error(<span class="stringliteral">&quot;Error sending message: {}&quot;</span>, e.what());</div>
+<div class="line"><a id="l00092" name="l00092"></a><span class="lineno">   92</span>    <span class="keywordflow">throw</span> std::runtime_error(<span class="stringliteral">&quot;Error sending message&quot;</span>);</div>
+<div class="line"><a id="l00093" name="l00093"></a><span class="lineno">   93</span>  }</div>
+<div class="line"><a id="l00094" name="l00094"></a><span class="lineno">   94</span>}</div>
 </div>
-<div class="line"><a id="l00094" name="l00094"></a><span class="lineno">   94</span> </div>
-<div class="foldopen" id="foldopen00095" data-start="{" data-end="}">
-<div class="line"><a id="l00095" name="l00095"></a><span class="lineno"><a class="line" href="classjsonrpc_1_1transport_1_1SocketTransport.html#a514f9e8743d71f4abfb3fb2cf0a45c12">   95</a></span>std::string <a class="code hl_function" href="classjsonrpc_1_1transport_1_1SocketTransport.html#a514f9e8743d71f4abfb3fb2cf0a45c12">SocketTransport::ReceiveMessage</a>() {</div>
-<div class="line"><a id="l00096" name="l00096"></a><span class="lineno">   96</span>  <span class="keywordflow">try</span> {</div>
-<div class="line"><a id="l00097" name="l00097"></a><span class="lineno">   97</span>    asio::streambuf buffer;</div>
-<div class="line"><a id="l00098" name="l00098"></a><span class="lineno">   98</span>    asio::read_until(socket_, buffer, <span class="charliteral">&#39;\n&#39;</span>);</div>
-<div class="line"><a id="l00099" name="l00099"></a><span class="lineno">   99</span>    std::istream is(&amp;buffer);</div>
-<div class="line"><a id="l00100" name="l00100"></a><span class="lineno">  100</span>    std::string message;</div>
-<div class="line"><a id="l00101" name="l00101"></a><span class="lineno">  101</span>    std::getline(is, message);</div>
-<div class="line"><a id="l00102" name="l00102"></a><span class="lineno">  102</span>    spdlog::debug(<span class="stringliteral">&quot;Received message: {}&quot;</span>, message);</div>
-<div class="line"><a id="l00103" name="l00103"></a><span class="lineno">  103</span>    <span class="keywordflow">return</span> message;</div>
-<div class="line"><a id="l00104" name="l00104"></a><span class="lineno">  104</span>  } <span class="keywordflow">catch</span> (<span class="keyword">const</span> std::exception &amp;e) {</div>
-<div class="line"><a id="l00105" name="l00105"></a><span class="lineno">  105</span>    spdlog::error(<span class="stringliteral">&quot;Error receiving message: {}&quot;</span>, e.what());</div>
-<div class="line"><a id="l00106" name="l00106"></a><span class="lineno">  106</span>    socket_.close();</div>
-<div class="line"><a id="l00107" name="l00107"></a><span class="lineno">  107</span>    <span class="keywordflow">return</span> <span class="stringliteral">&quot;&quot;</span>;</div>
-<div class="line"><a id="l00108" name="l00108"></a><span class="lineno">  108</span>  }</div>
-<div class="line"><a id="l00109" name="l00109"></a><span class="lineno">  109</span>}</div>
+<div class="line"><a id="l00095" name="l00095"></a><span class="lineno">   95</span> </div>
+<div class="foldopen" id="foldopen00096" data-start="{" data-end="}">
+<div class="line"><a id="l00096" name="l00096"></a><span class="lineno"><a class="line" href="classjsonrpc_1_1transport_1_1SocketTransport.html#ab65f77d96b697549689100eee4f36abc">   96</a></span><span class="keyword">auto</span> <a class="code hl_function" href="classjsonrpc_1_1transport_1_1SocketTransport.html#ab65f77d96b697549689100eee4f36abc">SocketTransport::ReceiveMessage</a>() -&gt; std::string {</div>
+<div class="line"><a id="l00097" name="l00097"></a><span class="lineno">   97</span>  <span class="keywordflow">try</span> {</div>
+<div class="line"><a id="l00098" name="l00098"></a><span class="lineno">   98</span>    asio::streambuf buffer;</div>
+<div class="line"><a id="l00099" name="l00099"></a><span class="lineno">   99</span>    asio::read_until(socket_, buffer, <span class="charliteral">&#39;\n&#39;</span>);</div>
+<div class="line"><a id="l00100" name="l00100"></a><span class="lineno">  100</span>    std::istream is(&amp;buffer);</div>
+<div class="line"><a id="l00101" name="l00101"></a><span class="lineno">  101</span>    std::string message;</div>
+<div class="line"><a id="l00102" name="l00102"></a><span class="lineno">  102</span>    std::getline(is, message);</div>
+<div class="line"><a id="l00103" name="l00103"></a><span class="lineno">  103</span>    spdlog::debug(<span class="stringliteral">&quot;Received message: {}&quot;</span>, message);</div>
+<div class="line"><a id="l00104" name="l00104"></a><span class="lineno">  104</span>    <span class="keywordflow">return</span> message;</div>
+<div class="line"><a id="l00105" name="l00105"></a><span class="lineno">  105</span>  } <span class="keywordflow">catch</span> (<span class="keyword">const</span> std::exception &amp;e) {</div>
+<div class="line"><a id="l00106" name="l00106"></a><span class="lineno">  106</span>    spdlog::error(<span class="stringliteral">&quot;Error receiving message: {}&quot;</span>, e.what());</div>
+<div class="line"><a id="l00107" name="l00107"></a><span class="lineno">  107</span>    socket_.close();</div>
+<div class="line"><a id="l00108" name="l00108"></a><span class="lineno">  108</span>    <span class="keywordflow">return</span> <span class="stringliteral">&quot;&quot;</span>;</div>
+<div class="line"><a id="l00109" name="l00109"></a><span class="lineno">  109</span>  }</div>
+<div class="line"><a id="l00110" name="l00110"></a><span class="lineno">  110</span>}</div>
 </div>
-<div class="line"><a id="l00110" name="l00110"></a><span class="lineno">  110</span> </div>
-<div class="line"><a id="l00111" name="l00111"></a><span class="lineno">  111</span>} <span class="comment">// namespace transport</span></div>
-<div class="line"><a id="l00112" name="l00112"></a><span class="lineno">  112</span>} <span class="comment">// namespace jsonrpc</span></div>
-<div class="ttc" id="aclassjsonrpc_1_1transport_1_1SocketTransport_html_a514f9e8743d71f4abfb3fb2cf0a45c12"><div class="ttname"><a href="classjsonrpc_1_1transport_1_1SocketTransport.html#a514f9e8743d71f4abfb3fb2cf0a45c12">jsonrpc::transport::SocketTransport::ReceiveMessage</a></div><div class="ttdeci">std::string ReceiveMessage() override</div><div class="ttdoc">Receives a message from the transport layer.</div><div class="ttdef"><b>Definition</b> <a href="#l00095">socket_transport.cpp:95</a></div></div>
-<div class="ttc" id="aclassjsonrpc_1_1transport_1_1SocketTransport_html_a51bbeceff1c2073621e50f7ea716354b"><div class="ttname"><a href="classjsonrpc_1_1transport_1_1SocketTransport.html#a51bbeceff1c2073621e50f7ea716354b">jsonrpc::transport::SocketTransport::SendMessage</a></div><div class="ttdeci">void SendMessage(const std::string &amp;message) override</div><div class="ttdoc">Sends a message in string to the transport layer.</div><div class="ttdef"><b>Definition</b> <a href="#l00085">socket_transport.cpp:85</a></div></div>
-<div class="ttc" id="aclassjsonrpc_1_1transport_1_1SocketTransport_html_a564440aa09015b546fe10305cbe9846f"><div class="ttname"><a href="classjsonrpc_1_1transport_1_1SocketTransport.html#a564440aa09015b546fe10305cbe9846f">jsonrpc::transport::SocketTransport::GetSocket</a></div><div class="ttdeci">asio::ip::tcp::socket &amp; GetSocket()</div><div class="ttdef"><b>Definition</b> <a href="#l00023">socket_transport.cpp:23</a></div></div>
-<div class="ttc" id="aclassjsonrpc_1_1transport_1_1SocketTransport_html_a8d7135d22ed9bbc94ddb80f09044d2de"><div class="ttname"><a href="classjsonrpc_1_1transport_1_1SocketTransport.html#a8d7135d22ed9bbc94ddb80f09044d2de">jsonrpc::transport::SocketTransport::~SocketTransport</a></div><div class="ttdeci">~SocketTransport()</div><div class="ttdef"><b>Definition</b> <a href="#l00027">socket_transport.cpp:27</a></div></div>
-<div class="ttc" id="aclassjsonrpc_1_1transport_1_1SocketTransport_html_ac92e95654faa8bbe2f23463053629e97"><div class="ttname"><a href="classjsonrpc_1_1transport_1_1SocketTransport.html#ac92e95654faa8bbe2f23463053629e97">jsonrpc::transport::SocketTransport::SocketTransport</a></div><div class="ttdeci">SocketTransport(const std::string &amp;host, uint16_t port, bool isServer)</div><div class="ttdoc">Constructs a SocketTransport.</div><div class="ttdef"><b>Definition</b> <a href="#l00010">socket_transport.cpp:10</a></div></div>
-<div class="ttc" id="anamespacejsonrpc_html"><div class="ttname"><a href="namespacejsonrpc.html">jsonrpc</a></div><div class="ttdef"><b>Definition</b> <a href="client_8hpp_source.html#l00018">client.hpp:18</a></div></div>
+<div class="line"><a id="l00111" name="l00111"></a><span class="lineno">  111</span> </div>
+<div class="line"><a id="l00112" name="l00112"></a><span class="lineno">  112</span>}  <span class="comment">// namespace jsonrpc::transport</span></div>
+<div class="ttc" id="aclassjsonrpc_1_1transport_1_1SocketTransport_html_a2180ab77872ad9238c6a0b30d4f0b6bc"><div class="ttname"><a href="classjsonrpc_1_1transport_1_1SocketTransport.html#a2180ab77872ad9238c6a0b30d4f0b6bc">jsonrpc::transport::SocketTransport::~SocketTransport</a></div><div class="ttdeci">~SocketTransport() override</div><div class="ttdef"><b>Definition</b> <a href="#l00026">socket_transport.cpp:26</a></div></div>
+<div class="ttc" id="aclassjsonrpc_1_1transport_1_1SocketTransport_html_a336ccd597046e343c7f4026359c7887c"><div class="ttname"><a href="classjsonrpc_1_1transport_1_1SocketTransport.html#a336ccd597046e343c7f4026359c7887c">jsonrpc::transport::SocketTransport::GetSocket</a></div><div class="ttdeci">auto GetSocket() -&gt; asio::ip::tcp::socket &amp;</div><div class="ttdef"><b>Definition</b> <a href="#l00022">socket_transport.cpp:22</a></div></div>
+<div class="ttc" id="aclassjsonrpc_1_1transport_1_1SocketTransport_html_a51bbeceff1c2073621e50f7ea716354b"><div class="ttname"><a href="classjsonrpc_1_1transport_1_1SocketTransport.html#a51bbeceff1c2073621e50f7ea716354b">jsonrpc::transport::SocketTransport::SendMessage</a></div><div class="ttdeci">void SendMessage(const std::string &amp;message) override</div><div class="ttdoc">Sends a message in string to the transport layer.</div><div class="ttdef"><b>Definition</b> <a href="#l00086">socket_transport.cpp:86</a></div></div>
+<div class="ttc" id="aclassjsonrpc_1_1transport_1_1SocketTransport_html_a8c5b98c6bc57cbe0812e47152545cf6e"><div class="ttname"><a href="classjsonrpc_1_1transport_1_1SocketTransport.html#a8c5b98c6bc57cbe0812e47152545cf6e">jsonrpc::transport::SocketTransport::SocketTransport</a></div><div class="ttdeci">SocketTransport(const std::string &amp;host, uint16_t port, bool is_server)</div><div class="ttdoc">Constructs a SocketTransport.</div><div class="ttdef"><b>Definition</b> <a href="#l00009">socket_transport.cpp:9</a></div></div>
+<div class="ttc" id="aclassjsonrpc_1_1transport_1_1SocketTransport_html_ab65f77d96b697549689100eee4f36abc"><div class="ttname"><a href="classjsonrpc_1_1transport_1_1SocketTransport.html#ab65f77d96b697549689100eee4f36abc">jsonrpc::transport::SocketTransport::ReceiveMessage</a></div><div class="ttdeci">auto ReceiveMessage() -&gt; std::string override</div><div class="ttdoc">Receives a message from the transport layer.</div><div class="ttdef"><b>Definition</b> <a href="#l00096">socket_transport.cpp:96</a></div></div>
+<div class="ttc" id="anamespacejsonrpc_1_1transport_html"><div class="ttname"><a href="namespacejsonrpc_1_1transport.html">jsonrpc::transport</a></div><div class="ttdef"><b>Definition</b> <a href="framed__pipe__transport_8hpp_source.html#l00010">framed_pipe_transport.hpp:10</a></div></div>
 <div class="ttc" id="asocket__transport_8hpp_html"><div class="ttname"><a href="socket__transport_8hpp.html">socket_transport.hpp</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->

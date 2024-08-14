@@ -1,9 +1,9 @@
 var searchData=
 [
-  ['_7eclient_0',['~Client',['../classjsonrpc_1_1client_1_1Client.html#a11196eccdb86b5cedc3301065aeb32b2',1,'jsonrpc::client::Client']]],
-  ['_7edispatcher_1',['~Dispatcher',['../classjsonrpc_1_1server_1_1Dispatcher.html#a06f263a5db1c20b2efd58201d192416a',1,'jsonrpc::server::Dispatcher']]],
-  ['_7eidispatcher_2',['~IDispatcher',['../classjsonrpc_1_1server_1_1IDispatcher.html#a6c457e34287c3b86c26ce85ac2523042',1,'jsonrpc::server::IDispatcher']]],
-  ['_7epipetransport_3',['~PipeTransport',['../classjsonrpc_1_1transport_1_1PipeTransport.html#a5c7bd1ca4068954b39ddf3752c5f6c3f',1,'jsonrpc::transport::PipeTransport']]],
-  ['_7esockettransport_4',['~SocketTransport',['../classjsonrpc_1_1transport_1_1SocketTransport.html#a8d7135d22ed9bbc94ddb80f09044d2de',1,'jsonrpc::transport::SocketTransport']]],
-  ['_7etransport_5',['~Transport',['../classjsonrpc_1_1transport_1_1Transport.html#a41ecc943dcac4073f965983859f48f2a',1,'jsonrpc::transport::Transport']]]
+  ['usage_20and_20examples_0',['📖 Usage and Examples',['../index.html#autotoc_md7',1,'']]],
+  ['using_20bazel_1',['Using Bazel',['../index.html#autotoc_md4',1,'']]],
+  ['using_20bazel_20preferred_2',['Option 1: Using Bazel (Preferred)',['../index.html#autotoc_md11',1,'']]],
+  ['using_20cmake_20and_20conan_3',['Option 2: Using CMake and Conan',['../index.html#autotoc_md12',1,'']]],
+  ['using_20cmake_20fetchcontent_4',['Optional: Using CMake FetchContent',['../index.html#autotoc_md5',1,'']]],
+  ['using_20conan_202_5',['Optional: Using Conan 2',['../index.html#autotoc_md6',1,'']]]
 ];

@@ -120,37 +120,37 @@ $(function(){initNavTree('namespacejsonrpc_1_1utils.html',''); initResizable(tru
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:a0f4ab48ccb12fe3cb75a70867a56214a" id="r_a0f4ab48ccb12fe3cb75a70867a56214a"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a0f4ab48ccb12fe3cb75a70867a56214a">trim</a> (std::string_view in)</td></tr>
-<tr class="separator:a0f4ab48ccb12fe3cb75a70867a56214a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af7bc95c38b3f575dfe5fc73eb9450581" id="r_af7bc95c38b3f575dfe5fc73eb9450581"><td class="memItemLeft" align="right" valign="top">auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af7bc95c38b3f575dfe5fc73eb9450581">Trim</a> (std::string_view in) -&gt; std::string</td></tr>
+<tr class="separator:af7bc95c38b3f575dfe5fc73eb9450581"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Function Documentation</h2>
-<a id="a0f4ab48ccb12fe3cb75a70867a56214a" name="a0f4ab48ccb12fe3cb75a70867a56214a"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a0f4ab48ccb12fe3cb75a70867a56214a">&#9670;&#160;</a></span>trim()</h2>
+<a id="af7bc95c38b3f575dfe5fc73eb9450581" name="af7bc95c38b3f575dfe5fc73eb9450581"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af7bc95c38b3f575dfe5fc73eb9450581">&#9670;&#160;</a></span>Trim()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">std::string jsonrpc::utils::trim </td>
+          <td class="memname">auto jsonrpc::utils::Trim </td>
           <td>(</td>
           <td class="paramtype">std::string_view</td>          <td class="paramname"><span class="paramname"><em>in</em></span></td><td>)</td>
-          <td></td>
+          <td> -&gt; std::string </td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="string__utils_8hpp_source.html#l00011">11</a> of file <a class="el" href="string__utils_8hpp_source.html">string_utils.hpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   11</span>                                  {</div>
-<div class="line"><span class="lineno">   12</span>  <span class="keyword">auto</span> view = in | std::views::drop_while(::isspace) | std::views::reverse |</div>
-<div class="line"><span class="lineno">   13</span>              std::views::drop_while(::isspace) | std::views::reverse;</div>
-<div class="line"><span class="lineno">   14</span>  <span class="keywordflow">return</span> {view.begin(), view.end()};</div>
-<div class="line"><span class="lineno">   15</span>}</div>
+<p class="definition">Definition at line <a class="el" href="string__utils_8hpp_source.html#l00010">10</a> of file <a class="el" href="string__utils_8hpp_source.html">string_utils.hpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   10</span>                                          {</div>
+<div class="line"><span class="lineno">   11</span>  <span class="keyword">auto</span> view = in | std::views::drop_while(::isspace) | std::views::reverse |</div>
+<div class="line"><span class="lineno">   12</span>              std::views::drop_while(::isspace) | std::views::reverse;</div>
+<div class="line"><span class="lineno">   13</span>  <span class="keywordflow">return</span> {view.begin(), view.end()};</div>
+<div class="line"><span class="lineno">   14</span>}</div>
 </div><!-- fragment -->
-<p class="reference">Referenced by <a class="el" href="framed__transport_8cpp_source.html#l00018">jsonrpc::transport::FramedTransport::ReadHeadersFromStream()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="framed__transport_8cpp_source.html#l00017">jsonrpc::transport::FramedTransport::ReadHeadersFromStream()</a>.</p>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="namespacejsonrpc_1_1utils_a0f4ab48ccb12fe3cb75a70867a56214a_icgraph.svg" width="1179" height="223"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="namespacejsonrpc_1_1utils_af7bc95c38b3f575dfe5fc73eb9450581_icgraph.svg" width="435" height="66"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 
 </div>

@@ -16,7 +16,7 @@
 <text text-anchor="start" x="49" y="-108" font-family="Helvetica,sans-Serif" font-size="10.00">jsonrpc::transport</text>
 <text text-anchor="start" x="49" y="-97" font-family="Helvetica,sans-Serif" font-size="10.00">::FramedTransport</text>
 <text text-anchor="start" x="4.5" y="-82" font-family="Helvetica,sans-Serif" font-size="10.00">#</text>
-<text text-anchor="start" x="17.5" y="-82" font-family="Helvetica,sans-Serif" font-size="10.00">HEADER_DELIMITER</text>
+<text text-anchor="start" x="17.5" y="-82" font-family="Helvetica,sans-Serif" font-size="10.00">kHeaderDelimiter</text>
 <text text-anchor="start" x="4.5" y="-67" font-family="Helvetica,sans-Serif" font-size="10.00">#</text>
 <text text-anchor="start" x="17.5" y="-67" font-family="Helvetica,sans-Serif" font-size="10.00">FrameMessage()</text>
 <text text-anchor="start" x="4.5" y="-52" font-family="Helvetica,sans-Serif" font-size="10.00">#</text>

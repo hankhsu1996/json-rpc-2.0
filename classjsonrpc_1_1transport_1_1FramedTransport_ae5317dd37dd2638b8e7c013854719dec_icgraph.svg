@@ -61,7 +61,7 @@
 <!-- Node4 -->
 <g id="Node000004" class="node">
 <title>Node4</title>
-<g id="a_Node000004"><a xlink:href="classjsonrpc_1_1transport_1_1FramedStdioTransport.html#a94fdcddf0528b5613e03a4c5890aa0fa" target="_top" xlink:title="Sends a message in string to the transport layer.">
+<g id="a_Node000004"><a xlink:href="classjsonrpc_1_1transport_1_1FramedStdioTransport.html#ab79aff17d8959059d617ffb75a499fe6" target="_top" xlink:title="Sends a message in string to the transport layer.">
 <polygon fill="white" stroke="#666666" points="133,-41 4,-41 4,0 133,0 133,-41"/>
 <text text-anchor="start" x="12" y="-29" font-family="Helvetica,sans-Serif" font-size="10.00">jsonrpc::transport</text>
 <text text-anchor="start" x="12" y="-18" font-family="Helvetica,sans-Serif" font-size="10.00">::FramedStdioTransport</text>
