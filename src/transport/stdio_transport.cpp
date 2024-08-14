@@ -4,15 +4,14 @@
 
 #include <spdlog/spdlog.h>
 
-namespace jsonrpc {
-namespace transport {
+namespace jsonrpc::transport {
 
 void StdioTransport::SendMessage(const std::string &message) {
   spdlog::debug("StdioTransport sending message: {}", message);
   std::cout << message << std::endl;
 }
 
-std::string StdioTransport::ReceiveMessage() {
+auto StdioTransport::ReceiveMessage() -> std::string {
   std::string response;
   if (!std::getline(std::cin, response)) {
     throw std::runtime_error("Failed to receive message");
@@ -21,5 +20,4 @@ std::string StdioTransport::ReceiveMessage() {
   return response;
 }
 
-} // namespace transport
-} // namespace jsonrpc
+}  // namespace jsonrpc::transport

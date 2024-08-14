@@ -4,17 +4,15 @@
 
 #include "jsonrpc/transport/transport.hpp"
 
-namespace jsonrpc {
-namespace transport {
+namespace jsonrpc::transport {
 
 /**
  * @brief Transport layer using standard I/O for JSON-RPC communication.
  */
 class StdioTransport : public Transport {
-public:
-  void SendMessage(const std::string &request) override;
-  std::string ReceiveMessage() override;
+ public:
+  void SendMessage(const std::string &message) override;
+  auto ReceiveMessage() -> std::string override;
 };
 
-} // namespace transport
-} // namespace jsonrpc
+}  // namespace jsonrpc::transport

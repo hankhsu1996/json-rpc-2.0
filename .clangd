@@ -3,8 +3,11 @@ CompileFlags:
     - "-std=c++20"
     - "-Wall"
     - "-Wextra"
-  CompilationDatabase: build/Release
 
 Diagnostics:
   ClangTidy:
-    Remove: bugprone-unused-return-value
+    FastCheckFilter: Strict
+
+# Disable inlay hints for designators to avoid JSON key indexing.
+InlayHints:
+  Designators: No

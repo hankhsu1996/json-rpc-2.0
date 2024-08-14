@@ -6,8 +6,7 @@
 
 #include <nlohmann/json.hpp>
 
-namespace jsonrpc {
-namespace client {
+namespace jsonrpc::client {
 
 /**
  * @brief Represents a JSON-RPC request.
@@ -16,7 +15,7 @@ namespace client {
  * including notifications (requests that do not expect a response).
  */
 class Request {
-public:
+ public:
   /**
    * @brief Constructs a new Request object.
    *
@@ -26,24 +25,24 @@ public:
    * expected).
    * @param idGenerator A function to generate unique request IDs.
    */
-  Request(const std::string &method, std::optional<nlohmann::json> params,
-      bool isNotification, const std::function<int()> &idGenerator);
+  Request(
+      std::string method, std::optional<nlohmann::json> params,
+      bool is_notification, const std::function<int()> &id_generator);
 
   /// @brief Checks if the request requires a response.
-  bool RequiresResponse() const;
+  [[nodiscard]] auto RequiresResponse() const -> bool;
 
   /// @brief Returns the unique key (ID) for the request.
-  int GetKey() const;
+  [[nodiscard]] auto GetKey() const -> int;
 
   /// @brief Serializes the request to a JSON string.
-  std::string Dump() const;
+  [[nodiscard]] auto Dump() const -> std::string;
 
-private:
+ private:
   std::string method_;
   std::optional<nlohmann::json> params_;
-  bool isNotification_;
+  bool is_notification_;
   int id_;
 };
 
-} // namespace client
-} // namespace jsonrpc
+}  // namespace jsonrpc::client

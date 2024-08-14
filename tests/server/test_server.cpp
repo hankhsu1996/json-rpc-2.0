@@ -3,21 +3,18 @@
 #include <catch2/catch_test_macros.hpp>
 #include <nlohmann/json.hpp>
 
+#include "../common/mock_transport.hpp"
 #include "jsonrpc/server/server.hpp"
 
-#include "../common/mock_transport.hpp"
-
-using namespace jsonrpc::server;
-using namespace jsonrpc::transport;
 using Json = nlohmann::json;
 
 TEST_CASE("Server initializes correctly", "[Server]") {
-  Server server(std::make_unique<MockTransport>());
+  jsonrpc::server::Server server(std::make_unique<MockTransport>());
 }
 
 TEST_CASE("Server stops and exits running state", "[Server]") {
   auto mock_transport = std::make_unique<MockTransport>();
-  Server server(std::move(mock_transport));
+  jsonrpc::server::Server server(std::move(mock_transport));
 
   std::thread server_thread([&server]() { server.Start(); });
 

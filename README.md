@@ -17,14 +17,21 @@ Welcome to the **JSON-RPC 2.0 Modern C++ Library**! This library provides a ligh
 ### Prerequisites
 
 - **Compiler**: Any compiler with C++20 support.
-- **CMake**: Version 3.19+ (for CMake preset support).
-- **Bazel**: Version 5.0+ (for Bazel module support).
+- **Bazel**: Version 7.0+ (for Bzlmod support).
+- **CMake**: Version 3.19+ (for CMake preset support, optional).
+- **Conan**: Version 2.0+ (optional).
 
-To include this library in your project, you can use CMake's FetchContent, Conan 2, or Bazel.
+### Using Bazel
 
-### Using CMake FetchContent
+To include this library in your project with Bazel, ensure you are using Bazel 7.0 or later, as Bzlmod is enabled by default. Add the following to your `MODULE.bazel` file:
 
-Add the following to your `CMakeLists.txt` to fetch the library:
+```bazel
+bazel_dep(name = "jsonrpc", version = "1.0.0")
+```
+
+### Optional: Using CMake FetchContent
+
+If you prefer using CMake, add the library to your project with the following in your `CMakeLists.txt`:
 
 ```cmake
 include(FetchContent)
@@ -36,9 +43,9 @@ FetchContent_Declare(
 FetchContent_MakeAvailable(jsonrpc)
 ```
 
-### Using Conan 2
+### Optional: Using Conan 2
 
-Create a `conanfile.txt` in your project directory with the following content:
+For projects using Conan, create a `conanfile.txt` in your project directory with the following content:
 
 ```ini
 [requires]
@@ -50,14 +57,6 @@ CMakeToolchain
 
 ```
 
-### Using Bazel
-
-Add the following to your `MODULE.bazel` file:
-
-```bazel
-bazel_dep(name = "jsonrpc", version = "1.0.0")
-```
-
 ## 📖 Usage and Examples
 
 ### Creating a JSON-RPC Server
@@ -65,8 +64,8 @@ bazel_dep(name = "jsonrpc", version = "1.0.0")
 Here’s how to create a simple JSON-RPC server:
 
 ```cpp
-using namespace jsonrpc::server;
-using namespace jsonrpc::transport;
+using jsonrpc::server::Server;
+using jsonrpc::transport::StdioTransport;
 using Json = nlohmann::json;
 
 // Create a server with an stdio transport
@@ -94,8 +93,8 @@ To register a method, you need to provide a function that takes optional `Json` 
 Here’s how to create a JSON-RPC client:
 
 ```cpp
-using namespace jsonrpc::client;
-using namespace jsonrpc::transport;
+using jsonrpc::client::Client;
+using jsonrpc::transport::StdioTransport;
 using Json = nlohmann::json;
 
 // Create a client with a standard I/O transport
@@ -114,21 +113,17 @@ These examples demonstrate the basic usage of setting up a JSON-RPC server and c
 
 ## 🛠️ Developer Guide
 
-To build and test the project, follow these steps. Bazel is the preferred method.
+Follow these steps to build, test, and set up your development environment. Bazel is the preferred method.
 
 ### Option 1: Using Bazel (Preferred)
 
 **Step 1: Build the Project**
-
-Simply run:
 
 ```bash
 bazel build //...
 ```
 
 **Step 2: Run Tests**
-
-To run all tests:
 
 ```bash
 bazel test //...
@@ -138,24 +133,13 @@ bazel test //...
 
 **Step 1: Install Dependencies**
 
-Ensure you have a Conan profile configured. If the default profile (`.conan2/profiles/default`) is missing, create it:
-
 ```bash
 conan profile detect --force
-```
-
-Next, install dependencies and generate `ConanPresets.json`:
-
-```bash
 conan install . --build=missing
 conan install . -s build_type=Debug --build=missing
 ```
 
-**Step 2: Configure and Build the Project**
-
-Use CMake presets to configure and build the project. Ensure CMake 3.19+ is installed.
-
-For Release configuration:
+**Step 2: Configure and Build**
 
 ```bash
 cmake --preset release
@@ -163,8 +147,6 @@ cmake --build --preset release
 ```
 
 **Step 3: Run Tests**
-
-Run tests using the appropriate CMake preset:
 
 ```bash
 ctest --preset release
@@ -179,6 +161,15 @@ cmake --preset debug
 cmake --build --preset debug
 ctest --preset debug
 ```
+
+### Compilation Database
+
+Generate the `compile_commands.json` file for tools like `clang-tidy` and `clangd`:
+
+- **Bazel**: Run `bazel run @hedron_compile_commands//:refresh_all`.
+- **CMake**: Simply build the project. The database will be generated automatically.
+
+In both cases, the `compile_commands.json` file will be placed in the root directory.
 
 ## 🤝 Contributing
 

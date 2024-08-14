@@ -4,8 +4,7 @@
 
 #include "jsonrpc/utils/string_utils.hpp"
 
-namespace jsonrpc {
-namespace transport {
+namespace jsonrpc::transport {
 
 void FramedTransport::FrameMessage(
     std::ostream &output, const std::string &message) {
@@ -15,16 +14,16 @@ void FramedTransport::FrameMessage(
          << message;
 }
 
-FramedTransport::HeaderMap FramedTransport::ReadHeadersFromStream(
-    std::istream &input) {
+auto FramedTransport::ReadHeadersFromStream(std::istream &input)
+    -> FramedTransport::HeaderMap {
   HeaderMap headers;
   std::string line;
 
   while (std::getline(input, line) && !line.empty() && line != "\r") {
-    auto colonPos = line.find(':');
-    if (colonPos != std::string::npos) {
-      std::string header_key = utils::trim(line.substr(0, colonPos));
-      std::string header_value = utils::trim(line.substr(colonPos + 1));
+    auto colon_pos = line.find(':');
+    if (colon_pos != std::string::npos) {
+      std::string header_key = utils::Trim(line.substr(0, colon_pos));
+      std::string header_value = utils::Trim(line.substr(colon_pos + 1));
       headers[header_key] = header_value;
     }
   }
@@ -36,7 +35,7 @@ FramedTransport::HeaderMap FramedTransport::ReadHeadersFromStream(
   return headers;
 }
 
-int FramedTransport::ReadContentLengthFromStream(std::istream &input) {
+auto FramedTransport::ReadContentLengthFromStream(std::istream &input) -> int {
   auto headers = ReadHeadersFromStream(input);
   auto it = headers.find("Content-Length");
   if (it == headers.end()) {
@@ -45,22 +44,23 @@ int FramedTransport::ReadContentLengthFromStream(std::istream &input) {
   return ParseContentLength(it->second);
 }
 
-std::string FramedTransport::ReadContent(
-    std::istream &input, int content_length) {
+auto FramedTransport::ReadContent(
+    std::istream &input, std::size_t content_length) -> std::string {
   std::string content(content_length, '\0');
-  input.read(&content[0], content_length);
-  if (input.gcount() != content_length) {
+  input.read(content.data(), static_cast<std::streamsize>(content_length));
+  if (input.gcount() != static_cast<std::streamsize>(content_length)) {
     throw std::runtime_error("Failed to read the expected content length");
   }
   return content;
 }
 
-std::string FramedTransport::ReceiveFramedMessage(std::istream &input) {
+auto FramedTransport::ReceiveFramedMessage(std::istream &input) -> std::string {
   int content_length = ReadContentLengthFromStream(input);
   return ReadContent(input, content_length);
 }
 
-int FramedTransport::ParseContentLength(const std::string &header_value) {
+auto FramedTransport::ParseContentLength(const std::string &header_value)
+    -> int {
   try {
     return std::stoi(header_value);
   } catch (const std::invalid_argument &) {
@@ -70,5 +70,4 @@ int FramedTransport::ParseContentLength(const std::string &header_value) {
   }
 }
 
-} // namespace transport
-} // namespace jsonrpc
+}  // namespace jsonrpc::transport

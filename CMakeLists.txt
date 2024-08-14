@@ -63,5 +63,15 @@ target_link_libraries(framed_socket_client PRIVATE jsonrpc)
 add_executable(framed_socket_server examples/framed_socket_server.cpp)
 target_link_libraries(framed_socket_server PRIVATE jsonrpc)
 
+# Ensure compile_commands.json is moved after build
+add_custom_command(
+    TARGET jsonrpc PRE_BUILD
+    COMMAND ${CMAKE_COMMAND} -E copy_if_different
+        ${CMAKE_BINARY_DIR}/compile_commands.json
+        ${CMAKE_SOURCE_DIR}/compile_commands.json
+    COMMENT "Copying compile_commands.json to source directory"
+    VERBATIM
+)
+
 enable_testing()
 add_subdirectory(tests)

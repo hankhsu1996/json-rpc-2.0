@@ -5,18 +5,16 @@
 
 #include "jsonrpc/transport/transport.hpp"
 
-using namespace jsonrpc::transport;
-
-class MockTransport : public Transport {
-public:
-  std::vector<std::string> sentRequests;
+class MockTransport : public jsonrpc::transport::Transport {
+ public:
+  std::vector<std::string> sent_requests;
   std::queue<std::string> responses;
 
   void SendMessage(const std::string &request) override {
-    sentRequests.push_back(request);
+    sent_requests.push_back(request);
   }
 
-  std::string ReceiveMessage() override {
+  auto ReceiveMessage() -> std::string override {
     if (responses.empty()) {
       return "";
     }

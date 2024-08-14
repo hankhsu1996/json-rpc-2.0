@@ -8,8 +8,7 @@
 #include "jsonrpc/server/types.hpp"
 #include "jsonrpc/transport/transport.hpp"
 
-namespace jsonrpc {
-namespace server {
+namespace jsonrpc::server {
 
 /**
  * @brief A JSON-RPC server for handling requests and notifications.
@@ -18,14 +17,14 @@ namespace server {
  * and registering RPC methods and notifications.
  */
 class Server {
-public:
+ public:
   /**
    * @brief Constructs a Server with the specified transport.
    *
    * @param transport A unique pointer to the transport layer to use for
    * communication.
    */
-  Server(std::unique_ptr<transport::Transport> transport);
+  explicit Server(std::unique_ptr<transport::Transport> transport);
 
   /// @brief Starts the server to handle incoming JSON-RPC requests.
   void Start();
@@ -56,9 +55,9 @@ public:
       const std::string &method, const NotificationHandler &handler);
 
   /// @brief Checks if the server is currently running.
-  bool IsRunning() const;
+  [[nodiscard]] auto IsRunning() const -> bool;
 
-private:
+ private:
   /// @brief Listens for incoming JSON-RPC requests and dispatches them.
   void Listen();
 
@@ -72,5 +71,4 @@ private:
   std::atomic<bool> running_{false};
 };
 
-} // namespace server
-} // namespace jsonrpc
+}  // namespace jsonrpc::server

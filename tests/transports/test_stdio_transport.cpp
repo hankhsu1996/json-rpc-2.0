@@ -1,17 +1,14 @@
 #include <catch2/catch_test_macros.hpp>
 
-#include "jsonrpc/transport/stdio_transport.hpp"
-
 #include "../common/test_utils.hpp"
-
-using namespace jsonrpc::transport;
+#include "jsonrpc/transport/stdio_transport.hpp"
 
 TEST_CASE("StdioTransport sends a message correctly", "[StdioTransport]") {
   std::string test_message = R"({"jsonrpc": "2.0", "method": "example"})";
   std::ostringstream captured_output;
   RedirectIO redirect(std::cin, captured_output);
 
-  StdioTransport transport;
+  jsonrpc::transport::StdioTransport transport;
   transport.SendMessage(test_message);
 
   // The tested class adds a newline to the end of the message
@@ -25,20 +22,20 @@ TEST_CASE("StdioTransport reads a message correctly", "[StdioTransport]") {
   std::istringstream simulated_input(test_input + "\n");
   RedirectIO redirect(simulated_input, std::cout);
 
-  StdioTransport transport;
+  jsonrpc::transport::StdioTransport transport;
   std::string response = transport.ReceiveMessage();
 
   REQUIRE(response == test_input);
 }
 
 TEST_CASE("StdioTransport handles empty message", "[StdioTransport]") {
-  std::string empty_message = "";
+  std::string empty_message;
 
   // Redirect std::cout to capture output
   std::ostringstream captured_output;
   RedirectIO redirect(std::cin, captured_output);
 
-  StdioTransport transport;
+  jsonrpc::transport::StdioTransport transport;
   transport.SendMessage(empty_message);
 
   // Even empty messages should end with a newline
@@ -53,13 +50,14 @@ TEST_CASE("StdioTransport handles large message", "[StdioTransport]") {
   std::ostringstream captured_output;
   RedirectIO redirect(std::cin, captured_output);
 
-  StdioTransport transport;
+  jsonrpc::transport::StdioTransport transport;
   transport.SendMessage(large_message);
 
   REQUIRE(captured_output.str() == large_message + "\n");
 }
 
-TEST_CASE("StdioTransport handles message with special characters",
+TEST_CASE(
+    "StdioTransport handles message with special characters",
     "[StdioTransport]") {
   std::string special_message =
       R"({"jsonrpc": "2.0", "method": "example", "params": ["newline\n", "tab\t"]})";
@@ -68,21 +66,21 @@ TEST_CASE("StdioTransport handles message with special characters",
   std::ostringstream captured_output;
   RedirectIO redirect(std::cin, captured_output);
 
-  StdioTransport transport;
+  jsonrpc::transport::StdioTransport transport;
   transport.SendMessage(special_message);
 
   REQUIRE(captured_output.str() == special_message + "\n");
 }
 
 TEST_CASE("StdioTransport handles reading empty response", "[StdioTransport]") {
-  std::string empty_input = "";
+  std::string empty_input;
 
   // Add newline to simulate input
   std::istringstream simulated_input(empty_input + "\n");
   RedirectIO redirect(simulated_input, std::cout);
 
-  StdioTransport transport;
+  jsonrpc::transport::StdioTransport transport;
   std::string response = transport.ReceiveMessage();
 
-  REQUIRE(response == "");
+  REQUIRE(response.empty());
 }

@@ -2,15 +2,14 @@
 
 #include <spdlog/spdlog.h>
 
-namespace jsonrpc {
-namespace server {
+namespace jsonrpc::server {
 
-const ErrorInfoMap Response::errorInfoMap = {
-    {LibErrorKind::ParseError, {-32700, "Parse error"}},
-    {LibErrorKind::InvalidRequest, {-32600, "Invalid Request"}},
-    {LibErrorKind::MethodNotFound, {-32601, "Method not found"}},
-    {LibErrorKind::InternalError, {-32603, "Internal error"}},
-    {LibErrorKind::ServerError, {-32000, "Server error"}}};
+const ErrorInfoMap Response::kErrorInfoMap = {
+    {LibErrorKind::kParseError, {-32700, "Parse error"}},
+    {LibErrorKind::kInvalidRequest, {-32600, "Invalid Request"}},
+    {LibErrorKind::kMethodNotFound, {-32601, "Method not found"}},
+    {LibErrorKind::kInternalError, {-32603, "Internal error"}},
+    {LibErrorKind::kServerError, {-32000, "Server error"}}};
 
 Response::Response(Response &&other) noexcept
     : response_(std::move(other.response_)) {
@@ -24,20 +23,22 @@ Response::Response(nlohmann::json response, std::optional<nlohmann::json> id)
   ValidateResponse();
 }
 
-Response Response::FromUserResponse(
-    const nlohmann::json &responseJson, std::optional<nlohmann::json> id) {
-  if (responseJson.contains("result")) {
-    return CreateResult(responseJson["result"], id);
-  } else if (responseJson.contains("error")) {
-    return CreateUserError(responseJson["error"], id);
-  } else {
-    throw std::invalid_argument(
-        "Response JSON must contain either 'result' or 'error' field");
+auto Response::FromUserResponse(
+    const nlohmann::json &response_json,
+    std::optional<nlohmann::json> id) -> Response {
+  if (response_json.contains("result")) {
+    return CreateResult(response_json["result"], id);
   }
+  if (response_json.contains("error")) {
+    return CreateUserError(response_json["error"], id);
+  }
+  throw std::invalid_argument(
+      "Response JSON must contain either 'result' or 'error' field");
 }
 
-Response Response::CreateResult(
-    const nlohmann::json &result, const std::optional<nlohmann::json> &id) {
+auto Response::CreateResult(
+    const nlohmann::json &result,
+    const std::optional<nlohmann::json> &id) -> Response {
   nlohmann::json response = {{"jsonrpc", "2.0"}, {"result", result}};
   if (id.has_value()) {
     response["id"] = id.value();
@@ -45,8 +46,9 @@ Response Response::CreateResult(
   return Response{std::move(response)};
 }
 
-Response Response::CreateUserError(
-    const nlohmann::json &error, const std::optional<nlohmann::json> &id) {
+auto Response::CreateUserError(
+    const nlohmann::json &error,
+    const std::optional<nlohmann::json> &id) -> Response {
   nlohmann::json response = {{"jsonrpc", "2.0"}, {"error", error}};
   if (id.has_value()) {
     response["id"] = id.value();
@@ -54,23 +56,25 @@ Response Response::CreateUserError(
   return Response{std::move(response)};
 }
 
-nlohmann::json Response::ToJson() const {
+auto Response::ToJson() const -> nlohmann::json {
   return response_;
 }
 
-std::string Response::ToStr() const {
+auto Response::ToStr() const -> std::string {
   return response_.dump();
 }
 
-Response Response::CreateLibError(
-    LibErrorKind errorKind, const std::optional<nlohmann::json> &id) {
-  const auto &[code, message] = errorInfoMap.at(errorKind);
-  nlohmann::json errorResponse = CreateErrorResponse(message, code, id);
-  return Response{std::move(errorResponse)};
+auto Response::CreateLibError(
+    LibErrorKind error_kind,
+    const std::optional<nlohmann::json> &id) -> Response {
+  const auto &[code, message] = kErrorInfoMap.at(error_kind);
+  nlohmann::json error_response = CreateErrorResponse(message, code, id);
+  return Response{std::move(error_response)};
 }
 
-nlohmann::json Response::CreateErrorResponse(const std::string &message,
-    int code, const std::optional<nlohmann::json> &id) {
+auto Response::CreateErrorResponse(
+    const std::string &message, int code,
+    const std::optional<nlohmann::json> &id) -> nlohmann::json {
   nlohmann::json error = {{"code", code}, {"message", message}};
   nlohmann::json response = {{"jsonrpc", "2.0"}, {"error", error}};
   if (id.has_value()) {
@@ -90,13 +94,13 @@ void Response::ValidateResponse() const {
   if (response_.contains("error")) {
     const auto &error = response_["error"];
     if (!error.contains("code") || !error.contains("message")) {
-      spdlog::error("Response validation failed: missing 'code' or 'message' "
-                    "in error object");
+      spdlog::error(
+          "Response validation failed: missing 'code' or 'message' "
+          "in error object");
       throw std::invalid_argument(
           "Error object must contain 'code' and 'message' fields.");
     }
   }
 }
 
-} // namespace server
-} // namespace jsonrpc
+}  // namespace jsonrpc::server

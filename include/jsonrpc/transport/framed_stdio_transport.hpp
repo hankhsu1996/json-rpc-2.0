@@ -5,8 +5,7 @@
 #include "jsonrpc/transport/framed_transport.hpp"
 #include "jsonrpc/transport/transport.hpp"
 
-namespace jsonrpc {
-namespace transport {
+namespace jsonrpc::transport {
 
 /**
  * @brief Transport layer using framed messaging over standard I/O for JSON-RPC
@@ -16,10 +15,9 @@ namespace transport {
  * standard I/O.
  */
 class FramedStdioTransport : public Transport, protected FramedTransport {
-public:
-  void SendMessage(const std::string &request) override;
-  std::string ReceiveMessage() override;
+ public:
+  void SendMessage(const std::string &message) override;
+  auto ReceiveMessage() -> std::string override;
 };
 
-} // namespace transport
-} // namespace jsonrpc
+}  // namespace jsonrpc::transport

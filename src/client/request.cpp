@@ -1,38 +1,38 @@
 #include "jsonrpc/client/request.hpp"
 
-namespace jsonrpc {
-namespace client {
+namespace jsonrpc::client {
 
-Request::Request(const std::string &method,
-    std::optional<nlohmann::json> params, bool isNotification,
-    const std::function<int()> &idGenerator)
-    : method_(method), params_(std::move(params)),
-      isNotification_(isNotification), id_(0) {
-  if (!isNotification_) {
-    id_ = idGenerator();
+Request::Request(
+    std::string method, std::optional<nlohmann::json> params,
+    bool is_notification, const std::function<int()> &id_generator)
+    : method_(std::move(method)),
+      params_(std::move(params)),
+      is_notification_(is_notification),
+      id_(0) {
+  if (!is_notification_) {
+    id_ = id_generator();
   }
 }
 
-bool Request::RequiresResponse() const {
-  return !isNotification_;
+auto Request::RequiresResponse() const -> bool {
+  return !is_notification_;
 }
 
-int Request::GetKey() const {
+auto Request::GetKey() const -> int {
   return id_;
 }
 
-std::string Request::Dump() const {
-  nlohmann::json jsonRequest;
-  jsonRequest["jsonrpc"] = "2.0";
-  jsonRequest["method"] = method_;
+auto Request::Dump() const -> std::string {
+  nlohmann::json json_request;
+  json_request["jsonrpc"] = "2.0";
+  json_request["method"] = method_;
   if (params_) {
-    jsonRequest["params"] = *params_;
+    json_request["params"] = *params_;
   }
-  if (!isNotification_) {
-    jsonRequest["id"] = id_;
+  if (!is_notification_) {
+    json_request["id"] = id_;
   }
-  return jsonRequest.dump();
+  return json_request.dump();
 }
 
-} // namespace client
-} // namespace jsonrpc
+}  // namespace jsonrpc::client

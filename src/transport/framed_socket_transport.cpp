@@ -6,63 +6,64 @@
 #include <fmt/format.h>
 #include <spdlog/spdlog.h>
 
-namespace jsonrpc {
-namespace transport {
+namespace jsonrpc::transport {
 
 FramedSocketTransport::FramedSocketTransport(
-    const std::string &host, uint16_t port, bool isServer)
-    : SocketTransport(host, port, isServer), FramedTransport() {
-  spdlog::info("FramedSocketTransport initialized with host: {} and port: {}",
-      host, port);
+    const std::string &host, uint16_t port, bool is_server)
+    : SocketTransport(host, port, is_server), FramedTransport() {
+  spdlog::info(
+      "FramedSocketTransport initialized with host: {} and port: {}", host,
+      port);
 }
 
 void FramedSocketTransport::SendMessage(const std::string &message) {
   try {
-    asio::streambuf messageBuf;
-    std::ostream messageStream(&messageBuf);
-    FrameMessage(messageStream, message);
+    asio::streambuf message_buf;
+    std::ostream message_stream(&message_buf);
+    FrameMessage(message_stream, message);
 
     asio::error_code ec;
-    std::size_t bytesWritten = asio::write(GetSocket(), messageBuf.data(), ec);
+    std::size_t bytes_written =
+        asio::write(GetSocket(), message_buf.data(), ec);
 
     if (ec) {
       throw std::runtime_error("Error sending message: " + ec.message());
     }
 
     spdlog::info(
-        "FramedSocketTransport sent message with {} bytes", bytesWritten);
+        "FramedSocketTransport sent message with {} bytes", bytes_written);
   } catch (const std::exception &e) {
     spdlog::error("FramedSocketTransport failed to send message: {}", e.what());
     throw;
   }
 }
 
-std::string FramedSocketTransport::ReceiveMessage() {
+auto FramedSocketTransport::ReceiveMessage() -> std::string {
   asio::streambuf buffer;
   asio::error_code ec;
 
   // Read headers until \r\n\r\n delimiter
-  asio::read_until(GetSocket(), buffer, HEADER_DELIMITER, ec);
+  asio::read_until(GetSocket(), buffer, kHeaderDelimiter, ec);
   if (ec) {
     throw std::runtime_error("Failed to read message headers: " + ec.message());
   }
 
-  std::istream headerStream(&buffer);
+  std::istream header_stream(&buffer);
 
   // Extract content length from the headers
-  int contentLength = ReadContentLengthFromStream(headerStream);
+  int content_length = ReadContentLengthFromStream(header_stream);
 
   // Calculate how much more content we need to read
-  std::size_t remainingContentLength = contentLength - buffer.size();
+  std::size_t remaining_content_length = content_length - buffer.size();
 
   // Read any remaining content directly into the buffer
-  if (remainingContentLength > 0) {
-    asio::read(GetSocket(), buffer.prepare(remainingContentLength), ec);
+  if (remaining_content_length > 0) {
+    asio::read(GetSocket(), buffer.prepare(remaining_content_length), ec);
     if (ec && ec != asio::error::eof) {
       throw std::runtime_error(
           "Failed to read message content: " + ec.message());
     }
-    buffer.commit(remainingContentLength);
+    buffer.commit(remaining_content_length);
   }
 
   // Convert the entire buffer to a string
@@ -71,5 +72,4 @@ std::string FramedSocketTransport::ReceiveMessage() {
   return content;
 }
 
-} // namespace transport
-} // namespace jsonrpc
+}  // namespace jsonrpc::transport

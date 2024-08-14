@@ -5,8 +5,7 @@
 
 #include "jsonrpc/transport/transport.hpp"
 
-namespace jsonrpc {
-namespace transport {
+namespace jsonrpc::transport {
 
 /**
  * @brief Transport implementation using Unix domain sockets.
@@ -16,33 +15,38 @@ namespace transport {
  * on the same machine.
  */
 class PipeTransport : public Transport {
-public:
+ public:
   /**
    * @brief Constructs a PipeTransport.
    * @param socketPath Path to the Unix domain socket.
    * @param isServer True if the transport acts as a server; false if it acts as
    * a client.
    */
-  PipeTransport(const std::string &socketPath, bool isServer);
+  PipeTransport(const std::string &socket_path, bool is_server);
 
-  ~PipeTransport();
+  ~PipeTransport() override;
+
+  PipeTransport(const PipeTransport &) = delete;
+  auto operator=(const PipeTransport &) -> PipeTransport & = delete;
+
+  PipeTransport(PipeTransport &&) = delete;
+  auto operator=(PipeTransport &&) -> PipeTransport & = delete;
 
   void SendMessage(const std::string &message) override;
-  std::string ReceiveMessage() override;
+  auto ReceiveMessage() -> std::string override;
 
-protected:
-  asio::local::stream_protocol::socket &GetSocket();
+ protected:
+  auto GetSocket() -> asio::local::stream_protocol::socket &;
 
-private:
+ private:
   void RemoveExistingSocketFile();
   void Connect();
   void BindAndListen();
 
-  asio::io_context ioContext_;
+  asio::io_context io_context_;
   asio::local::stream_protocol::socket socket_;
-  std::string socketPath_;
-  bool isServer_;
+  std::string socket_path_;
+  bool is_server_;
 };
 
-} // namespace transport
-} // namespace jsonrpc
+}  // namespace jsonrpc::transport

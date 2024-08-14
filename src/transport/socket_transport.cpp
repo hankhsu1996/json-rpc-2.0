@@ -4,23 +4,22 @@
 
 #include <spdlog/spdlog.h>
 
-namespace jsonrpc {
-namespace transport {
+namespace jsonrpc::transport {
 
 SocketTransport::SocketTransport(
-    const std::string &host, uint16_t port, bool isServer)
-    : socket_(ioContext_), host_(host), port_(port), isServer_(isServer) {
+    const std::string &host, uint16_t port, bool is_server)
+    : socket_(io_context_), host_(host), port_(port), is_server_(is_server) {
   spdlog::info(
       "Initializing SocketTransport with host: {} and port: {}", host, port);
 
-  if (isServer_) {
+  if (is_server_) {
     BindAndListen();
   } else {
     Connect();
   }
 }
 
-asio::ip::tcp::socket &SocketTransport::GetSocket() {
+auto SocketTransport::GetSocket() -> asio::ip::tcp::socket & {
   return socket_;
 }
 
@@ -31,38 +30,40 @@ SocketTransport::~SocketTransport() {
   if (ec) {
     spdlog::warn("Socket close error: {}", ec.message());
   }
-  ioContext_.stop();
+  io_context_.stop();
 }
 
 void SocketTransport::Connect() {
-  asio::ip::tcp::resolver resolver(ioContext_);
+  asio::ip::tcp::resolver resolver(io_context_);
   auto endpoints = resolver.resolve(host_, std::to_string(port_));
 
-  asio::steady_timer timer(ioContext_);
+  asio::steady_timer timer(io_context_);
   timer.expires_after(std::chrono::seconds(3));
 
-  std::error_code connectError;
-  asio::async_connect(socket_, endpoints,
+  std::error_code connect_error;
+  asio::async_connect(
+      socket_, endpoints,
       [&](const asio::error_code &error, const asio::ip::tcp::endpoint &) {
         if (!error) {
           timer.cancel();
         } else {
-          connectError = error;
+          connect_error = error;
         }
       });
 
   timer.async_wait([&](const asio::error_code &error) {
     if (!error) {
-      connectError = asio::error::timed_out;
+      connect_error = asio::error::timed_out;
       socket_.close();
     }
   });
 
-  ioContext_.run();
+  io_context_.run();
 
-  if (connectError) {
-    spdlog::error("Error connecting to {}:{}. Error: {}", host_, port_,
-        connectError.message());
+  if (connect_error) {
+    spdlog::error(
+        "Error connecting to {}:{}. Error: {}", host_, port_,
+        connect_error.message());
     throw std::runtime_error("Error connecting to socket");
   }
 }
@@ -70,7 +71,7 @@ void SocketTransport::Connect() {
 void SocketTransport::BindAndListen() {
   try {
     asio::ip::tcp::acceptor acceptor(
-        ioContext_, asio::ip::tcp::endpoint(asio::ip::tcp::v4(), port_));
+        io_context_, asio::ip::tcp::endpoint(asio::ip::tcp::v4(), port_));
     acceptor.listen();
     spdlog::info("Listening on {}:{}", host_, port_);
     acceptor.accept(socket_);
@@ -92,7 +93,7 @@ void SocketTransport::SendMessage(const std::string &message) {
   }
 }
 
-std::string SocketTransport::ReceiveMessage() {
+auto SocketTransport::ReceiveMessage() -> std::string {
   try {
     asio::streambuf buffer;
     asio::read_until(socket_, buffer, '\n');
@@ -108,5 +109,4 @@ std::string SocketTransport::ReceiveMessage() {
   }
 }
 
-} // namespace transport
-} // namespace jsonrpc
+}  // namespace jsonrpc::transport

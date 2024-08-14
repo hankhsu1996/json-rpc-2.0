@@ -5,19 +5,19 @@
 
 #include "jsonrpc/server/dispatcher.hpp"
 
-using namespace jsonrpc::server;
-
 // Helper function to create a Dispatcher object
-std::unique_ptr<Dispatcher> CreateDispatcher(bool enableMultithreading,
-    size_t numThreads = std::thread::hardware_concurrency()) {
-  return std::make_unique<Dispatcher>(enableMultithreading, numThreads);
+auto CreateDispatcher(
+    bool enable_multithreading,
+    size_t num_threads = std::thread::hardware_concurrency())
+    -> std::unique_ptr<jsonrpc::server::Dispatcher> {
+  return std::make_unique<jsonrpc::server::Dispatcher>(
+      enable_multithreading, num_threads);
 }
 
-// Helper function to register common method handlers
-void RegisterCommonHandlers(Dispatcher &dispatcher) {
+void RegisterSubtractHandler(jsonrpc::server::Dispatcher &dispatcher) {
   auto subtract =
       [](const std::optional<nlohmann::json> &params) -> nlohmann::json {
-    int result;
+    int result = 0;
     if (params && params->is_array()) {
       result = params.value()[0].get<int>() - params.value()[1].get<int>();
     } else {
@@ -26,22 +26,32 @@ void RegisterCommonHandlers(Dispatcher &dispatcher) {
     }
     return nlohmann::json{{"result", result}};
   };
+  dispatcher.RegisterMethodCall("subtract", subtract);
+}
 
+void RegisterSumHandler(jsonrpc::server::Dispatcher &dispatcher) {
   auto sum = [](const std::optional<nlohmann::json> &params) -> nlohmann::json {
     int result = 0;
     if (params) {
-      result = std::accumulate(params->begin(), params->end(), 0,
+      result = std::accumulate(
+          params->begin(), params->end(), 0,
           [](int sum, const nlohmann::json &param) {
             return sum + param.get<int>();
           });
     }
     return nlohmann::json{{"result", result}};
   };
+  dispatcher.RegisterMethodCall("sum", sum);
+}
 
+void RegisterGetDataHandler(jsonrpc::server::Dispatcher &dispatcher) {
   auto get_data = [](const std::optional<nlohmann::json> &) -> nlohmann::json {
     return nlohmann::json{{"result", nlohmann::json::array({"hello", 5})}};
   };
+  dispatcher.RegisterMethodCall("get_data", get_data);
+}
 
+void RegisterNotificationHandlers(jsonrpc::server::Dispatcher &dispatcher) {
   auto notify_hello = [](const std::optional<nlohmann::json> &params) {
     if (params) {
       REQUIRE(params.value()[0] == 7);
@@ -54,196 +64,212 @@ void RegisterCommonHandlers(Dispatcher &dispatcher) {
     }
   };
 
-  dispatcher.RegisterMethodCall("subtract", subtract);
-  dispatcher.RegisterMethodCall("sum", sum);
-  dispatcher.RegisterMethodCall("get_data", get_data);
   dispatcher.RegisterNotification("notify_hello", notify_hello);
   dispatcher.RegisterNotification("notify_sum", notify_sum);
 }
 
+void RegisterCommonHandlers(jsonrpc::server::Dispatcher &dispatcher) {
+  RegisterSubtractHandler(dispatcher);
+  RegisterSumHandler(dispatcher);
+  RegisterGetDataHandler(dispatcher);
+  RegisterNotificationHandlers(dispatcher);
+}
+
 TEST_CASE("RPC call with positional parameters", "[Dispatcher]") {
-  Dispatcher dispatcher;
+  jsonrpc::server::Dispatcher dispatcher;
   RegisterCommonHandlers(dispatcher);
 
   SECTION("subtract 42, 23") {
-    nlohmann::json requestJson = {{"jsonrpc", "2.0"}, {"method", "subtract"},
-        {"params", {42, 23}}, {"id", 1}};
-    std::optional<std::string> responseStr =
-        dispatcher.DispatchRequest(requestJson.dump());
-    REQUIRE(responseStr.has_value());
-    nlohmann::json responseJson = nlohmann::json::parse(responseStr.value());
-    REQUIRE(responseJson["jsonrpc"] == "2.0");
-    REQUIRE(responseJson["result"] == 19);
-    REQUIRE(responseJson["id"] == 1);
+    nlohmann::json request_json = {
+        {"jsonrpc", "2.0"},
+        {"method", "subtract"},
+        {"params", {42, 23}},
+        {"id", 1}};
+    std::optional<std::string> response_str =
+        dispatcher.DispatchRequest(request_json.dump());
+    REQUIRE(response_str.has_value());
+    nlohmann::json response_json = nlohmann::json::parse(response_str.value());
+    REQUIRE(response_json["jsonrpc"] == "2.0");
+    REQUIRE(response_json["result"] == 19);
+    REQUIRE(response_json["id"] == 1);
   }
 
   SECTION("subtract 23, 42") {
-    nlohmann::json requestJson = {{"jsonrpc", "2.0"}, {"method", "subtract"},
-        {"params", {23, 42}}, {"id", 2}};
-    std::optional<std::string> responseStr =
-        dispatcher.DispatchRequest(requestJson.dump());
-    REQUIRE(responseStr.has_value());
-    nlohmann::json responseJson = nlohmann::json::parse(responseStr.value());
-    REQUIRE(responseJson["jsonrpc"] == "2.0");
-    REQUIRE(responseJson["result"] == -19);
-    REQUIRE(responseJson["id"] == 2);
+    nlohmann::json request_json = {
+        {"jsonrpc", "2.0"},
+        {"method", "subtract"},
+        {"params", {23, 42}},
+        {"id", 2}};
+    std::optional<std::string> response_str =
+        dispatcher.DispatchRequest(request_json.dump());
+    REQUIRE(response_str.has_value());
+    nlohmann::json response_json = nlohmann::json::parse(response_str.value());
+    REQUIRE(response_json["jsonrpc"] == "2.0");
+    REQUIRE(response_json["result"] == -19);
+    REQUIRE(response_json["id"] == 2);
   }
 }
 
 TEST_CASE("RPC call with named parameters", "[Dispatcher]") {
-  Dispatcher dispatcher;
+  jsonrpc::server::Dispatcher dispatcher;
   RegisterCommonHandlers(dispatcher);
 
   SECTION("subtract named parameters 1") {
-    nlohmann::json requestJson = {{"jsonrpc", "2.0"}, {"method", "subtract"},
-        {"params", {{"subtrahend", 23}, {"minuend", 42}}}, {"id", 3}};
-    std::optional<std::string> responseStr =
-        dispatcher.DispatchRequest(requestJson.dump());
-    REQUIRE(responseStr.has_value());
-    nlohmann::json responseJson = nlohmann::json::parse(responseStr.value());
-    REQUIRE(responseJson["jsonrpc"] == "2.0");
-    REQUIRE(responseJson["result"] == 19);
-    REQUIRE(responseJson["id"] == 3);
+    nlohmann::json request_json = {
+        {"jsonrpc", "2.0"},
+        {"method", "subtract"},
+        {"params", {{"subtrahend", 23}, {"minuend", 42}}},
+        {"id", 3}};
+    std::optional<std::string> response_str =
+        dispatcher.DispatchRequest(request_json.dump());
+    REQUIRE(response_str.has_value());
+    nlohmann::json response_json = nlohmann::json::parse(response_str.value());
+    REQUIRE(response_json["jsonrpc"] == "2.0");
+    REQUIRE(response_json["result"] == 19);
+    REQUIRE(response_json["id"] == 3);
   }
 
   SECTION("subtract named parameters 2") {
-    nlohmann::json requestJson = {{"jsonrpc", "2.0"}, {"method", "subtract"},
-        {"params", {{"minuend", 42}, {"subtrahend", 23}}}, {"id", 4}};
-    std::optional<std::string> responseStr =
-        dispatcher.DispatchRequest(requestJson.dump());
-    REQUIRE(responseStr.has_value());
-    nlohmann::json responseJson = nlohmann::json::parse(responseStr.value());
-    REQUIRE(responseJson["jsonrpc"] == "2.0");
-    REQUIRE(responseJson["result"] == 19);
-    REQUIRE(responseJson["id"] == 4);
+    nlohmann::json request_json = {
+        {"jsonrpc", "2.0"},
+        {"method", "subtract"},
+        {"params", {{"minuend", 42}, {"subtrahend", 23}}},
+        {"id", 4}};
+    std::optional<std::string> response_str =
+        dispatcher.DispatchRequest(request_json.dump());
+    REQUIRE(response_str.has_value());
+    nlohmann::json response_json = nlohmann::json::parse(response_str.value());
+    REQUIRE(response_json["jsonrpc"] == "2.0");
+    REQUIRE(response_json["result"] == 19);
+    REQUIRE(response_json["id"] == 4);
   }
 }
 
 TEST_CASE("Notification", "[Dispatcher]") {
-  Dispatcher dispatcher;
+  jsonrpc::server::Dispatcher dispatcher;
   RegisterCommonHandlers(dispatcher);
 
   SECTION("update notification") {
-    nlohmann::json requestJson = {
+    nlohmann::json request_json = {
         {"jsonrpc", "2.0"}, {"method", "update"}, {"params", {1, 2, 3, 4, 5}}};
-    std::optional<std::string> responseStr =
-        dispatcher.DispatchRequest(requestJson.dump());
-    REQUIRE(!responseStr.has_value());
+    std::optional<std::string> response_str =
+        dispatcher.DispatchRequest(request_json.dump());
+    REQUIRE(!response_str.has_value());
   }
 
   SECTION("foobar notification") {
-    nlohmann::json requestJson = {{"jsonrpc", "2.0"}, {"method", "foobar"}};
-    std::optional<std::string> responseStr =
-        dispatcher.DispatchRequest(requestJson.dump());
-    REQUIRE(!responseStr.has_value());
+    nlohmann::json request_json = {{"jsonrpc", "2.0"}, {"method", "foobar"}};
+    std::optional<std::string> response_str =
+        dispatcher.DispatchRequest(request_json.dump());
+    REQUIRE(!response_str.has_value());
   }
 }
 
 TEST_CASE("RPC call of non-existent method", "[Dispatcher]") {
-  Dispatcher dispatcher;
+  jsonrpc::server::Dispatcher dispatcher;
   RegisterCommonHandlers(dispatcher);
 
-  nlohmann::json requestJson = {
+  nlohmann::json request_json = {
       {"jsonrpc", "2.0"}, {"method", "foobar"}, {"id", "1"}};
-  std::optional<std::string> responseStr =
-      dispatcher.DispatchRequest(requestJson.dump());
-  REQUIRE(responseStr.has_value());
-  nlohmann::json responseJson = nlohmann::json::parse(responseStr.value());
-  REQUIRE(responseJson["jsonrpc"] == "2.0");
-  REQUIRE(responseJson["error"]["code"] == -32601); // Method not found
-  REQUIRE(responseJson["error"]["message"] == "Method not found");
-  REQUIRE(responseJson["id"] == "1");
+  std::optional<std::string> response_str =
+      dispatcher.DispatchRequest(request_json.dump());
+  REQUIRE(response_str.has_value());
+  nlohmann::json response_json = nlohmann::json::parse(response_str.value());
+  REQUIRE(response_json["jsonrpc"] == "2.0");
+  REQUIRE(response_json["error"]["code"] == -32601);  // Method not found
+  REQUIRE(response_json["error"]["message"] == "Method not found");
+  REQUIRE(response_json["id"] == "1");
 }
 
 TEST_CASE("RPC call with invalid JSON", "[Dispatcher]") {
-  Dispatcher dispatcher;
+  jsonrpc::server::Dispatcher dispatcher;
 
-  std::string invalidRequest =
+  std::string invalid_request =
       R"({"jsonrpc": "2.0", "method": "foobar, "params": "bar", "baz])";
-  std::optional<std::string> responseStr =
-      dispatcher.DispatchRequest(invalidRequest);
-  REQUIRE(responseStr.has_value());
-  nlohmann::json responseJson = nlohmann::json::parse(responseStr.value());
-  REQUIRE(responseJson["jsonrpc"] == "2.0");
-  REQUIRE(responseJson["error"]["code"] == -32700); // Parse error
-  REQUIRE(responseJson["error"]["message"] == "Parse error");
-  REQUIRE(responseJson["id"] == nullptr);
+  std::optional<std::string> response_str =
+      dispatcher.DispatchRequest(invalid_request);
+  REQUIRE(response_str.has_value());
+  nlohmann::json response_json = nlohmann::json::parse(response_str.value());
+  REQUIRE(response_json["jsonrpc"] == "2.0");
+  REQUIRE(response_json["error"]["code"] == -32700);  // Parse error
+  REQUIRE(response_json["error"]["message"] == "Parse error");
+  REQUIRE(response_json["id"] == nullptr);
 }
 
 TEST_CASE("RPC call with invalid ServerRequest object", "[Dispatcher]") {
-  Dispatcher dispatcher;
+  jsonrpc::server::Dispatcher dispatcher;
 
-  nlohmann::json requestJson = {
+  nlohmann::json request_json = {
       {"jsonrpc", "2.0"}, {"method", 1}, {"params", "bar"}};
-  std::optional<std::string> responseStr =
-      dispatcher.DispatchRequest(requestJson.dump());
-  REQUIRE(responseStr.has_value());
-  nlohmann::json responseJson = nlohmann::json::parse(responseStr.value());
-  REQUIRE(responseJson["jsonrpc"] == "2.0");
-  REQUIRE(responseJson["error"]["code"] == -32600); // Invalid Request
-  REQUIRE(responseJson["error"]["message"] == "Invalid Request");
-  REQUIRE(responseJson["id"] == nullptr);
+  std::optional<std::string> response_str =
+      dispatcher.DispatchRequest(request_json.dump());
+  REQUIRE(response_str.has_value());
+  nlohmann::json response_json = nlohmann::json::parse(response_str.value());
+  REQUIRE(response_json["jsonrpc"] == "2.0");
+  REQUIRE(response_json["error"]["code"] == -32600);  // Invalid Request
+  REQUIRE(response_json["error"]["message"] == "Invalid Request");
+  REQUIRE(response_json["id"] == nullptr);
 }
 
 TEST_CASE("RPC call Batch, invalid JSON", "[Dispatcher]") {
-  Dispatcher dispatcher;
+  jsonrpc::server::Dispatcher dispatcher;
 
-  std::string invalidBatchRequest =
+  std::string invalid_batch_request =
       R"([{"jsonrpc": "2.0", "method": "sum", "params": [1,2,4], "id":
       "1"},{"jsonrpc": "2.0", "method"])";
-  std::optional<std::string> responseStr =
-      dispatcher.DispatchRequest(invalidBatchRequest);
-  REQUIRE(responseStr.has_value());
-  nlohmann::json responseJson = nlohmann::json::parse(responseStr.value());
-  REQUIRE(responseJson["jsonrpc"] == "2.0");
-  REQUIRE(responseJson["error"]["code"] == -32700); // Parse error
-  REQUIRE(responseJson["error"]["message"] == "Parse error");
-  REQUIRE(responseJson["id"] == nullptr);
+  std::optional<std::string> response_str =
+      dispatcher.DispatchRequest(invalid_batch_request);
+  REQUIRE(response_str.has_value());
+  nlohmann::json response_json = nlohmann::json::parse(response_str.value());
+  REQUIRE(response_json["jsonrpc"] == "2.0");
+  REQUIRE(response_json["error"]["code"] == -32700);  // Parse error
+  REQUIRE(response_json["error"]["message"] == "Parse error");
+  REQUIRE(response_json["id"] == nullptr);
 }
 
 TEST_CASE("RPC call with an empty Array", "[Dispatcher]") {
-  Dispatcher dispatcher;
+  jsonrpc::server::Dispatcher dispatcher;
 
-  nlohmann::json requestJson = nlohmann::json::array();
-  std::optional<std::string> responseStr =
-      dispatcher.DispatchRequest(requestJson.dump());
-  REQUIRE(responseStr.has_value());
-  nlohmann::json responseJson = nlohmann::json::parse(responseStr.value());
-  REQUIRE(responseJson["jsonrpc"] == "2.0");
-  REQUIRE(responseJson["error"]["code"] == -32600); // Invalid Request
-  REQUIRE(responseJson["error"]["message"] == "Invalid Request");
-  REQUIRE(responseJson["id"] == nullptr);
+  nlohmann::json request_json = nlohmann::json::array();
+  std::optional<std::string> response_str =
+      dispatcher.DispatchRequest(request_json.dump());
+  REQUIRE(response_str.has_value());
+  nlohmann::json response_json = nlohmann::json::parse(response_str.value());
+  REQUIRE(response_json["jsonrpc"] == "2.0");
+  REQUIRE(response_json["error"]["code"] == -32600);  // Invalid Request
+  REQUIRE(response_json["error"]["message"] == "Invalid Request");
+  REQUIRE(response_json["id"] == nullptr);
 }
 
 TEST_CASE("RPC call with an invalid Batch (but not empty)", "[Dispatcher]") {
-  Dispatcher dispatcher;
+  jsonrpc::server::Dispatcher dispatcher;
 
-  nlohmann::json requestJson = nlohmann::json::array({1});
-  std::optional<std::string> responseStr =
-      dispatcher.DispatchRequest(requestJson.dump());
-  REQUIRE(responseStr.has_value());
-  nlohmann::json responseJson = nlohmann::json::parse(responseStr.value());
-  REQUIRE(responseJson.is_array());
-  REQUIRE(responseJson.size() == 1);
-  REQUIRE(responseJson[0]["jsonrpc"] == "2.0");
-  REQUIRE(responseJson[0]["error"]["code"] == -32600); // Invalid Request
-  REQUIRE(responseJson[0]["error"]["message"] == "Invalid Request");
-  REQUIRE(responseJson[0]["id"] == nullptr);
+  nlohmann::json request_json = nlohmann::json::array({1});
+  std::optional<std::string> response_str =
+      dispatcher.DispatchRequest(request_json.dump());
+  REQUIRE(response_str.has_value());
+  nlohmann::json response_json = nlohmann::json::parse(response_str.value());
+  REQUIRE(response_json.is_array());
+  REQUIRE(response_json.size() == 1);
+  REQUIRE(response_json[0]["jsonrpc"] == "2.0");
+  REQUIRE(response_json[0]["error"]["code"] == -32600);  // Invalid Request
+  REQUIRE(response_json[0]["error"]["message"] == "Invalid Request");
+  REQUIRE(response_json[0]["id"] == nullptr);
 }
 
 TEST_CASE("RPC call with invalid Batch", "[Dispatcher]") {
-  Dispatcher dispatcher;
+  jsonrpc::server::Dispatcher dispatcher;
 
-  nlohmann::json requestJson = nlohmann::json::array({1, 2, 3});
-  std::optional<std::string> responseStr =
-      dispatcher.DispatchRequest(requestJson.dump());
-  REQUIRE(responseStr.has_value());
-  nlohmann::json responseJson = nlohmann::json::parse(responseStr.value());
-  REQUIRE(responseJson.is_array());
-  REQUIRE(responseJson.size() == 3);
-  for (const auto &response : responseJson) {
+  nlohmann::json request_json = nlohmann::json::array({1, 2, 3});
+  std::optional<std::string> response_str =
+      dispatcher.DispatchRequest(request_json.dump());
+  REQUIRE(response_str.has_value());
+  nlohmann::json response_json = nlohmann::json::parse(response_str.value());
+  REQUIRE(response_json.is_array());
+  REQUIRE(response_json.size() == 3);
+  for (const auto &response : response_json) {
     REQUIRE(response["jsonrpc"] == "2.0");
-    REQUIRE(response["error"]["code"] == -32600); // Invalid Request
+    REQUIRE(response["error"]["code"] == -32600);  // Invalid Request
     REQUIRE(response["error"]["message"] == "Invalid Request");
     REQUIRE(response["id"] == nullptr);
   }
@@ -254,88 +280,85 @@ TEST_CASE("RPC call Batch", "[Dispatcher]") {
   RegisterCommonHandlers(*dispatcher);
 
   // clang-format off
-  nlohmann::json requestJson = nlohmann::json::array({
-    {{"jsonrpc", "2.0"}, {"method", "sum"}, {"params", {1, 2, 4}}, {"id",
-    "1"}},
+  nlohmann::json request_json = nlohmann::json::array({
+    {{"jsonrpc", "2.0"}, {"method", "sum"}, {"params", {1, 2, 4}}, {"id", "1"}},
     {{"jsonrpc", "2.0"}, {"method", "notify_hello"}, {"params", {7}}},
-    {{"jsonrpc", "2.0"}, {"method", "subtract"}, {"params", {42, 23}}, {"id",
-    "2"}},
+    {{"jsonrpc", "2.0"}, {"method", "subtract"}, {"params", {42, 23}}, {"id", "2"}},
     {{"foo", "boo"}},
-    {{"jsonrpc", "2.0"}, {"method", "foo.get"}, {"params", {{"name",
-    "myself"}}}, {"id", "5"}},
+    {{"jsonrpc", "2.0"}, {"method", "foo.get"}, {"params", {{"name", "myself"}}}, {"id", "5"}},
     {{"jsonrpc", "2.0"}, {"method", "get_data"}, {"id", "9"}}
   });
   // clang-format on
 
-  std::optional<std::string> responseStr =
-      dispatcher->DispatchRequest(requestJson.dump());
-  REQUIRE(responseStr.has_value());
-  nlohmann::json responseJson = nlohmann::json::parse(responseStr.value());
+  std::optional<std::string> response_str =
+      dispatcher->DispatchRequest(request_json.dump());
+  REQUIRE(response_str.has_value());
+  nlohmann::json response_json = nlohmann::json::parse(response_str.value());
 
-  REQUIRE(responseJson.is_array());
-  REQUIRE(responseJson.size() == 5); // 6 requests but one is a notification
+  REQUIRE(response_json.is_array());
+  REQUIRE(response_json.size() == 5);  // 6 requests but one is a notification
 
-  REQUIRE(responseJson[0]["jsonrpc"] == "2.0");
-  REQUIRE(responseJson[0]["result"] == 7);
-  REQUIRE(responseJson[0]["id"] == "1");
+  REQUIRE(response_json[0]["jsonrpc"] == "2.0");
+  REQUIRE(response_json[0]["result"] == 7);
+  REQUIRE(response_json[0]["id"] == "1");
 
-  REQUIRE(responseJson[1]["jsonrpc"] == "2.0");
-  REQUIRE(responseJson[1]["result"] == 19);
-  REQUIRE(responseJson[1]["id"] == "2");
+  REQUIRE(response_json[1]["jsonrpc"] == "2.0");
+  REQUIRE(response_json[1]["result"] == 19);
+  REQUIRE(response_json[1]["id"] == "2");
 
-  REQUIRE(responseJson[2]["jsonrpc"] == "2.0");
-  REQUIRE(responseJson[2]["error"]["code"] == -32600); // Invalid Request
-  REQUIRE(responseJson[2]["error"]["message"] == "Invalid Request");
-  REQUIRE(responseJson[2]["id"] == nullptr);
+  REQUIRE(response_json[2]["jsonrpc"] == "2.0");
+  REQUIRE(response_json[2]["error"]["code"] == -32600);  // Invalid Request
+  REQUIRE(response_json[2]["error"]["message"] == "Invalid Request");
+  REQUIRE(response_json[2]["id"] == nullptr);
 
-  REQUIRE(responseJson[3]["jsonrpc"] == "2.0");
-  REQUIRE(responseJson[3]["error"]["code"] == -32601); // Method not found
-  REQUIRE(responseJson[3]["error"]["message"] == "Method not found");
-  REQUIRE(responseJson[3]["id"] == "5");
+  REQUIRE(response_json[3]["jsonrpc"] == "2.0");
+  REQUIRE(response_json[3]["error"]["code"] == -32601);  // Method not found
+  REQUIRE(response_json[3]["error"]["message"] == "Method not found");
+  REQUIRE(response_json[3]["id"] == "5");
 
-  REQUIRE(responseJson[4]["jsonrpc"] == "2.0");
-  REQUIRE(responseJson[4]["result"] == nlohmann::json::array({"hello", 5}));
-  REQUIRE(responseJson[4]["id"] == "9");
+  REQUIRE(response_json[4]["jsonrpc"] == "2.0");
+  REQUIRE(response_json[4]["result"] == nlohmann::json::array({"hello", 5}));
+  REQUIRE(response_json[4]["id"] == "9");
 
   dispatcher = CreateDispatcher(false);
   RegisterCommonHandlers(*dispatcher);
-  responseStr = dispatcher->DispatchRequest(requestJson.dump());
-  REQUIRE(responseStr.has_value());
-  responseJson = nlohmann::json::parse(responseStr.value());
-  REQUIRE(responseJson.is_array());
-  REQUIRE(responseJson.size() == 5); // 6 requests but one is a notification
+  response_str = dispatcher->DispatchRequest(request_json.dump());
+  REQUIRE(response_str.has_value());
+  response_json = nlohmann::json::parse(response_str.value());
+  REQUIRE(response_json.is_array());
+  REQUIRE(response_json.size() == 5);  // 6 requests but one is a notification
 
-  REQUIRE(responseJson[0]["jsonrpc"] == "2.0");
-  REQUIRE(responseJson[0]["result"] == 7);
-  REQUIRE(responseJson[0]["id"] == "1");
+  REQUIRE(response_json[0]["jsonrpc"] == "2.0");
+  REQUIRE(response_json[0]["result"] == 7);
+  REQUIRE(response_json[0]["id"] == "1");
 
-  REQUIRE(responseJson[1]["jsonrpc"] == "2.0");
-  REQUIRE(responseJson[1]["result"] == 19);
-  REQUIRE(responseJson[1]["id"] == "2");
+  REQUIRE(response_json[1]["jsonrpc"] == "2.0");
+  REQUIRE(response_json[1]["result"] == 19);
+  REQUIRE(response_json[1]["id"] == "2");
 
-  REQUIRE(responseJson[2]["jsonrpc"] == "2.0");
-  REQUIRE(responseJson[2]["error"]["code"] == -32600); // Invalid Request
-  REQUIRE(responseJson[2]["error"]["message"] == "Invalid Request");
-  REQUIRE(responseJson[2]["id"] == nullptr);
+  REQUIRE(response_json[2]["jsonrpc"] == "2.0");
+  REQUIRE(response_json[2]["error"]["code"] == -32600);  // Invalid Request
+  REQUIRE(response_json[2]["error"]["message"] == "Invalid Request");
+  REQUIRE(response_json[2]["id"] == nullptr);
 
-  REQUIRE(responseJson[3]["jsonrpc"] == "2.0");
-  REQUIRE(responseJson[3]["error"]["code"] == -32601); // Method not found
-  REQUIRE(responseJson[3]["error"]["message"] == "Method not found");
-  REQUIRE(responseJson[3]["id"] == "5");
+  REQUIRE(response_json[3]["jsonrpc"] == "2.0");
+  REQUIRE(response_json[3]["error"]["code"] == -32601);  // Method not found
+  REQUIRE(response_json[3]["error"]["message"] == "Method not found");
+  REQUIRE(response_json[3]["id"] == "5");
 
-  REQUIRE(responseJson[4]["jsonrpc"] == "2.0");
-  REQUIRE(responseJson[4]["result"] == nlohmann::json::array({"hello", 5}));
-  REQUIRE(responseJson[4]["id"] == "9");
+  REQUIRE(response_json[4]["jsonrpc"] == "2.0");
+  REQUIRE(response_json[4]["result"] == nlohmann::json::array({"hello", 5}));
+  REQUIRE(response_json[4]["id"] == "9");
 }
 
 TEST_CASE("RPC call Batch (all notifications)", "[Dispatcher]") {
-  Dispatcher dispatcher;
+  jsonrpc::server::Dispatcher dispatcher;
   RegisterCommonHandlers(dispatcher);
 
-  nlohmann::json requestJson = nlohmann::json::array(
+  nlohmann::json request_json = nlohmann::json::array(
       {{{"jsonrpc", "2.0"}, {"method", "notify_sum"}, {"params", {1, 2, 4}}},
-          {{"jsonrpc", "2.0"}, {"method", "notify_hello"}, {"params", {7}}}});
-  std::optional<std::string> responseStr =
-      dispatcher.DispatchRequest(requestJson.dump());
-  REQUIRE(!responseStr.has_value());
+       {{"jsonrpc", "2.0"}, {"method", "notify_hello"}, {"params", {7}}}});
+  std::optional<std::string> response_str =
+      dispatcher.DispatchRequest(request_json.dump());
+  REQUIRE(!response_str.has_value());
 }
