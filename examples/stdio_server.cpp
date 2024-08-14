@@ -12,7 +12,7 @@ using jsonrpc::server::Server;
 using jsonrpc::transport::StdioTransport;
 using Json = nlohmann::json;
 
-int main() {
+auto main() -> int {
   auto logger = spdlog::basic_logger_mt("server", "logs/server.log");
   spdlog::set_default_logger(logger);
   spdlog::set_level(spdlog::level::debug);

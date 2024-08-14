@@ -12,7 +12,7 @@ using jsonrpc::client::Client;
 using jsonrpc::transport::FramedSocketTransport;
 using Json = nlohmann::json;
 
-int main() {
+auto main() -> int {
   auto logger = spdlog::basic_logger_mt("client", "logs/client.log", true);
   spdlog::set_default_logger(logger);
   spdlog::set_level(spdlog::level::debug);
