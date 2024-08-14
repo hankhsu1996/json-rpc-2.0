@@ -23,9 +23,10 @@ class Calculator {
     double b_double = params["b"];
 
     if (b_double == 0) {
-      return {{"error",
-               {{"code", kDivideByZeroErrorCode},
-                {"message", "Division by zero"}}}};
+      return {
+          {"error",
+           {{"code", kDivideByZeroErrorCode},
+            {"message", "Division by zero"}}}};
     }
 
     return {{"result", a_double / b_double}};
