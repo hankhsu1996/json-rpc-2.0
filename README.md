@@ -1,6 +1,6 @@
 # JSON-RPC 2.0 Modern C++ Library
 
-[![CI](https://github.com/hankhsu1996/json-rpc-2.0/actions/workflows/ci.yml/badge.svg?event=push)](https://github.com/hankhsu1996/json-rpc-2.0/actions/workflows/ci.yml)
+[![CI](https://github.com/hankhsu1996/json-rpc-cpp-lib/actions/workflows/ci.yml/badge.svg?event=push)](https://github.com/hankhsu1996/json-rpc-cpp-lib/actions/workflows/ci.yml)
 
 Welcome to the **JSON-RPC 2.0 Modern C++ Library**! This library provides a lightweight, modern C++ implementation of [JSON-RPC 2.0](https://www.jsonrpc.org/specification) servers and clients. It is designed to be flexible, allowing integration with various transport layers. This library makes it easy to register methods and notifications, binding them to client logic efficiently.
 
@@ -37,7 +37,7 @@ If you prefer using CMake, add the library to your project with the following in
 include(FetchContent)
 FetchContent_Declare(
   jsonrpc
-  GIT_REPOSITORY https://github.com/hankhsu1996/json-rpc-2.0.git
+  GIT_REPOSITORY https://github.com/hankhsu1996/json-rpc-cpp-lib.git
   GIT_TAG main
 )
 FetchContent_MakeAvailable(jsonrpc)
@@ -49,7 +49,7 @@ For projects using Conan, create a `conanfile.txt` in your project directory wit
 
 ```ini
 [requires]
-json-rpc-2.0/1.0.0
+json-rpc-cpp-lib/1.0.0
 
 [generators]
 CMakeDeps
