@@ -119,13 +119,13 @@ Follow these steps to build, test, and set up your development environment. Baze
 
 **Step 1: Build the Project**
 
-```bash
+```
 bazel build //...
 ```
 
 **Step 2: Run Tests**
 
-```bash
+```
 bazel test //...
 ```
 
@@ -133,7 +133,7 @@ bazel test //...
 
 **Step 1: Install Dependencies**
 
-```bash
+```
 conan profile detect --force
 conan install . --build=missing
 conan install . -s build_type=Debug --build=missing
@@ -141,14 +141,14 @@ conan install . -s build_type=Debug --build=missing
 
 **Step 2: Configure and Build**
 
-```bash
+```
 cmake --preset release
 cmake --build --preset release
 ```
 
 **Step 3: Run Tests**
 
-```bash
+```
 ctest --preset release
 ```
 
@@ -156,7 +156,7 @@ ctest --preset release
 
 For Debug configuration:
 
-```bash
+```
 cmake --preset debug
 cmake --build --preset debug
 ctest --preset debug
