@@ -115,7 +115,7 @@ $(function(){initNavTree('index.html',''); initResizable(true); });
   <div class="headertitle"><div class="title">JSON-RPC 2.0 Modern C++ Library </div></div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><p><a class="anchor" id="md_README"></a> <a href="https://github.com/hankhsu1996/json-rpc-2.0/actions/workflows/ci.yml"><img src="https://github.com/hankhsu1996/json-rpc-2.0/actions/workflows/ci.yml/badge.svg?event=push" alt="CI" style="pointer-events: none;" class="inline"/></a></p>
+<div class="textblock"><p><a class="anchor" id="md_README"></a> <a href="https://github.com/hankhsu1996/json-rpc-cpp-lib/actions/workflows/ci.yml"><img src="https://github.com/hankhsu1996/json-rpc-cpp-lib/actions/workflows/ci.yml/badge.svg?event=push" alt="CI" style="pointer-events: none;" class="inline"/></a></p>
 <p>Welcome to the <b>JSON-RPC 2.0 Modern C++ Library</b>! This library provides a lightweight, modern C++ implementation of <a href="https://www.jsonrpc.org/specification">JSON-RPC 2.0</a> servers and clients. It is designed to be flexible, allowing integration with various transport layers. This library makes it easy to register methods and notifications, binding them to client logic efficiently.</p>
 <h1><a class="anchor" id="autotoc_md1"></a>
 ✨ Features</h1>
@@ -146,7 +146,7 @@ Optional: Using CMake FetchContent</h2>
 <div class="fragment"><div class="line">include(FetchContent)</div>
 <div class="line">FetchContent_Declare(</div>
 <div class="line">  jsonrpc</div>
-<div class="line">  GIT_REPOSITORY https://github.com/hankhsu1996/json-rpc-2.0.git</div>
+<div class="line">  GIT_REPOSITORY https://github.com/hankhsu1996/json-rpc-cpp-lib.git</div>
 <div class="line">  GIT_TAG main</div>
 <div class="line">)</div>
 <div class="line">FetchContent_MakeAvailable(jsonrpc)</div>
@@ -154,7 +154,7 @@ Optional: Using CMake FetchContent</h2>
 Optional: Using Conan 2</h2>
 <p>For projects using Conan, create a <code>conanfile.txt</code> in your project directory with the following content:</p>
 <div class="fragment"><div class="line">[requires]</div>
-<div class="line">json-rpc-2.0/1.0.0</div>
+<div class="line">json-rpc-cpp-lib/1.0.0</div>
 <div class="line"> </div>
 <div class="line">[generators]</div>
 <div class="line">CMakeDeps</div>
