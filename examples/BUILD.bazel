@@ -1,17 +1,17 @@
-# examples/BUILD
+# examples/BUILD.bazel
 
 # Standard I/O examples
 cc_binary(
     name = "stdio_client",
-    srcs = ["stdio_client.cpp"],
+    srcs = ["calculator_example/stdio/client.cpp"],
     deps = ["//src:jsonrpc_lib"],
 )
 
 cc_binary(
     name = "stdio_server",
     srcs = [
-        "calculator.hpp",
-        "stdio_server.cpp",
+        "calculator_example/calculator.hpp",
+        "calculator_example/stdio/server.cpp",
     ],
     deps = ["//src:jsonrpc_lib"],
 )
@@ -19,15 +19,15 @@ cc_binary(
 # Unix domain socket examples
 cc_binary(
     name = "pipe_client",
-    srcs = ["pipe_client.cpp"],
+    srcs = ["calculator_example/pipe/client.cpp"],
     deps = ["//src:jsonrpc_lib"],
 )
 
 cc_binary(
     name = "pipe_server",
     srcs = [
-        "calculator.hpp",
-        "pipe_server.cpp",
+        "calculator_example/calculator.hpp",
+        "calculator_example/pipe/server.cpp",
     ],
     deps = ["//src:jsonrpc_lib"],
 )
@@ -35,15 +35,15 @@ cc_binary(
 # Framed Unix domain socket examples
 cc_binary(
     name = "framed_pipe_client",
-    srcs = ["framed_pipe_client.cpp"],
+    srcs = ["calculator_example/framed_pipe/client.cpp"],
     deps = ["//src:jsonrpc_lib"],
 )
 
 cc_binary(
     name = "framed_pipe_server",
     srcs = [
-        "calculator.hpp",
-        "framed_pipe_server.cpp",
+        "calculator_example/calculator.hpp",
+        "calculator_example/framed_pipe/server.cpp",
     ],
     deps = ["//src:jsonrpc_lib"],
 )
@@ -51,15 +51,15 @@ cc_binary(
 # Socket examples
 cc_binary(
     name = "socket_client",
-    srcs = ["socket_client.cpp"],
+    srcs = ["calculator_example/socket/client.cpp"],
     deps = ["//src:jsonrpc_lib"],
 )
 
 cc_binary(
     name = "socket_server",
     srcs = [
-        "calculator.hpp",
-        "socket_server.cpp",
+        "calculator_example/calculator.hpp",
+        "calculator_example/socket/server.cpp",
     ],
     deps = ["//src:jsonrpc_lib"],
 )
@@ -67,15 +67,22 @@ cc_binary(
 # Framed socket examples
 cc_binary(
     name = "framed_socket_client",
-    srcs = ["framed_socket_client.cpp"],
+    srcs = ["calculator_example/framed_socket/client.cpp"],
     deps = ["//src:jsonrpc_lib"],
 )
 
 cc_binary(
     name = "framed_socket_server",
     srcs = [
-        "calculator.hpp",
-        "framed_socket_server.cpp",
+        "calculator_example/calculator.hpp",
+        "calculator_example/framed_socket/server.cpp",
     ],
+    deps = ["//src:jsonrpc_lib"],
+)
+
+# LSP example
+cc_binary(
+    name = "pipe_lsp_server",
+    srcs = ["lsp_example/pipe_lsp_server.cpp"],
     deps = ["//src:jsonrpc_lib"],
 )
