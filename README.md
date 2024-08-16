@@ -1,6 +1,8 @@
 # JSON-RPC 2.0 Modern C++ Library
 
 [![CI](https://github.com/hankhsu1996/json-rpc-cpp-lib/actions/workflows/ci.yml/badge.svg?event=push)](https://github.com/hankhsu1996/json-rpc-cpp-lib/actions/workflows/ci.yml)
+![GitHub Release](https://img.shields.io/github/v/release/hankhsu1996/json-rpc-cpp-lib)
+![GitHub License](https://img.shields.io/github/license/hankhsu1996/json-rpc-cpp-lib)
 
 Welcome to the **JSON-RPC 2.0 Modern C++ Library**! This library provides a lightweight, modern C++ implementation of [JSON-RPC 2.0](https://www.jsonrpc.org/specification) servers and clients. It is designed to be flexible, allowing integration with various transport layers. This library makes it easy to register methods and notifications, binding them to client logic efficiently.
 
