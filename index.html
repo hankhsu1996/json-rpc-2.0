@@ -115,7 +115,7 @@ $(function(){initNavTree('index.html',''); initResizable(true); });
   <div class="headertitle"><div class="title">JSON-RPC 2.0 Modern C++ Library </div></div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><p><a class="anchor" id="md_README"></a> <a href="https://github.com/hankhsu1996/json-rpc-cpp-lib/actions/workflows/ci.yml"><img src="https://github.com/hankhsu1996/json-rpc-cpp-lib/actions/workflows/ci.yml/badge.svg?event=push" alt="CI" style="pointer-events: none;" class="inline"/></a> <img src="https://img.shields.io/github/v/release/hankhsu1996/json-rpc-cpp-lib" alt="GitHub Release" class="inline"/> <img src="https://img.shields.io/github/license/hankhsu1996/json-rpc-cpp-lib" alt="GitHub License" class="inline"/></p>
+<div class="textblock"><p><a class="anchor" id="md_README"></a> <a href="https://github.com/hankhsu1996/jsonrpc-cpp-lib/actions/workflows/ci.yml"><img src="https://github.com/hankhsu1996/jsonrpc-cpp-lib/actions/workflows/ci.yml/badge.svg?event=push" alt="CI" style="pointer-events: none;" class="inline"/></a> <img src="https://img.shields.io/github/v/release/hankhsu1996/jsonrpc-cpp-lib" alt="GitHub Release" class="inline"/> <img src="https://img.shields.io/github/license/hankhsu1996/jsonrpc-cpp-lib" alt="GitHub License" class="inline"/></p>
 <p>Welcome to the <b>JSON-RPC 2.0 Modern C++ Library</b>! This library provides a lightweight, modern C++ implementation of <a href="https://www.jsonrpc.org/specification">JSON-RPC 2.0</a> servers and clients. It is designed to be flexible, allowing integration with various transport layers. This library makes it easy to register methods and notifications, binding them to client logic efficiently.</p>
 <h1><a class="anchor" id="autotoc_md1"></a>
 ✨ Features</h1>
@@ -139,26 +139,32 @@ Prerequisites</h2>
 <h2><a class="anchor" id="autotoc_md4"></a>
 Using Bazel</h2>
 <p>To include this library in your project with Bazel, ensure you are using Bazel 7.0 or later, as Bzlmod is enabled by default. Add the following to your <code>MODULE.bazel</code> file:</p>
-<div class="fragment"><div class="line">bazel_dep(name = &quot;jsonrpc&quot;, version = &quot;1.0.0&quot;)</div>
-</div><!-- fragment --><h2><a class="anchor" id="autotoc_md5"></a>
-Optional: Using CMake FetchContent</h2>
-<p>If you prefer using CMake, add the library to your project with the following in your <code>CMakeLists.txt</code>:</p>
-<div class="fragment"><div class="line">include(FetchContent)</div>
-<div class="line">FetchContent_Declare(</div>
-<div class="line">  jsonrpc</div>
-<div class="line">  GIT_REPOSITORY https://github.com/hankhsu1996/json-rpc-cpp-lib.git</div>
-<div class="line">  GIT_TAG main</div>
+<div class="fragment"><div class="line">http_archive = use_repo_rule(&quot;@bazel_tools//tools/build_defs/repo:http.bzl&quot;, &quot;http_archive&quot;)</div>
+<div class="line">http_archive(</div>
+<div class="line">  name = &quot;jsonrpc&quot;,</div>
+<div class="line">  urls = [&quot;https://github.com/hankhsu1996/jsonrpc-cpp-lib/archive/refs/tags/v1.0.0.tar.gz&quot;],</div>
+<div class="line">  strip_prefix = &quot;jsonrpc-cpp-lib-1.0.0&quot;,</div>
+<div class="line">  sha256 = &quot;a381dc02ab95c31902077793e926adbb0d8f67eadbc386b03451e952d50f0615&quot;,</div>
 <div class="line">)</div>
-<div class="line">FetchContent_MakeAvailable(jsonrpc)</div>
-</div><!-- fragment --><h2><a class="anchor" id="autotoc_md6"></a>
+</div><!-- fragment --><h2><a class="anchor" id="autotoc_md5"></a>
 Optional: Using Conan 2</h2>
 <p>For projects using Conan, create a <code>conanfile.txt</code> in your project directory with the following content:</p>
 <div class="fragment"><div class="line">[requires]</div>
-<div class="line">json-rpc-cpp-lib/1.0.0</div>
+<div class="line">jsonrpc-cpp-lib/1.0.0</div>
 <div class="line"> </div>
 <div class="line">[generators]</div>
 <div class="line">CMakeDeps</div>
 <div class="line">CMakeToolchain</div>
+</div><!-- fragment --><h2><a class="anchor" id="autotoc_md6"></a>
+Optional: Using CMake FetchContent</h2>
+<p>If you prefer using CMake, add the library to your project with the following in your <code>CMakeLists.txt</code>:</p>
+<div class="fragment"><div class="line">include(FetchContent)</div>
+<div class="line">FetchContent_Declare(</div>
+<div class="line">  jsonrpc-cpp-lib</div>
+<div class="line">  GIT_REPOSITORY https://github.com/hankhsu1996/jsonrpc-cpp-lib.git</div>
+<div class="line">  GIT_TAG v1.0.0</div>
+<div class="line">)</div>
+<div class="line">FetchContent_MakeAvailable(jsonrpc-cpp-lib)</div>
 </div><!-- fragment --><h1><a class="anchor" id="autotoc_md7"></a>
 📖 Usage and Examples</h1>
 <h2><a class="anchor" id="autotoc_md8"></a>
@@ -233,6 +239,12 @@ Optional: Debug Configuration</h2>
 <div class="line">cmake --build --preset debug</div>
 <div class="line">ctest --preset debug</div>
 </div><!-- fragment --><h2><a class="anchor" id="autotoc_md14"></a>
+Optional: CMake without Conan</h2>
+<p>If you prefer not to use Conan, you can build the project with CMake directly:</p>
+<div class="fragment"><div class="line">cmake -S . -B build</div>
+<div class="line">cmake --build build</div>
+<div class="line">ctest --test-dir build</div>
+</div><!-- fragment --><h2><a class="anchor" id="autotoc_md15"></a>
 Compilation Database</h2>
 <p>Generate the <code>compile_commands.json</code> file for tools like <code>clang-tidy</code> and <code>clangd</code>:</p>
 <ul>
@@ -240,10 +252,10 @@ Compilation Database</h2>
 <li><b>CMake</b>: Simply build the project. The database will be generated automatically.</li>
 </ul>
 <p>In both cases, the <code>compile_commands.json</code> file will be placed in the root directory.</p>
-<h1><a class="anchor" id="autotoc_md15"></a>
+<h1><a class="anchor" id="autotoc_md16"></a>
 🤝 Contributing</h1>
 <p>We welcome contributions! If you have suggestions or find any issues, feel free to open an issue or pull request.</p>
-<h1><a class="anchor" id="autotoc_md16"></a>
+<h1><a class="anchor" id="autotoc_md17"></a>
 📄 License</h1>
 <p>This project is licensed under the MIT License. See the <a href="./LICENSE">LICENSE</a> file for more details. </p>
 </div></div><!-- PageDoc -->
