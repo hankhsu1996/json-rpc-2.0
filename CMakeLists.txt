@@ -32,36 +32,8 @@ target_link_libraries(jsonrpc PUBLIC
     asio::asio
 )
 
-# Add example executables
-add_executable(stdio_client examples/stdio_client.cpp)
-target_link_libraries(stdio_client PRIVATE jsonrpc)
-
-add_executable(stdio_server examples/stdio_server.cpp)
-target_link_libraries(stdio_server PRIVATE jsonrpc)
-
-add_executable(pipe_client examples/pipe_client.cpp)
-target_link_libraries(pipe_client PRIVATE jsonrpc)
-
-add_executable(pipe_server examples/pipe_server.cpp)
-target_link_libraries(pipe_server PRIVATE jsonrpc)
-
-add_executable(framed_pipe_client examples/framed_pipe_client.cpp)
-target_link_libraries(framed_pipe_client PRIVATE jsonrpc)
-
-add_executable(framed_pipe_server examples/framed_pipe_server.cpp)
-target_link_libraries(framed_pipe_server PRIVATE jsonrpc)
-
-add_executable(socket_client examples/socket_client.cpp)
-target_link_libraries(socket_client PRIVATE jsonrpc)
-
-add_executable(socket_server examples/socket_server.cpp)
-target_link_libraries(socket_server PRIVATE jsonrpc)
-
-add_executable(framed_socket_client examples/framed_socket_client.cpp)
-target_link_libraries(framed_socket_client PRIVATE jsonrpc)
-
-add_executable(framed_socket_server examples/framed_socket_server.cpp)
-target_link_libraries(framed_socket_server PRIVATE jsonrpc)
+# Include examples CMake file
+add_subdirectory(examples)
 
 # Ensure compile_commands.json is moved after build
 add_custom_command(

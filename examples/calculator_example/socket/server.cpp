@@ -1,15 +1,15 @@
 #include <memory>
 
 #include <jsonrpc/server/server.hpp>
-#include <jsonrpc/transport/framed_pipe_transport.hpp>
+#include <jsonrpc/transport/socket_transport.hpp>
 #include <nlohmann/json.hpp>
 #include <spdlog/sinks/basic_file_sink.h>
 #include <spdlog/spdlog.h>
 
-#include "calculator.hpp"
+#include "../calculator.hpp"
 
 using jsonrpc::server::Server;
-using jsonrpc::transport::FramedPipeTransport;
+using jsonrpc::transport::SocketTransport;
 using Json = nlohmann::json;
 
 auto main() -> int {
@@ -18,8 +18,10 @@ auto main() -> int {
   spdlog::set_level(spdlog::level::debug);
   spdlog::flush_on(spdlog::level::debug);
 
-  const std::string socket_path = "/tmp/calculator_pipe";
-  auto transport = std::make_unique<FramedPipeTransport>(socket_path, true);
+  const std::string host = "0.0.0.0";
+  const uint16_t port = 12345;
+
+  auto transport = std::make_unique<SocketTransport>(host, port, true);
   Server server(std::move(transport));
 
   server.RegisterMethodCall("add", [](const std::optional<Json> &params) {
