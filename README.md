@@ -33,7 +33,7 @@ http_archive(
   name = "jsonrpc",
   urls = ["https://github.com/hankhsu1996/jsonrpc-cpp-lib/archive/refs/tags/v1.0.0.tar.gz"],
   strip_prefix = "jsonrpc-cpp-lib-1.0.0",
-  sha256 = "8b66af17b46af422a169aafbe046a65632e0667a9fab02a1b85b3af1bc3d8862",
+  sha256 = "a381dc02ab95c31902077793e926adbb0d8f67eadbc386b03451e952d50f0615",
 )
 ```
 
@@ -48,7 +48,6 @@ jsonrpc-cpp-lib/1.0.0
 [generators]
 CMakeDeps
 CMakeToolchain
-
 ```
 
 ### Optional: Using CMake FetchContent
@@ -58,11 +57,11 @@ If you prefer using CMake, add the library to your project with the following in
 ```cmake
 include(FetchContent)
 FetchContent_Declare(
-  jsonrpc
+  jsonrpc-cpp-lib
   GIT_REPOSITORY https://github.com/hankhsu1996/jsonrpc-cpp-lib.git
   GIT_TAG v1.0.0
 )
-FetchContent_MakeAvailable(jsonrpc)
+FetchContent_MakeAvailable(jsonrpc-cpp-lib)
 ```
 
 ## 📖 Usage and Examples
