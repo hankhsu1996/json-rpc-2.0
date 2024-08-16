@@ -1,8 +1,8 @@
 # JSON-RPC 2.0 Modern C++ Library
 
-[![CI](https://github.com/hankhsu1996/json-rpc-cpp-lib/actions/workflows/ci.yml/badge.svg?event=push)](https://github.com/hankhsu1996/json-rpc-cpp-lib/actions/workflows/ci.yml)
-![GitHub Release](https://img.shields.io/github/v/release/hankhsu1996/json-rpc-cpp-lib)
-![GitHub License](https://img.shields.io/github/license/hankhsu1996/json-rpc-cpp-lib)
+[![CI](https://github.com/hankhsu1996/jsonrpc-cpp-lib/actions/workflows/ci.yml/badge.svg?event=push)](https://github.com/hankhsu1996/jsonrpc-cpp-lib/actions/workflows/ci.yml)
+![GitHub Release](https://img.shields.io/github/v/release/hankhsu1996/jsonrpc-cpp-lib)
+![GitHub License](https://img.shields.io/github/license/hankhsu1996/jsonrpc-cpp-lib)
 
 Welcome to the **JSON-RPC 2.0 Modern C++ Library**! This library provides a lightweight, modern C++ implementation of [JSON-RPC 2.0](https://www.jsonrpc.org/specification) servers and clients. It is designed to be flexible, allowing integration with various transport layers. This library makes it easy to register methods and notifications, binding them to client logic efficiently.
 
@@ -28,7 +28,27 @@ Welcome to the **JSON-RPC 2.0 Modern C++ Library**! This library provides a ligh
 To include this library in your project with Bazel, ensure you are using Bazel 7.0 or later, as Bzlmod is enabled by default. Add the following to your `MODULE.bazel` file:
 
 ```bazel
-bazel_dep(name = "jsonrpc", version = "1.0.0")
+http_archive = use_repo_rule("@bazel_tools//tools/build_defs/repo:http.bzl", "http_archive")
+http_archive(
+  name = "jsonrpc",
+  urls = ["https://github.com/hankhsu1996/jsonrpc-cpp-lib/archive/refs/tags/v1.0.0.tar.gz"],
+  strip_prefix = "jsonrpc-cpp-lib-1.0.0",
+  sha256 = "8b66af17b46af422a169aafbe046a65632e0667a9fab02a1b85b3af1bc3d8862",
+)
+```
+
+### Optional: Using Conan 2
+
+For projects using Conan, create a `conanfile.txt` in your project directory with the following content:
+
+```ini
+[requires]
+jsonrpc-cpp-lib/1.0.0
+
+[generators]
+CMakeDeps
+CMakeToolchain
+
 ```
 
 ### Optional: Using CMake FetchContent
@@ -39,24 +59,10 @@ If you prefer using CMake, add the library to your project with the following in
 include(FetchContent)
 FetchContent_Declare(
   jsonrpc
-  GIT_REPOSITORY https://github.com/hankhsu1996/json-rpc-cpp-lib.git
-  GIT_TAG main
+  GIT_REPOSITORY https://github.com/hankhsu1996/jsonrpc-cpp-lib.git
+  GIT_TAG v1.0.0
 )
 FetchContent_MakeAvailable(jsonrpc)
-```
-
-### Optional: Using Conan 2
-
-For projects using Conan, create a `conanfile.txt` in your project directory with the following content:
-
-```ini
-[requires]
-json-rpc-cpp-lib/1.0.0
-
-[generators]
-CMakeDeps
-CMakeToolchain
-
 ```
 
 ## 📖 Usage and Examples
@@ -162,6 +168,16 @@ For Debug configuration:
 cmake --preset debug
 cmake --build --preset debug
 ctest --preset debug
+```
+
+### Optional: CMake without Conan
+
+If you prefer not to use Conan, you can build the project with CMake directly:
+
+```
+cmake -S . -B build
+cmake --build build
+ctest --test-dir build
 ```
 
 ### Compilation Database
