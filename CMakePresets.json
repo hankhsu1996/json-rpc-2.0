@@ -6,19 +6,13 @@
       "name": "release",
       "displayName": "Release Config",
       "description": "Release configuration preset inheriting from conan-release.",
-      "inherits": "conan-release",
-      "cacheVariables": {
-        "CMAKE_EXPORT_COMPILE_COMMANDS": "ON"
-      }
+      "inherits": "conan-release"
     },
     {
       "name": "debug",
       "displayName": "Debug Config",
       "description": "Debug configuration preset inheriting from conan-debug.",
-      "inherits": "conan-debug",
-      "cacheVariables": {
-        "CMAKE_EXPORT_COMPILE_COMMANDS": "ON"
-      }
+      "inherits": "conan-debug"
     }
   ],
   "buildPresets": [

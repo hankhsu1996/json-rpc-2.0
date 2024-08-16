@@ -3,7 +3,7 @@ MODULE.bazel file for the jsonrpc module
 """
 
 module(
-    name = "jsonrpc",
+    name = "jsonrpc_cpp_lib",
     version = "1.0.0",
 )
 
