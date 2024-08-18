@@ -1,3 +1,9 @@
+alias(
+    name = "jsonrpc",
+    actual = "//src:jsonrpc_lib",
+    visibility = ["//visibility:public"],
+)
+
 filegroup(
     name = "clang_tidy_config",
     srcs = [".clang-tidy"],
