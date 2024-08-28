@@ -11,6 +11,9 @@ auto main() -> int {
   try {
     SetupLogger();
 
+    // The 'false' argument indicates that the transport is acting as a client.
+    // In this setup, VS Code creates and owns the pipe, and the LSP server
+    // (this process) connects to the pipe as a client.
     auto transport =
         std::make_unique<FramedSocketTransport>("localhost", 2087, false);
     Server server(std::move(transport));

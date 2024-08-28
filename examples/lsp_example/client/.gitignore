@@ -1,0 +1,46 @@
+# Node modules
+node_modules/
+
+# Output directory
+out/
+
+# TypeScript build info
+*.tsbuildinfo
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Environment Variables
+.env
+.env.test
+.env.production
+
+# Optional npm cache directory
+.npm
+
+# Output of `npm pack`
+*.tgz
+
+# Optional eslint cache
+.eslintcache
+
+# Optional stylelint cache
+.stylelintcache
+
+# Optional REPL history
+.node_repl_history
+
+# lockfiles (optional, typically should be committed)
+# package-lock.json
+
+# IDE specific files
+.idea/
+.vscode/
+
+# macOS specific files
+.DS_Store
+
+# Others
+*.log
